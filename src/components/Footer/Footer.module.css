@@ -1,0 +1,41 @@
+
+.container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.listContainer{
+    display: inline;
+    flex-direction: column;
+}
+.logo{
+    display: inline;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+}
+
+.title{
+
+}
+
+li{
+    list-style: none;
+}
+.vet{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 150%;
+    /* identical to box height, or 54px */
+    letter-spacing: 0.305em;
+    /* Primary Color Vet - 1 */
+    color: #FDCB5A;
+}
+.logoContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
