@@ -1,23 +1,18 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react'
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Image,
-  Badge,
-  
-} from 'react-bootstrap'
-
-import doctorImg from './assets/img/doctorProfile.png'
+import Doctor from './components/doctors'
+import Doctor2 from './components/doctors/index2'
+import Doctor3 from './components/doctors/index3'
+import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 
 function App() {
+  const [data, setData] = useState();
+  // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
+  const totalCount = 5;
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor:"#F1F1F1"}}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -32,22 +27,24 @@ function App() {
           Learn React
         </a>
       </header>
-      <Container>
-        <Row>
-        <Col lg={4}>
-          <Card>
-            <Image style={{width:"50px",height:"50px"}}src={doctorImg} roundedCircle />
-            <h4>Alexandria Raihan</h4>
-            <Badge variant="warning">Doctor</Badge>
-          </Card>
-          <Card>te</Card>
-        </Col>
-        <Col lg={8}>
-          <Card>test</Card>
-        </Col>
-        </Row>
-        
-      </Container>
+      
+      <Router>
+      <Link to="/page1">Page 1</Link>
+      <Link to="/page2">Page 2</Link>
+      <Link to="/page3">Page 3</Link>
+        <Switch>
+          <Route path="/page1">
+            <Doctor/>
+          </Route>
+          <Route path="/page2">
+            <Doctor2/>
+          </Route>
+          <Route path="/page3">
+            <Doctor3/>
+          </Route>
+        </Switch>
+      </Router>
+      
     </div>
   );
 }
