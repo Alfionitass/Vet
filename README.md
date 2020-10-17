@@ -1,6 +1,6 @@
 Vet Front-End
+to install:
 > npm i
-to install
 
+to see the development:
 > npm start
-to see the development
