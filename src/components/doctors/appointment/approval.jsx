@@ -13,11 +13,11 @@ import {
   Form,
 } from "react-bootstrap";
 
-import doctorImg from "../../assets/img/doctorProfile.png";
-import "./doctor.css";
+import doctorImg from "../../../assets/img/doctorProfile.png";
+import "../doctor.css";
 import Swal from "sweetalert2";
 
-export default function index() {
+export default function AppointmentApproval() {
   const handleClick = () => {
     Swal.fire({
       title: "Update Sukses!",
@@ -59,7 +59,7 @@ export default function index() {
               </Button>
             </Card.Footer>
           </Card>
-          <Card className="m-5 justify-content-start">
+          <Card className="justify-content-start">
             <Col>
               <IoIosLogOut /> Logout
             </Col>
@@ -67,7 +67,7 @@ export default function index() {
         </Col>
         <Col lg={8} className="my-5 text-left">
           <Card>
-            <Card.Header>Book from Pasien</Card.Header>
+            <Card.Header>Apointments</Card.Header>
             <Card.Body>
               <Card style={{boxShadow:"(0,0,0,0.3)"}}className="my-2">
                 <Row className="align-items-center">
@@ -80,9 +80,6 @@ export default function index() {
                   <Col>
                     <Button variant="warning">Approve</Button>
                   </Col>
-                  <Col>
-                    <Button variant="danger">Disapprove</Button>
-                  </Col>
                 </Row>
               </Card>
               <Card style={{boxShadow:"(0,0,0,0.3)"}}className="my-2">
@@ -96,9 +93,6 @@ export default function index() {
                   <Col>
                     <Button variant="warning">Approve</Button>
                   </Col>
-                  <Col>
-                    <Button variant="danger">Disapprove</Button>
-                  </Col>
                 </Row>
               </Card>
               <Card style={{boxShadow:"(0,0,0,0.3)"}}className="my-2">
@@ -111,9 +105,6 @@ export default function index() {
                   <Col>19.20</Col>
                   <Col>
                     <Button variant="warning">Approve</Button>
-                  </Col>
-                  <Col>
-                    <Button variant="danger">Disapprove</Button>
                   </Col>
                 </Row>
               </Card>

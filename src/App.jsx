@@ -2,9 +2,9 @@ import React, {useState,useEffect} from 'react'
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Doctor from './components/doctors'
-import Doctor2 from './components/doctors/index2'
-import Doctor3 from './components/doctors/index3'
+import Doctor from './components/doctors/profile'
+import Doctor2 from './components/doctors/appointment/book'
+import Doctor3 from './components/doctors/appointment/approval'
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 
 function App() {
