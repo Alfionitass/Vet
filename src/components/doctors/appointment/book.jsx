@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoIosBriefcase, IoMdWifi, IoIosLogOut } from "react-icons/io";
-
+import { user } from '../../../database'
 import {
   Container,
   Row,
@@ -17,7 +17,12 @@ import "../doctor.css";
 import Swal from "sweetalert2";
 
 export default function AppointmentBook() {
-  
+  useEffect(()=> {
+    user({
+      token : "toke",
+      method : "user"
+    })
+  })
   const handleClick = () => {
     Swal.fire({
       title: "Update Sukses!",
