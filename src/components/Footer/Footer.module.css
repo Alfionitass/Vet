@@ -1,25 +1,3 @@
-
-.container{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.listContainer{
-    display: inline;
-    flex-direction: column;
-}
-.logo{
-    display: inline;
-}
-.icons{
-    display: flex;
-    flex-direction: row;
-}
-
-.title{
-
-}
-
 li{
     list-style: none;
 }
@@ -33,9 +11,4 @@ li{
     letter-spacing: 0.305em;
     /* Primary Color Vet - 1 */
     color: #FDCB5A;
-}
-.logoContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
