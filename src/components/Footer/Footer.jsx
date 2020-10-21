@@ -1,37 +1,50 @@
-import { Facebook, Instagram, Twitter } from "@material-ui/icons"
+import {AiOutlineFacebook,AiOutlineTwitter,AiOutlineInstagram} from 'react-icons/ai'
 import React from "react"
 import Logo from "../../assets/Logo"
 import styles from "./Footer.module.css"
+import {Container} from 'react-bootstrap'
 
 const Footer = () =>{
     return(
-        <div className={styles.container}>            
+        <Container 
+            className="d-flex flex-row justify-content-between align-items-center p-4" 
+            style={{backgroundColor:"#1A3150"}}
+        >        
         <div className={styles.logoContainer}>
-            <Logo height="5rem" width="5rem" className={styles.logo}/>    
+            <Logo height="3rem" width="5rem" className="d-flex flex-column align-items-center"/>    
             <div className={styles.vet}>V E T</div>                             
         </div>
-            <div className={styles.listContainer}>
-                <div className={styles.listTitle}>
+            <div>
+                <div style={{color:"white",fontWeight:"bold", marginBottom:"0.5rem",fontSize:"22px"}}>
                     Company
                 </div>
-                <ul>
+                <ul style={{color:"white"}}>
                     <li>About Us</li>
                     <li>Career</li>
                     <li>Contact Us</li>                    
                 </ul>
             </div>
-            <div className={styles.listContainer}>
-                <div className={styles.listTitle}>
+            <div>
+                <div style={{color:"white",fontWeight:"bold", marginBottom:"0.5rem", fontSize:"22px"}}>
+                    Further Information
+                </div>
+                <ul style={{color:"white",fontSize:"16px"}}>
+                    <li>About Us</li>
+                    <li>Career</li>
+                    <li>Contact Us</li>                    
+                </ul>
+            </div>
+            <div >
+                <div style={{color:"white",fontWeight:"bold", marginBottom:"0.5rem",fontSize:"22px"}}>
                     Follow Us
                 </div>
-                <div className={styles.icons}>
-                    <Twitter />
-                    <Facebook />
-                    <Instagram />                          
+                <div className="d-flex flex-row" style={{color:"white"}}>
+                    <AiOutlineTwitter className="mr-2" style={{height:"2.5rem",width:"2.5rem"}}/>
+                    <AiOutlineInstagram className="mr-2" style={{height:"2.5rem",width:"2.5rem"}}/>
+                    <AiOutlineFacebook className="mr-2" style={{height:"2.5rem",width:"2.5rem"}}/>
                 </div>
             </div>
-
-        </div>                        
+            </Container>                 
     )
 }
 export default Footer
