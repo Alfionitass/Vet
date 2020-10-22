@@ -53,7 +53,7 @@ export default function ClinicChoose() {
         Buka 09:00-12:00
       </Card.Text>
     </Card.Body>
-    <Card.Footer>
+    <Card.Footer style={{backgroundColor:"white"}}>
       <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
         Book now
       </Button>

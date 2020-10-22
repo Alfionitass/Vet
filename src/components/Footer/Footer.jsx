@@ -18,20 +18,20 @@ const Footer = () =>{
                 <div style={{color:"white",fontWeight:"bold", marginBottom:"0.5rem",fontSize:"22px"}}>
                     Company
                 </div>
-                <ul style={{color:"white"}}>
-                    <li>About Us</li>
-                    <li>Career</li>
-                    <li>Contact Us</li>                    
-                </ul>
+                <ul style={{color:"white"}} className="d-flex flex-column">
+                    <a href="#" style={{textDecoration:"none",color:"white"}}>About Us</a>
+                    <a href="#" style={{textDecoration:"none",color:"white"}}>Career</a>
+                    <a href="#" style={{textDecoration:"none",color:"white"}}>Contact Us</a>                                        
+                </ul>                
             </div>
             <div>
                 <div style={{color:"white",fontWeight:"bold", marginBottom:"0.5rem", fontSize:"22px"}}>
                     Further Information
                 </div>
-                <ul style={{color:"white",fontSize:"16px"}}>
-                    <li>About Us</li>
-                    <li>Career</li>
-                    <li>Contact Us</li>                    
+                <ul style={{color:"white"}} className="d-flex flex-column">
+                    <a href="#" style={{textDecoration:"none",color:"white"}}>About Us</a>
+                    <a href="#" style={{textDecoration:"none",color:"white"}}>Career</a>
+                    <a href="#" style={{textDecoration:"none",color:"white"}}>Contact Us</a>                                        
                 </ul>
             </div>
             <div >
