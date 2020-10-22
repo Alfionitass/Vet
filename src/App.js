@@ -1,5 +1,6 @@
 import { Details } from "@material-ui/icons";
 import React from "react";
+import Booking from "./pages/Booking";
 import "./App.css";
 import ClinicChoose from "./components/Clinic/ClinicChoose/ClinicChoose";
 import DetailsComp from "./components/Details/DetailsComp";
