@@ -17,8 +17,8 @@ function App() {
   	{/* <NavBar /> */}
     {/* <ClinicChoose /> */}
     <ProfileUser />
-    {/* <UserAppointmentApproval /> */}
-    {/* <UserAppointmentBook /> */}
+    {/* <UserAppointmentApproval />
+    <UserAppointmentBook /> */}
     {/* <DetailsComp /> */}
     <Footer />
   </>

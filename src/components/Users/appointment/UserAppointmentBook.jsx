@@ -34,44 +34,44 @@ export default function UserAppointmentBook() {
       },
     });
   };
-  return (
-    <Container>
+
+  const cardProfile =(
+  <>
+  <Card className="p-4 my-5">
+    <Card.Body>
+      <Image
+        style={{ width: "50px", height: "50px", flexDirection: "row" }}
+        src={doctorImg}
+        roundedCircle
+      />
+      <h4>Alexandria Raihan</h4>
+      <Badge pill className="px-5 py-2" size="sm" variant="success">
+        Doctor
+      </Badge>
       <Row>
-        <Col lg={4}>
-          <Card className="p-4 my-5">
-            <Card.Body>
-              <Image
-                style={{ width: "50px", height: "50px", flexDirection: "row" }}
-                src={doctorImg}
-                roundedCircle
-              />
-              <h4>Alexandria Raihan</h4>
-              <Badge pill className="px-5 py-2" size="sm" variant="success">
-                Doctor
-              </Badge>
-              <Row>
-                <Col md={6}>
-                  <IoMdWifi /> Online
-                </Col>
-                <Col md={6}>
-                  <IoIosBriefcase /> 10 years
-                </Col>
-              </Row>
-            </Card.Body>
-            <Card.Footer style={{ backgroundColor: "unset" }}>
-              <Button className="font-weight-bold" variant="warning" block>
-                Edit Profile
-              </Button>
-            </Card.Footer>
-          </Card>
-          <Card className="justify-content-start">
-            <Col>
-              <IoIosLogOut /> Logout
-            </Col>
-          </Card>
+        <Col md={6}>
+          <IoMdWifi /> Online
         </Col>
-        <Col lg={8} className="my-5 text-left">
-          <Card>
+        <Col md={6}>
+          <IoIosBriefcase /> 10 years
+        </Col>
+      </Row>
+    </Card.Body>
+    <Card.Footer style={{ backgroundColor: "unset" }}>
+      <Button className="font-weight-bold" variant="warning" block>
+        Edit Profile
+      </Button>
+    </Card.Footer>
+  </Card>
+  <Card className="justify-content-start">
+    <Col>
+      <IoIosLogOut /> Logout
+    </Col>
+  </Card>
+  </>)
+
+  const mainEdit = (    
+      <Card>
             <Card.Header className="nav--menu">
               <Nav variant="tabs" defaultActiveKey="/home">
                 <Nav.Item>
@@ -82,8 +82,7 @@ export default function UserAppointmentBook() {
                     Approval
                   </Nav.Link>
                 </Nav.Item>
-              </Nav>
-              
+              </Nav>              
             </Card.Header>
             <Card.Body>
               <Card
@@ -114,7 +113,16 @@ export default function UserAppointmentBook() {
                 </Row>
               </Card>
             </Card.Body>
-          </Card>
+          </Card>        
+  )
+  return (
+    <Container>
+      <Row>
+        <Col lg={4}>
+          {cardProfile}          
+        </Col>
+        <Col lg={8} className="my-5 text-left">
+          {mainEdit}          
         </Col>
       </Row>
     </Container>
