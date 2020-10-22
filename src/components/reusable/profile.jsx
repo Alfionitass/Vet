@@ -22,7 +22,7 @@ export default function Profile(props) {
               <IoMdWifi /> Online
             </Col>
             <Col md={6}>
-              <IoIosBriefcase /> 10 years
+              <IoIosBriefcase /> {props.years} {props.years > 1 ? "years" : "year"}
             </Col>
           </Row>
         </Card.Body>
