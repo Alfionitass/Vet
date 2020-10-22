@@ -28,6 +28,8 @@ export default function Profile() {
       icon: "success",
       background: "#1A3150",
       iconColor: "yellow",
+      showConfirmButton: false,
+      
       customClass: {
         title: "text-light",
       },

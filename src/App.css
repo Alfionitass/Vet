@@ -1,3 +1,140 @@
+:root {
+  --primary-color-1: #1A3150;
+  --primary-color-2: #FDCB5A;
+  --others-color-1: #4C68B3;
+  --others-color-2: #749DD2;
+  --others-color-3: #C2CDDB;
+  --others-color-4: #E0E9F5;
+  --others-color-5: #F5F7FA;
+  --others-color-6: #ED5341;
+  --others-color-7: #FF7E6E;
+  --others-color-8: #875C25;
+  --others-color-9: #F6E8C8;
+}
+
+.vet-heading {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.vet-title-1 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.vet-title-2 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.vet-button {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.vet-body-1 {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.vet-body-2 {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.vet-caption-1 {
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.v-text-donker {
+  color: var(--primary-color-1);
+}
+
+.v-text-mustard {
+  color: var(--primary-color-2);
+}
+
+.v-text-space {
+  color: var(--others-color-1);
+}
+
+.v-text-steel {
+  color: var(--others-color-2);
+}
+
+.v-text-gray {
+  color: var(--others-color-3);
+}
+
+.v-text-light {
+  color: var(--others-color-4);
+}
+
+.v-text-white {
+  color: var(--others-color-5);
+}
+
+.v-text-imperial {
+  color: var(--others-color-6);
+}
+
+.v-text-salmon {
+  color: var(--others-color-7);
+}
+
+.v-text-caramel {
+  color: var(--others-color-8);
+}
+
+.v-text-cream {
+  color: var(--others-color-9);
+}
+
+.v-bg-donker {
+  background-color: var(--primary-color-1);
+}
+
+.v-bg-mustard {
+  background-color: var(--primary-color-2);
+}
+
+.v-bg-space {
+  background-color: var(--others-color-1);
+}
+
+.v-bg-steel {
+  background-color: var(--others-color-2);
+}
+
+.v-bg-gray {
+  background-color: var(--others-color-3);
+}
+
+.v-bg-light {
+  background-color: var(--others-color-4);
+}
+
+.v-bg-white {
+  background-color: var(--others-color-5);
+}
+
+.v-bg-imperial {
+  background-color: var(--others-color-6);
+}
+
+.v-bg-salmon {
+  background-color: var(--others-color-7);
+}
+
+.v-bg-caramel {
+  background-color: var(--others-color-8);
+}
+
+.v-bg-cream {
+  background-color: var(--others-color-9);
+}
+
 .App {
   text-align: center;
 }

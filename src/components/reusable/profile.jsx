@@ -1,6 +1,7 @@
 import React from "react";
 import { Badge, Card, Image, Col, Row, Button } from "react-bootstrap";
 import { IoIosBriefcase, IoMdWifi, IoIosLogOut } from "react-icons/io";
+import styles from "./profile.module.css";
 
 export default function Profile(props) {
   return (
@@ -17,15 +18,15 @@ export default function Profile(props) {
             Doctor
           </Badge>
           <Row className="pt-4">
-            <Col md={6} style={{color:"green",fill:"green"}}>
-              <IoMdWifi/> Online
+            <Col md={6} style={{ color: "green", fill: "green" }}>
+              <IoMdWifi /> Online
             </Col>
             <Col md={6}>
               <IoIosBriefcase /> 10 years
             </Col>
           </Row>
         </Card.Body>
-        <Card.Footer style={{ backgroundColor: "unset" }}>
+        <Card.Footer className={styles["card--footer"]}>
           <Button className="font-weight-bold" variant="warning" block>
             Edit Profile
           </Button>
@@ -33,9 +34,54 @@ export default function Profile(props) {
       </Card>
       <Card className="justify-content-start">
         <Col className="px-4 py-2 d-flex align-items-center">
-          <IoIosLogOut size={"2rem"}/> <p className="m-0 px-3" style={{fontSize:"1.2rem",lineHeight:"1.2rem"}}>Logout</p>
+          <IoIosLogOut size={"2rem"} />{" "}
+          <p
+            className="m-0 px-3"
+            style={{ fontSize: "1.2rem", lineHeight: "1.2rem" }}
+          >
+            Logout
+          </p>
         </Col>
       </Card>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios1"
+          value="option1"
+          checked
+        />
+        <label class="form-check-label" for="exampleRadios1">
+          Default radio
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios2"
+          value="option2"
+        />
+        <label class="form-check-label" for="exampleRadios2">
+          Second default radio
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="exampleRadios"
+          id="exampleRadios3"
+          value="option3"
+          disabled
+        />
+        <label class="form-check-label" for="exampleRadios3">
+          Disabled radio
+        </label>
+      </div>
     </>
   );
 }

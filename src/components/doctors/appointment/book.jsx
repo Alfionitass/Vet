@@ -12,16 +12,22 @@ import {
   Nav,
 } from "react-bootstrap";
 
+import CardItem from '../../reusable/cardItem'
+
 import doctorImg from "../../../assets/img/doctorProfile.png";
 import "../doctor.css";
 import Swal from "sweetalert2";
 
 export default function AppointmentBook() {
+  const [form] = useState({
+    nama : "Alvin",
+    email : "alvin@mail.com",
+    pass : "H*!#($#!JR"
+  })
+  const [token] = useState(localStorage.getItem('token'))
   useEffect(()=> {
-    user({
-      token : "toke",
-      method : "user"
-    })
+
+  
   })
   const handleClick = () => {
     Swal.fire({
@@ -29,6 +35,7 @@ export default function AppointmentBook() {
       icon: "success",
       background: "#1A3150",
       iconColor: "yellow",
+      showConfirmButton: false,
       customClass: {
         title: "text-light",
       },
@@ -73,46 +80,20 @@ export default function AppointmentBook() {
         <Col lg={8} className="my-5 text-left">
           <Card>
             <Card.Header className="nav--menu">
-              <Nav variant="tabs" defaultActiveKey="/home">
+              <Nav variant="tabs" defaultActiveKey="#book">
                 <Nav.Item>
-                  <Nav.Link href="#">Book from Pasien</Nav.Link>
+                  <Nav.Link href="#book" onClick={(e) => console.log(e)}>Book from Pasien</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href="#" eventKey="link-1">
+                  <Nav.Link href="#approval" eventKey="link-1">
                     Approval
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
-              
             </Card.Header>
             <Card.Body>
-              <Card
-                style={{ boxShadow: "(0,0,0,0.3)" }}
-                className="my-2 card--group"
-              >
-                <Row className="align-items-center book--row m-3">
-                  <Col className="book--item col-1 mr-4">
-                    <Badge variant="primary">
-                      <p className="p-0 m-0">12</p>Okt
-                    </Badge>
-                  </Col>
-                  <Col>Alvin Mantovani</Col>
-                  <Col>99 Pets</Col>
-                  <Col>19.20</Col>
-                  <Row>
-                    <Col className="button--action">
-                      <Button size="sm" variant="outline-warning">
-                        Approve
-                      </Button>
-                    </Col>
-                    <Col className="button--action">
-                      <Button size="sm" variant="outline-danger">
-                        Disapprove
-                      </Button>
-                    </Col>
-                  </Row>
-                </Row>
-              </Card>
+              <CardItem/>
+              
             </Card.Body>
           </Card>
         </Col>

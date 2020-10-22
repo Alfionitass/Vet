@@ -2,7 +2,7 @@ import axios from "axios";
 
 const configuration = {
   https: true,
-  url: "https://warm-bastion-18573.herokuapp.com",
+  url: "https://vet-booking.herokuapp.com",
   endpoint: {
     // user
     user: {
@@ -13,113 +13,33 @@ const configuration = {
     },
 
     role: {
-      self: "/role" // [GET] all roles
+      all: "/role" // [GET] all roles
     }
   },
 };
 
-const user = (value = null) => {
+const user = (method = null, value = null) => {
   console.log("this is")
   console.log(value)
   // get method
   
-  // if (method === "detail") {
-  //   return axios.get(
-  //     `${configuration.url}${configuration.endpoint.user.self}`,
-  //     {
-  //       headers: {
-  //         token
-  //       }
-  //     }
-  //   ).then(res => res)
-  //   .catch(res => res.results)
-  // }
-
-  // if (method === "getuser") {
-  //   return axios
-  //     .get(
-  //       `${configuration.url}${configuration.endpoint.user.edit}`,
-  //       {
-  //         headers: {
-  //           token
-  //         }
-  //       }
-  //     )
-  //     .then(res => res)
-  //     .catch(err => err.response);
-  // }
-
-  // if (method === "alluser") {
-  //   return axios.get(
-  //     `${configuration.url}${configuration.endpoint.user.alluser}`,
-  //     {
-  //       headers: {
-  //         ...token,
-  //       },
-  //     }
-  //   );
-  // }
-
-  // // post method
-  // if (method === "register") {
-  //   return axios
-  //     .post(`${configuration.url}${configuration.endpoint.user.register}`, content)
-  //     .then(res => res)
-  //     .catch(err => err.response)
-  // }
-
-  // if (method === "login") {
-  //   console.log(content)
-  //   console.log(configuration.endpoint.user.login)
-  //   return axios
-  //     .post(`${configuration.url}${configuration.endpoint.user.login}`, content)
-  //     .then((res) => res)
-  //     .catch((err) => err.response
-  //     );
-  // }
-
-  // // delete method
-  // if (method === "delete") {
-  //   return axios.delete(
-  //     `${configuration.url}${configuration.endpoint.user.self}`,
-  //     {
-  //       headers: {
-  //         ...token,
-  //       },
-  //     }
-  //   );
-  // }
-
-  // update method
-  // if (method === "edit") {
-  //   return axios
-  //     .put(
-  //       `${configuration.url}${configuration.endpoint.user.edit}`,
-  //       content,
-  //       {
-  //         headers: {
-  //           token,
-  //         },
-  //       }
-  //     ).then(res => res)
-  //     .catch(err =>  err.response);
-  // }
+  if (method === "all") {
+    console.log(`${configuration.url}${configuration.endpoint.user.all}`)
+    return axios.get(
+      `${configuration.url}${configuration.endpoint.user.all}`
+    ).then(res => res)
+    .catch(res => res.results)
+  }
 }
 
-const movie = (method, content = null, token = null) => {
+const role = (method) => {
   // get method
-  if (method === "detail") {
+  if (method === "all") {
     return axios.get(
-      `${configuration.url}`
+      `${configuration.url}${configuration.endpoint.role.all}`
     ).then(res => res)
+    .catch(err => err.response)
   }
-
-  if (method === "search") {
-    return axios.get(
-      `${configuration.url}${configuration.endpoint.movie.search.title}?title=${content}`
-    ).then(res => res)
-  }
-
 }
 
 const review = (method, content = null, token = null, query = null) => {
@@ -148,7 +68,8 @@ const review = (method, content = null, token = null, query = null) => {
 
   if (method === "post") {
     return axios.post(
-      `${configuration.url}${configuration.endpoint.review.self}?MovieId=${query}`,content,
+      `${configuration.url}${configuration.endpoint.review.self}?MovieId=${query}`,
+      content,
       {
         headers: {
           token
@@ -187,6 +108,6 @@ const review = (method, content = null, token = null, query = null) => {
 
 export {
   user,
-  movie,
+  role,
   review
 };

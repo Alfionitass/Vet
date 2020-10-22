@@ -36,7 +36,8 @@ export default function AppointmentApproval() {
           <Card className="p-4 my-5">
             <Card.Body>
               <Image
-                style={{ width: "50px", height: "50px", flexDirection: "row" }}
+                width={50}
+                height={50}
                 src={doctorImg}
                 roundedCircle
               />
