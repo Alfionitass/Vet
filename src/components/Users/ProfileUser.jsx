@@ -83,7 +83,26 @@ export default function ProfileUser() {
               >
                 Upload Photo
               </Card.Header>
-              <Card.Body>DD</Card.Body>
+              <Card.Body>
+              <Form.Group>
+                    <Form.Label >
+                      Upload Foto
+                    </Form.Label>
+                    <Form.Control
+                      type="file"                              
+                      name="Upload Foto"
+                      // src="https://cdn-2.tstatic.net/solo/foto/bank/images/uyklk.jpg"
+                      // style={{	width: "0.1px",
+                      //           height: "0.1px",
+                      //           opacity: "0",
+                      //           overflow: "hidden",
+                      //           position: "absolute",
+                      //           zIndex:"-1"}}
+                    />                  
+                    {/* <Img src="https://cdn-2.tstatic.net/solo/foto/bank/images/uyklk.jpg"></Img> */}
+                  </Form.Group> 
+
+              </Card.Body>
       
               <Card.Header
                 style={{ backgroundColor: "unset" }}
