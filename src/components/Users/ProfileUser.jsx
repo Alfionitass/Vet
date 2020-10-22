@@ -15,7 +15,7 @@ import {
 
 import UserProfile from '../reusable/profile'
 import doctorImg from "../../assets/img/doctorProfile.png";
-import "./user.css";
+import "./user.css"
 import Swal from "sweetalert2";
 
 export default function ProfileUser() {
@@ -33,6 +33,41 @@ export default function ProfileUser() {
       },
     });
   };
+
+  const formGender = (
+    <>
+        <Form.Group className="mb-4" id="gender">
+            <Form.Label>Gender</Form.Label>
+            <ButtonGroup toggle name="radiogroup">
+              <ToggleButton
+                key={1}
+                type="radio"
+                // variant={gender === "1" ? "primary" : "outline-primary"}
+                style={gender ==="0" ? {color:'white',backgroundColor:'grey',borderColor:'grey'}: {fontWeight:'bold',color:'white',backgroundColor:"blue",borderColor:'blue'}}
+                name="gender"
+                value="1"
+                checked={gender === "1"}
+                onChange={(e) => setGender(e.currentTarget.value)}
+              >
+                <GiMale/> <text className={gender === "0" ? "text-white" : ""}>Male</text>
+              </ToggleButton>
+              <ToggleButton
+                key={2}
+                type="radio"
+                // variant={gender === "0" ? "pink" : ""}
+                style={gender ==="0" ? {fontWeight:'bold',color:'white',backgroundColor:'red',borderColor:'red'}: {color:'white',backgroundColor:"grey",borderColor:'grey'}}
+                name="gender"
+                value="0"
+                checked={gender === "0"}
+                onChange={(e) => setGender(e.currentTarget.value)}
+              >
+                <GiFemale/><text className={gender === "1" ? "text-white" : ""}>Female</text>
+              </ToggleButton>
+            </ButtonGroup>
+        </Form.Group>
+    </>
+  )
+  
   return (
     <Container>
       <Row>
@@ -49,65 +84,7 @@ export default function ProfileUser() {
                 Upload Photo
               </Card.Header>
               <Card.Body>DD</Card.Body>
-
-              <Card.Header
-                style={{ backgroundColor: "unset" }}
-                className="font-weight-bold"
-              >
-                User Information
-              </Card.Header>
-              <Card.Body>
-                <Form.Group className="mb-4" id="status">
-                  <Form.Label>Status</Form.Label>
-                  <ButtonGroup toggle name="radiogroup">
-                    <ToggleButton
-                      className="d-flex justify-content-center align-items-center"
-                      key={1}
-                      type="radio"
-                      variant={status === "1" ? "success" : ""}
-                      name="status"
-                      value="1"
-                      checked={status === "1"}
-                      onChange={(e) => setStatus(e.currentTarget.value)}
-                    >
-                      <CgSun size={"24px"}/><text className="mx-3">Available</text>
-                    </ToggleButton>
-                    <ToggleButton
-                      className="d-flex justify-content-center align-items-center"
-                      key={2}
-                      type="radio"
-                      variant={status === "0" ? "danger" : ""}
-                      name="status"
-                      value="0"
-                      checked={status === "0"}
-                      onChange={(e) => setStatus(e.currentTarget.value)}
-                    >
-                      <CgUnavailable size={"24px"}/><text className="mx-3">Away</text>
-                    </ToggleButton>
-                  </ButtonGroup>
-                  {/* <ToggleButtonGroup
-                    type="radio"
-                    value={value}
-                    onChange={handleChange}
-                    defaultValue={1}
-                    name="options"
-                  >
-                    <ToggleButton value={0} name="radio">Available</ToggleButton>
-                    <ToggleButton value={1} name="radio">Away</ToggleButton>
-                  </ToggleButtonGroup> */}
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                  <Form.Label>Waktu Aktif</Form.Label>
-                  <Form.Control as="select">
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                  </Form.Control>
-                </Form.Group>
-              </Card.Body>
-
+      
               <Card.Header
                 style={{ backgroundColor: "unset" }}
                 className="font-weight-bold"
@@ -115,81 +92,67 @@ export default function ProfileUser() {
                 Basic Information
               </Card.Header>
               <Card.Body>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Nama Lengkap</Form.Label>
+                <Form.Group>
+                  <Form.Label>Username</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="It's my name"
-                    value="Alvin Mantovani"
-                  />
-                  <Form.Text className="text-muted">Doctor Name.</Form.Text>
+                    placeholder="username"                    
+                    name="username"
+                  />                  
                 </Form.Group>
-                <Form.Group className="mb-4" id="gender">
-                  <Form.Label>Gender</Form.Label>
-                  <ButtonGroup toggle name="radiogroup">
-                    <ToggleButton
-                      key={1}
-                      type="radio"
-                      variant={gender === "1" ? "primary" : ""}
-                      name="gender"
-                      value="1"
-                      checked={gender === "1"}
-                      onChange={(e) => setGender(e.currentTarget.value)}
-                    >
-                      <GiMale/> <text className={gender === "0" ? "text-white" : ""}>Male</text>
-                    </ToggleButton>
-                    <ToggleButton
-                      key={2}
-                      type="radio"
-                      variant={gender === "0" ? "pink" : ""}
-                      name="gender"
-                      value="0"
-                      checked={gender === "0"}
-                      onChange={(e) => setGender(e.currentTarget.value)}
-                    >
-                      <GiFemale/><text className={gender === "1" ? "text-white" : ""}>Female</text>
-                    </ToggleButton>
-                  </ButtonGroup>
-                </Form.Group>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Experience</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="It's my name"
-                    value="1 Days"
-                  />
-                  <Form.Text className="text-muted">
-                    Doctor Experience.
-                  </Form.Text>
-                </Form.Group>
+                {formGender}
               </Card.Body>
+              
 
               <Card.Header
                 style={{ backgroundColor: "unset" }}
                 className="font-weight-bold"
               >
                 Contact Details
+              </Card.Header>     
+              <Card.Body>
+                <Form.Group>
+                    <Form.Label>No Telepon</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="+62"                    
+                      name="noTelepon"
+                    />                  
+                  </Form.Group> 
+                <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="example@mail.com"                    
+                      name="email"
+                    />                  
+                </Form.Group>          
+              </Card.Body>
+              <Card.Header
+                style={{ backgroundColor: "unset" }}
+                className="font-weight-bold"
+              >
+                Informasi tentang hewan peliharaan
               </Card.Header>
               <Card.Body>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Nomor Telefon</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="It's my name"
-                    value="+62 muted"
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="It's my name"
-                    value="alvin.ictn@gmail.com"
-                  />
-                </Form.Group>
+              <Form.Group>
+                    <Form.Label>Jumlah Hewan Peliharaan</Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="0"                    
+                      name="jumlahHewan"
+                    />                  
+                  </Form.Group> 
+                <Form.Group>
+                    <Form.Label>Waktu berkunjung perawatan</Form.Label>
+                    <Form.Control
+                      type="date"
+                      placeholder="tanggal"                    
+                      name="waktuBerkunjung"
+                    />                  
+                </Form.Group> 
               </Card.Body>
-            </Form>
+          </Form>
           </Card>
           <Button
             className="font-weight-bold px-5 float-right my-3"
