@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IoIosBriefcase, IoMdWifi, IoIosLogOut } from "react-icons/io";
-
+import { user } from '../../../database'
 import {
   Container,
   Row,
@@ -9,15 +9,20 @@ import {
   Button,
   Image,
   Badge,
-  InputGroup,
-  Form,
+  Nav,
 } from "react-bootstrap";
 
 import doctorImg from "../../../assets/img/doctorProfile.png";
 import "../user.css";
 import Swal from "sweetalert2";
 
-export default function AppointmentApproval() {
+export default function UserAppointmentBook() {
+  useEffect(()=> {
+    user({
+      token : "toke",
+      method : "user"
+    })
+  })
   const handleClick = () => {
     Swal.fire({
       title: "Update Sukses!",
@@ -67,45 +72,45 @@ export default function AppointmentApproval() {
         </Col>
         <Col lg={8} className="my-5 text-left">
           <Card>
-            <Card.Header>Apointments</Card.Header>
+            <Card.Header className="nav--menu">
+              <Nav variant="tabs" defaultActiveKey="/home">
+                <Nav.Item>
+                  <Nav.Link href="#">Book from Pasien</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href="#" eventKey="link-1">
+                    Approval
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+              
+            </Card.Header>
             <Card.Body>
-              <Card style={{boxShadow:"(0,0,0,0.3)"}}className="my-2">
-                <Row className="align-items-center">
-                  <Col>
-                    <Badge variant="primary">12 Okt</Badge>
+              <Card
+                style={{ boxShadow: "(0,0,0,0.3)" }}
+                className="my-2 card--group"
+              >
+                <Row className="align-items-center book--row m-3">
+                  <Col className="book--item col-1 mr-4">
+                    <Badge variant="primary">
+                      <p className="p-0 m-0">12</p>Okt
+                    </Badge>
                   </Col>
                   <Col>Alvin Mantovani</Col>
-                  <Col>1 wallet</Col>
+                  <Col>99 Pets</Col>
                   <Col>19.20</Col>
-                  <Col>
-                    <Button variant="warning">Approve</Button>
-                  </Col>
-                </Row>
-              </Card>
-              <Card style={{boxShadow:"(0,0,0,0.3)"}}className="my-2">
-                <Row className="align-items-center">
-                  <Col>
-                    <Badge variant="primary">12 Okt</Badge>
-                  </Col>
-                  <Col>Alvin Mantovani</Col>
-                  <Col>1 wallet</Col>
-                  <Col>19.20</Col>
-                  <Col>
-                    <Button variant="warning">Approve</Button>
-                  </Col>
-                </Row>
-              </Card>
-              <Card style={{boxShadow:"(0,0,0,0.3)"}}className="my-2">
-                <Row className="align-items-center">
-                  <Col>
-                    <Badge variant="primary">12 Okt</Badge>
-                  </Col>
-                  <Col>Alvin Mantovani</Col>
-                  <Col>1 wallet</Col>
-                  <Col>19.20</Col>
-                  <Col>
-                    <Button variant="warning">Approve</Button>
-                  </Col>
+                  <Row>
+                    <Col className="button--action">
+                      <Button size="sm" variant="outline-warning">
+                        Approve
+                      </Button>
+                    </Col>
+                    <Col className="button--action">
+                      <Button size="sm" variant="outline-danger">
+                        Disapprove
+                      </Button>
+                    </Col>
+                  </Row>
                 </Row>
               </Card>
             </Card.Body>
