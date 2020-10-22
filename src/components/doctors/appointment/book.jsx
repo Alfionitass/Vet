@@ -93,7 +93,27 @@ export default function AppointmentBook() {
             </Card.Header>
             <Card.Body>
               <CardItem/>
-              
+              <CardItem src={doctorImg}/>
+              <CardItem 
+                buttonMode={1}
+                textMode={3}
+                buttonText = {"Book Again"}
+              />
+              <CardItem 
+                buttonMode={1}
+                textMode={1}
+                buttonText = {"Approve"}
+              />
+              <CardItem 
+                textMode={2}
+                buttonMode={2}
+                buttonText = {["Approve","Disapprove"]}
+              />
+              <CardItem 
+                buttonMode={3}
+                textMode={1}
+                buttonText = {["Approve","Disapprove"]}
+              />
             </Card.Body>
           </Card>
         </Col>
