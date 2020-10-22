@@ -7,6 +7,7 @@ const NavBaratas = () => {
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
   </Navbar.Collapse>
+  <div>react</div>
 </Navbar>
 }
 
