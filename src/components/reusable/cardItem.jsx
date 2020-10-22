@@ -7,7 +7,7 @@ export default function cardItem(props) {
       <Row className="align-items-center book--row m-3">
         <Col className="book--item col-1 mr-4">
           {props.src ? (
-            <Image src={props.src} className="rounded"/>
+            <Image src={props.src} className="rounded" />
           ) : (
             <Badge variant="primary">
               <p className="p-0 m-0">12</p>Okt
@@ -20,15 +20,17 @@ export default function cardItem(props) {
         <Row>
           <Col className="button--action">
             <Button size="sm" variant="outline-warning">
-              Approve
+              {props.buttonText && props.buttonText || "blank"}
             </Button>
           </Col>
           {console.log(props.mode)}
-          {props.buttonMode === 3 && <Col className="button--action">
-            <Button size="sm" variant="outline-danger">
-              Disapprove
-            </Button>
-          </Col>}
+          {props.buttonMode === 3 && (
+            <Col className="button--action">
+              <Button size="sm" variant="outline-danger">
+                {props.buttonText[1]}
+              </Button>
+            </Col>
+          )}
         </Row>
       </Row>
     </Card>
