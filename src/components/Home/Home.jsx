@@ -1,17 +1,17 @@
 import React from 'react';
-import Dog from '../assets/Dog.svg';
-import Doctor from '../assets/Doc.svg';
-import Vector2 from '../assets/Vector 2.svg';
-import Cat from '../assets/Cat.svg';
-import Vector3 from '../assets/Vector 3.svg';
-import Vector4 from '../assets/Vector 4.svg';
+import Dog from '../../assets/Dog.svg';
+import Doctor from '../../assets/Doc.svg';
+import Vector2 from '../../assets/Vector 2.svg';
+import Cat from '../../assets/Cat.svg';
+import Vector3 from '../../assets/Vector 3.svg';
+import Vector4 from '../../assets/Vector 4.svg';
 import './Home.css';
 import { RiHospitalFill } from 'react-icons/ri';
 import { BiCalendar } from 'react-icons/bi';
 import { FaCaretSquareLeft, FaCaretSquareRight } from 'react-icons/fa';
 
 //contoh foto klinik
-import Klinik from '../assets/klinik.png';
+import Klinik from '../../assets/klinik.png';
 
 
 export default function Home() {
