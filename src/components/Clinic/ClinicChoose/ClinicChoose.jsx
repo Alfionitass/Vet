@@ -1,7 +1,7 @@
 import React from "react";
 // import "./styles.css";
 import { Dropdown,Card,Badge,Button, Container,Col,Row } from "react-bootstrap";
-import SearchIcon from '@material-ui/icons/Search';
+//import SearchIcon from '@material-ui/icons/Search';
 // import styles from './App.module.css'
 
 export default function ClinicChoose() { 
@@ -34,7 +34,7 @@ export default function ClinicChoose() {
 
   const buttonSearch = (    
       <Button variant="warning" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}}>
-        <SearchIcon />
+        
         {"  Cari Sekarang"}
       </Button>    
   )
