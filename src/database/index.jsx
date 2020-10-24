@@ -21,11 +21,22 @@ const configuration = {
     },
 
     animal: {
-      all : "/animal", // [GET] all user or [DELETE] user
+      all : "/animal", // [GET] all animal or [DELETE] animal
       add : "/animal/add", // [POST] add animal
       user: "/animal/user", // [GET] user animal detail
       delete: "/animal/remove", // [DELETE] animal by id
-      login: "/user/login", // [POST] login user
+    },
+
+    clinic: {
+      all : "/clinic", // [GET] all clinic or [DELETE] clinic
+      add : "/clinic/add", // [POST] add animal
+      delete: "/clinic/remove", // [DELETE] clinic by id
+      facility: "clinic/facility", // [POST] and [DELETE] clinic facility
+      filter: "clinic/filter", // [GET] filter by city
+    },
+
+    schedule: {
+      all : "/schedule", // [GET] all animal or [DELETE] animal
     }
   },
 };
@@ -33,8 +44,7 @@ const configuration = {
 const user = ({
     method = null, 
     data = null, 
-    token = null,
-    query = null}) => {
+    token = null}) => {
   // get method
   console.log(data)
   if (method === "all") {
@@ -112,9 +122,33 @@ const role = (method) => {
 const animaltype = ({
   method = null, 
   data = null, 
-  token = null,
-  query = null}) => {
+  token = null}) => {
+    if (method === "all") {
+      return axios.get(
+        `${configuration.url}${configuration.endpoint.animaltype.all}`
+      ).then(res => res)
+      .catch(err => err.response)
+    }
 
+    if (method === "add") {
+      return axios.post(
+        `${configuration.url}${configuration.endpoint.animaltype.all}`,
+        data
+      ).then(res => res)
+      .catch(err => err.response)
+    }
+
+    if (method === "delete") {
+      return axios.delete(
+        `${configuration.url}${configuration.endpoint.animaltype.all}`,
+        data,{
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
   }
 
 const animal = ({
@@ -122,7 +156,48 @@ const animal = ({
   data = null, 
   token = null,
   query = null}) => {
+    if (method === "all") {
+      return axios.get(
+        `${configuration.url}${configuration.endpoint.animal.all}`
+      ).then(res => res)
+      .catch(err => err.response)
+    }
 
+    if (method === "add") {
+      return axios.post(
+        `${configuration.url}${configuration.endpoint.animal.add}`,
+        data,{
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
+
+    if (method === "self") {
+      return axios.get(
+        `${configuration.url}${configuration.endpoint.animal.user}`,
+        {
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
+
+    if (method === "delete") {
+      return axios.delete(
+        `${configuration.url}${configuration.endpoint.animal.delete}/${query.id}`,
+        {
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
   }
 
 const clinic = ({
@@ -130,7 +205,72 @@ const clinic = ({
   data = null, 
   token = null,
   query = null}) => {
+    if (method === "all") {
+      return axios.get(
+        `${configuration.url}${configuration.endpoint.clinic.all}`
+      ).then(res => res)
+      .catch(err => err.response)
+    }
 
+    if (method === "add") {
+      return axios.post(
+        `${configuration.url}${configuration.endpoint.clinic.add}`,
+        data,{
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
+
+    if (method === "delete") {
+      return axios.delete(
+        `${configuration.url}${configuration.endpoint.clinic.delete}/${query.id}`,
+        {
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
+
+    if (method === "fadd") {
+      return axios.post(
+        `${configuration.url}${configuration.endpoint.clinic.facility}`,
+        data,{
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
+
+    if (method === "fdelete") {
+      return axios.post(
+        `${configuration.url}${configuration.endpoint.clinic.facility}`,
+        data,{
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
+
+    if (method === "ffilter") {
+      return axios.get(
+        `${configuration.url}${configuration.endpoint.clinic.filter}/?city:${query.city}`,
+        data,{
+          headers: {
+            token
+          }
+        }
+      ).then(res => res)
+      .catch(err => err.response)
+    }
   }
 
 const schedule = ({
@@ -138,74 +278,26 @@ const schedule = ({
   data = null, 
   token = null,
   query = null}) => {
-    
-  }
-const review = (method, content = null, token = null, query = null) => {
-  // get method
-  if (method === "get") {
-    return axios.get(
-      `${configuration.url}${configuration.endpoint.review.self}`,
-      {
-        headers: {
-          ...token,
-        },
-      }
-    ).then(res => res)
-  }
+    if (method === "all") {
+      return axios.get(
+        `${configuration.url}${configuration.endpoint.schedule.all}`
+      ).then(res => res)
+      .catch(err => err.response)
+    }
 
-  if(method === "all") {
-    return axios.get(
-      `${configuration.url}${configuration.endpoint.review.self}/allreviews`,
-      {
-        headers: {
-          ...token,
-        },
-      }
-    ).then(res => res)
+    if (method === "filter") {
+      return axios.get(
+        `${configuration.url}${configuration.endpoint.schedule.all}/${query.id}`,data
+      ).then(res => res)
+      .catch(err => err.response)
+    }
   }
-
-  if (method === "post") {
-    return axios.post(
-      `${configuration.url}${configuration.endpoint.review.self}?MovieId=${query}`,
-      content,
-      {
-        headers: {
-          token
-        },
-      }
-    ).then(res => res)
-    .catch(err => err.response)
-  }
-
-  if (method === "edit") {
-    console.log("TEST")
-    return axios.put(
-      `${configuration.url}${configuration.endpoint.review.self}?MovieId=${query}`,content,
-      {
-        headers: {
-          token
-        },
-      }
-    ).then(res => console.log(res))
-    .catch(err => err.response)
-  }
-
-  if (method === "delete") {
-    return axios.delete(
-      `${configuration.url}${configuration.endpoint.review.self}?id=${query}`,
-      {
-        headers: {
-          token
-        },
-      }
-    ).then(res => res)
-    .catch(err => err.response)
-  }
-}
-
 
 export {
   user,
   role,
-  review
+  clinic,
+  animaltype,
+  animal,
+  schedule
 };
