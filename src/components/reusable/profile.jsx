@@ -1,9 +1,12 @@
 import React from "react";
 import { Badge, Card, Image, Col, Row, Button } from "react-bootstrap";
 import { IoIosBriefcase, IoMdWifi, IoIosLogOut } from "react-icons/io";
+import { MdPets } from "react-icons/md";
+import { HiCalendar } from "react-icons/hi";
 import styles from "./profile.module.css";
 
 export default function Profile(props) {
+  console.log(props);
   return (
     <>
       <Card className="p-4 my-5">
@@ -14,15 +17,42 @@ export default function Profile(props) {
             roundedCircle
           />
           <h4>Alexandria Raihan</h4>
-          <Badge pill className="px-5 py-2" size="sm" variant="success">
-            Doctor
+          <Badge pill className="px-5 py-2" size="sm" variant={props.mode === "user" ? "info" : "success"}>
+            {props.mode[0].toUpperCase()}{props.mode.slice(1)}
           </Badge>
           <Row className="pt-4">
             <Col md={6} style={{ color: "green", fill: "green" }}>
-              <IoMdWifi /> Online
+              {props.mode === "user" ? (
+                <>
+                  <MdPets /> 3 Pets
+                </>
+              ) : (
+                <>
+                  <IoMdWifi /> Online
+                </>
+              )}
             </Col>
             <Col md={6}>
-              <IoIosBriefcase /> {props.years} {props.years > 1 ? "years" : "year"}
+              {console.log(props.value)}
+              {props.mode === "user" && props.value > 1 ? (
+                <>
+                  <HiCalendar /> {props.value} times
+                </>
+              ) : props.mode === "user" && props.value <= 1 ? (
+                <>
+                  <HiCalendar /> {props.value} time
+                </>
+              ) : props.mode === "doctor" && props.value > 1 ? (
+                <>
+                  <IoIosBriefcase />
+                  {props.value} years
+                </>
+              ) : (
+                <>
+                  <IoIosBriefcase />
+                  {props.value} year
+                </>
+              )}
             </Col>
           </Row>
         </Card.Body>
@@ -43,44 +73,6 @@ export default function Profile(props) {
           </p>
         </Col>
       </Card>
-
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="exampleRadios"
-          id="exampleRadios1"
-          value="option1"
-        />
-        <label className="form-check-label" htmlFor="exampleRadios1">
-          Default radio
-        </label>
-      </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="exampleRadios"
-          id="exampleRadios2"
-          value="option2"
-        />
-        <label className="form-check-label" htmlFor="exampleRadios2">
-          Second default radio
-        </label>
-      </div>
-      <div className="form-check disabled">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="exampleRadios"
-          id="exampleRadios3"
-          value="option3"
-          disabled
-        />
-        <label className="form-check-label" htmlFor="exampleRadios3">
-          Disabled radio
-        </label>
-      </div>
     </>
   );
 }

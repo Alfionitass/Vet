@@ -12,7 +12,7 @@ export default function Appointment() {
     <Container>
       <Row>
         <Col lg={4}>
-          <UserProfile value={5} mode="doctor"/>
+          <UserProfile />
         </Col>
         <Col lg={8} className="my-5 text-left">
           <Card>
@@ -33,7 +33,7 @@ export default function Appointment() {
 
                 <Nav.Item>
                   <Nav.Link href="#approval">
-                    <Link to={`/page2/approval`}>Approval</Link>
+                    <Link to={`/page2/`}>Approval</Link>
                   </Nav.Link>
                 </Nav.Item>
               </Nav>

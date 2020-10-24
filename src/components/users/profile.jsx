@@ -40,7 +40,7 @@ export default function Profile() {
     <Container>
       <Row>
         <Col lg={4}>
-          <UserProfile src={doctorImg} mode="doctor" value={5}/>
+          <UserProfile src={doctorImg} mode="user" value={5}/>
         </Col>
         <Col lg={8} className="my-5 text-left">
           <Card>
@@ -63,65 +63,16 @@ export default function Profile() {
                 style={{ backgroundColor: "unset" }}
                 className="font-weight-bold"
               >
-                Doctor Information
-              </Card.Header>
-              <Card.Body>
-                <Form.Group className="mb-4" id="status">
-                  <Form.Text>Status</Form.Text>
-                  <ButtonGroup toggle name="radiogroup">
-                    <ToggleButton
-                      className="d-flex justify-content-center align-items-center"
-                      key={1}
-                      type="radio"
-                      variant={status === "1" ? "success" : ""}
-                      name="status"
-                      value="1"
-                      checked={status === "1"}
-                      onChange={(e) => setStatus(e.currentTarget.value)}
-                    >
-                      <CgSun size={"24px"}/><label className="mx-3">Available</label>
-                    </ToggleButton>
-                    <ToggleButton 
-                      className="d-flex justify-content-center align-items-center"
-                      key={2}
-                      type="radio"
-                      variant={status === "0" ? "danger" : ""}
-                      name="status"
-                      value="0"
-                      checked={status === "0"}
-                      onChange={(e) => setStatus(e.currentTarget.value)}
-                    >
-                      <CgUnavailable size={"24px"}/><label className="mx-3">Away</label>
-                    </ToggleButton>
-                  </ButtonGroup>
-                </Form.Group>
-                <Form.Group controlId="exampleForm.ControlSelect1">
-                  <Form.Text>Waktu Aktif</Form.Text>
-                  <Form.Control as="select">
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                  </Form.Control>
-                </Form.Group>
-              </Card.Body>
-
-              <Card.Header
-                style={{ backgroundColor: "unset" }}
-                className="font-weight-bold"
-              >
                 Basic Information
               </Card.Header>
               <Card.Body>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Text>Nama Lengkap</Form.Text>
+                <Form.Group className="mb-4" id="status">
+                  <Form.Text>Username</Form.Text>
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
                     value="Alvin Mantovani"
                   />
-                  <Form.Text className="text-muted">Doctor Name.</Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-4" id="gender">
                   <Form.Text>Gender</Form.Text>
@@ -150,19 +101,7 @@ export default function Profile() {
                     </ToggleButton>
                   </ButtonGroup>
                 </Form.Group>
-                <Form.Group controlId="formBasicEmail">
-                  <Form.Text>Experience</Form.Text>
-                  <Form.Control
-                    type="text"
-                    placeholder="It's my name"
-                    value="1 Days"
-                  />
-                  <Form.Text className="text-muted">
-                    Doctor Experience.
-                  </Form.Text>
-                </Form.Group>
               </Card.Body>
-
               <Card.Header
                 style={{ backgroundColor: "unset" }}
                 className="font-weight-bold"
@@ -178,7 +117,6 @@ export default function Profile() {
                     value="+62 muted"
                   />
                 </Form.Group>
-
                 <Form.Group controlId="formBasicEmail">
                   <Form.Text>Email</Form.Text>
                   <Form.Control
@@ -187,6 +125,29 @@ export default function Profile() {
                     value="alvin.ictn@gmail.com"
                   />
                 </Form.Group>
+              </Card.Body>
+              <Card.Header
+                style={{ backgroundColor: "unset" }}
+                className="font-weight-bold"
+              >
+                Pets Details
+              </Card.Header>
+              <Card.Body className="d-flex">
+                <Card className="m-2">
+                  <Card.Body>
+                    Pet 1
+                  </Card.Body>
+                </Card>
+                <Card className="m-2">
+                  <Card.Body>
+                    Pet 1
+                  </Card.Body>
+                </Card>
+                <Card className="m-2">
+                  <Card.Body>
+                    Pet 1
+                  </Card.Body>
+                </Card>
               </Card.Body>
             </Form>
           </Card>
