@@ -49,7 +49,7 @@ export default function Appointment() {
         <Col lg={8} className="my-5 text-left">
           <Card>
             <Card.Header className="nav--menu">
-              <Nav variant="tabs" defaultActiveKey="#book">
+              <Nav variant="tabs" defaultActiveKey={`#${window.location.pathname.split('/')[window.location.pathname.split('/').length-1]}`}>
               <Link to={`/page2/book`}>
                 <Nav.Item>
                   <Nav.Link href="#book" onClick={(e) => console.log(e)}>
@@ -59,7 +59,7 @@ export default function Appointment() {
               </Link>
               <Link to={`/page2/approval`}>
                 <Nav.Item>
-                  <Nav.Link href="#approval" eventKey="link-1">
+                  <Nav.Link href="#approval">
                     Approval
                   </Nav.Link>
                 </Nav.Item>

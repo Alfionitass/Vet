@@ -60,7 +60,7 @@ export default function Profile() {
               </Card.Header>
               <Card.Body>
                 <Form.Group className="mb-4" id="status">
-                  <Form.Label>Status</Form.Label>
+                  <Form.Text>Status</Form.Text>
                   <ButtonGroup toggle name="radiogroup">
                     <ToggleButton
                       className="d-flex justify-content-center align-items-center"
@@ -72,9 +72,9 @@ export default function Profile() {
                       checked={status === "1"}
                       onChange={(e) => setStatus(e.currentTarget.value)}
                     >
-                      <CgSun size={"24px"}/><text className="mx-3">Available</text>
+                      <CgSun size={"24px"}/><label className="mx-3">Available</label>
                     </ToggleButton>
-                    <ToggleButton
+                    <ToggleButton 
                       className="d-flex justify-content-center align-items-center"
                       key={2}
                       type="radio"
@@ -84,7 +84,7 @@ export default function Profile() {
                       checked={status === "0"}
                       onChange={(e) => setStatus(e.currentTarget.value)}
                     >
-                      <CgUnavailable size={"24px"}/><text className="mx-3">Away</text>
+                      <CgUnavailable size={"24px"}/><label className="mx-3">Away</label>
                     </ToggleButton>
                   </ButtonGroup>
                   {/* <ToggleButtonGroup
@@ -99,7 +99,7 @@ export default function Profile() {
                   </ToggleButtonGroup> */}
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
-                  <Form.Label>Waktu Aktif</Form.Label>
+                  <Form.Text>Waktu Aktif</Form.Text>
                   <Form.Control as="select">
                     <option>15</option>
                     <option>16</option>
@@ -118,7 +118,7 @@ export default function Profile() {
               </Card.Header>
               <Card.Body>
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Nama Lengkap</Form.Label>
+                  <Form.Text>Nama Lengkap</Form.Text>
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
@@ -127,7 +127,7 @@ export default function Profile() {
                   <Form.Text className="text-muted">Doctor Name.</Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-4" id="gender">
-                  <Form.Label>Gender</Form.Label>
+                  <Form.Text>Gender</Form.Text>
                   <ButtonGroup toggle name="radiogroup">
                     <ToggleButton
                       key={1}
@@ -138,7 +138,7 @@ export default function Profile() {
                       checked={gender === "1"}
                       onChange={(e) => setGender(e.currentTarget.value)}
                     >
-                      <GiMale/> <text className={gender === "0" ? "text-white" : ""}>Male</text>
+                      <GiMale/> <label className={gender === "0" ? "text-white" : ""}>Male</label>
                     </ToggleButton>
                     <ToggleButton
                       key={2}
@@ -149,12 +149,12 @@ export default function Profile() {
                       checked={gender === "0"}
                       onChange={(e) => setGender(e.currentTarget.value)}
                     >
-                      <GiFemale/><text className={gender === "1" ? "text-white" : ""}>Female</text>
+                      <GiFemale/><label className={gender === "1" ? "text-white" : ""}>Female</label>
                     </ToggleButton>
                   </ButtonGroup>
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Experience</Form.Label>
+                  <Form.Text>Experience</Form.Text>
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
@@ -174,7 +174,7 @@ export default function Profile() {
               </Card.Header>
               <Card.Body>
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Nomor Telefon</Form.Label>
+                  <Form.Text>Nomor Telefon</Form.Text>
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
@@ -183,7 +183,7 @@ export default function Profile() {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email</Form.Label>
+                  <Form.Text>Email</Form.Text>
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
