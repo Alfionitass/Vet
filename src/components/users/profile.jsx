@@ -13,6 +13,7 @@ import {
   ButtonGroup,
   ToggleButton,
 } from "react-bootstrap";
+import { user } from '../../database'
 
 import UserProfile from '../reusable/profile'
 import doctorImg from "../../assets/img/doctorProfile.png";
@@ -23,6 +24,11 @@ export default function Profile() {
   const [status, setStatus] = useState("1");
   const [gender, setGender] = useState("1");
 
+  useEffect(()=>{
+    user({
+      value: "test"
+    })
+  })
   const handleClick = () => {
     Swal.fire({
       title: "Update Sukses!",
