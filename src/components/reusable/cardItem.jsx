@@ -21,7 +21,7 @@ export default function CardItem(props) {
           <Col className="button--action">
             {props.buttonMode === 1 || props.buttonMode === 3
             ? <Button size="sm" variant="outline-warning">
-                {props.buttonText && (props.buttonText[0] || "blank")}
+                {props.buttonText && (Array.isArray(props.buttonText) ? props.buttonText[0] : props.buttonText )}
               </Button>
             : <Badge className="px-3 py-1" pill variant={
               props.buttonText === "Approve" 

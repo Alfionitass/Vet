@@ -12,16 +12,12 @@ import {
   Row,
   Col,
   Card,
-  Button,
-  Image,
-  Badge,
   Nav,
 } from "react-bootstrap";
 
 import CardItem from "../../reusable/cardItem";
 
 import doctorImg from "../../../assets/img/doctorProfile.png";
-import "../doctor.css";
 import Swal from "sweetalert2";
 
 export default function Appointment() {
