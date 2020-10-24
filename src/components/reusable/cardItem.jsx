@@ -16,12 +16,21 @@ export default function cardItem(props) {
         </Col>
         <Col>{props.name || "Alvin Mantovani"}</Col>
         {props.textMode === 1 && <Col>99 Pets</Col>}
-        <Col className="v-text-caramel">{props.clock ? props.clock : props.status}</Col>
-        <Row>
+        <Col className="v-text-caramel">{props.date ? props.date : props.status}</Col>
+        <Col className="d-flex">
           <Col className="button--action">
-            <Button size="sm" variant="outline-warning">
-              {props.buttonText && (props.buttonText || "blank")}
-            </Button>
+            {props.buttonMode === 1 || props.buttonMode === 3
+            ? <Button size="sm" variant="outline-warning">
+                {props.buttonText && (props.buttonText[0] || "blank")}
+              </Button>
+            : <Badge className="px-3 py-1" pill variant={
+              props.buttonText === "Approve" 
+                ? "success" 
+                : props.buttonText === "Rejected" 
+                  ? "warning" 
+                    : "danger"}> { props.buttonText } 
+              </Badge>
+            }
           </Col>
           {console.log(props.mode)}
           {props.buttonMode === 3 && (
@@ -31,7 +40,7 @@ export default function cardItem(props) {
               </Button>
             </Col>
           )}
-        </Row>
+        </Col>
       </Row>
     </Card>
   );
