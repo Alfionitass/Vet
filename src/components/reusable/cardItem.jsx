@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge, Card, Col, Row, Button, Image } from "react-bootstrap";
 
-export default function cardItem(props) {
+export default function CardItem(props) {
   return (
     <Card style={{ boxShadow: "(0,0,0,0.3)" }} className="my-2 card--group">
       <Row className="align-items-center book--row m-3">
