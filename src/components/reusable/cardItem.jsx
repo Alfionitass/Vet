@@ -14,13 +14,13 @@ export default function cardItem(props) {
             </Badge>
           )}
         </Col>
-        <Col>Alvin Mantovani</Col>
+        <Col>{props.name || "Alvin Mantovani"}</Col>
         {props.textMode === 1 && <Col>99 Pets</Col>}
-        <Col className="v-text-caramel">19.20</Col>
+        <Col className="v-text-caramel">{props.clock ? props.clock : props.status}</Col>
         <Row>
           <Col className="button--action">
             <Button size="sm" variant="outline-warning">
-              {props.buttonText && props.buttonText || "blank"}
+              {props.buttonText && (props.buttonText || "blank")}
             </Button>
           </Col>
           {console.log(props.mode)}
