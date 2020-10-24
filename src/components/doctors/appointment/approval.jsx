@@ -3,8 +3,6 @@ import { Card } from "react-bootstrap";
 
 import CardItem from "../../reusable/cardItem";
 
-import doctorImg from "../../../assets/img/doctorProfile.png";
-
 export default function AppointmentBook() {
   return (
     <Card.Body>
