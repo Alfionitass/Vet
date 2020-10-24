@@ -3,8 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Doctor from './components/doctors/profile'
-import Doctor2 from './components/doctors/appointment/book'
-import Doctor3 from './components/doctors/appointment/approval'
+import Doctor2 from './components/doctors/appointment'
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 
 function App() {
@@ -31,7 +30,6 @@ function App() {
       <Router>
       <Link to="/page1">Page 1</Link>
       <Link to="/page2">Page 2</Link>
-      <Link to="/page3">Page 3</Link>
         <Switch>
           <Route path="/page1">
             <Doctor/>
@@ -39,9 +37,7 @@ function App() {
           <Route path="/page2">
             <Doctor2/>
           </Route>
-          <Route path="/page3">
-            <Doctor3/>
-          </Route>
+
         </Switch>
       </Router>
       
