@@ -12,7 +12,6 @@ import {  } from './assets/icons'
 function App() {
   const [data, setData] = useState();
   // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
-  const totalCount = 5;
   return (
     <div className="App" style={{backgroundColor:"#F1F1F1"}}>
       <header className="App-header">
