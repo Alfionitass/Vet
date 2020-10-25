@@ -7,7 +7,7 @@ import Doctor2 from './components/doctor/appointment'
 import Register from './components/register/register'
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
-import { VetLogoBox, VetHospital, VetPCat, VetPHamster, VetPDog, VetPRabbit } from './assets/icons'
+import {  } from './assets/icons'
 
 function App() {
   const [data, setData] = useState();
@@ -30,12 +30,7 @@ function App() {
         </a>
       </header>
 
-      <VetLogoBox size={"30"} bgcolor={"salmon"}/>
-      <VetHospital size={"200"} bgcolor={"green"} color={"salmon"}/>
-      <VetPCat size={"100"} bgcolor={"salmon"}/>
-      <VetPHamster size={"100"}/>
-      <VetPDog size={"100"}/>
-      <VetPRabbit size={"100"}/> 
+
       <Router>
       <Link to="/page1">Page 1</Link>
       <Link to="/page2">Page 2</Link>

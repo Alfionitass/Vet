@@ -6,6 +6,7 @@ import {
   VetDoctor,
   VetLogo,
   VetPaw,
+  VetLogoBox, VetHospital, VetPCat, VetPHamster, VetPDog, VetPRabbit
 } from "../assets/icons";
 export default function DemoCard() {
   return (
@@ -15,6 +16,12 @@ export default function DemoCard() {
       <VetDoctor size={"30"} />
       <VetLogo size={"30"} bgcolor={"green"} />
       <VetPaw size={"300"} bgcolor={"salmon"} />
+      <VetLogoBox size={"30"} bgcolor={"salmon"}/>
+      <VetHospital size={"200"} bgcolor={"green"} color={"salmon"}/>
+      <VetPCat size={"100"} bgcolor={"salmon"}/>
+      <VetPHamster size={"100"}/>
+      <VetPDog size={"100"}/>
+      <VetPRabbit size={"100"}/> 
     </Container>
   );
 }
