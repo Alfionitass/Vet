@@ -18,6 +18,11 @@ import {
   VetFacebook,
   VetInstagram,
   VetTwitter,
+  VetClock,
+  VetSchedule,
+  VetSignal,
+  VetBriefcase,
+  VetChat,
 } from "../assets/icons";
 export default function DemoCard() {
   return (
@@ -39,6 +44,11 @@ export default function DemoCard() {
       <VetFacebook size={"100"} color={"lime"} bgcolor={"orange"} />
       <VetInstagram size={"100"} color={"lime"} bgcolor={"orange"} />
       <VetTwitter size={"100"} color={"lime"} bgcolor={"orange"} />
+      <VetClock size={"100"} color={"salmon"} bgcolor={"black"} />
+      <VetSchedule size={"100"} color={"salmon"} bgcolor={"black"} />
+      <VetSignal size={"100"} color={"salmon"} bgcolor={"black"} />
+      <VetBriefcase size={"100"} color={"salmon"} bgcolor={"black"} />
+      <VetChat size={"100"} color={"salmon"} bgcolor={"black"} />
     </Container>
   );
 }
