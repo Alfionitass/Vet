@@ -7,6 +7,7 @@ import Doctor2 from './components/doctor/appointment'
 import Register from './components/register/register'
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
+import DemoIcon from './demo/demoIcon'
 import { } from './assets/icons'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <Link to="/page1">Page 1</Link>
       <Link to="/page2">Page 2</Link>
       <Link to="/page3">Page 3</Link>
+      <Link to="/DemoIcon">DemoIcon</Link>
       <Link to="/register">Register</Link>
         <Switch>
           <Route path="/page1">
@@ -47,6 +49,9 @@ function App() {
           </Route>
           <Route path="/register">
             <Register/>
+          </Route>
+          <Route path="/DemoIcon">
+            <DemoIcon/>
           </Route>
 
         </Switch>
