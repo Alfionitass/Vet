@@ -6,7 +6,18 @@ import {
   VetDoctor,
   VetLogo,
   VetPaw,
-  VetLogoBox, VetHospital, VetPCat, VetPHamster, VetPDog, VetPRabbit
+  VetLogoBox,
+  VetHospital,
+  VetPCat,
+  VetPHamster,
+  VetPDog,
+  VetPRabbit,
+  VetPhone,
+  VetLock,
+  VetMail,
+  VetFacebook,
+  VetInstagram,
+  VetTwitter,
 } from "../assets/icons";
 export default function DemoCard() {
   return (
@@ -16,12 +27,18 @@ export default function DemoCard() {
       <VetDoctor size={"30"} />
       <VetLogo size={"30"} bgcolor={"green"} />
       <VetPaw size={"300"} bgcolor={"salmon"} />
-      <VetLogoBox size={"30"} bgcolor={"salmon"}/>
-      <VetHospital size={"200"} bgcolor={"green"} color={"salmon"}/>
-      <VetPCat size={"100"} bgcolor={"salmon"}/>
-      <VetPHamster size={"100"}/>
-      <VetPDog size={"100"}/>
-      <VetPRabbit size={"100"}/> 
+      <VetLogoBox size={"30"} bgcolor={"salmon"} />
+      <VetHospital size={"200"} bgcolor={"green"} color={"salmon"} />
+      <VetPCat size={"100"} bgcolor={"salmon"} />
+      <VetPHamster size={"100"} />
+      <VetPDog size={"100"} />
+      <VetPRabbit size={"100"} />
+      <VetPhone size={"100"} color={"lime"} bgcolor={"orange"} />
+      <VetLock size={"100"} color={"lime"} bgcolor={"orange"} />
+      <VetMail size={"100"} color={"lime"} bgcolor={"orange"} />
+      <VetFacebook size={"100"} color={"lime"} bgcolor={"orange"} />
+      <VetInstagram size={"100"} color={"lime"} bgcolor={"orange"} />
+      <VetTwitter size={"100"} color={"lime"} bgcolor={"orange"} />
     </Container>
   );
 }
