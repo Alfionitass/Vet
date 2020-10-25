@@ -5,7 +5,7 @@ export function VetClinic(props) {
     <svg
       width={props.size || "73"}
       height={(props.size * 73) / 83 || "83"}
-      viewBox={`0 0 ${props.size || "73"} ${(props.size * 73) / 83 || "83"}`}
+      viewBox="0 0 73 83"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -20,9 +20,9 @@ export function VetClinic(props) {
 export function VetUser(props) {
   return (
     <svg
-      width={props.size || "73"}
+      width={props.size || "62"}
       height={(props.size * 62) / 66 || "66"}
-      viewBox={`0 0 ${props.size || "62"} ${(props.size * 62) / 66 || "62"}`}
+      viewBox="0 0 62 66"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -39,7 +39,7 @@ export function VetDoctor(props) {
     <svg
       width={props.size || "70"}
       height={(props.size * 70) / 83 || "83"}
-      viewBox={`0 0 ${props.size || "70"} ${(props.size * 70) / 83 || "83"}`}
+      viewBox="0 0 70 83"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -51,12 +51,45 @@ export function VetDoctor(props) {
   );
 }
 
+export function VetPaw(props) {
+  return (
+    <svg
+      width={props.size || "24"}
+      height={(props.size * 24) / 24 || "24"}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.5 12.0001C5.88071 12.0001 7 10.8808 7 9.50012C7 8.11941 5.88071 7.00012 4.5 7.00012C3.11929 7.00012 2 8.11941 2 9.50012C2 10.8808 3.11929 12.0001 4.5 12.0001Z"
+        fill={props.color || "#1A3150"}
+      />
+      <path
+        d="M9 8C10.3807 8 11.5 6.88071 11.5 5.5C11.5 4.11929 10.3807 3 9 3C7.61929 3 6.5 4.11929 6.5 5.5C6.5 6.88071 7.61929 8 9 8Z"
+        fill={props.color || "#1A3150"}
+      />
+      <path
+        d="M15 8C16.3807 8 17.5 6.88071 17.5 5.5C17.5 4.11929 16.3807 3 15 3C13.6193 3 12.5 4.11929 12.5 5.5C12.5 6.88071 13.6193 8 15 8Z"
+        fill={props.color || "#1A3150"}
+      />
+      <path
+        d="M19.5 12.0001C20.8807 12.0001 22 10.8808 22 9.50012C22 8.11941 20.8807 7.00012 19.5 7.00012C18.1193 7.00012 17 8.11941 17 9.50012C17 10.8808 18.1193 12.0001 19.5 12.0001Z"
+        fill={props.color || "#1A3150"}
+      />
+      <path
+        d="M17.3401 14.86C16.4701 13.84 15.7401 12.97 14.8601 11.95C14.4001 11.41 13.8101 10.87 13.1101 10.63C13.0001 10.59 12.8901 10.56 12.7801 10.54C12.5301 10.5 12.2601 10.5 12.0001 10.5C11.7401 10.5 11.4701 10.5 11.2101 10.55C11.1001 10.57 10.9901 10.6 10.8801 10.64C10.1801 10.88 9.60014 11.42 9.13014 11.96C8.26014 12.98 7.53014 13.85 6.65014 14.87C5.34014 16.18 3.73014 17.63 4.03014 19.66C4.32014 20.68 5.05014 21.69 6.36014 21.98C7.09014 22.13 9.42014 21.54 11.9001 21.54H12.0801C14.5601 21.54 16.8901 22.12 17.6201 21.98C18.9301 21.69 19.6601 20.67 19.9501 19.66C20.2601 17.62 18.6501 16.17 17.3401 14.86Z"
+        fill={props.color || "#1A3150"}
+      />
+    </svg>
+  );
+}
+
 export function VetLogo(props) {
   return (
     <svg
       width={props.size || "109"}
       height={(props.size * 109) / 97 || "97"}
-      viewBox={`0 0 ${props.size || "109"} ${(props.size * 109) / 97 || "97"}`}
+      viewBox="0 0 109 97"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

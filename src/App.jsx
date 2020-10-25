@@ -7,7 +7,7 @@ import Doctor2 from './components/doctor/appointment'
 import Register from './components/register/register'
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
-import { VetUser, VetClinic, VetDoctor, VetLogo } from './assets/icons'
+import { VetUser, VetClinic, VetDoctor, VetLogo, VetPaw } from './assets/icons'
 
 function App() {
   const [data, setData] = useState();
@@ -29,10 +29,11 @@ function App() {
           Learn React
         </a>
       </header>
-      <VetUser color={"#FDCB5A"}/>
-      <VetClinic/>
-      <VetDoctor/>
-      <VetLogo/>
+      <VetUser size={"30"} color={"#FDCB5A"}/>
+      <VetClinic size={"30"}/>
+      <VetDoctor size={"30"}/>
+      <VetLogo size={"30"}/>
+      <VetPaw size={"30"}/>
       <Router>
       <Link to="/page1">Page 1</Link>
       <Link to="/page2">Page 2</Link>
