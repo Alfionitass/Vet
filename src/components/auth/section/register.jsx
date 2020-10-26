@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Nav, Row } from "react-bootstrap";
+import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
 import { VetClinic, VetUser, VetDoctor } from "../../../assets/icons";
 
@@ -34,45 +34,26 @@ export default function Register() {
         </p>
       </Row>
       <Row className="m-4 d-flex justify-content-center">
-        <Col lg={3} className="m-3 p-0">
-          <Col
-            onClick={() => handleChoice(1)}
-            className={`m-0 border-0 register py-5 v-bg-donker rounded-lg ${
-              highlight === 1 ? "selected-option" : ""
-            }`}
-          >
-            <VetClinic size={"92"} color={"#FDCB5A"} />
-          </Col>
-          <Col>
-            <label className="v-text-donker vet-heading">Clinic</label>
-          </Col>
-        </Col>
-        <Col lg={3} className="m-3 p-0">
-          <Col
-            onClick={() => handleChoice(2)}
-            className={`m-0 border-0 register py-5 v-bg-donker rounded-lg ${
-              highlight === 2 ? "selected-option" : ""
-            }`}
-          >
-            <VetUser size={"85"} color={"#FDCB5A"} />
-          </Col>
-          <Col>
-            <label className="v-text-donker vet-heading">User</label>
-          </Col>
-        </Col>
-        <Col lg={3} className="m-3 p-0">
-          <Col
-            onClick={() => handleChoice(3)}
-            className={`m-0 border-0 register py-5 v-bg-donker rounded-lg ${
-              highlight === 3 ? "selected-option" : ""
-            }`}
-          >
-            <VetDoctor size={"95"} color={"#FDCB5A"} />
-          </Col>
-          <Col>
-            <label className="v-text-donker vet-heading">Doctor</label>
-          </Col>
-        </Col>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </Row>
       <Row className="p-0 m-0 d-flex justify-content-center">
         <Button
@@ -83,7 +64,6 @@ export default function Register() {
           {isLoading ? "Loading…" : "Selanjutnya"}
         </Button>
       </Row>
-     
     </>
   );
 }

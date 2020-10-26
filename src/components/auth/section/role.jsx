@@ -17,14 +17,18 @@ export default function Role() {
         setLoading(false);
       });
     }
-  }, [isLoading]);
+    if(!isLoading && highlight ) console.log("gg")
+  }, [highlight, isLoading]);
+  
 
   const handleChoice = (num = 0) => {
     setHighlight(num);
     setOption(false);
   };
 
-  const handleClick = () => setLoading(true);
+  const handleClick = () => {
+    setLoading(true)
+  };
   return (
     <>
       <Row className="mx-4 justify-content-center flex-column">
