@@ -32,7 +32,7 @@ export default function DemoCard() {
           <Card.Text>General Usage</Card.Text>
         </Card.Header>
         <Card.Body>
-          <VetUser bgcolor={"salmon"} size={"30"} color={"#FDCB5A"} />
+          <VetUser bgcolor={"salmon"} size={"30"} color={"#FDCB5A"} radius={"50"}/>
           <VetClinic size={"30"} />
           <VetDoctor size={"30"} />
           <VetHospital size={"30"} bgcolor={"green"} color={"salmon"} />
