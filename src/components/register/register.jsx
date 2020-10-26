@@ -55,6 +55,9 @@ export default function Register() {
             </Nav.Item>
           </Nav>
         </Row>
+        <Row clasName="justify-content-center">
+          test
+        </Row>
         <Row className="m-4 d-flex justify-content-center">
           <Col lg={3} className="m-3 p-0">
             <Col
