@@ -10,12 +10,18 @@ import User1 from './components/user/profile'
 import DemoIcon from './demo/demoIcon'
 import {  } from './assets/icons'
 
+
+
 import Footer from './components/Footer/Footer'
+import ClinicChoose from './components/Clinic/ClinicChoose/ClinicChoose';
+import { user } from './database';
+
 
 function App() {
   const [data, setData] = useState();
   // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
   return (
+    <>
     <div className="App" style={{backgroundColor:"#F1F1F1",overflowY:"auto",overflowX:"auto"}}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -31,15 +37,19 @@ function App() {
           Learn React
         </a>
       </header>
-      <Router>
+      <Router>        
       <Link to="/page1">Page 1</Link>
       <Link to="/page2">Page 2</Link>
-      <Link to="/page3">Page 3</Link>
+      <Link to="/page3">user profile</Link>
       <Link to="/DemoIcon">DemoIcon</Link>
       <Link to="/register">Register</Link>
         <Switch>
           <Route path="/page1">
+            <>
             <Doctor/>
+            {/* <ClinicChoose /> */}            
+            {/* <UserProfile />             */}
+            </>
           </Route>
           <Route path="/page2">
             <Doctor2/>
@@ -55,8 +65,9 @@ function App() {
           </Route>
         </Switch>
       </Router>
-      <Footer />
     </div>
+    <Footer />
+    </>
   );
 }
 
