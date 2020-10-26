@@ -10,6 +10,8 @@ import User1 from './components/user/profile'
 import DemoIcon from './demo/demoIcon'
 import {  } from './assets/icons'
 
+import Footer from './components/Footer/Footer'
+
 function App() {
   const [data, setData] = useState();
   // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
