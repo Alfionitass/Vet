@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
 import { VetClinic, VetUser, VetDoctor } from "../../../assets/icons";
+import { useParams } from "react-router-dom";
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -10,7 +11,8 @@ export default function Register() {
   const [isLoading, setLoading] = useState(false);
   const [option, setOption] = useState(true);
   const [highlight, setHighlight] = useState(0);
-
+  let { id } = useParams();
+  
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
@@ -34,7 +36,7 @@ export default function Register() {
         </p>
       </Row>
       <Row className="m-4 d-flex justify-content-center">
-        <Form>
+        <Form className="w-100">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />

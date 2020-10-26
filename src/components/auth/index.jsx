@@ -5,6 +5,7 @@ import "./register.css";
 import { AnimatedSwitch } from "react-router-transition";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Role from "./section/role";
+import Register from "./section/register"
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
@@ -46,6 +47,7 @@ export default function Auth() {
         </Row>
         <Switch>
           <Route exact path="/auth" component={Role} />
+          <Route exact path="/auth/register/:id" component={Register} />
         </Switch>
         <Row className="justify-content-center">
         <p className="vet-body-1 v-text-donker">

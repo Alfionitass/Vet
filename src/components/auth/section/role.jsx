@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Nav, Row } from "react-bootstrap";
 import "./../register.css";
 import { VetClinic, VetUser, VetDoctor } from "../../../assets/icons";
+import { Link } from "react-router-dom";
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -17,9 +18,8 @@ export default function Role() {
         setLoading(false);
       });
     }
-    if(!isLoading && highlight ) console.log("gg")
+    if (!isLoading && highlight) console.log("gg");
   }, [highlight, isLoading]);
-  
 
   const handleChoice = (num = 0) => {
     setHighlight(num);
@@ -27,7 +27,7 @@ export default function Role() {
   };
 
   const handleClick = () => {
-    setLoading(true)
+    setLoading(true);
   };
   return (
     <>
@@ -79,13 +79,15 @@ export default function Role() {
         </Col>
       </Row>
       <Row className="p-0 m-0 d-flex justify-content-center">
-        <Button
-          className="v-bg-mustard v-text-donker border-0 font-weight-bold w-50"
-          disabled={isLoading || option}
-          onClick={!isLoading ? handleClick : null}
-        >
-          {isLoading ? "Loading…" : "Selanjutnya"}
-        </Button>
+        <Link className="v-bg-mustard border-0 w-50 rounded-lg" to={`/auth/register/${highlight}`}>
+          <Button
+            className="v-text-donker font-weight-bold bg-transparent border-0"
+            disabled={isLoading || option}
+            onClick={!isLoading ? handleClick : null}
+          >
+            {isLoading ? "Loading…" : "Selanjutnya"}
+          </Button>
+        </Link>
       </Row>
     </>
   );
