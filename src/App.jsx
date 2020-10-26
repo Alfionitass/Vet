@@ -15,6 +15,7 @@ import {  } from './assets/icons'
 import Footer from './components/Footer/Footer'
 import ClinicChoose from './components/Clinic/ClinicChoose/ClinicChoose';
 import { user } from './database';
+import BookingContent from './components/BookingDetail/BookingContent';
 
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
       <Link to="/page3">user profile</Link>
       <Link to="/DemoIcon">DemoIcon</Link>
       <Link to="/register">Register</Link>
+      <Link to='/chooseClinic'>Clinic Choose</Link>
+      <Link to='/BookingContent'>BookingContent</Link>
         <Switch>
           <Route path="/page1">
             <>
@@ -62,6 +65,12 @@ function App() {
           </Route>
           <Route path="/DemoIcon">
             <DemoIcon/>
+          </Route>
+          <Route path="/chooseClinic">
+            <ClinicChoose />
+          </Route>
+          <Route path='/BookingContent'>
+            <BookingContent />            
           </Route>
         </Switch>
       </Router>
