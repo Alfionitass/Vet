@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
 import DemoIcon from './demo/demoIcon'
 import {  } from './assets/icons'
+// import {Container} from 'react-bootstrap'
 
 
 
@@ -70,7 +71,9 @@ function App() {
             <ClinicChoose />
           </Route>
           <Route path='/BookingContent'>
+            {/* <Container> */}
             <BookingContent />            
+            {/* </Container> */}
           </Route>
         </Switch>
       </Router>
