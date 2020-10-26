@@ -23,6 +23,15 @@ import {
   VetSignal,
   VetBriefcase,
   VetChat,
+  VetArrowLeft,
+  VetArrowLeftBox,
+  VetArrowRight,
+  VetArrowRightBox,
+  VetArrowDown,
+  VetEye,
+  VetDoor,
+  VetMale,
+  VetFemale,
 } from "../assets/icons";
 export default function DemoCard() {
   return (
@@ -32,7 +41,12 @@ export default function DemoCard() {
           <Card.Text>General Usage</Card.Text>
         </Card.Header>
         <Card.Body>
-          <VetUser bgcolor={"salmon"} size={"30"} color={"#FDCB5A"} radius={"50"}/>
+          <VetUser
+            bgcolor={"salmon"}
+            size={"30"}
+            color={"#FDCB5A"}
+            radius={"50"}
+          />
           <VetClinic size={"30"} />
           <VetDoctor size={"30"} />
           <VetHospital size={"30"} bgcolor={"green"} color={"salmon"} />
@@ -92,6 +106,18 @@ export default function DemoCard() {
           <VetSchedule size={"30"} color={"salmon"} bgcolor={"black"} />
           <VetSignal size={"30"} color={"salmon"} bgcolor={"black"} />
           <VetBriefcase size={"30"} color={"salmon"} bgcolor={"black"} />
+          <VetDoor /> <VetMale /> <VetFemale />
+        </Card.Body>
+      </Card>
+      <Card>
+        <Card.Header>
+          <Card.Text>Arrow</Card.Text>
+        </Card.Header>
+        <Card.Body>
+          <VetArrowLeft color={"black"} />
+          <VetArrowLeftBox />
+          <VetArrowRight color={"black"} />
+          <VetArrowRightBox />
         </Card.Body>
       </Card>
 
@@ -102,6 +128,7 @@ export default function DemoCard() {
         <Card.Body>
           <VetClock size={"30"} color={"salmon"} bgcolor={"black"} />
           <VetChat size={"30"} color={"salmon"} bgcolor={"black"} />
+          <VetArrowDown /> <VetEye />
         </Card.Body>
       </Card>
     </Container>

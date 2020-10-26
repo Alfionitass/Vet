@@ -8,7 +8,7 @@ import Register from './components/register/register'
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
 import DemoIcon from './demo/demoIcon'
-import { } from './assets/icons'
+import {  } from './assets/icons'
 
 function App() {
   const [data, setData] = useState();
