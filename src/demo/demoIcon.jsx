@@ -32,6 +32,8 @@ import {
   VetDoor,
   VetMale,
   VetFemale,
+  VetCalendar,
+  VetLogoSymbol,
 } from "../assets/icons";
 export default function DemoCard() {
   return (
@@ -50,6 +52,7 @@ export default function DemoCard() {
           <VetClinic size={"30"} />
           <VetDoctor size={"30"} />
           <VetHospital size={"30"} bgcolor={"green"} color={"salmon"} />
+          <VetCalendar size={"30"} />
         </Card.Body>
       </Card>
 
@@ -60,6 +63,7 @@ export default function DemoCard() {
         <Card.Body>
           <VetLogo size={"30"} bgcolor={"green"} />
           <VetLogoBox size={"30"} bgcolor={"salmon"} />
+          <VetLogoSymbol />
         </Card.Body>
       </Card>
 
@@ -128,7 +132,8 @@ export default function DemoCard() {
         <Card.Body>
           <VetClock size={"30"} color={"salmon"} bgcolor={"black"} />
           <VetChat size={"30"} color={"salmon"} bgcolor={"black"} />
-          <VetArrowDown /> <VetEye />
+          <VetArrowDown color={"black"}/> 
+          <VetEye />
         </Card.Body>
       </Card>
     </Container>
