@@ -1,0 +1,34 @@
+.contain {
+    background-color: #1A3150;
+    display: flex;
+    justify-content: space-between;
+}
+
+.img {
+    width: 7rem;
+    height: 4rem;
+    margin-left: 2.5rem;
+}
+
+.span {
+    letter-spacing: 0.21em;
+    color: #FDCB5A;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.link {
+    padding: 0.4rem 1.6rem;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 0.6rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in;
+}
+
+.link:hover {
+    background-color: #FDCB5A;
+    color: #1A3150;
+}
