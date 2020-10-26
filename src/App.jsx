@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
 import DemoIcon from './demo/demoIcon'
 import {  } from './assets/icons'
-// import {Container} from 'react-bootstrap'
+import NavBar from './components/NavBar/NavBar'
 
 
 
@@ -17,6 +17,7 @@ import Footer from './components/Footer/Footer'
 import ClinicChoose from './components/Clinic/ClinicChoose/ClinicChoose';
 import { user } from './database';
 import BookingContent from './components/BookingDetail/BookingContent';
+import { Navbar } from 'react-bootstrap';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
   return (
     <>
+    <NavBar />
     <div className="App" style={{backgroundColor:"#F1F1F1",overflowY:"auto",overflowX:"auto"}}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

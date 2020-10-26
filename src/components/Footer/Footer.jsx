@@ -6,9 +6,9 @@ import {Container} from 'react-bootstrap'
 
 const Footer = () =>{
     return(
-        <Container 
+        <div 
             className="d-flex flex-row justify-content-between align-items-center p-4" 
-            style={{backgroundColor:"#1A3150"}}
+            style={{backgroundColor:"#1A3150",position:'relative',bottom:'0'}}
         >        
         <div className={styles.logoContainer}>
             <Logo height="3rem" width="5rem" className="d-flex flex-column align-items-center"/>    
@@ -44,7 +44,7 @@ const Footer = () =>{
                     <AiOutlineFacebook className="mr-2" style={{height:"2.5rem",width:"2.5rem"}}/>
                 </div>
             </div>
-            </Container>                 
+           </div>                 
     )
 }
 export default Footer
