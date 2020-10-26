@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
-import { VetClinic, VetUser, VetDoctor } from "../../../assets/icons";
+import { VetMail, VetUser, VetLock } from "../../../assets/icons";
 import { useParams } from "react-router-dom";
 
 function simulateNetworkRequest() {
@@ -36,15 +36,15 @@ export default function Register() {
         </p>
       </Row>
       <Row className="m-4 d-flex justify-content-center">
-        <Form className="w-100">
+        <Form className="w-100 registerForm">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />
+            <VetMail/>
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
-
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
