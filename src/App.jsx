@@ -29,8 +29,6 @@ function App() {
           Learn React
         </a>
       </header>
-
-
       <Router>
       <Link to="/page1">Page 1</Link>
       <Link to="/page2">Page 2</Link>
@@ -53,10 +51,8 @@ function App() {
           <Route path="/DemoIcon">
             <DemoIcon/>
           </Route>
-
         </Switch>
       </Router>
-      
     </div>
   );
 }
