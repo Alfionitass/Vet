@@ -13,38 +13,38 @@
 }
 
 .vet-heading {
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: bold !important;
+  font-size: 24px !important;
 }
 
 .vet-title-1 {
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: bold !important;
+  font-size: 20px !important;
 }
 
 .vet-title-2 {
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: bold !important;
+  font-size: 16px !important;
 }
 
 .vet-button {
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 500 !important;
+  font-size: 16px !important;
 }
 
 .vet-body-1 {
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 400 !important;
+  font-size: 14px !important;
 }
 
 .vet-body-2 {
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: 400 !important;
+  font-size: 12px !important;
 }
 
 .vet-caption-1 {
-  font-weight: 400;
-  font-size: 11px;
+  font-weight: 400 !important;
+  font-size: 11px !important;
 }
 
 .v-text-donker {
@@ -135,6 +135,7 @@
   background-color: var(--others-color-9) !important;
 }
 
+
 .App {
   text-align: center;
 }
@@ -176,4 +177,15 @@ html {
   to {
     transform: rotate(360deg) !important;
   }
+}
+
+
+@media only screen and (max-width:991px){
+    
+  .LoginSideImage {
+    display:none !important;
+    flex: 0 0 0 !important;
+  }
+
+
 }
