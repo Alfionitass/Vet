@@ -55,8 +55,9 @@ export default function Register() {
             </Nav.Item>
           </Nav>
         </Row>
-        <Row clasName="justify-content-center">
-          test
+        <Row className="mx-4 d-flex justify-content-center">
+          <p className="vet-heading v-text-donker">Pilih Role Kamu</p>
+          <p className="vet-body-1 v-text-donker">Daftarkan dirimu untuk menggunakan Aplikasi Kami</p>
         </Row>
         <Row className="m-4 d-flex justify-content-center">
           <Col lg={3} className="m-3 p-0">
