@@ -1,0 +1,5 @@
+.selected-option {
+  box-shadow: 0px 0px 5px 5px var(--primary-color-2);
+  border: 5px solid var(--primary-color-2);
+  border-radius: .3rem;
+}
