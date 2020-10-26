@@ -4,7 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Doctor from './components/doctor/profile'
 import Doctor2 from './components/doctor/appointment'
-import Register from './components/register/register'
+import Auth from './components/auth'
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
 import DemoIcon from './demo/demoIcon'
@@ -34,7 +34,7 @@ function App() {
       <Link to="/page2">Page 2</Link>
       <Link to="/page3">Page 3</Link>
       <Link to="/DemoIcon">DemoIcon</Link>
-      <Link to="/register">Register</Link>
+      <Link to="/auth">Register</Link>
         <Switch>
           <Route path="/page1">
             <Doctor/>
@@ -45,8 +45,8 @@ function App() {
           <Route path="/page3">
             <User1/>
           </Route>
-          <Route path="/register">
-            <Register/>
+          <Route path="/auth">
+            <Auth/>
           </Route>
           <Route path="/DemoIcon">
             <DemoIcon/>
