@@ -1,8 +1,8 @@
 import React from "react";
-
 export function VetClinic(props) {
   return (
     <svg
+      {...props}
       width={props.size || "73"}
       height={(props.size * 73) / 83 || "83"}
       viewBox="0 0 73 83"
@@ -17,10 +17,10 @@ export function VetClinic(props) {
     </svg>
   );
 }
-
 export function VetHospital(props) {
   return (
     <svg
+      {...props}
       width={props.size || "83"}
       height={(props.size * 170) / 170 || "75"}
       viewBox="0 0 83 75"
@@ -35,10 +35,10 @@ export function VetHospital(props) {
     </svg>
   );
 }
-
 export function VetUser(props) {
   return (
     <svg
+      {...props}
       width={props.size || "62"}
       height={(props.size * 62) / 66 || "66"}
       viewBox="0 0 62 66"
@@ -53,10 +53,10 @@ export function VetUser(props) {
     </svg>
   );
 }
-
 export function VetDoctor(props) {
   return (
     <svg
+      {...props}
       width={props.size || "70"}
       height={(props.size * 70) / 83 || "83"}
       viewBox="0 0 70 83"
@@ -71,10 +71,10 @@ export function VetDoctor(props) {
     </svg>
   );
 }
-
 export function VetCalendar(props) {
   return (
     <svg
+      {...props}
       width={props.size || "65"}
       height={(props.size * 65) / 71 || "71"}
       viewBox="0 0 65 71"
@@ -95,10 +95,10 @@ export function VetCalendar(props) {
     </svg>
   );
 }
-
 export function VetPaw(props) {
   return (
     <svg
+      {...props}
       width={props.size || "24"}
       height={(props.size * 24) / 24 || "24"}
       viewBox="0 0 24 24"
@@ -129,10 +129,10 @@ export function VetPaw(props) {
     </svg>
   );
 }
-
 export function VetSchedule(props) {
   return (
     <svg
+      {...props}
       width={props.size || "22"}
       height={(props.size * 22) / 18 || "18"}
       viewBox="0 0 22 18"
@@ -147,10 +147,10 @@ export function VetSchedule(props) {
     </svg>
   );
 }
-
 export function VetSignal(props) {
   return (
     <svg
+      {...props}
       width={props.size || "20"}
       height={(props.size * 20) / 15 || "15"}
       viewBox="0 0 20 15"
@@ -168,10 +168,10 @@ export function VetSignal(props) {
     </svg>
   );
 }
-
 export function VetBriefcase(props) {
   return (
     <svg
+      {...props}
       width={props.size || "20"}
       height={(props.size * 20) / 19 || "19"}
       viewBox="0 0 20 19"
@@ -186,10 +186,10 @@ export function VetBriefcase(props) {
     </svg>
   );
 }
-
 export function VetLogo(props) {
   return (
     <svg
+      {...props}
       width={props.size || "109"}
       height={(props.size * 109) / 97 || "97"}
       viewBox="0 0 109 97"
@@ -208,10 +208,10 @@ export function VetLogo(props) {
     </svg>
   );
 }
-
 export function VetLogoSymbol(props) {
   return (
     <svg
+      {...props}
       width={props.size || "109"}
       height={(props.size * 109) / 60 || "60"}
       viewBox="0 0 109 60"
@@ -226,10 +226,10 @@ export function VetLogoSymbol(props) {
     </svg>
   );
 }
-
 export function VetLogoBox(props) {
   return (
     <svg
+      {...props}
       width={props.size || "170"}
       height={(props.size * 170) / 170 || "170"}
       viewBox="0 0 170 170"
@@ -253,10 +253,10 @@ export function VetLogoBox(props) {
     </svg>
   );
 }
-
 export function VetPCat(props) {
   return (
     <svg
+      {...props}
       width={props.size || "28"}
       height={(props.size * 28) / 28 || "28"}
       viewBox="0 0 28 28"
@@ -283,10 +283,10 @@ export function VetPCat(props) {
     </svg>
   );
 }
-
 export function VetPDog(props) {
   return (
     <svg
+      {...props}
       width={props.size || "51"}
       height={(props.size * 51) / 51 || "51"}
       viewBox="0 0 51 51"
@@ -381,10 +381,10 @@ export function VetPDog(props) {
     </svg>
   );
 }
-
 export function VetPRabbit(props) {
   return (
     <svg
+      {...props}
       width={props.size || "28"}
       height={(props.size * 28) / 28 || "28"}
       viewBox="0 0 28 28"
@@ -423,10 +423,10 @@ export function VetPRabbit(props) {
     </svg>
   );
 }
-
 export function VetPHamster(props) {
   return (
     <svg
+      {...props}
       width={props.size || "28"}
       height={(props.size * 28) / 28 || "28"}
       viewBox="0 0 28 28"
@@ -493,10 +493,10 @@ export function VetPHamster(props) {
     </svg>
   );
 }
-
 export function VetTwitter(props) {
   return (
     <svg
+      {...props}
       width={props.size || "39"}
       height={(props.size * 39) / 39 || "39"}
       viewBox="0 0 39 39"
@@ -511,10 +511,10 @@ export function VetTwitter(props) {
     </svg>
   );
 }
-
 export function VetInstagram(props) {
   return (
     <svg
+      {...props}
       width={props.size || "39"}
       height={(props.size * 39) / 39 || "39"}
       viewBox="0 0 39 39"
@@ -529,10 +529,10 @@ export function VetInstagram(props) {
     </svg>
   );
 }
-
 export function VetFacebook(props) {
   return (
     <svg
+      {...props}
       width={props.size || "36"}
       height={(props.size * 36) / 36 || "36"}
       viewBox="0 0 36 36"
@@ -547,10 +547,10 @@ export function VetFacebook(props) {
     </svg>
   );
 }
-
 export function VetMail(props) {
   return (
     <svg
+      {...props}
       width={props.size || "21"}
       height={(props.size * 21) / 16 || "16"}
       viewBox="0 0 21 16"
@@ -565,10 +565,10 @@ export function VetMail(props) {
     </svg>
   );
 }
-
 export function VetLock(props) {
   return (
     <svg
+      {...props}
       width={props.size || "18"}
       height={(props.size * 18) / 20 || "20"}
       viewBox="0 0 18 20"
@@ -585,10 +585,10 @@ export function VetLock(props) {
     </svg>
   );
 }
-
 export function VetPhone(props) {
   return (
     <svg
+      {...props}
       width={props.size || "24"}
       height={(props.size * 24) / 24 || "24"}
       viewBox="0 0 24 24"
@@ -605,10 +605,10 @@ export function VetPhone(props) {
     </svg>
   );
 }
-
 export function VetChat(props) {
   return (
     <svg
+      {...props}
       width={props.size || "45"}
       height={(props.size * 45) / 43 || "43"}
       viewBox="0 0 45 43"
@@ -623,10 +623,10 @@ export function VetChat(props) {
     </svg>
   );
 }
-
 export function VetClock(props) {
   return (
     <svg
+      {...props}
       width={props.size || "25"}
       height={(props.size * 25) / 25 || "25"}
       viewBox="0 0 25 25"
@@ -641,10 +641,10 @@ export function VetClock(props) {
     </svg>
   );
 }
-
 export function VetMale(props) {
   return (
     <svg
+      {...props}
       width={props.size || "16"}
       height={(props.size * 16) / 15 || "15"}
       viewBox="0 0 16 15"
@@ -661,10 +661,10 @@ export function VetMale(props) {
     </svg>
   );
 }
-
 export function VetFemale(props) {
   return (
     <svg
+      {...props}
       width={props.size || "12"}
       height={(props.size * 12) / 20 || "20"}
       viewBox="0 0 12 20"
@@ -679,10 +679,10 @@ export function VetFemale(props) {
     </svg>
   );
 }
-
 export function VetEye(props) {
   return (
     <svg
+      {...props}
       width={props.size || "24"}
       height={(props.size * 24) / 16 || "16"}
       viewBox="0 0 24 16"
@@ -697,10 +697,10 @@ export function VetEye(props) {
     </svg>
   );
 }
-
 export function VetDoor(props) {
   return (
     <svg
+      {...props}
       width={props.size || "29"}
       height={(props.size * 29) / 29 || "29"}
       viewBox="0 0 29 29"
@@ -719,10 +719,10 @@ export function VetDoor(props) {
     </svg>
   );
 }
-
 export function VetArrowDown(props) {
   return (
     <svg
+      {...props}
       width={props.size || "19"}
       height={(props.size * 19) / 11 || "11"}
       viewBox="0 0 19 11"
@@ -737,10 +737,10 @@ export function VetArrowDown(props) {
     </svg>
   );
 }
-
 export function VetArrowLeft(props) {
   return (
     <svg
+      {...props}
       width={props.size || "14"}
       height={(props.size * 14) / 23 || "23"}
       viewBox="0 0 14 23"
@@ -755,10 +755,10 @@ export function VetArrowLeft(props) {
     </svg>
   );
 }
-
 export function VetArrowRight(props) {
   return (
     <svg
+      {...props}
       width={props.size || "13"}
       height={(props.size * 13) / 23 || "23"}
       viewBox="0 0 13 23"
@@ -773,10 +773,10 @@ export function VetArrowRight(props) {
     </svg>
   );
 }
-
 export function VetArrowLeftBox(props) {
   return (
     <svg
+      {...props}
       width={props.size || "44"}
       height={(props.size * 44) / 44 || "44"}
       viewBox="0 0 44 44"
@@ -799,10 +799,10 @@ export function VetArrowLeftBox(props) {
     </svg>
   );
 }
-
 export function VetArrowRightBox(props) {
   return (
     <svg
+      {...props}
       width={props.size || "44"}
       height={(props.size * 44) / 44 || "44"}
       viewBox="0 0 44 44"

@@ -139,6 +139,10 @@
   text-align: center;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 .App-logo {
   height: 10vmin;
   pointer-events: none;

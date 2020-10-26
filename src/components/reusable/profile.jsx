@@ -1,6 +1,7 @@
 import React from "react";
 import { Badge, Card, Image, Col, Row, Button } from "react-bootstrap";
 import { IoIosBriefcase, IoMdWifi, IoIosLogOut } from "react-icons/io";
+import { VetSignal, VetBriefcase, VetPaw, VetSchedule} from "../../assets/icons"
 import { MdPets } from "react-icons/md";
 import { HiCalendar } from "react-icons/hi";
 import styles from "./profile.module.css";
@@ -24,11 +25,11 @@ export default function Profile(props) {
             <Col md={6} style={{ color: "green", fill: "green" }}>
               {props.mode === "user" ? (
                 <>
-                  <MdPets /> 3 Pets
+                  <VetPaw /> 3 Pets
                 </>
               ) : (
                 <>
-                  <IoMdWifi /> Online
+                  <VetSignal color={"green"} /> Online
                 </>
               )}
             </Col>
@@ -36,20 +37,20 @@ export default function Profile(props) {
               {console.log(props.value)}
               {props.mode === "user" && props.value > 1 ? (
                 <>
-                  <HiCalendar /> {props.value} times
+                  <VetSchedule /> {props.value} times
                 </>
               ) : props.mode === "user" && props.value <= 1 ? (
                 <>
-                  <HiCalendar /> {props.value} time
+                  <VetSchedule /> {props.value} time
                 </>
               ) : props.mode === "doctor" && props.value > 1 ? (
                 <>
-                  <IoIosBriefcase />
+                  <VetBriefcase />
                   {props.value} years
                 </>
               ) : (
                 <>
-                  <IoIosBriefcase />
+                  <VetBriefcase />
                   {props.value} year
                 </>
               )}

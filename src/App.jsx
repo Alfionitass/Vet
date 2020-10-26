@@ -14,7 +14,7 @@ function App() {
   const [data, setData] = useState();
   // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
   return (
-    <div className="App" style={{backgroundColor:"#F1F1F1"}}>
+    <div className="App" style={{backgroundColor:"#F1F1F1",overflowY:"auto",overflowX:"auto"}}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

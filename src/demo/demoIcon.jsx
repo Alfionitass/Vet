@@ -48,8 +48,10 @@ export default function DemoCard() {
             size={"30"}
             color={"#FDCB5A"}
             radius={"50"}
+            onClick={(e) => console.log("TETT")}
           />
-          <VetClinic size={"30"} />
+          <VetClinic size={"30"} 
+          onClick={(e) => console.log("Eneters")}/>
           <VetDoctor size={"30"} />
           <VetHospital size={"30"} bgcolor={"green"} color={"salmon"} />
           <VetCalendar size={"30"} />
