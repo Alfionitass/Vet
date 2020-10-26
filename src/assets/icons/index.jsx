@@ -36,11 +36,13 @@ export function VetHospital(props) {
   );
 }
 export function VetUser(props) {
+  {console.log()}
   return (
     <svg
       {...props}
       width={props.size || "62"}
-      height={(props.size * 62) / 66 || "66"}
+      
+      height={`${props.size.includes('vw') ? props.size.slice(0,props.size.length-2) * 62 / 66 : props.size * 62 / 66}${props.size.includes('vw') ? "vw" : ""}` || "66"}
       viewBox="0 0 62 66"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
