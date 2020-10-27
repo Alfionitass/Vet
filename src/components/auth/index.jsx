@@ -4,11 +4,16 @@ import imageFile from "../../assets/img/loginimage.jpg";
 import "./register.css";
 import { AnimatedSwitch } from "react-router-transition";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import {Role, Login, Register} from "./section/";
+import { Role, Login, Register } from "./section/";
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 export default function Auth() {
+  const [isLogin, setLogin] = useState(false);
+
+  const setStatusLogin = (condition) => {
+    setLogin(condition);
+  };
   return (
     <Container className="d-flex bg-white justify-self-center align-self-center p-0 my-5">
       <Col className="col-4 d-flex justify-content-start p-0 LoginSideImage">
@@ -50,14 +55,30 @@ export default function Auth() {
           <Route exact path="/auth/login" component={Login} />
         </Switch>
         <Row className="justify-content-center mb-5">
-          {}
-        <p className="vet-body-1 v-text-donker">
-          Already have account? Please{" "}
-          <Link to={`/auth/login`} className="v-text-mustard">
-            Sign In
-          </Link>
-        </p>
-      </Row>
+          {isLogin ? (
+            <p className="vet-body-1 v-text-donker">
+              Don't have an account? Please{" "}
+              <Link
+                to={`/auth`}
+                onClick={() => setStatusLogin(false)}
+                className="v-text-mustard"
+              >
+                Sign Up
+              </Link>
+            </p>
+          ) : (
+            <p className="vet-body-1 v-text-donker">
+              Already have account? Please{" "}
+              <Link
+                to={`/auth/login`}
+                onClick={() => setStatusLogin(true)}
+                className="v-text-mustard"
+              >
+                Sign In
+              </Link>
+            </p>
+          )}
+        </Row>
       </Col>
     </Container>
   );
