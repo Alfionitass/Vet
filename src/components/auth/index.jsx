@@ -3,9 +3,8 @@ import { Col, Container, Image, Nav, Row, Button } from "react-bootstrap";
 import imageFile from "../../assets/img/loginimage.jpg";
 import "./register.css";
 import { AnimatedSwitch } from "react-router-transition";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Role from "./section/role";
-import Register from "./section/register"
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {Role, Login, Register} from "./section/";
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
@@ -48,13 +47,15 @@ export default function Auth() {
         <Switch>
           <Route exact path="/auth" component={Role} />
           <Route exact path="/auth/register/:id" component={Register} />
+          <Route exact path="/auth/login" component={Login} />
         </Switch>
         <Row className="justify-content-center mb-5">
+          {}
         <p className="vet-body-1 v-text-donker">
           Already have account? Please{" "}
-          <a href="#" className="v-text-mustard">
+          <Link to={`/auth/login`} className="v-text-mustard">
             Sign In
-          </a>
+          </Link>
         </p>
       </Row>
       </Col>

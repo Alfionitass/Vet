@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
-export default function Register() {
+export default function Login() {
   const [isLoading, setLoading] = useState(false);
   const [option, setOption] = useState(true);
   const [highlight, setHighlight] = useState(0);
@@ -50,9 +50,6 @@ export default function Register() {
             <Form.Control name="email" type="email" placeholder="Alamat Email Kamu" />
           </Form.Group>
           <Form.Group className="form-register">
-            <Form.Control name="username" type="text" placeholder="Username Kamu" />
-          </Form.Group>
-          <Form.Group className="form-register">
             <Form.Control type={passvisibility ? "text" : "password" } placeholder="Password Kamu" />
             {passvisibility ? (
               <div onClick={() => setPass(0)}>
@@ -63,9 +60,6 @@ export default function Register() {
                 <VetEyeShow className="register-eye" size={30}/>
               </div>
             )}
-          </Form.Group>
-          <Form.Group className="form-register">
-            <Form.Control name="phonenumber" type="text" placeholder="Nomor Telefon Kamu" />
           </Form.Group>
           <Row className="p-0 m-0 d-flex justify-content-center">
             <Button
