@@ -154,8 +154,11 @@ path.v-fill-donker {
   background-image: url("./assets/icons/Form/register-user.svg");
 }
 
+.form-register:nth-child(3) {
+  height:50px;
+}
 .form-register:nth-child(3)>input {
-  background-image: url("./assets/icons/Form/register-lock.svg")
+  background-image: url("./assets/icons/Form/register-lock.svg");
 }
 
 .form-register:nth-child(4)>input {
@@ -163,8 +166,11 @@ path.v-fill-donker {
 }
 
 .register-eye {
-  position: absolute;
-  top: 500px;
+  display:flex;
+  justify-self:flex-start;
+  position: relative;
+  top: -2.5rem;
+  right: -22rem;
 }
 
 .App {
@@ -212,10 +218,19 @@ html {
 }
 
 
+@media only screen and (max-width:1199px){
+  .register-eye {
+    right: -14.5rem;
+  }
+}
 @media only screen and (max-width:991px) {
   .LoginSideImage {
     display: none !important;
     flex: 0 0 0 !important;
+  }
+
+  .register-eye {
+    right: -19.5rem;
   }
 }
 
@@ -226,6 +241,15 @@ html {
 
   .register-form {
     padding:0 !important;
+  }
+
+  .register-eye {
+    right: -20.5rem;
+  }
+}
+@media only screen and (max-width:575px){
+  .register-eye {
+    right: -88%;
   }
 }
 
@@ -238,5 +262,29 @@ html {
 @media only screen and (max-width:468px) {
   .register-nav > .nav-item > *{
     padding: 0 .5rem;
+  }
+
+  .register-form {
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .form-register input {
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 1rem 0.75rem;
+    padding: 1.5rem 0 1.5rem 4rem ;
+  }
+}
+
+@media only screen and (max-width:433px) {
+  .register-nav > .nav-item > *{
+    padding: 0 .2rem;
+    font-size: 12px !important;
+  }
+
+  .register-nav > .nav-item > * > button{
+    padding: .5rem .75rem !important;
+    font-size: 12px !important;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
-import { VetMail, VetUser, VetLock, VetEye} from "../../../assets/icons";
+import { VetMail, VetUser, VetLock, VetEyeShow, VetEyeHidden } from "../../../assets/icons";
 import { useParams } from "react-router-dom";
 
 function simulateNetworkRequest() {
@@ -11,6 +11,9 @@ export default function Register() {
   const [isLoading, setLoading] = useState(false);
   const [option, setOption] = useState(true);
   const [highlight, setHighlight] = useState(0);
+
+  const [passvisibility, setPassVisibility] = useState(0);
+
   let { id } = useParams();
 
   useEffect(() => {
@@ -21,6 +24,9 @@ export default function Register() {
     }
   }, [isLoading]);
 
+  const setPass = (res) => {
+    setPassVisibility(res);
+  };
   const handleChoice = (num = 0) => {
     setHighlight(num);
     setOption(false);
@@ -44,8 +50,17 @@ export default function Register() {
             <Form.Control type="text" placeholder="Username Kamu" />
           </Form.Group>
           <Form.Group className="form-register">
-            <Form.Control type="password" placeholder="Password Kamu" />
-            <VetEye className="register-eye"/>
+            <Form.Control type={passvisibility ? "text" : "password" } placeholder="Password Kamu" />
+
+            {passvisibility ? (
+              <div onClick={() => setPass(0)}>
+                <VetEyeHidden className="register-eye"size={30} />
+              </div>
+            ) : (
+              <div onClick={() => setPass(1)}>
+                <VetEyeShow className="register-eye" size={30}/>
+              </div>
+            )}
           </Form.Group>
           <Form.Group className="form-register">
             <Form.Control type="text" placeholder="Nomor Telefon Kamu" />
