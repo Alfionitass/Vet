@@ -138,19 +138,33 @@
 path.v-fill-donker {
   fill: var(--primary-color-1) !important;
 }
-.registerForm > *:nth-child(1) >*:nth-child(1):before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 0;
-  bottom: 0;
-  width: 20px;
-  background:url("data:image/svg+xml,%3Csvg width='21' height='16' viewBox='0 0 21 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.7999 13.3998V2.5998C20.7999 1.6038 19.9959 0.799805 18.9999 0.799805H2.18794C1.19194 0.799805 0.387939 1.6038 0.387939 2.5998V13.3998C0.387939 14.3958 1.19194 15.1998 2.18794 15.1998H18.9999C19.9959 15.1998 20.7999 14.3958 20.7999 13.3998ZM19.2279 2.4678C19.6239 2.8638 19.4079 3.2718 19.1919 3.4758L14.3199 7.9398L18.9999 12.8118C19.1439 12.9798 19.2399 13.2438 19.0719 13.4238C18.9159 13.6158 18.5559 13.6038 18.3999 13.4838L13.1559 9.0078L10.5879 11.3478L8.03194 9.0078L2.78794 13.4838C2.63194 13.6038 2.27194 13.6158 2.11594 13.4238C1.94794 13.2438 2.04394 12.9798 2.18794 12.8118L6.86794 7.9398L1.99594 3.4758C1.77994 3.2718 1.56394 2.8638 1.95994 2.4678C2.35594 2.0718 2.76394 2.2638 3.09994 2.5518L10.5879 8.5998L18.0879 2.5518C18.4239 2.2638 18.8319 2.0718 19.2279 2.4678Z' fill='MidnightBlue'%3E%3C/path%3E%3C/svg%3E") center / contain no-repeat;
+
+.form-register input {
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: 1rem 0.75rem;
+  padding: 1.5rem 4rem;
 }
 
-.registerForm > *:nth-child(1)>*:nth-child(1) {
-  background:red;
-  position:relative;
+.form-register:nth-child(1)>input {
+  background-image: url("./assets/icons/Form/register-mail.svg");
+}
+
+.form-register:nth-child(2)>input {
+  background-image: url("./assets/icons/Form/register-user.svg");
+}
+
+.form-register:nth-child(3)>input {
+  background-image: url("./assets/icons/Form/register-lock.svg")
+}
+
+.form-register:nth-child(4)>input {
+  background-image: url("./assets/icons/Form/register-phone.svg");
+}
+
+.register-eye {
+  position: absolute;
+  top: 500px;
 }
 
 .App {
@@ -191,18 +205,38 @@ html {
   from {
     transform: rotate(0deg) !important;
   }
+
   to {
     transform: rotate(360deg) !important;
   }
 }
 
 
-@media only screen and (max-width:991px){
-    
+@media only screen and (max-width:991px) {
   .LoginSideImage {
-    display:none !important;
+    display: none !important;
     flex: 0 0 0 !important;
   }
+}
 
+@media only screen and (max-width:767px) {
+  .register-section{
+    padding:0 !important;
+  }
 
+  .register-form {
+    padding:0 !important;
+  }
+}
+
+@media only screen and (max-width:500px) {
+  .register-nav > .nav-item > *{
+    padding: 0 .5rem;
+  }
+}
+
+@media only screen and (max-width:468px) {
+  .register-nav > .nav-item > *{
+    padding: 0 .5rem;
+  }
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
-import { VetMail, VetUser, VetLock } from "../../../assets/icons";
+import { VetMail, VetUser, VetLock, VetEye} from "../../../assets/icons";
 import { useParams } from "react-router-dom";
 
 function simulateNetworkRequest() {
@@ -12,7 +12,7 @@ export default function Register() {
   const [option, setOption] = useState(true);
   const [highlight, setHighlight] = useState(0);
   let { id } = useParams();
-  
+
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
@@ -30,41 +30,36 @@ export default function Register() {
   return (
     <>
       <Row className="mx-4 justify-content-center flex-column">
-        <p className="vet-heading v-text-donker">Pilih Role Kamu</p>
+        <p className="vet-heading v-text-donker">Buat Akun Baru</p>
         <p className="vet-body-1 v-text-donker">
           Daftarkan dirimu untuk menggunakan Aplikasi Kami
         </p>
       </Row>
-      <Row className="m-4 d-flex justify-content-center">
-        <Form className="w-100 registerForm">
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <VetMail/>
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
+      <Row className="register-section m-4 px-5 d-flex justify-content-center">
+        <Form className="register-form w-100 mx-5 registerForm px-5">
+          <Form.Group className="form-register">
+            <Form.Control type="email" placeholder="Alamat Email Kamu" />
           </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+          <Form.Group className="form-register">
+            <Form.Control type="text" placeholder="Username Kamu" />
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+          <Form.Group className="form-register">
+            <Form.Control type="password" placeholder="Password Kamu" />
+            <VetEye className="register-eye"/>
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          <Form.Group className="form-register">
+            <Form.Control type="text" placeholder="Nomor Telefon Kamu" />
+          </Form.Group>
+          <Row className="p-0 m-0 d-flex justify-content-center">
+            <Button
+              className="v-bg-mustard v-text-donker border-0 font-weight-bold w-100"
+              disabled={isLoading || option}
+              onClick={!isLoading ? handleClick : null}
+            >
+              {isLoading ? "Loading…" : "Selanjutnya"}
+            </Button>
+          </Row>
         </Form>
-      </Row>
-      <Row className="p-0 m-0 d-flex justify-content-center">
-        <Button
-          className="v-bg-mustard v-text-donker border-0 font-weight-bold w-50"
-          disabled={isLoading || option}
-          onClick={!isLoading ? handleClick : null}
-        >
-          {isLoading ? "Loading…" : "Selanjutnya"}
-        </Button>
       </Row>
     </>
   );
