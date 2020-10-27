@@ -67,11 +67,11 @@ export default function Register() {
           </Form.Group>
           <Row className="p-0 m-0 d-flex justify-content-center">
             <Button
-              className="v-bg-mustard v-text-donker border-0 font-weight-bold w-100"
+              className="v-bg-mustard v-text-donker border-0 font-weight-bold w-100 py-3"
               disabled={isLoading || option}
               onClick={!isLoading ? handleClick : null}
             >
-              {isLoading ? "Loading…" : "Selanjutnya"}
+              {isLoading ? "Loading…" : "Daftarkan Saya"}
             </Button>
           </Row>
         </Form>

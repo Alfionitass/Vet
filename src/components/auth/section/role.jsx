@@ -3,6 +3,7 @@ import { Button, Col, Nav, Row } from "react-bootstrap";
 import "./../register.css";
 import { VetClinic, VetUser, VetDoctor } from "../../../assets/icons";
 import { Link } from "react-router-dom";
+import { role } from "../../../database"
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -11,7 +12,24 @@ export default function Role() {
   const [isLoading, setLoading] = useState(false);
   const [option, setOption] = useState(true);
   const [highlight, setHighlight] = useState(0);
+  const [roleData, setRole] = useState({});
+  const [cardData, setData] = useState({});
 
+  useEffect(() => {
+    role("all").then(res => setRole(res?.data?.data))
+  },[])
+
+  useEffect(() => {
+    let data = {}
+    roleData.length && roleData.map(item => {
+      data[item.name] = {"name": item.name}
+    })
+    setData(data)
+  },[roleData])
+
+  useEffect(() => {
+    console.log(cardData)
+  },[cardData])
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
