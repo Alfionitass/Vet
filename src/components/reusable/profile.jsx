@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge, Card, Image, Col, Row, Button } from "react-bootstrap";
 import { IoIosBriefcase, IoMdWifi, IoIosLogOut } from "react-icons/io";
-import { VetSignal, VetBriefcase, VetPaw, VetSchedule} from "../../assets/icons"
+import { VetSignal, VetBriefcase, VetPaw, VetSchedule, VetDoor} from "../../assets/icons"
 import { MdPets } from "react-icons/md";
 import { HiCalendar } from "react-icons/hi";
 import styles from "./profile.module.css";
@@ -65,7 +65,7 @@ export default function Profile(props) {
       </Card>
       <Card className="justify-content-start">
         <Col className="px-4 py-2 d-flex align-items-center">
-          <IoIosLogOut size={"2rem"} />{" "}
+          <VetDoor/>
           <p
             className="m-0 px-3"
             style={{ fontSize: "1.2rem", lineHeight: "1.2rem" }}
