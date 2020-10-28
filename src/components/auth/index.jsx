@@ -23,7 +23,7 @@ export default function Auth() {
         <Row>
           <Nav
             variant="pills"
-            className="d-flex align-items-center justify-content-end w-100 m-4 register-nav"
+            className="d-flex align-items-center justify-content-end w-100 mt-4 register-nav"
           >
             <Nav.Item>
               <Nav.Link href="/home" className="vet-title-2">
@@ -54,7 +54,7 @@ export default function Auth() {
           <Route exact path="/auth/register/:id" component={Register} />
           <Route exact path="/auth/login" component={Login} />
         </Switch>
-        <Row className="justify-content-center mb-5">
+        <Row className="justify-content-center my-2">
           {isLogin ? (
             <p className="vet-body-1 v-text-donker">
               Don't have an account? Please{" "}

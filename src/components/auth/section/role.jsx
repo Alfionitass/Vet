@@ -55,11 +55,11 @@ export default function Role() {
           Daftarkan dirimu untuk menggunakan Aplikasi Kami
         </p>
       </Row>
-      <Row className="m-4 d-flex justify-content-center">
-        <Col lg={3} className="m-3 p-0">
+      <Row className="m-2 d-flex justify-content-center">
+        <Col lg={3} className="my-2 mx-3 p-0">
           <Col
             onClick={() => handleChoice(1)}
-            className={`m-0 border-0 register py-5 v-bg-donker rounded-lg ${
+            className={`m-0 border-0 register py-4 v-bg-donker rounded-lg ${
               highlight === 1 ? "selected-option" : ""
             }`}
           >
@@ -69,23 +69,23 @@ export default function Role() {
             <label className="v-text-donker vet-heading">Clinic</label>
           </Col>
         </Col>
-        <Col lg={3} className="m-3 p-0">
+        <Col lg={3} className="m-2 p-0">
           <Col
             onClick={() => handleChoice(2)}
-            className={`m-0 border-0 register py-5 v-bg-donker rounded-lg ${
+            className={`m-0 border-0 register py-4 v-bg-donker rounded-lg ${
               highlight === 2 ? "selected-option" : ""
             }`}
           >
-            <VetUser size={"85"} color={"#FDCB5A"} />
+            <VetUser size={"86"} color={"#FDCB5A"} />
           </Col>
           <Col>
             <label className="v-text-donker vet-heading">User</label>
           </Col>
         </Col>
-        <Col lg={3} className="m-3 p-0">
+        <Col lg={3} className="m-2 p-0">
           <Col
             onClick={() => handleChoice(3)}
-            className={`m-0 border-0 register py-5 v-bg-donker rounded-lg ${
+            className={`m-0 border-0 register py-4 v-bg-donker rounded-lg ${
               highlight === 3 ? "selected-option" : ""
             }`}
           >
@@ -99,7 +99,7 @@ export default function Role() {
       <Row className="p-0 m-0 d-flex justify-content-center">
         <Link className="v-bg-mustard border-0 w-50 rounded-lg" to={`/auth/register/${highlight}`}>
           <Button
-            className="v-text-donker font-weight-bold bg-transparent border-0"
+            className="v-text-donker font-weight-bold bg-transparent border-0 py-3"
             disabled={isLoading || option}
             onClick={!isLoading ? handleClick : null}
           >
