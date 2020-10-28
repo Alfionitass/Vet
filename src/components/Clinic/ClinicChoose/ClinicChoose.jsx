@@ -4,6 +4,8 @@ import { Dropdown,Card,Badge,Button, Container,Col,Row } from "react-bootstrap";
 //import SearchIcon from '@material-ui/icons/Search';
 // import styles from './App.module.css'
 import { clinic } from '../../../database'
+import {Link} from 'react-router-dom'
+import { AiOutlineSearch } from "react-icons/ai";
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
@@ -20,7 +22,6 @@ export default function ClinicChoose() {
       <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" style={{borderColor:"#9C9C9C",color:"#9C9C9C",fontWeight:"bold"}}>
         Lokasi
       </Dropdown.Toggle>
-
       <Dropdown.Menu>
         <Dropdown.Item href="#/action-1">Jogja</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Bandung</Dropdown.Item>
@@ -43,15 +44,15 @@ export default function ClinicChoose() {
   )
 
   const buttonSearch = (    
-      <Button variant="warning" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}}>
-        
+      <Button variant="warning" className="mr-4" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}}>        
+      <AiOutlineSearch />
         {"  Cari Sekarang"}
       </Button>    
   )
 
   // const r=clinicData
   // const r = clinicData && clinicData
-  console.log(clinicData)
+  console.log("ini clinic",clinicData)
   const r = clinicData && clinicData
   // console.log(r)
   const kartu = clinicData && clinicData.map((value,index)=>(            
@@ -63,31 +64,34 @@ export default function ClinicChoose() {
       </Badge></h6>
       <Card.Title>
         RS Kalimanjaro Ruah Tunah
+        {value.name}
       </Card.Title>
       <Card.Text>
         Buka 09:00-12:00
       </Card.Text>
     </Card.Body>
     <Card.Footer style={{backgroundColor:"white"}}>
+      <Link to='/BookingContent'>
       <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
         Book now
       </Button>
+    </Link>
     </Card.Footer>
   </Card>  
   ))
 
   return (
-    <>
-    <Container>
-    <Row className="justify-content-end mr-4">
+    <>    
+    <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
+    <Row className="justify-content-end">
       {dropDownLokasi}
       {binatangPeliharaan}    
       {buttonSearch}
     </Row>
       <Row>
         {kartu}
-      </Row>
-    </Container>
+      </Row>    
+    </div>
     </>
   );
 }

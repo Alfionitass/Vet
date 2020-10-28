@@ -32,7 +32,7 @@ export default function Home() {
     //will be useEffect to fetch klinik data from API and will be setKlinik
     
     return (
-        <div>
+        <div style={{paddingBottom:'6rem'}}>
             <div className='header'>
                 <div className='top-header'>
                     <div className='container'>

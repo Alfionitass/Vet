@@ -26,10 +26,10 @@ export default function NavBar() {
             <NavLink to="/" className={styles.link}>
               <span>Doctor</span>
             </NavLink>
-            <NavLink to="/" className={styles.link}>
+            <NavLink to="/ClinicChoose" className={styles.link}>
               <span>Find a Clinic</span>
             </NavLink>
-            <NavLink to="/" className={styles.link}>
+            <NavLink to="/register" className={styles.link}>
               <span>Register</span>
             </NavLink>
             <NavLink to="/" className={styles.link}>

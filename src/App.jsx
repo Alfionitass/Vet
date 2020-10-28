@@ -17,7 +17,8 @@ import Footer from './components/Footer/Footer'
 import ClinicChoose from './components/Clinic/ClinicChoose/ClinicChoose';
 import { user } from './database';
 import BookingContent from './components/BookingDetail/BookingContent';
-import { Navbar } from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
+import Home from './components/Home/Home';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
   // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
   return (
     <>
-    <div className="App" style={{backgroundColor:"#F1F1F1",overflowY:"auto",overflowX:"auto"}}>
+    <div className="App">
       <Router>        
       <NavBar />
       <Link to="/page1">Page 1</Link>
@@ -55,18 +56,21 @@ function App() {
           <Route path="/DemoIcon">
             <DemoIcon />
           </Route>
-          <Route path="/chooseClinic">
-            <ClinicChoose />
+          <Route path="/ClinicChoose">            
+            <ClinicChoose />            
           </Route>
           <Route path='/BookingContent'>
             {/* <Container> */}
             <BookingContent />            
             {/* </Container> */}
           </Route>
+          <Route>
+            <Home />
+          </Route>
         </Switch>
       </Router>
     </div>
-    <Footer />
+    <Footer />    
     </>
   );
 }
