@@ -4,6 +4,7 @@ import { Dropdown,Card,Badge,Button, Container,Col,Row } from "react-bootstrap";
 //import SearchIcon from '@material-ui/icons/Search';
 // import styles from './App.module.css'
 import { clinic } from '../../../database'
+import {Link} from 'react-router-dom'
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
@@ -43,8 +44,7 @@ export default function ClinicChoose() {
   )
 
   const buttonSearch = (    
-      <Button variant="warning" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}}>
-        
+      <Button variant="warning" className="mr-4" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}}>        
         {"  Cari Sekarang"}
       </Button>    
   )
@@ -69,25 +69,27 @@ export default function ClinicChoose() {
       </Card.Text>
     </Card.Body>
     <Card.Footer style={{backgroundColor:"white"}}>
+      <Link to='/BookingContent'>
       <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
         Book now
       </Button>
+    </Link>
     </Card.Footer>
   </Card>  
   ))
 
   return (
-    <>
-    <Container>
-    <Row className="justify-content-end mr-4">
+    <>    
+    <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
+    <Row className="justify-content-end">
       {dropDownLokasi}
       {binatangPeliharaan}    
       {buttonSearch}
     </Row>
       <Row>
         {kartu}
-      </Row>
-    </Container>
+      </Row>    
+    </div>
     </>
   );
 }
