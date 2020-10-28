@@ -13,38 +13,38 @@
 }
 
 .vet-heading {
-  font-weight: bold;
-  font-size: 24px;
+  font-weight: bold !important;
+  font-size: 24px !important;
 }
 
 .vet-title-1 {
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: bold !important;
+  font-size: 20px !important;
 }
 
 .vet-title-2 {
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: bold !important;
+  font-size: 16px !important;
 }
 
 .vet-button {
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 500 !important;
+  font-size: 16px !important;
 }
 
 .vet-body-1 {
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 400 !important;
+  font-size: 14px !important;
 }
 
 .vet-body-2 {
-  font-weight: 400;
-  font-size: 12px;
+  font-weight: 400 !important;
+  font-size: 12px !important;
 }
 
 .vet-caption-1 {
-  font-weight: 400;
-  font-size: 11px;
+  font-weight: 400 !important;
+  font-size: 11px !important;
 }
 
 .v-text-donker {
@@ -135,6 +135,44 @@
   background-color: var(--others-color-9) !important;
 }
 
+path.v-fill-donker {
+  fill: var(--primary-color-1) !important;
+}
+
+.form-register input {
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: 1rem 0.75rem;
+  padding: 1.5rem 4rem;
+}
+
+.form-register:nth-child(1)>input {
+  background-image: url("./assets/icons/Form/register-mail.svg");
+}
+
+.form-register:nth-child(2)>input {
+  background-image: url("./assets/icons/Form/register-user.svg");
+}
+
+.form-register:nth-child(3) {
+  height:50px;
+}
+.form-register:nth-child(3)>input {
+  background-image: url("./assets/icons/Form/register-lock.svg");
+}
+
+.form-register:nth-child(4)>input {
+  background-image: url("./assets/icons/Form/register-phone.svg");
+}
+
+.register-eye {
+  display:flex;
+  justify-self:flex-start;
+  position: relative;
+  top: -2.5rem;
+  right: -22rem;
+}
+
 .App {
   text-align: center;
 }
@@ -173,7 +211,80 @@ html {
   from {
     transform: rotate(0deg) !important;
   }
+
   to {
     transform: rotate(360deg) !important;
+  }
+}
+
+
+@media only screen and (max-width:1199px){
+  .register-eye {
+    right: -14.5rem;
+  }
+}
+@media only screen and (max-width:991px) {
+  .LoginSideImage {
+    display: none !important;
+    flex: 0 0 0 !important;
+  }
+
+  .register-eye {
+    right: -19.5rem;
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .register-section{
+    padding:0 !important;
+  }
+
+  .register-form {
+    padding:0 !important;
+  }
+
+  .register-eye {
+    right: -20.5rem;
+  }
+}
+@media only screen and (max-width:575px){
+  .register-eye {
+    right: -88%;
+  }
+}
+
+@media only screen and (max-width:500px) {
+  .register-nav > .nav-item > *{
+    padding: 0 .5rem;
+  }
+}
+
+@media only screen and (max-width:468px) {
+  .register-nav > .nav-item > *{
+    padding: 0 .5rem;
+  }
+
+  .register-form {
+    margin:0 !important;
+    padding:0 !important;
+  }
+
+  .form-register input {
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: 1rem 0.75rem;
+    padding: 1.5rem 0 1.5rem 4rem ;
+  }
+}
+
+@media only screen and (max-width:433px) {
+  .register-nav > .nav-item > *{
+    padding: 0 .2rem;
+    font-size: 12px !important;
+  }
+
+  .register-nav > .nav-item > * > button{
+    padding: .5rem .75rem !important;
+    font-size: 12px !important;
   }
 }

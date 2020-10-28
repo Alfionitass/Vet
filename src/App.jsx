@@ -44,16 +44,16 @@ function App() {
             </>
           </Route>
           <Route path="/page2">
-            <Doctor2/>
+            <Doctor2 />
           </Route>
           <Route path="/page3">
-            <User1/>
+            <User1 />
           </Route>
-          <Route path="/register">
-            <Register/>
+          <Route path="/auth">
+            <Auth />
           </Route>
           <Route path="/DemoIcon">
-            <DemoIcon/>
+            <DemoIcon />
           </Route>
           <Route path="/chooseClinic">
             <ClinicChoose />
