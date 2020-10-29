@@ -5,12 +5,17 @@ import "./register.css";
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Role, Login, Register } from "./section/";
+
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
-export default function Auth() {
-  const [isLogin, setLogin] = useState(false);
 
+export default function Auth() {
+  const [isLogin, setLogin] = useState(window.location.pathname === "/auth/login" ? true : false);
+
+  useEffect(()=>{
+    console.log(window.location.pathname)
+  })
   const setStatusLogin = (condition) => {
     setLogin(condition);
   };

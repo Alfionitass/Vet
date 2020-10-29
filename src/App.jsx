@@ -1,9 +1,9 @@
-import React, {useState,useEffect} from 'react'
-import logo from './logo.svg';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Doctor from './components/doctor/profile'
-import Doctor2 from './components/doctor/appointment'
+import React, { useState, useEffect } from "react";
+import logo from "./logo.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
+import './assets/sass/main.scss'
+import Doctor from "./components/doctor/profile";
+import Doctor2 from "./components/doctor/appointment";
 import Auth from "./components/auth";
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'

@@ -154,9 +154,14 @@ path.v-fill-donker {
   background-image: url("./assets/icons/Form/register-user.svg");
 }
 
-.form-register:nth-child(3) {
+.form-register:nth-child(3) > input {
   height:50px;
 }
+
+.eye-container {
+  position: absolute;
+}
+
 .form-register:nth-child(3)>input {
   background-image: url("./assets/icons/Form/register-lock.svg");
 }
@@ -169,7 +174,7 @@ path.v-fill-donker {
   display:flex;
   justify-self:flex-start;
   position: relative;
-  top: -2.5rem;
+  top: -3.75rem;
   right: -22rem;
 }
 
