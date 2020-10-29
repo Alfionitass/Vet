@@ -22,6 +22,10 @@ import Home from './components/Home/Home';
 
 
 function App() {
+  useEffect(() => {
+    
+    console.log("TEST")
+  })
   const [data, setData] = useState();
   // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
   return (
