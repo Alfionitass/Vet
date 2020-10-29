@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Container, Image, Nav, Row, Button } from "react-bootstrap";
 import imageFile from "../../assets/img/loginimage.jpg";
 import "./register.css";
-import { AnimatedSwitch } from "react-router-transition";
+
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Role, Login, Register } from "./section/";
 function simulateNetworkRequest() {

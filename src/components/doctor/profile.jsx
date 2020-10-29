@@ -191,9 +191,8 @@ export default function Profile() {
             </Form>
           </Card>
           <Button
-            className="font-weight-bold px-5 float-right my-3"
+            className="font-weight-bold px-5 float-right my-3 v-text-donker v-bg-mustard border-0"
             onClick={handleClick}
-            variant="warning"
           >
             Simpan
           </Button>
