@@ -4,7 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Doctor from './components/doctor/profile'
 import Doctor2 from './components/doctor/appointment'
-import Register from './components/register/register'
+import Auth from "./components/auth";
 import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom'
 import User1 from './components/user/profile'
 import DemoIcon from './demo/demoIcon'
@@ -29,13 +29,13 @@ function App() {
     <div className="App">
       <Router>        
       <NavBar />
-      <Link to="/page1">Page 1</Link>
+      {/* <Link to="/page1">Page 1</Link>
       <Link to="/page2">Page 2</Link>
       <Link to="/page3">user profile</Link>
       <Link to="/DemoIcon">DemoIcon</Link>
       <Link to="/register">Register</Link>
       <Link to='/chooseClinic'>Clinic Choose</Link>
-      <Link to='/BookingContent'>BookingContent</Link>
+      <Link to='/BookingContent'>BookingContent</Link> */}
         <Switch>
           <Route path="/page1">
             <>
