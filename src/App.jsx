@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import './assets/sass/main.scss'
 import Doctor from "./components/doctor/profile";
 import Doctor2 from "./components/doctor/appointment";
 import Auth from "./components/auth";
