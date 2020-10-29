@@ -61,6 +61,13 @@ export default function Profile() {
                 <div className="profile--upload p-3 d-flex justify-content-center align-items-center flex-column" style={{width:"180px",height:"180px",border:"1px solid black"}}>
                   <HiPlus size={40} className="font-weight-bold"/>
                   <p className="justify-self-end">Upload Image</p>
+                  <Form.Group className="mb-4" id="status">
+                  <Form.Text>Upload</Form.Text>
+                  <Form.Control
+                    type="file"                    
+                    // value="Alvin Mantovani"
+                  />
+                </Form.Group>
                 </div>
      
               </Card.Body>
@@ -77,7 +84,7 @@ export default function Profile() {
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
-                    value="Alvin Mantovani"
+                    // value="Alvin Mantovani"
                   />
                 </Form.Group>
                 <Form.Group className="mb-4" id="gender">
@@ -120,7 +127,7 @@ export default function Profile() {
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
-                    value="+62 muted"
+                    // value="+62 muted"
                   />
                 </Form.Group>
                 <Form.Group controlId="formBasicEmail">
@@ -128,7 +135,7 @@ export default function Profile() {
                   <Form.Control
                     type="text"
                     placeholder="It's my name"
-                    value="alvin.ictn@gmail.com"
+                    // value="alvin.ictn@gmail.com"
                   />
                 </Form.Group>
               </Card.Body>

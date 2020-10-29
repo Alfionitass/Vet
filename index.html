@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+    .container {
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .bg-donker {
+      background-color: #1a3150;
+    }
+
+    .bg-grey {
+      background-color: #f3f8f8;
+    }
+
+    .font-bold {
+      font-weight: bold;
+    }
+
+    .fill-donker {
+      column-fill: #1a3150;
+    }
+
+    .text-donker {
+      color: #1a3150;
+    }
+
+    .text-white {
+      color: white;
+    }
+
+    .nav {
+      width: inherit;
+      font-size: 28px;
+    }
+
+    .d-flex {
+      display: flex;
+    }
+
+    .center {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .sp-between {
+      justify-content: space-between;
+    }
+
+    .sp-even {
+      justify-content: space-evenly;
+    }
+
+    .sp-around {
+      justify-content: space-around;
+    }
+
+    .logo {
+      width: 150px;
+      height: 150px;
+    }
+
+    .f-col {
+      flex-direction: column;
+    }
+
+    .f-row {
+      flex-direction: row;
+    }
+
+    .w-inherit {
+      width: inherit;
+    }
+
+    .w-100 {
+      width: 100%;
+    }
+
+    .w-90 {
+      width: 90%;
+    }
+
+    .w-80 {
+      width: 80%;
+    }
+
+    .w-70 {
+      width: 70%;
+    }
+
+    .w-60 {
+      width: 60%;
+    }
+
+    .w-50 {
+      width: 50%;
+    }
+
+    .my-1 {
+      margin: 5% 0;
+    }
+
+    .my-2 {
+      margin: 10% 0;
+    }
+
+    .p-half {
+      padding: 5%;
+    }
+
+    .p-2 {
+      padding: 10% 5%;
+    }
+
+    .menu--item {
+      margin: 0 5%;
+    }
+
+    .dc-promo {
+      text-transform: capitalize;
+    }
+
+    .dc_off {
+      font-size: 50px;
+    }
+
+    .dc_promo {
+      font-size: 18px;
+    }
+
+    .margin-mid {
+      margin: 0 auto;
+    }
+
+    .table {
+      border-collapse: collapse;
+    }
+
+    table.table,
+    .table>td,
+    .table>th {
+      border: 1px solid black;
+    }
+
+    .table>td,
+    .table>th {
+      padding: 10px 5px;
+      text-align: left;
+    }
+
+    .no-clutter {
+      padding: 0;
+      margin: 0;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .left {
+      text-align: left;
+    }
+
+    .book-title {
+      font-size: 46px;
+    }
+
+    .book-text {
+      font-size: 24px;
+    }
+
+    .book-margin {
+      margin: 20px 30px;
+    }
+
+    .my-coupon {
+      margin: 10% auto;
+    }
+
+    .status {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .status-info {
+      font-size: 22px;
+    }
+
+    .accept {
+      color: #68a726;
+    }
+
+    .reject {
+      color: #be1f2f;
+    }
+
+    .pending {
+      color: #e9d62f;
+    }
+
+    .info {
+      margin: 20px;
+    }
+
+    .info-title {
+      font-size: 20px;
+    }
+
+    .info>* {
+      margin: 0.5em 0;
+    }
+
+    .info>*:nth-child(1) {
+      margin: 1.25em 0;
+    }
+
+    .info-section {
+      background-color: rgba(245, 242, 242, 0.521);
+    }
+
+    .social-icon {
+      word-break: break-word;
+      vertical-align: top;
+      padding: 0 7.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container w-90 d-flex center f-col">
+    <div class="row nav bg-donker text-white">
+      <label>Vet - Life for Pet</label>
+    </div>
+    <div class="row">
+      <img class="logo"
+        src="https://cdn.discordapp.com/attachments/359923011106897922/770235048623865856/Group_7.png" />
+    </div>
+    <div class="row">
+      <hr />
+      <div class="menu">
+        <a class="menu--item">Pet Care</a>
+        <a class="menu--item">Book Veterinary</a>
+        <a class="menu--item">Pet Medicine</a>
+        <a class="menu--item">Pet Pick Up</a>
+      </div>
+      <hr />
+    </div>
+    <div class="row">
+      <img src="https://cdn.discordapp.com/attachments/359923011106897922/770234074350354432/Group_73.png" />
+    </div>
+    <div class="row w-50 my-coupon">
+      <div class="promo bg-grey text-donker font-bold p-2">
+        <label class="dc_off">100% OFF</label>
+        <p class="dc_promo">Promo Code: <strong>ARI4PRESIDENT2024</strong></p>
+      </div>
+    </div>
+    <div class="row d-flex w-100 margin-mid">
+      <div class="w-50 right">
+        <img style="max-width:340px;"
+          src="https://cdn.discordapp.com/attachments/359923011106897922/770234082768322560/Component_10.png" />
+      </div>
+      <div class="w-50 left book-margin">
+        <h1 class="book-title text-donker">Your Book Information</h1>
+        <label class="text-donker book-text">Hai <strong>Alvin</strong>. pesanan anda :</label>
+        <table class="table">
+          <tr class="table-row">
+            <th>Tanggal</th>
+            <td>Minggu, 20 Agutstus 2020</td>
+          </tr>
+          <tr class="table-row">
+            <th>Jam</th>
+            <td>12:00</td>
+          </tr>
+          <tr class="table-row">
+            <th>Clinic</th>
+            <td>Clinic Sebar Santoni</td>
+          </tr>
+          <tr class="table-row">
+            <th>Veterinary</th>
+            <td>dr. Ambi Mustofa</td>
+          </tr>
+          <tr class="table-row">
+            <th>Animals</th>
+            <td>Dog - Bull</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <p class="status text-donker">Status Reservasi : <strong class="accept">ACCEPT</strong></p>
+      <p class="status text-donker">Status Reservasi : <strong class="reject">REJECTED</strong></p>
+      <p class="status text-donker">Status Reservasi : <strong class="pending">PENDING</strong></p>
+    </div>
+    <div class="row">
+      <p class="status-info text-donker">
+        Terima kasih telah mempercayakan kesehatan pet kepada Vet
+      </p>
+    </div>
+    <div class="row d-flex w-100 margin-mid info-section">
+      <div class="w-50 right info">
+        <label class="info-title text-donker font-bold">Contact Info</label>
+        <p class="company-name">
+          Vet
+        </p>
+        <p class="company-address">
+          002, Gg.Cherry, Jakarta, Indonesia
+        </p>
+        <p class="company-email">
+          Email : alvin@vet.com
+        </p>
+        <p class="company-phone">
+          Phone : +62 888777555
+        </p>
+      </div>
+      <div class="w-50 left info">
+        <label class="info-title text-donker font-bold">About Us</label>
+        <p>
+          Vet is online veterinary booking service.
+        </p>
+      </div>
+    </div>
+    <div class="row d-flex w-100 margin-mid info-section">
+      <div class="w-50">
+        <img style="width:50px;"
+          src="https://cdn.discordapp.com/attachments/359923011106897922/770235048623865856/Group_7.png" />
+      </div>
+      <div class="w-50">
+        <table align="center">
+          <tbody>
+            <tr>
+              <td class="social-icon">
+                <a href="https://www.facebook.com/" target="_blank">
+                  <img alt="Facebook" height="32"
+                    src="https://cdn.discordapp.com/attachments/359923011106897922/770310238338547782/facebook2x.png"
+                    title="facebook" width="32" />
+                </a>
+              </td>
+              <td class="social-icon">
+                <a href="https://www.twitter.com/" target="_blank">
+                  <img alt="Twitter" height="32"
+                    src="https://cdn.discordapp.com/attachments/359923011106897922/770310237198090260/twitter2x.png"
+                    title="twitter" width="32" />
+                </a>
+              </td>
+              <td class="social-icon">
+                <a href="https://www.linkedin.com/" target="_blank">
+                  <img alt="Linkedin" height="32"
+                    src="https://cdn.discordapp.com/attachments/359923011106897922/770310235163459584/linkedin2x.png"
+                    title="linkedin" width="32" />
+                </a>
+              </td>
+              <td class="social-icon">
+                <a href="https://www.instagram.com/" target="_blank">
+                  <img alt="Instagram" height="32"
+                    src="https://cdn.discordapp.com/attachments/359923011106897922/770310232068194394/instagram2x.png"
+                    title="instagram" width="32" />
+                </a>
+              </td>
+              <td class="social-icon"><a href="https://plus.google.com/" target="_blank">
+                  <img alt="Google+" height="32"
+                    src="https://cdn.discordapp.com/attachments/359923011106897922/770310239245172815/googleplus2x.png"
+                    title="Google+" width="32" />
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row bg-donker text-white center w-100 margin-mid" style="padding:20px 0">
+      <div class="footer">
+        Copyright ©2020. All Rights Reserved Vet.
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

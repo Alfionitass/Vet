@@ -1,0 +1,104 @@
+.content {
+    max-width: 1440px;
+    width: 100%;
+    padding: 2rem 2.8rem;
+}
+
+.btn {
+    font-weight: bold;
+    padding: 0.5rem 3rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #FDCB5A;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+.h3 {
+    color: #1A3150;
+    margin-bottom: 1.2rem;
+}
+
+.modalTitle {
+    color: #1A3150;
+}
+
+.font {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.img {
+    width: 28rem;
+    height: auto;
+    
+}
+
+.cardDay {
+    width: 7.4rem;
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+}
+
+.cardTime {
+    width: 9rem;
+    height: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+.cardBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.about {
+    width: 42.5rem;
+}
+
+.p {
+    text-align: justify;
+}
+
+.facility {
+    width: 30rem;
+    margin-left: 3rem;
+}
+
+.cardDoc {
+    width: 17rem;
+}
+
+.cardPet {
+    width: 14rem;
+    height: 8rem;
+}
+
+.icon {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.label {
+    color: #1A3150;
+    font-weight: bold;
+}
+
+.btnn {
+    font-weight: bold;
+    padding: 0.5rem 13.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #FDCB5A;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
