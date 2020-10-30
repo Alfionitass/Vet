@@ -52,7 +52,7 @@ const user = ({
     return axios.get(
       `${configuration.url}${configuration.endpoint.user.all}`
     ).then(res => res)
-    .catch(res => res.results)
+    .catch(res => res.response)
   }
 
   if(method === "register"){
@@ -60,15 +60,16 @@ const user = ({
       `${configuration.url}${configuration.endpoint.user.register}`,
       data
     ).then(res => res)
-    .catch(res => res.results)
+    .catch(res => res.response)
   }
 
   if(method === "login"){
+    console.log(data)
     return axios.post(
       `${configuration.url}${configuration.endpoint.user.login}`,
       data
     ).then(res => res)
-    .catch(res => res.results)
+    .catch(res => res.response)
   }
 
   if (method === "self") {
@@ -80,7 +81,7 @@ const user = ({
         }
       }
     ).then(res => res)
-    .catch(res => res.results)
+    .catch(res => res.response)
   }
 
   if (method === "edit") {
@@ -93,7 +94,7 @@ const user = ({
         }
       }
     ).then(res => res)
-    .catch(res => res.results)
+    .catch(res => res.response)
   }
 
   if(method === "delete"){
@@ -105,7 +106,7 @@ const user = ({
         }
       }
     ).then(res => res)
-    .catch(res => res.results)
+    .catch(res => res.response)
   }
 }
 
