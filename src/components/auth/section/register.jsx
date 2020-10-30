@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
 import {
-  VetMail,
-  VetUser,
-  VetLock,
   VetEyeShow,
   VetEyeHidden,
 } from "../../../assets/icons";
 import { useParams } from "react-router-dom";
 import { user } from "../../../database";
+import { useHistory } from "react-router-dom";
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -34,6 +32,7 @@ export default function Register() {
 
   const [passvisibility, setPassVisibility] = useState(0);
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     if (id === "1") {
@@ -47,6 +46,11 @@ export default function Register() {
 
   useEffect(() => {
     localStorage.setItem("VetToken", token);
+    user({
+      method: "self",
+      access_token: token
+    }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
+    token.length && history.push('/')
   }, [token]);
 
   useEffect(() => {

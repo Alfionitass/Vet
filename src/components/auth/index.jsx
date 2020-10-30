@@ -5,6 +5,8 @@ import "./register.css";
 
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Role, Login, Register } from "./section/";
+import { useHistory } from "react-router-dom";
+import { user } from '../../database'
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -12,7 +14,16 @@ function simulateNetworkRequest() {
 
 export default function Auth() {
   const [isLogin, setLogin] = useState(window.location.pathname === "/auth/login" ? true : false);
+  const [token] = useState(localStorage.getItem('VetToken') || "");
+  const history = useHistory();
 
+  useEffect(()=>{
+    user({
+      method: "self",
+      access_token: token
+    }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
+    token.length && history.push('/')
+  },[token])
   useEffect(()=>{
     console.log(window.location.pathname)
   })

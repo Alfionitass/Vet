@@ -7,8 +7,11 @@ import { VetLogoSymbol } from "../../assets/icons";
 import NavMenu from './NavMenu'
 
 export default function NavBar() {
+  const userData = useState(JSON.parse(localStorage.getItem('userData')));
   const [state, setstate] = useState(window.location.pathname);
-
+  useEffect(()=> {
+    console.log(userData[0])
+  })
   return (
     <Navbar expand="lg" className={styles.contain}>
       <Navbar.Brand>
@@ -19,7 +22,7 @@ export default function NavBar() {
       <span className={styles.span}>VET</span>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <NavMenu/>
+        <NavMenu data={userData[0]}/>
       </Navbar.Collapse>
     </Navbar>
   );

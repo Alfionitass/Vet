@@ -2,7 +2,7 @@ import React from "react";
 import {  NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
-export default function NavMenu() {
+export default function NavMenu(props) {
   return (
     <div className="ml-auto d-flex flex-row">
       <NavLink to="/" className={styles.link}>

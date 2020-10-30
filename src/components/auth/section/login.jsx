@@ -3,6 +3,7 @@ import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
 import { VetEyeShow, VetEyeHidden } from "../../../assets/icons";
 import { user } from '../../../database'
+import { useHistory } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 function simulateNetworkRequest() {
@@ -16,9 +17,15 @@ export default function Login() {
   const [passvisibility, setPassVisibility] = useState(0);
   const [errorMsg, setError] = useState("");
   const [token,setToken] = useState(localStorage.getItem('VetToken') || "");
+  const history = useHistory();
 
   useEffect(()=>{
     localStorage.setItem('VetToken',token)
+    user({
+      method: "self",
+      access_token: token
+    }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
+    token.length && history.push('/')
   },[token])
   
   useEffect(() => {

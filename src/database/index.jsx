@@ -44,7 +44,7 @@ const configuration = {
 const user = ({
     method = null, 
     data = null, 
-    token = null}) => {
+    access_token = null}) => {
   // get method
   console.log(data)
   if (method === "all") {
@@ -64,7 +64,6 @@ const user = ({
   }
 
   if(method === "login"){
-    console.log(data)
     return axios.post(
       `${configuration.url}${configuration.endpoint.user.login}`,
       data
@@ -77,7 +76,7 @@ const user = ({
       `${configuration.url}${configuration.endpoint.user.self}`,
       {
         headers: {
-          token
+          access_token
         }
       }
     ).then(res => res)
@@ -90,7 +89,7 @@ const user = ({
       data,
       {
         headers: {
-          token
+          access_token
         }
       }
     ).then(res => res)
@@ -102,7 +101,7 @@ const user = ({
       `${configuration.url}${configuration.endpoint.user.all}`,
       {
         headers: {
-          token
+          access_token
         }
       }
     ).then(res => res)
@@ -123,7 +122,7 @@ const role = (method) => {
 const animaltype = ({
   method = null, 
   data = null, 
-  token = null}) => {
+  access_token = null}) => {
     if (method === "all") {
       return axios.get(
         `${configuration.url}${configuration.endpoint.animaltype.all}`
@@ -144,7 +143,7 @@ const animaltype = ({
         `${configuration.url}${configuration.endpoint.animaltype.all}`,
         data,{
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -155,7 +154,7 @@ const animaltype = ({
 const animal = ({
   method = null, 
   data = null, 
-  token = null,
+  access_token = null,
   query = null}) => {
     if (method === "all") {
       return axios.get(
@@ -169,7 +168,7 @@ const animal = ({
         `${configuration.url}${configuration.endpoint.animal.add}`,
         data,{
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -181,7 +180,7 @@ const animal = ({
         `${configuration.url}${configuration.endpoint.animal.user}`,
         {
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -193,7 +192,7 @@ const animal = ({
         `${configuration.url}${configuration.endpoint.animal.delete}/${query.id}`,
         {
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -204,7 +203,7 @@ const animal = ({
 const clinic = ({
   method = null, 
   data = null, 
-  token = null,
+  access_token = null,
   query = null}) => {
     if (method === "all") {
       return axios.get(
@@ -218,7 +217,7 @@ const clinic = ({
         `${configuration.url}${configuration.endpoint.clinic.add}`,
         data,{
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -230,7 +229,7 @@ const clinic = ({
         `${configuration.url}${configuration.endpoint.clinic.delete}/${query.id}`,
         {
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -242,7 +241,7 @@ const clinic = ({
         `${configuration.url}${configuration.endpoint.clinic.facility}`,
         data,{
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -254,7 +253,7 @@ const clinic = ({
         `${configuration.url}${configuration.endpoint.clinic.facility}`,
         data,{
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -266,7 +265,7 @@ const clinic = ({
         `${configuration.url}${configuration.endpoint.clinic.filter}/?city:${query.city}`,
         data,{
           headers: {
-            token
+            access_token
           }
         }
       ).then(res => res)
@@ -277,7 +276,7 @@ const clinic = ({
 const schedule = ({
   method = null, 
   data = null, 
-  token = null,
+  access_token = null,
   query = null}) => {
     if (method === "all") {
       return axios.get(
