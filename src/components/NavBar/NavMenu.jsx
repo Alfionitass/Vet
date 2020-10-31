@@ -2,8 +2,8 @@ import React from "react";
 import { Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
-import { VetArrowDown } from '../../assets/icons'
-
+import { VetArrowDown } from "../../assets/icons";
+import NavDropdown from "./NavDropdown";
 export default function NavMenu(props) {
   console.log(props.data);
   return (
@@ -20,13 +20,14 @@ export default function NavMenu(props) {
       <NavLink to="/ClinicChoose" className={styles.link}>
         <span>Find a Clinic</span>
       </NavLink>
+
       {props.data ? (
         <>
           <Image width={50} src={props.data.image} />
           <NavLink to={`/${props.data.role}`} className={styles.name}>
             <span>Hi, {props.data.name}</span>
           </NavLink>
-          <VetArrowDown style={{cursor:"pointer"}}/>
+          <NavDropdown data={props.data} />
         </>
       ) : (
         <>

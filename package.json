@@ -17,6 +17,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-transition": "^2.0.0",
     "react-scripts": "3.4.3",
+    "react-skeleton": "^1.0.2",
     "sweetalert2": "^10.5.1"
   },
   "scripts": {
