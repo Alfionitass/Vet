@@ -1,10 +1,13 @@
 import React from "react";
-import {  NavLink } from "react-router-dom";
+import { Image } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
+import { VetArrowDown } from '../../assets/icons'
 
 export default function NavMenu(props) {
+  console.log(props.data);
   return (
-    <div className="ml-auto d-flex flex-row">
+    <div className="ml-auto d-flex flex-row align-items-center justify-content-between">
       <NavLink to="/" className={styles.link}>
         <span>Home</span>
       </NavLink>
@@ -17,12 +20,24 @@ export default function NavMenu(props) {
       <NavLink to="/ClinicChoose" className={styles.link}>
         <span>Find a Clinic</span>
       </NavLink>
-      <NavLink to="/auth/" className={styles.link}>
-        <span>Register</span>
-      </NavLink>
-      <NavLink to="/auth/login" className={styles.link}>
-        <span>Login</span>
-      </NavLink>
+      {props.data ? (
+        <>
+          <Image width={50} src={props.data.image} />
+          <NavLink to={`/${props.data.role}`} className={styles.name}>
+            <span>Hi, {props.data.name}</span>
+          </NavLink>
+          <VetArrowDown style={{cursor:"pointer"}}/>
+        </>
+      ) : (
+        <>
+          <NavLink to="/auth/" className={styles.link}>
+            <span>Register</span>
+          </NavLink>
+          <NavLink to="/auth/login" className={styles.link}>
+            <span>Login</span>
+          </NavLink>{" "}
+        </>
+      )}
     </div>
   );
 }

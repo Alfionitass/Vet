@@ -40,7 +40,7 @@ const configuration = {
     }
   },
 };
-
+//version 1.0.1
 const user = ({
     method = null, 
     data = null, 

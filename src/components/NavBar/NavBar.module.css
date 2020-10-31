@@ -18,7 +18,7 @@
     margin-left: 1rem;
 }
 
-.link {
+.link, .name {
     padding: 0.4rem 1.6rem;
     font-size: 16px;
     color: #ffffff;
