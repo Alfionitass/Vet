@@ -38,10 +38,10 @@ export default function NavDropdown(props) {
         </Dropdown.Toggle>
         <Dropdown.Menu className="dropdown-menu-right">
           <Dropdown.Item onClick={""} href="#/edit">
-            Edit
+            Profile
           </Dropdown.Item>
           <Dropdown.Item onClick={""} href="#/delete">
-            Delete
+            Logout
           </Dropdown.Item>
           <Dropdown.Item onClick={""} href="#/delete">
             Log Out
