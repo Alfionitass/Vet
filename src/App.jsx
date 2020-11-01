@@ -19,8 +19,38 @@ import { Container, Navbar } from "react-bootstrap";
 import Home from "./components/Home/Home";
 
 function App() {
-  const [data, setData] = useState();
-  // axios.get('http://localhost:3000/names').then(res => setData(res)).catch(res => res.response)
+  // state declaration
+  const [token, setToken] = useState(localStorage.getItem("VetToken") || "");
+  const [isLoading, setLoading] = useState(false);
+  const [postData, setData] = useState({});
+  const [errorMsg, setError] = useState();
+  const [passVisibility, setPassVisibility] = useState(0);
+
+  // function declaration
+  const HandleInput = (input) => {
+    input.preventDefault()
+    let data = { ...postData, [input.target.name]: input.target.value }
+    setData(data);
+  };
+
+  const SetVisibility = (res) => {
+    setPassVisibility(res);
+  };
+
+  const SubmitData = (option) => {
+    setLoading(true);
+    user({
+      method: option,
+      data: { ...postData },
+    }).then((res) => {
+      if (res.status === 400) {
+        setError(res.data.message);
+      } else {
+        setError("");
+        setToken(res.data.access_token);
+      }
+    });
+  };
 
   return (
     <>
@@ -29,7 +59,7 @@ function App() {
           <VetNavbar />
           <Switch>
             <Route path="/page1">
-                <Doctor />
+              <Doctor />
             </Route>
             <Route path="/page2">
               <Doctor2 />
@@ -38,7 +68,21 @@ function App() {
               <User1 />
             </Route>
             <Route path="/auth">
-              <Auth />
+              <Auth
+                function={{
+                  HandleInput: HandleInput,
+                  SetVisibility: SetVisibility,
+                  SubmitData: SubmitData,
+                  setLoading: setLoading,
+                }}
+                data={{
+                  token: token,
+                  isLoading: isLoading,
+                  postData: postData,
+                  errorMsg: errorMsg,
+                  passVisibility: passVisibility
+                }}
+              />
             </Route>
             <Route path="/DemoIcon">
               <DemoIcon />
@@ -48,7 +92,6 @@ function App() {
             </Route>
             <Route path="/BookingContent">
               <BookingContent />
-
             </Route>
             <Route>
               <Home />

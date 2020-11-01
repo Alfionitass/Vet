@@ -9,9 +9,9 @@ import NavMenu from './NavMenu'
 export default function NavBar() {
   const userData = useState(JSON.parse(localStorage.getItem('userData')));
   const [state, setstate] = useState(window.location.pathname);
-  useEffect(()=> {
-    console.log(userData[0])
-  })
+  // useEffect(()=> {
+  //   console.log(userData[0])
+  // })
   return (
     <Navbar expand="lg" className={styles.contain}>
       <Navbar.Brand>

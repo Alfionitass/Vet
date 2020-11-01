@@ -12,22 +12,24 @@ function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
-export default function Auth() {
+export default function Auth(props) {
   const [isLogin, setLogin] = useState(window.location.pathname === "/auth/login" ? true : false);
   const [token] = useState(localStorage.getItem('VetToken') || "");
   const history = useHistory();
 
-  useEffect(()=>{
-    token.length && user({
-      method: "self",
-      access_token: token
-    }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
-    token.length && history.push('/')
-  },[token])
+  // useEffect(()=>{
+  //   token.length && user({
+  //     method: "self",
+  //     access_token: token
+  //   }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
+  //   token.length && history.push('/')
+  // },[token])
   
-  useEffect(()=>{
-    console.log(window.location.pathname)
-  })
+  // useEffect(()=>{
+  //   console.log(props)
+  //   // console.log(window.location.pathname)
+  // },[])
+
   const setStatusLogin = (condition) => {
     setLogin(condition);
   };
@@ -69,7 +71,7 @@ export default function Auth() {
         <Switch>
           <Route exact path="/auth" component={Role} />
           <Route exact path="/auth/register/:id" component={Register} />
-          <Route exact path="/auth/login" component={Login} />
+          <Route exact path="/auth/login" render={() => <Login {...props}/>} />
         </Switch>
         <Row className="justify-content-center my-2">
           {isLogin ? (

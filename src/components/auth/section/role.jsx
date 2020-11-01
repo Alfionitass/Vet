@@ -12,24 +12,7 @@ export default function Role() {
   const [isLoading, setLoading] = useState(false);
   const [option, setOption] = useState(true);
   const [highlight, setHighlight] = useState(0);
-  // const [roleData, setRole] = useState({});
-  // const [cardData, setData] = useState({});
-
-  // useEffect(() => {
-  //   role("all").then(res => setRole(res?.data?.data))
-  // },[])
-
-  // useEffect(() => {
-  //   let data = {}
-  //   roleData.length && roleData.map(item => {
-  //     data[item.name] = {"name": item.name}
-  //   })
-  //   setData(data)
-  // },[roleData])
-
-  // useEffect(() => {
-  //   console.log(cardData)
-  // },[cardData])
+  
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {

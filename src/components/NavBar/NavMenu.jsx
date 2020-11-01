@@ -6,18 +6,12 @@ import { VetArrowDown } from "../../assets/icons";
 import NavDropdown from "./NavDropdown";
 export default function NavMenu(props) {
   const [isLogin, setLoginState] = useState(null);
-  useEffect(()=>{
-
-  },[isLogin])
 
   const Logout = () => {
     localStorage.clear();
     setLoginState(false);
   }
 
-  useEffect(()=>{
-    console.log(props)
-  })
   return (
     <div className="ml-auto d-flex flex-row align-items-center justify-content-between">
       <NavLink to="/" className={styles.link}>
@@ -32,7 +26,6 @@ export default function NavMenu(props) {
       <NavLink to="/ClinicChoose" className={styles.link}>
         <span>Find a Clinic</span>
       </NavLink>
-      {console.log(props.data)}
       {props.data ? (
         <>
           <Image width={50} src={props.data.image} />
