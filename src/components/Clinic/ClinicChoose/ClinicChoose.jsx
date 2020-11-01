@@ -7,9 +7,13 @@ import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai";
 
-export default function ClinicChoose() { 
+export default function ClinicChoose(props) { 
   const [ clinicData, setClinicData] = useState()
   useEffect(()=>{
+    props.SetBarState({
+      footer: true,
+      navbar: false
+    })
     clinic({method:'all'}).then(res=>(
       setClinicData(res?.data?.data)
     ))

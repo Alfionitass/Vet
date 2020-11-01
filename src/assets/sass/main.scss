@@ -49,6 +49,11 @@ html {
   overflow-y: scroll;
 }
 
+.hidden {
+  display:none !important;
+  transition: all 1s ease;
+}
+
 .App-logo {
   height: 10vmin;
   pointer-events: none;

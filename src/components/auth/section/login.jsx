@@ -32,6 +32,7 @@ const Login = ({
   useEffect(() => {
     postData?.email?.length && postData?.password?.length && setReady(false);
   }, [postData]);
+  
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {

@@ -6,14 +6,14 @@ import styles from "./NavBar.module.css";
 import { VetLogoSymbol } from "../../assets/icons";
 import NavMenu from './NavMenu'
 
-export default function NavBar() {
+export default function NavBar(props) {
   const userData = useState(JSON.parse(localStorage.getItem('userData')));
   const [state, setstate] = useState(window.location.pathname);
   // useEffect(()=> {
   //   console.log(userData[0])
   // })
   return (
-    <Navbar expand="lg" className={styles.contain}>
+    <Navbar expand="lg" className={`${styles.contain} ${!props.barState.navbar && "hidden" }`}>
       <Navbar.Brand>
         <Link to="/">
           <VetLogoSymbol color="#FDCB5A" />

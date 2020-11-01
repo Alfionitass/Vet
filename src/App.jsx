@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/sass/main.scss";
 import Doctor from "./components/doctor/profile";
 import Doctor2 from "./components/doctor/appointment";
-import Auth from "./components/auth";
+import Auth from "./pages/Auth";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import User1 from "./components/user/profile";
 import DemoIcon from "./demo/demoIcon";
@@ -25,6 +25,11 @@ function App() {
   const [postData, setData] = useState({});
   const [errorMsg, setError] = useState();
   const [passVisibility, setPassVisibility] = useState(0);
+
+  const [barState, SetBarState] = useState({
+    navbar : true,
+    footer: true
+  })
 
   // function declaration
   const HandleInput = (input) => {
@@ -52,11 +57,15 @@ function App() {
     });
   };
 
+  const handleFooter = (option) => {
+    console.log(option)
+  }
+
   return (
     <>
       <div className="App">
         <Router>
-          <VetNavbar />
+          <VetNavbar barState={barState}/>
           <Switch>
             <Route path="/page1">
               <Doctor />
@@ -69,6 +78,7 @@ function App() {
             </Route>
             <Route path="/auth">
               <Auth
+                SetBarState={SetBarState}
                 function={{
                   HandleInput: HandleInput,
                   SetVisibility: SetVisibility,
@@ -84,11 +94,11 @@ function App() {
                 }}
               />
             </Route>
-            <Route path="/DemoIcon">
+            <Route path="/DemoIcon" >
               <DemoIcon />
             </Route>
-            <Route path="/ClinicChoose">
-              <ClinicChoose />
+            <Route path="/ClinicChoose" >
+              <ClinicChoose SetBarState={SetBarState}/>
             </Route>
             <Route path="/BookingContent">
               <BookingContent />
@@ -97,9 +107,10 @@ function App() {
               <Home />
             </Route>
           </Switch>
+          <Footer handleFooter={handleFooter} data={"test"} barState={barState}/>
         </Router>
       </div>
-      <Footer />
+      
     </>
   );
 }
