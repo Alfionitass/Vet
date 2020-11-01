@@ -16,7 +16,8 @@ import {
 
 import UserProfile from '../reusable/profile'
 import doctorImg from "../../assets/img/doctorProfile.png";
-import "./doctor.css";
+// import "./doctor.css";
+// import "../../assets/sass/doctor.scss";
 import Swal from "sweetalert2";
 
 export default function Profile() {

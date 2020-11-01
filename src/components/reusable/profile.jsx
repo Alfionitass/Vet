@@ -1,9 +1,6 @@
 import React from "react";
 import { Badge, Card, Image, Col, Row, Button } from "react-bootstrap";
-import { IoIosBriefcase, IoMdWifi, IoIosLogOut } from "react-icons/io";
 import { VetSignal, VetBriefcase, VetPaw, VetSchedule, VetDoor} from "../../assets/icons"
-import { MdPets } from "react-icons/md";
-import { HiCalendar } from "react-icons/hi";
 import styles from "./profile.module.css";
 
 export default function Profile(props) {
