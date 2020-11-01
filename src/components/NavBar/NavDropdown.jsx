@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
-import { Image } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Image, Col, Dropdown, DropdownButton} from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
-import { VetArrowDown } from "../../assets/icons";
+import { VetArrowDown, VetDoor } from "../../assets/icons";
+import './custom.css'
 
 export default function NavDropdown(props) {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -25,6 +24,12 @@ export default function NavDropdown(props) {
     setValue(e);
   };
 
+  // useEffect(() => {
+  //   localStorage.getItem("token") && setLogin(true);
+  // }, [isLogin]);
+
+
+
   return (
     <>
       <Dropdown style={{ cursor: "pointer" }} menuAlign="left">
@@ -37,15 +42,17 @@ export default function NavDropdown(props) {
           <VetArrowDown style={{ cursor: "pointer" }} />
         </Dropdown.Toggle>
         <Dropdown.Menu className="dropdown-menu-right">
-          <Dropdown.Item onClick={""} href="#/edit">
-            Profile
-          </Dropdown.Item>
-          <Dropdown.Item onClick={""} href="#/delete">
-            Logout
-          </Dropdown.Item>
-          <Dropdown.Item onClick={""} href="#/delete">
-            Log Out
-          </Dropdown.Item>
+            <div className="dropdown-item d-flex f-col align-items-center">
+              <Col>
+                <Image src={props.data.image} width={50}/>
+              </Col>
+              <Col>
+                <h5 className="m-0 v-text-donker">{props.data.name}</h5>
+                <p className="m-0 v-text-donker">{props.data.phone}</p>
+              </Col>
+            </div>
+            <Dropdown.Item className="dropdown-item" onClick={props.logout}><VetDoor/><span className="mx-2">Logout</span></Dropdown.Item>
+            {/* <Link className="dropdown-item" to="/clinicChoose">Profile</Link> */}
         </Dropdown.Menu>
       </Dropdown>
     </>

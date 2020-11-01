@@ -18,12 +18,13 @@ export default function Auth() {
   const history = useHistory();
 
   useEffect(()=>{
-    user({
+    token.length && user({
       method: "self",
       access_token: token
     }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
     token.length && history.push('/')
   },[token])
+  
   useEffect(()=>{
     console.log(window.location.pathname)
   })

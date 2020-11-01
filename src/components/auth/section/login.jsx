@@ -20,8 +20,9 @@ export default function Login() {
   const history = useHistory();
 
   useEffect(()=>{
-    localStorage.setItem('VetToken',token)
-    user({
+    token.length && console.log("gg")
+    token.length && localStorage.setItem('VetToken',token)
+    token.length && user({
       method: "self",
       access_token: token
     }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
@@ -56,7 +57,8 @@ export default function Login() {
         setError("")
         setToken(res.data.access_token)
       }
-    })
+    }).then(res =>
+      console.log("this is token",token))
   };
 
   const handleInput = (input) => {

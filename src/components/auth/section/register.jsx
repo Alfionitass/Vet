@@ -45,8 +45,8 @@ export default function Register() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("VetToken", token);
-    user({
+    token.length && localStorage.setItem("VetToken", token);
+    token.length && user({
       method: "self",
       access_token: token
     }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
