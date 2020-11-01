@@ -2,7 +2,6 @@ import {AiOutlineFacebook,AiOutlineTwitter,AiOutlineInstagram} from 'react-icons
 import React,{useEffect} from "react"
 import Logo from "../../assets/Logo"
 import styles from "./Footer.module.css"
-import {Container} from 'react-bootstrap'
 
 const Footer = (props) =>{
     useEffect(() => {
