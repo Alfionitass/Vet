@@ -104,7 +104,7 @@ function App() {
               <BookingContent />
             </Route>
             <Route>
-              <Home />
+              <Home SetBarState={SetBarState}/>
             </Route>
           </Switch>
           <Footer handleFooter={handleFooter} data={"test"} barState={barState}/>

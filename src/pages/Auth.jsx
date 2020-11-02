@@ -20,7 +20,6 @@ export default function Auth(props) {
   };
 
   useEffect(() => {
-    console.log(props)
     props.SetBarState({
       footer: false,
       navbar: false
@@ -63,7 +62,7 @@ export default function Auth(props) {
         </Row>
         <Switch>
           <Route exact path="/auth" component={Role} />
-          <Route exact path="/auth/register/:id" component={Register} />
+          <Route exact path="/auth/register/:id" render={() => <Register {...props}/>} />
           <Route exact path="/auth/login" render={() => <Login {...props}/>} />
         </Switch>
         <Row className="justify-content-center my-2">

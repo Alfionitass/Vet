@@ -5,12 +5,9 @@ import styles from "./Footer.module.css"
 
 const Footer = (props) =>{
     useEffect(() => {
-        console.log("footer area")
-        console.log(props)
-    })
-    useEffect(() => {
         props.handleFooter(window.location.pathname)
     },[props])
+    
     return(
         <div 
             className={`d-flex flex-row justify-content-between align-items-center p-4 ${!props.barState.footer && "hidden" }`}
