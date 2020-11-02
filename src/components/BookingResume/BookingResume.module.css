@@ -1,0 +1,41 @@
+.title {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #dedede;
+}
+
+.img {
+    width: 38rem;
+    height: auto;
+    margin-right: 1.5rem;
+}
+
+.resume {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid #dedede;
+}
+
+.font {
+    font-size: 18px;
+}
+
+.list {
+    font-size: 18px;
+    position: relative;
+    left: 1rem;
+}
+
+.btn {
+    font-weight: bold;
+    padding: 0.5rem 13.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #FDCB5A;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
