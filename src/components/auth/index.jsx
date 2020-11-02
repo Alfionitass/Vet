@@ -17,18 +17,7 @@ export default function Auth(props) {
   const [token] = useState(localStorage.getItem('VetToken') || "");
   const history = useHistory();
 
-  // useEffect(()=>{
-  //   token.length && user({
-  //     method: "self",
-  //     access_token: token
-  //   }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
-  //   token.length && history.push('/')
-  // },[token])
-  
-  // useEffect(()=>{
-  //   console.log(props)
-  //   // console.log(window.location.pathname)
-  // },[])
+
 
   const setStatusLogin = (condition) => {
     setLogin(condition);
@@ -69,9 +58,9 @@ export default function Auth(props) {
           </Nav>
         </Row>
         <Switch>
-          <Route exact path="/auth" component={Role} />
-          <Route exact path="/auth/register/:id" component={Register} />
-          <Route exact path="/auth/login" render={() => <Login {...props}/>} />
+        <Route exact path={`/${process.env.PUBLIC_URL}/auth`} component={Role} />
+          <Route exact path={`/${process.env.PUBLIC_URL}/auth/register/:id`} render={() => <Register {...props}/>} />
+          <Route exact path={`/${process.env.PUBLIC_URL}/auth/login`}  render={() => <Login {...props}/>} />
         </Switch>
         <Row className="justify-content-center my-2">
           {isLogin ? (

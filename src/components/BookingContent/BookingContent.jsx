@@ -35,7 +35,7 @@ export default function BookingContent() {
         <Container className="mt-5 mb-5">
             <div className="d-flex flex-row justify-content-between mb-3">
                 <h1>Kalimanjaro Ruah Tunah Hospital</h1>
-                <Link to="/booking/detail/resume">
+                <Link to={`${process.env.PUBLIC_URL}/booking/detail/resume`}>
                     <button className={styles.btn}>Booking Now</button>
                 </Link>
             </div>

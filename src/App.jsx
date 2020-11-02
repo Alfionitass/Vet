@@ -14,7 +14,7 @@ import VetNavbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import ClinicChoose from "./components/Clinic/ClinicChoose/ClinicChoose";
 import { user } from "./database";
-import BookingDetail from "./pages/BookingDetail"
+import BookingDetail from "./pages/BookingDetail";
 import BookingResume from "./pages/BookingResume";
 import { Container, Navbar } from "react-bootstrap";
 import Home from "./components/Home/Home";
@@ -28,14 +28,14 @@ function App() {
   const [passVisibility, setPassVisibility] = useState(0);
 
   const [barState, SetBarState] = useState({
-    navbar : true,
-    footer: true
-  })
+    navbar: true,
+    footer: true,
+  });
 
   // function declaration
   const HandleInput = (input) => {
-    input.preventDefault()
-    let data = { ...postData, [input.target.name]: input.target.value }
+    input.preventDefault();
+    let data = { ...postData, [input.target.name]: input.target.value };
     setData(data);
   };
 
@@ -59,25 +59,26 @@ function App() {
   };
 
   const handleFooter = (option) => {
-    console.log(option)
-  }
-
+    console.log(option);
+  };
+  console.log(process.env);
+  console.log(`${process.env.PUBLIC_URL}/page1`)
   return (
     <>
       <div className="App">
         <Router>
-          <VetNavbar barState={barState}/>
+          <VetNavbar barState={barState} />
           <Switch>
-            <Route path={`/${process.env.REACT_APP_PATH}page1`}>
+            <Route path={`${process.env.PUBLIC_URL}/page1`}>
               <Doctor />
             </Route>
-            <Route path={`/${process.env.REACT_APP_PATH}page2`}>
+            <Route path={`${process.env.PUBLIC_URL}/page2`}>
               <Doctor2 />
             </Route>
-            <Route path={`/${process.env.REACT_APP_PATH}page3`}>
+            <Route path={`${process.env.PUBLIC_URL}/page3`}>
               <User1 />
             </Route>
-            <Route path={`/${process.env.REACT_APP_PATH}auth`}>
+            <Route path={`${process.env.PUBLIC_URL}/auth`}>
               <Auth
                 SetBarState={SetBarState}
                 function={{
@@ -91,30 +92,29 @@ function App() {
                   isLoading: isLoading,
                   postData: postData,
                   errorMsg: errorMsg,
-                  passVisibility: passVisibility
+                  passVisibility: passVisibility,
                 }}
               />
             </Route>
-            <Route path={`/${process.env.REACT_APP_PATH}DemoIcon`} >
+            <Route path={`${process.env.PUBLIC_URL}/DemoIcon`}>
               <DemoIcon />
             </Route>
-            <Route exact path={`/${process.env.REACT_APP_PATH}booking`} >
-              <ClinicChoose SetBarState={SetBarState}/>
+            <Route exact path={`${process.env.PUBLIC_URL}/booking`}>
+              <ClinicChoose SetBarState={SetBarState} />
             </Route>
-            <Route path={`/${process.env.REACT_APP_PATH}booking/:id`}>
+            <Route path={`${process.env.PUBLIC_URL}/booking/:id`}>
               <BookingDetail />
             </Route>
-            <Route path={`/${process.env.REACT_APP_PATH}booking/detail/resume`}>
+            <Route path={`${process.env.PUBLIC_URL}/booking/detail/resume`}>
               <BookingResume />
             </Route>
-            <Route exact path={`/${process.env.REACT_APP_PATH}`}>
-              <Home SetBarState={SetBarState}/>
+            <Route exact path={`${process.env.PUBLIC_URL}/`}>
+              <Home SetBarState={SetBarState} />
             </Route>
           </Switch>
-          <Footer handleFooter={handleFooter} data={"test"} barState={barState}/>
         </Router>
       </div>
-      
+      <Footer handleFooter={handleFooter} data={"test"} barState={barState} />
     </>
   );
 }

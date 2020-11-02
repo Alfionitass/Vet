@@ -37,7 +37,7 @@ export default function Auth(props) {
             className="d-flex align-items-center justify-content-end w-100 mt-4 register-nav"
           >
             <Nav.Item>
-              <Nav.Link href="/home" className="vet-title-2">
+              <Nav.Link href={`${process.env.PUBLIC_URL}/home`} className="vet-title-2">
                 Home
               </Nav.Link>
             </Nav.Item>
@@ -61,16 +61,16 @@ export default function Auth(props) {
           </Nav>
         </Row>
         <Switch>
-          <Route exact path="/auth" component={Role} />
-          <Route exact path="/auth/register/:id" render={() => <Register {...props}/>} />
-          <Route exact path="/auth/login" render={() => <Login {...props}/>} />
+          <Route exact path={`${process.env.PUBLIC_URL}/auth`} component={Role} />
+          <Route exact path={`${process.env.PUBLIC_URL}/auth/register/:id`} render={() => <Register {...props}/>} />
+          <Route exact path={`${process.env.PUBLIC_URL}/auth/login`}  render={() => <Login {...props}/>} />
         </Switch>
         <Row className="justify-content-center my-2">
           {isLogin ? (
             <p className="vet-body-1 v-text-donker">
               Don't have an account? Please{" "}
               <Link
-                to={`/auth`}
+                to={`${process.env.PUBLIC_URL}/auth`}
                 onClick={() => setStatusLogin(false)}
                 className="v-text-mustard"
               >
@@ -81,7 +81,7 @@ export default function Auth(props) {
             <p className="vet-body-1 v-text-donker">
               Already have account? Please{" "}
               <Link
-                to={`/auth/login`}
+                to={`${process.env.PUBLIC_URL}/auth/login`}
                 onClick={() => setStatusLogin(true)}
                 className="v-text-mustard"
               >

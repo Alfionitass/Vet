@@ -18,7 +18,7 @@ export default function Role() {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
         setLoading(false);
-        history.push(`/auth/register/${highlight}`);
+        history.push(`${process.env.PUBLIC_URL}/auth/register/${highlight}`);
       });
     }
   }, [highlight, isLoading]);

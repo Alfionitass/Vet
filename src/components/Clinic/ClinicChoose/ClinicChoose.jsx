@@ -12,7 +12,7 @@ export default function ClinicChoose(props) {
   useEffect(()=>{
     props.SetBarState({
       footer: true,
-      navbar: false
+      navbar: true
     })
     clinic({method:'all'}).then(res=>(
       setClinicData(res?.data?.data)
@@ -76,7 +76,7 @@ export default function ClinicChoose(props) {
     </Card.Body>
     
     <Card.Footer style={{backgroundColor:"white"}}>
-      <Link to={`/booking/${value._id}/`}>
+      <Link to={`${process.env.PUBLIC_URL}/booking/${value._id}/`}>
         <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
           Book now
         </Button>

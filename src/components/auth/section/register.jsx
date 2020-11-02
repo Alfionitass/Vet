@@ -50,7 +50,7 @@ export default function Register() {
       method: "self",
       access_token: token
     }).then(res => localStorage.setItem('userData',JSON.stringify({...res.data.data})))
-    token.length && history.push('/')
+    token.length && history.push(`${process.env.PUBLIC_URL}/`);
   }, [token]);
 
   useEffect(() => {

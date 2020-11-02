@@ -26,7 +26,7 @@ const Login = ({
       }).then((res) =>
         localStorage.setItem("userData", JSON.stringify({ ...res.data.data }))
       );
-    token.length && history.push("/");
+    token.length && history.push(`${process.env.PUBLIC_URL}/`);
   }, [token]);
 
   useEffect(() => {
