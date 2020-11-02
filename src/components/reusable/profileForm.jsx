@@ -39,7 +39,7 @@ export default function ProfileForm({ config: { mode } }) {
               </Form.Group>
             </div>
           </Card.Body>
-          {mode === "doctor" && (
+          {(mode === "doctor" || mode === "clinic") && (
             <>
               <Card.Header
                 style={{ backgroundColor: "unset" }}
