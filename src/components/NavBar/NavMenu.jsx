@@ -23,7 +23,7 @@ export default function NavMenu(props) {
       <NavLink to="/doctor" className={styles.link}>
         <span>Doctor</span>
       </NavLink>
-      <NavLink to="/ClinicChoose" className={styles.link}>
+      <NavLink to="/booking" className={styles.link}>
         <span>Find a Clinic</span>
       </NavLink>
       {props.data ? (

@@ -59,7 +59,7 @@ export default function ClinicChoose(props) {
   console.log("ini clinic",clinicData)
   const r = clinicData && clinicData
   // console.log(r)
-  const kartu = clinicData && clinicData.map((value,index)=>(            
+  const kartu = clinicData && clinicData.map((value)=>(            
     <Card style={{ width: '16rem'}} className="mt-4 mb-4 mr-3 ml-2">
     <Card.Img variant="top" src={value.image} />
     <Card.Body>
@@ -74,12 +74,13 @@ export default function ClinicChoose(props) {
         Buka 09:00-12:00
       </Card.Text>
     </Card.Body>
+    
     <Card.Footer style={{backgroundColor:"white"}}>
-      <Link to='/BookingContent'>
-      <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
-        Book now
-      </Button>
-    </Link>
+      <Link to={`/booking/${value._id}/`}>
+        <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
+          Book now
+        </Button>
+      </Link>
     </Card.Footer>
   </Card>  
   ))

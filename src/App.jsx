@@ -14,7 +14,8 @@ import VetNavbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import ClinicChoose from "./components/Clinic/ClinicChoose/ClinicChoose";
 import { user } from "./database";
-import BookingContent from "./components/BookingDetail/BookingContent";
+import BookingDetail from "./pages/BookingDetail"
+import BookingResume from "./pages/BookingResume";
 import { Container, Navbar } from "react-bootstrap";
 import Home from "./components/Home/Home";
 
@@ -67,16 +68,16 @@ function App() {
         <Router>
           <VetNavbar barState={barState}/>
           <Switch>
-            <Route path="/page1">
+            <Route path={`/${process.env.REACT_APP_PATH}page1`}>
               <Doctor />
             </Route>
-            <Route path="/page2">
+            <Route path={`/${process.env.REACT_APP_PATH}page2`}>
               <Doctor2 />
             </Route>
-            <Route path="/page3">
+            <Route path={`/${process.env.REACT_APP_PATH}page3`}>
               <User1 />
             </Route>
-            <Route path="/auth">
+            <Route path={`/${process.env.REACT_APP_PATH}auth`}>
               <Auth
                 SetBarState={SetBarState}
                 function={{
@@ -94,16 +95,19 @@ function App() {
                 }}
               />
             </Route>
-            <Route path="/DemoIcon" >
+            <Route path={`/${process.env.REACT_APP_PATH}DemoIcon`} >
               <DemoIcon />
             </Route>
-            <Route path="/ClinicChoose" >
+            <Route exact path={`/${process.env.REACT_APP_PATH}booking`} >
               <ClinicChoose SetBarState={SetBarState}/>
             </Route>
-            <Route path="/BookingContent">
-              <BookingContent />
+            <Route path={`/${process.env.REACT_APP_PATH}booking/:id`}>
+              <BookingDetail />
             </Route>
-            <Route>
+            <Route path={`/${process.env.REACT_APP_PATH}booking/detail/resume`}>
+              <BookingResume />
+            </Route>
+            <Route exact path={`/${process.env.REACT_APP_PATH}`}>
               <Home SetBarState={SetBarState}/>
             </Route>
           </Switch>

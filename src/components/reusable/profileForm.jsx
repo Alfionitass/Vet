@@ -32,10 +32,6 @@ export default function ProfileForm({ config: { mode } }) {
               <p className="justify-self-end">Upload Image</p>
               <Form.Group className="mb-4" id="status">
                 <Form.Text>Upload</Form.Text>
-                <Form.Control
-                  type="file"
-                  // value="Alvin Mantovani"
-                />
               </Form.Group>
             </div>
           </Card.Body>

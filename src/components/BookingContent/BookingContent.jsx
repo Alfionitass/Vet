@@ -1,22 +1,43 @@
-import React, { useState } from 'react';
-import { Row, Col, Card, Modal, Form, Image } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from "react-router-dom" ;
+import { Container, Row, Col, Card, Modal, Form, Image } from "react-bootstrap";
 import rs from "../../assets/img/rs.png";
 import dc from "../../assets/img/doctor.png";
 import dog from "../../assets/img/dog.png";
 import { FaCheckCircle, FaPlusCircle } from "react-icons/fa";
+import { reservation } from '../../database';
 import styles from "./BookingContent.module.css";
 
 export default function BookingContent() {
+    const [token, setToken] = useState(localStorage.getItem("VetToken"));
+    const [ bookingData, setBookingData] = useState({});
+
+    const { id } = useParams();
+    console.log("idnya", id);
+
+
+    useEffect(()=>{
+        reservation({
+            method:'find',
+            id: id
+        }).then(res=>(
+          setBookingData(console.log("isi reservationnya", res?.data?.data))
+        ))
+      },[id] );
+    console.log("data booking", bookingData);
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
-        <div className={styles.content}>
+        <Container className="mt-5 mb-5">
             <div className="d-flex flex-row justify-content-between mb-3">
                 <h1>Kalimanjaro Ruah Tunah Hospital</h1>
-                <button className={styles.btn}>Booking Now</button>
+                <Link to="/booking/detail/resume">
+                    <button className={styles.btn}>Booking Now</button>
+                </Link>
             </div>
             <h3 className={styles.h3}>General Information</h3>
             <div className="d-flex flex-row mb-4">
@@ -25,8 +46,8 @@ export default function BookingContent() {
                     <h3>Visit Information</h3>
                     <div className="mb-4">
                         <p className={styles.font}>Day Visit</p>
-                        <Row className="d-flex flex-row">
-                            <Col md="3" className="mb-3">
+                        <Row>
+                            <Col md="4" className="mb-3">
                                 <Card className={styles.cardDay}>
                                     <Card.Body className={styles.cardBody}>
                                         <Card.Text className="p-0 m-0">
@@ -36,7 +57,7 @@ export default function BookingContent() {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md="3" className="mb-3">
+                            <Col md="4" className="mb-3">
                                 <Card className={styles.cardDay}>
                                     <Card.Body className={styles.cardBody}>
                                         <Card.Text className="p-0 m-0">
@@ -46,7 +67,7 @@ export default function BookingContent() {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md="3" className="mb-3 ">
+                            <Col md="4" className="mb-3 ">
                                 <Card className={styles.cardDay}>
                                     <Card.Body className={styles.cardBody}>
                                         <Card.Text className="p-0 m-0">
@@ -56,7 +77,7 @@ export default function BookingContent() {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md="3" className="mb-3" >
+                            <Col md="4" className="mb-3" >
                                 <Card className={styles.cardDay}>
                                     <Card.Body className={styles.cardBody}>
                                         <Card.Text className="p-0 m-0">
@@ -66,7 +87,7 @@ export default function BookingContent() {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md="3" >
+                            <Col md="4" >
                                 <Card className={styles.cardDay}>
                                     <Card.Body className={styles.cardBody}>
                                         <Card.Text className="p-0 m-0">
@@ -76,7 +97,7 @@ export default function BookingContent() {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md="3" >
+                            <Col md="4" >
                                 <Card className={styles.cardDay}>
                                     <Card.Body className={styles.cardBody}>
                                         <Card.Text className="p-0 m-0">
@@ -86,7 +107,7 @@ export default function BookingContent() {
                                     </Card.Body>
                                 </Card>
                             </Col>
-                            <Col md="3" >
+                            <Col md="4" >
                                 <Card className={styles.cardDay}>
                                     <Card.Body className={styles.cardBody}>
                                         <Card.Text className="p-0 m-0">
@@ -307,6 +328,6 @@ export default function BookingContent() {
                     </Col>
                 </Row>
             </div>
-        </div>
+        </Container>
     )
 }

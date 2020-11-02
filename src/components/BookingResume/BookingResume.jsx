@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Image } from "react-bootstrap";
 import Swal from "sweetalert2";
-import rs from "../../../assets/img/rs.png"
+import rs from "../../assets/img/rs.png"
 import styles from "./BookingResume.module.css";
 
 export default function BookingResume() {
@@ -16,7 +16,7 @@ export default function BookingResume() {
         })
     }
     return (
-        <Container>
+        <Container className="mt-5 mb-5">
             <h1 className={styles.title}>Booking Resume</h1>
             <h3>Kalimanjaro Ruah Tanah Hospital</h3>
             <div className={styles.resume}>
