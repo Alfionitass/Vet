@@ -82,7 +82,7 @@ export default function ClinicChoose() {
   return (
     <>    
     <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
-    <Row className="justify-content-end">
+    <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
       {dropDownLokasi}
       {binatangPeliharaan}    
       {buttonSearch}
