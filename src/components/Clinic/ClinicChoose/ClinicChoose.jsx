@@ -57,13 +57,12 @@ export default function ClinicChoose() {
   // console.log(r)
   const kartu = clinicData && clinicData.map((value)=>(            
     <Card style={{ width: '16rem'}} className="mt-4 mb-4 mr-3 ml-2">
-    <Card.Img variant="top" src={value.image} />
+    <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
     <Card.Body>
       <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>
         {value.clinic.city}
       </Badge></h6>
-      <Card.Title>
-        RS Kalimanjaro Ruah Tunah
+      <Card.Title>        
         {value.name}
       </Card.Title>
       <Card.Text>
