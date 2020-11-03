@@ -11,11 +11,12 @@ function simulateNetworkRequest() {
 }
 
 const Login = ({
-  data: { token, isLoading, postData, passVisibility, errorMsg },
-  function: { setLoading, SetVisibility, SubmitData, HandleInput },
+  data: { token, isLoading, postData, passVisibility, errorMsg, userData },
+  function: { setLoading, SetVisibility, SubmitData, HandleInput, SetUserData },
 }) => {
   const [readyState, setReady] = useState(true);
   const history = useHistory();
+  
   useEffect(() => {
     token.length && console.log("gg");
     token.length && localStorage.setItem("VetToken", token);
@@ -24,9 +25,9 @@ const Login = ({
         method: "self",
         access_token: token,
       }).then((res) =>
-        localStorage.setItem("userData", JSON.stringify({ ...res.data.data }))
+        localStorage.setItem("userData", JSON.stringify({ ...res.data.data.user }))
       );
-    token.length && history.push(`${process.env.PUBLIC_URL}/`);
+    
   }, [token]);
 
   useEffect(() => {

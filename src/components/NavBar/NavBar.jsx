@@ -8,6 +8,11 @@ import NavMenu from './NavMenu'
 
 export default function NavBar(props) {
   const userData = useState(JSON.parse(localStorage.getItem('userData')));
+  useEffect(() => {
+    //console.log(props)
+
+  },[props])
+  //console.log("NAVBAR DATA",JSON.parse(localStorage.getItem('userData')))
   const [state, setstate] = useState(window.location.pathname);
   // useEffect(()=> {
   //   console.log(userData[0])

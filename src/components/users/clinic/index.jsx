@@ -1,13 +1,12 @@
 import React from "react";
 
 import { Switch, Route, Link } from "react-router-dom";
-import UserProfile from "../../reusable/profile";
-import AppointmentBook from "./book";
-import Approval from "./approval";
+
+import { ClinicApproval, ClinicBook } from './appointment'
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
 
-export default function Appointment() {
+export function Clinic() {
   return (
     <Card>
       <Card.Header className="nav--menu">
@@ -38,11 +37,11 @@ export default function Appointment() {
       </Card.Header>
       <Switch>
         <Route path={`${process.env.PUBLIC_URL}/user/veterinary/book`}>
-          <AppointmentBook />
+          <ClinicBook />
         </Route>
         <Route
           path={`${process.env.PUBLIC_URL}/user/veterinary/approval`}
-          component={Approval}
+          component={ClinicApproval}
         />
       </Switch>
     </Card>

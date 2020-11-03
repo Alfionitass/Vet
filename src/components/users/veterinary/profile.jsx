@@ -6,9 +6,9 @@ import {
   Col
 } from "react-bootstrap";
 
-import UserProfile from '../reusable/profile'
-import doctorImg from "../../assets/img/doctorProfile.png";
-import ProfileForm from '../reusable/profileForm'
+import UserProfile from '../../reusable/profile'
+import doctorImg from "../../../assets/img/doctorProfile.png";
+import ProfileForm from '../../reusable/profileForm'
 // import "./doctor.css";
 // import "../../assets/sass/doctor.scss";
 import Swal from "sweetalert2";

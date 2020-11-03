@@ -70,7 +70,7 @@ export default function Home(props) {
               </p>
               <button
                 type="button"
-                class="btn btn-warning"
+                className="btn btn-warning"
                 style={{
                   background: "#FDCB5A",
                   color: "black",
@@ -81,8 +81,8 @@ export default function Home(props) {
               </button>
             </div>
           </div>
-          <div class="col-md-6 col-xs-12" className={classes.dog}>
-            <img src={Dog} class="img-fluid " />
+          <div className="col-md-6 col-xs-12" className={classes.dog}>
+            <img src={Dog} className="img-fluid " />
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default function Home(props) {
               <img
                 id="one"
                 src={Vector2}
-                class="img-fluid"
+                className="img-fluid"
                 alt=""
                 style={{ transform: "rotate(152.15deg)", height: "100%" }}
               />
@@ -147,7 +147,7 @@ export default function Home(props) {
               <span>
                 <BiCalendar />
               </span>
-              <img id="two" src={Vector2} class="img-fluid" alt="" />
+              <img id="two" src={Vector2} className="img-fluid" alt="" />
             </div>
 
             <div className={classes.serviceText}>
@@ -158,7 +158,7 @@ export default function Home(props) {
           <div className="col-md-4 col-xs-12">
             <div className={classes.serviceIcon}>
               <img
-                class="img-fluid doctor"
+                className="img-fluid doctor"
                 src={Doctor}
                 style={{
                   position: "absolute",
@@ -169,7 +169,7 @@ export default function Home(props) {
               />
               <img
                 id="three"
-                class="img-fluid"
+                className="img-fluid"
                 src={Vector2}
                 style={{
                   transform: "rotate(-54.83deg)",
@@ -187,15 +187,15 @@ export default function Home(props) {
         <div className="row" style={{ width: "80%", margin: "3em auto" }}>
           <div className="col-md-6 col-xs-12" style={{ position: "relative" }}>
             <div className={classes.blue}>
-              <img class="img-fluid" src={Vector3} alt="" />
+              <img className="img-fluid" src={Vector3} alt="" />
             </div>
             <div className={classes.yellow}>
               {" "}
-              <img class="img-fluid" src={Vector4} alt="" />
+              <img className="img-fluid" src={Vector4} alt="" />
             </div>
             <div className={classes.cat}>
               {" "}
-              <img class="img-fluid" src={Cat} alt="" />
+              <img className="img-fluid" src={Cat} alt="" />
             </div>
           </div>
           <div className="col-md-6 col-xs-12" style={{ marginTop: "5em" }}>
@@ -224,10 +224,10 @@ export default function Home(props) {
           <div className="col-md-6 col-xs-12 ">
             <div className={classes.klinik}>
               {klinik.slice(0, 2).map((item) => (
-                <div class="card" style={{ width: "18rem", margin: "0.5em" }}>
-                  <img src={item.foto} class="card-img-top" alt="..." />
+                <div key={item.lokasi} className="card" style={{ width: "18rem", margin: "0.5em" }}>
+                  <img src={item.foto} className="card-img-top" alt="..." />
                   <div
-                    class="card-body"
+                    className="card-body"
                     style={{
                       display: "flex",
                       flexDirection: "column",
@@ -235,13 +235,13 @@ export default function Home(props) {
                     }}
                   >
                     <div>
-                      <h5 class="card-title">{item.name}</h5>
-                      <p class="card-text">Buka {item.time}</p>
+                      <h5 className="card-title">{item.name}</h5>
+                      <p className="card-text">Buka {item.time}</p>
                     </div>
                     <div>
                       <a
                         href="#"
-                        class="btn btn-warning"
+                        className="btn btn-warning"
                         style={{
                           background: "#FDCB5A",
                           color: "black",

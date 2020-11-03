@@ -6,12 +6,11 @@ import { VetArrowDown } from "../../assets/icons";
 import NavDropdown from "./NavDropdown";
 export default function NavMenu(props) {
   const [isLogin, setLoginState] = useState(null);
-
+  const [role] = useState(JSON.parse(localStorage.getItem('userData'))?.role || "doctor")
   const Logout = () => {
     localStorage.clear();
     setLoginState(false);
   }
-
   return (
     <div className="ml-auto d-flex flex-row align-items-center justify-content-between">
       <NavLink to={`${process.env.PUBLIC_URL}/booking`} className={styles.link}>
@@ -19,9 +18,9 @@ export default function NavMenu(props) {
       </NavLink>
       <NavLink to={`${process.env.PUBLIC_URL}/clinic`} className={styles.link}>
         <span>Clinic Chat</span>
-      </NavLink>
-      <NavLink to={`${process.env.PUBLIC_URL}/doctor`} className={styles.link}>
-        <span>Doctor</span>
+      </NavLink>  
+      <NavLink to={`${process.env.PUBLIC_URL}/user/${role}`} className={styles.link}>
+      <span>{role[0].toUpperCase()}{role.slice(1)}</span>
       </NavLink>
       <NavLink to={`${process.env.PUBLIC_URL}/booking`} className={styles.link}>
         <span>Find a Clinic</span>

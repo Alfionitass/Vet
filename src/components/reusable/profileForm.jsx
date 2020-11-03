@@ -35,7 +35,7 @@ export default function ProfileForm({ config: { mode } }) {
               </Form.Group>
             </div>
           </Card.Body>
-          {(mode === "doctor" || mode === "clinic") && (
+          {(mode === "veterinary" || mode === "clinic") && (
             <>
               <Card.Header
                 style={{ backgroundColor: "unset" }}
@@ -47,7 +47,7 @@ export default function ProfileForm({ config: { mode } }) {
               <Card.Body>
                 <Form.Group className="mb-4" id="status">
                   <Form.Text>Status</Form.Text>
-                  <ButtonGroup toggle name="radiogroup">
+                  <ButtonGroup toggle name="radiogroup" className="d-flex align-items-center">
                     <ToggleButton
                       className="d-flex justify-content-center align-items-center"
                       key={1}
@@ -59,9 +59,9 @@ export default function ProfileForm({ config: { mode } }) {
                       onChange={(e) => setStatus(e.currentTarget.value)}
                     >
                       <CgSun size={"24px"} />
-                      <label className="mx-3">
-                        {mode === "doctor" ? "Active" : "Buka"}
-                      </label>
+                      <span className="mx-3 my-0">
+                        {mode === "veterinary" ? "Active" : "Buka"}
+                      </span>
                     </ToggleButton>
                     <ToggleButton
                       className="d-flex justify-content-center align-items-center"
@@ -74,15 +74,15 @@ export default function ProfileForm({ config: { mode } }) {
                       onChange={(e) => setStatus(e.currentTarget.value)}
                     >
                       <CgUnavailable size={"24px"} />
-                      <label className="mx-3">
-                        {mode === "doctor" ? "Offline" : "Tutup"}
-                      </label>
+                      <span className="mx-3 my-0">
+                        {mode === "veterinary" ? "Offline" : "Tutup"}
+                      </span>
                     </ToggleButton>
                   </ButtonGroup>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect1">
                   <Form.Text>
-                    Waktu {mode === "doctor" ? "Aktif" : "Buka"}
+                    Waktu {mode === "veterinary" ? "Aktif" : "Buka"}
                   </Form.Text>
                   <Form.Control as="select">
                     <option>15</option>

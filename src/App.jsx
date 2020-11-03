@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/sass/main.scss";
-import Doctor from "./components/doctor/profile";
-import Doctor2 from "./components/doctor/appointment";
 import Auth from "./pages/Auth";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import User1 from "./components/user/profile";
+
 import DemoIcon from "./demo/demoIcon";
 import {} from "./assets/icons";
 import VetNavbar from "./components/NavBar/NavBar";
-
 import Footer from "./components/Footer/Footer";
 import ClinicChoose from "./components/Clinic/ClinicChoose/ClinicChoose";
 import { user } from "./database";
@@ -18,20 +15,33 @@ import BookingDetail from "./pages/BookingDetail";
 import BookingResume from "./pages/BookingResume";
 import { Container, Navbar } from "react-bootstrap";
 import Home from "./components/Home/Home";
+import Users from "./pages/Users/";
+import { useHistory, Redirect  } from "react-router-dom";
 
 function App() {
+  
   // state declaration
   const [token, setToken] = useState(localStorage.getItem("VetToken") || "");
   const [isLoading, setLoading] = useState(false);
+  const [isLogin, setLogin] = useState(false)
   const [postData, setData] = useState({});
   const [errorMsg, setError] = useState();
+  const [userData, SetUserData] = useState(
+    localStorage.getItem("userData") || ""
+  );
   const [passVisibility, setPassVisibility] = useState(0);
-
+  const [userDatas, SetUserDatas] = useState(
+    localStorage.getItem("userData2") || ""
+  );
   const [barState, SetBarState] = useState({
     navbar: true,
     footer: true,
   });
 
+  const history = useHistory();
+  useEffect(() => {
+    userDatas && setLogin(true)
+  }, [userDatas]);
   // function declaration
   const HandleInput = (input) => {
     input.preventDefault();
@@ -48,35 +58,47 @@ function App() {
     user({
       method: option,
       data: { ...postData },
-    }).then((res) => {
-      if (res.status === 400) {
-        setError(res.data.message);
-      } else {
-        setError("");
-        setToken(res.data.access_token);
-      }
-    });
+    })
+      .then((res) => {
+        if (res.status === 400) {
+          setError(res.data.message);
+        } else {
+          setError("");
+          setToken(res.data.access_token);
+          return res.data.access_token;
+        }
+      })
+      .then((token) => {
+        user({
+          method: "self",
+          access_token: token,
+        }).then((res) => {
+          localStorage.setItem(
+            "userData2",
+            JSON.stringify({ ...res.data.data.user })
+          );
+          console.log("apicall apps",res.data.data.user)
+          SetUserDatas({ ...res.data.data.user });
+        });
+      });
   };
 
   const handleFooter = (option) => {
-    console.log(option);
+    //console.log(option);
   };
-  console.log(process.env);
-  console.log(`${process.env.PUBLIC_URL}/page1`)
   return (
     <>
+      
       <div className="App">
         <Router>
-          <VetNavbar barState={barState} />
+        {/* {isLogin && <Redirect to={`${process.env.PUBLIC_URL}/`} />} */}
+          <VetNavbar barState={barState} data={{
+            isLogin: isLogin,
+            userDatas: userDatas,
+          }}/>
           <Switch>
-            <Route path={`${process.env.PUBLIC_URL}/page1`}>
-              <Doctor />
-            </Route>
-            <Route path={`${process.env.PUBLIC_URL}/page2`}>
-              <Doctor2 />
-            </Route>
-            <Route path={`${process.env.PUBLIC_URL}/page3`}>
-              <User1 />
+            <Route path={`${process.env.PUBLIC_URL}/user/:role`}>
+              <Users/>
             </Route>
             <Route path={`${process.env.PUBLIC_URL}/auth`}>
               <Auth
@@ -86,6 +108,7 @@ function App() {
                   SetVisibility: SetVisibility,
                   SubmitData: SubmitData,
                   setLoading: setLoading,
+                  SetUserData: SetUserData,
                 }}
                 data={{
                   token: token,
@@ -93,6 +116,8 @@ function App() {
                   postData: postData,
                   errorMsg: errorMsg,
                   passVisibility: passVisibility,
+                  userData: userData,
+                  isLogin: isLogin,
                 }}
               />
             </Route>

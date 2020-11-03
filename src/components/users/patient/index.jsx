@@ -2,12 +2,12 @@ import React from "react";
 
 import { Switch, Route, Link } from "react-router-dom";
 import UserProfile from "../../reusable/profile";
-import AppointmentBook from "./book";
-import Approval from "./approval";
+import AppointmentBook from "./appointment/book";
+import Approval from "./appointment/history";
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
 
-export default function Appointment() {
+export default function Appointment(props) {
   return (
     <Card>
       <Card.Header className="nav--menu">
@@ -21,7 +21,7 @@ export default function Appointment() {
         >
           <Nav.Item>
             <Nav.Link href="#book" onClick={(e) => console.log(e)}>
-              <Link to={`${process.env.PUBLIC_URL}/user/veterinary/book`}>
+              <Link to={`${process.env.PUBLIC_URL}/user/patient/book`}>
                 Book from Pasien
               </Link>
             </Nav.Link>
@@ -29,7 +29,7 @@ export default function Appointment() {
 
           <Nav.Item>
             <Nav.Link href="#approval">
-              <Link to={`${process.env.PUBLIC_URL}/user/veterinary/approval`}>
+              <Link to={`${process.env.PUBLIC_URL}/user/patient/approval`}>
                 Approval
               </Link>
             </Nav.Link>
@@ -37,11 +37,11 @@ export default function Appointment() {
         </Nav>
       </Card.Header>
       <Switch>
-        <Route path={`${process.env.PUBLIC_URL}/user/veterinary/book`}>
+        <Route path={`${process.env.PUBLIC_URL}/user/patient/book`}>
           <AppointmentBook />
         </Route>
         <Route
-          path={`${process.env.PUBLIC_URL}/user/veterinary/approval`}
+          path={`${process.env.PUBLIC_URL}/user/patient/approval`}
           component={Approval}
         />
       </Switch>

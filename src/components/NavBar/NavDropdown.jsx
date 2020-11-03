@@ -32,12 +32,11 @@ export default function NavDropdown(props) {
 
   return (
     <>
-      <Dropdown style={{ cursor: "pointer" }} menuAlign="left">
+      <Dropdown style={{ cursor: "pointer" }}>
         <Dropdown.Toggle
           drop="left"
           as={CustomToggle}
           id="dropdown-custom-components"
-          menuAlign="left"
         >
           <VetArrowDown style={{ cursor: "pointer" }} />
         </Dropdown.Toggle>
