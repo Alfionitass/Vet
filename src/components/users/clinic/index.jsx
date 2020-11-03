@@ -1,10 +1,11 @@
 import React from "react";
 
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, NavLink } from "react-router-dom";
 
-import { ClinicApproval, ClinicBook } from './appointment'
+import { ClinicApproval, ClinicBook } from "./appointment";
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
+import "./doctor.css";
 
 export function Clinic() {
   return (
@@ -19,28 +20,23 @@ export function Clinic() {
           }`}
         >
           <Nav.Item>
-            <Nav.Link href="#book" onClick={(e) => console.log(e)}>
-              <Link to={`${process.env.PUBLIC_URL}/user/veterinary/book`}>
+            <NavLink className="vet-title-2 v-text-donker" to={`${process.env.PUBLIC_URL}/user/clinic/book`} onClick={(e) => console.log(e)}>
                 Book from Pasien
-              </Link>
-            </Nav.Link>
+            </NavLink>
           </Nav.Item>
-
           <Nav.Item>
-            <Nav.Link href="#approval">
-              <Link to={`${process.env.PUBLIC_URL}/user/veterinary/approval`}>
-                Approval
-              </Link>
-            </Nav.Link>
+            <NavLink className="vet-title-2 v-text-donker" to={`${process.env.PUBLIC_URL}/user/clinic/approval`} onClick={(e) => console.log(e)}>
+            Approval
+            </NavLink>
           </Nav.Item>
         </Nav>
       </Card.Header>
       <Switch>
-        <Route path={`${process.env.PUBLIC_URL}/user/veterinary/book`}>
+        <Route path={`${process.env.PUBLIC_URL}/user/clinic/book`}>
           <ClinicBook />
         </Route>
         <Route
-          path={`${process.env.PUBLIC_URL}/user/veterinary/approval`}
+          path={`${process.env.PUBLIC_URL}/user/clinic/approval`}
           component={ClinicApproval}
         />
       </Switch>

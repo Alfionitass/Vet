@@ -9,10 +9,10 @@ import {
   VetDoor,
 } from "../../assets/icons";
 import styles from "./profile.module.css";
-
+import Skeleton from "react-loading-skeleton";
 export default function Profile(props) {
   const [userBadge, setUserBadge] = useState(null);
-  console.log(props)
+
   useEffect(() => {
     props.mode === "patient"
       ? setUserBadge("user")
@@ -20,41 +20,54 @@ export default function Profile(props) {
       ? setUserBadge("doctor")
       : setUserBadge(props.mode);
   }, []);
+
+  useEffect(() => {
+    console.log(props.data);
+  });
   return (
     <>
-      {userBadge && (
-        <Card className="p-4 my-5">
-          <Card.Body>
+      <Card className="p-4 my-5">
+        <Card.Body>
+          {props.data ? (
             <Image
               style={{ width: "50px", height: "50px", flexDirection: "row" }}
-              src={props.src}
+              src={props.data.image}
               roundedCircle
             />
-            <h4>Alexandria Raihan</h4>
-            <Badge
-              pill
-              className="px-5 py-2"
-              size="sm"
-              variant={userBadge === "user" ? "info" : "success"}
+          ) : (
+            <Skeleton height={50} width={50} circle={true} />
+          )}
+          <h4>{props.data ? props.data.name : <Skeleton />}</h4>
+          <Badge
+            pill
+            className="px-5 py-2"
+            size="sm"
+            variant={userBadge === "user" ? "info" : "success"}
+          >
+            {props.data ? `${userBadge[0].toUpperCase()}${userBadge.slice(1)} `: <Skeleton/>}
+          </Badge>
+          <Row className="pt-4">
+            <Col
+              md={6}
+              className="d-flex align-items-center"
+              style={{ color: "green", fill: "green" }}
             >
-              {userBadge[0].toUpperCase()}
-              {userBadge.slice(1)}
-            </Badge>
-            <Row className="pt-4">
-              <Col md={6} style={{ color: "green", fill: "green" }}>
-                {userBadge === "user" ? (
-                  <>
-                    <VetPaw /> 3 Pets
-                  </>
-                ) : (
-                  <>
-                    <VetSignal color={"green"} /> Online
-                  </>
-                )}
-              </Col>
-              <Col md={6}>
-                {console.log(props.value)}
-                {userBadge === "user" && props.value > 1 ? (
+              {props.data ? (userBadge === "user" ? (
+                <>
+                  <VetPaw /> 3 Pets
+                </>
+              ) : (
+                <>
+                  <VetSignal color={"green"} /> <span className="mx-2">Online</span>
+                </>
+              )) : 
+                <Skeleton width={100} />
+              }
+            </Col>
+            <Col md={6} className="d-flex align-items-center justify-content-center">
+              {
+                props.data ? 
+                (userBadge === "user" && props.value) > 1 ? (
                   <>
                     <VetSchedule /> {props.value} times
                   </>
@@ -62,29 +75,29 @@ export default function Profile(props) {
                   <>
                     <VetSchedule /> {props.value} time
                   </>
-                ) : userBadge === "doctor" && props.value > 1 ? (
+                ) : userBadge === "doctor" && props.data.veterinary.experience > 1 ? (
                   <>
                     <VetBriefcase />
-                    {props.value} years
+                    <span className="mx-2">{props.data.veterinary.experience} Years</span>
                   </>
                 ) : (
                   <>
                     <VetBriefcase />
-                    {props.value} year
+                    <span className="mx-2">{props.data.veterinary.experience} Year</span>
                   </>
-                )}
-              </Col>
-            </Row>
-          </Card.Body>
-          <Card.Footer className={styles["card--footer"]}>
-            <Link to={`${process.env.PUBLIC_URL}/user/${props.mode}/profile`}>
-              <Button className="font-weight-bold" variant="warning" block>
-                Edit Profile
-              </Button>
-            </Link>
-          </Card.Footer>
-        </Card>
-      )}
+                ) : <Skeleton width={100}/>}
+              
+            </Col>
+          </Row>
+        </Card.Body>
+        <Card.Footer className={styles["card--footer"]}>
+          <Link to={`${process.env.PUBLIC_URL}/user/${props.mode}/profile`}>
+            <Button className="font-weight-bold" variant="warning" block>
+              Edit Profile
+            </Button>
+          </Link>
+        </Card.Footer>
+      </Card>
       <Card className="justify-content-start">
         <Col className="px-4 py-2 d-flex align-items-center">
           <VetDoor />

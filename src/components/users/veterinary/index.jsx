@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, NavLink } from "react-router-dom";
 import { VeterinaryApproval, VeterinaryBook } from './appointment'
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
+import "./doctor.css";
 
 export default function Appointment() {
   return (
@@ -17,20 +18,15 @@ export default function Appointment() {
             ]
           }`}
         >
-          <Nav.Item>
-            <Nav.Link href="#book" onClick={(e) => console.log(e)}>
-              <Link to={`${process.env.PUBLIC_URL}/user/veterinary/book`}>
+         <Nav.Item>
+            <NavLink className="vet-title-2 v-text-donker" to={`${process.env.PUBLIC_URL}/user/veterinary/book`} onClick={(e) => console.log(e)}>
                 Book from Pasien
-              </Link>
-            </Nav.Link>
+            </NavLink>
           </Nav.Item>
-
           <Nav.Item>
-            <Nav.Link href="#approval">
-              <Link to={`${process.env.PUBLIC_URL}/user/veterinary/approval`}>
-                Approval
-              </Link>
-            </Nav.Link>
+            <NavLink className="vet-title-2 v-text-donker" to={`${process.env.PUBLIC_URL}/user/veterinary/approval`} onClick={(e) => console.log(e)}>
+            Approval
+            </NavLink>
           </Nav.Item>
         </Nav>
       </Card.Header>

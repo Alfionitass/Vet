@@ -74,6 +74,31 @@
   padding: 0 1rem;
 }
 
+.nav-item > a.active {
+  color : #FDCB5A !important;
+  background-color: unset !important;
+  border: none !important;
+}
+
+.nav-item > a {
+  padding: 0 1rem;
+  display: block;
+}
+
+.nav-item > a:hover {
+  text-decoration: none;
+}
+
+.nav-item > a.active:after {
+  content: "";
+  width: 80%;
+  padding-top:10px;
+  height: 5px;
+  display:flex;
+  margin: 0 auto;
+  border-bottom : 10px solid  #FDCB5A !important;
+}
+
 .nav-link.active {
   color : #FDCB5A !important;
   background-color: unset !important;

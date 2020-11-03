@@ -40,13 +40,21 @@
   right: -22rem;
 }
 
+.login {
+  top: -2.5rem;
+}
 .App {
   text-align: center;
   min-height: 100vh;
+  background-color: #E5E5E5;
 }
 
 html {
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+body {
+  padding:0 !important;
 }
 
 .hidden {

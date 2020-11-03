@@ -70,11 +70,11 @@ const Login = ({
             />
             {passVisibility ? (
               <div onClick={() => SetVisibility(0)}>
-                <VetEyeHidden className="register-eye" size={30} />
+                <VetEyeHidden className="register-eye login" size={30} />
               </div>
             ) : (
               <div onClick={() => SetVisibility(1)}>
-                <VetEyeShow className="register-eye" size={30} />
+                <VetEyeShow className="register-eye login" size={30} />
               </div>
             )}
             <Form.Text className="text-danger">
@@ -88,7 +88,7 @@ const Login = ({
               disabled={isLoading || readyState}
               onClick={!isLoading ? () => SubmitData("login") : null}
             >
-              {isLoading ? "Loading…" : "Daftarkan Saya"}
+              {isLoading ? "Loading…" : "Login"}
             </Button>
           </Row>
         </Form>

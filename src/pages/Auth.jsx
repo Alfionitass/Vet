@@ -34,7 +34,7 @@ export default function Auth(props) {
         <Row>
           <Nav
             variant="pills"
-            className="d-flex align-items-center justify-content-end w-100 mt-4 register-nav"
+            className="d-flex align-items-center justify-content-center w-100 mt-4 register-nav"
           >
             <Nav.Item>
               <Nav.Link href={`${process.env.PUBLIC_URL}/home`} className="vet-title-2">

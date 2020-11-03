@@ -3,15 +3,30 @@ import { ButtonGroup, Card, Form, ToggleButton, Button } from "react-bootstrap";
 import { HiPlus } from "react-icons/hi";
 import { GiFemale, GiMale } from "react-icons/gi";
 import { CgUnavailable, CgSun } from "react-icons/cg";
+import { VetPDog, VetPRabbit, VetPHamster, VetPCat } from "../../assets/icons";
+
 import styles from "../../assets/sass/reusable/profileForm.module.scss";
+import Swal from "sweetalert2";
+import Skeleton from "react-loading-skeleton";
 
-export default function ProfileForm({ config: { mode } }) {
-  const [status, setStatus] = useState("1");
+export default function ProfileForm({ config: { mode },data }) {
+  const [status, setStatus] = useState("0");
   const [gender, setGender] = useState("1");
-
+  
   const handleClick = () => {
-    console.log("dummy");
+    Swal.fire({
+      title: "Update Sukses!",
+      icon: "success",
+      background: "#1A3150",
+      iconColor: "yellow",
+      showConfirmButton: false,
+
+      customClass: {
+        title: "text-light",
+      },
+    });
   };
+  
   return (
     <>
       <Card>
@@ -47,7 +62,11 @@ export default function ProfileForm({ config: { mode } }) {
               <Card.Body>
                 <Form.Group className="mb-4" id="status">
                   <Form.Text>Status</Form.Text>
-                  <ButtonGroup toggle name="radiogroup" className="d-flex align-items-center">
+                  <ButtonGroup
+                    toggle
+                    name="radiogroup"
+                    className="d-flex align-items-center"
+                  >
                     <ToggleButton
                       className="d-flex justify-content-center align-items-center"
                       key={1}
@@ -104,7 +123,7 @@ export default function ProfileForm({ config: { mode } }) {
               <Form.Control
                 type="text"
                 placeholder="It's my name"
-                // value="Alvin Mantovani"
+                value="Alvin Mantovani"
               />
             </Form.Group>
             <Form.Group className="mb-4" id="gender">
@@ -120,9 +139,9 @@ export default function ProfileForm({ config: { mode } }) {
                   onChange={(e) => setGender(e.currentTarget.value)}
                 >
                   <GiMale />{" "}
-                  <label className={gender === "0" ? "text-white" : ""}>
+                  <span className={gender === "0" ? "text-white" : ""}>
                     Male
-                  </label>
+                  </span>
                 </ToggleButton>
                 <ToggleButton
                   key={2}
@@ -134,12 +153,21 @@ export default function ProfileForm({ config: { mode } }) {
                   onChange={(e) => setGender(e.currentTarget.value)}
                 >
                   <GiFemale />
-                  <label className={gender === "1" ? "text-white" : ""}>
+                  <span className={gender === "1" ? "text-white" : ""}>
                     Female
-                  </label>
+                  </span>
                 </ToggleButton>
               </ButtonGroup>
             </Form.Group>
+            {mode === "veterinary" && <Form.Group controlId="formBasicEmail">
+              <Form.Label>Experience</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="It's my name"
+                value="1 Days"
+              />
+              <Form.Text className="text-muted">Doctor Experience.</Form.Text>
+            </Form.Group>}
           </Card.Body>
           <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
             Contact Details
@@ -150,32 +178,35 @@ export default function ProfileForm({ config: { mode } }) {
               <Form.Control
                 type="text"
                 placeholder="It's my name"
-                // value="+62 muted"
+                value="+628998844"
               />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
               <Form.Text>Email</Form.Text>
               <Form.Control
                 type="text"
-                placeholder="It's my name"
-                // value="alvin.ictn@gmail.com"
+                placeholder="phone number"
+                value="alvin@vet.com"
               />
             </Form.Group>
           </Card.Body>
-          {mode === "user" && (
+          {mode === "patient" && (
             <>
               <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
                 Pets Details
               </Card.Header>
               <Card.Body className="d-flex">
-                <Card className="m-2">
-                  <Card.Body>Pet 1</Card.Body>
+                <Card className="m-3">
+                  <VetPDog className="m-3" size={"80"} />
                 </Card>
-                <Card className="m-2">
-                  <Card.Body>Pet 1</Card.Body>
+                <Card className="m-3">
+                  <VetPCat className="m-3" size={"80"} />
                 </Card>
-                <Card className="m-2">
-                  <Card.Body>Pet 1</Card.Body>
+                <Card className="m-3">
+                  <VetPRabbit className="m-3" size={"80"} />
+                </Card>
+                <Card className="m-3">
+                  <VetPHamster className="m-3" size={"80"} />
                 </Card>
               </Card.Body>
             </>

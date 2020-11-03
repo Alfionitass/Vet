@@ -2,10 +2,10 @@ import React from "react";
 
 import { Switch, Route, Link } from "react-router-dom";
 import UserProfile from "../../reusable/profile";
-import AppointmentBook from "./appointment/book";
-import Approval from "./appointment/history";
+import { PatientHistory, PatientBook } from './appointment'
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
+import "./doctor.css";
 
 export default function Appointment(props) {
   return (
@@ -28,9 +28,9 @@ export default function Appointment(props) {
           </Nav.Item>
 
           <Nav.Item>
-            <Nav.Link href="#approval">
-              <Link to={`${process.env.PUBLIC_URL}/user/patient/approval`}>
-                Approval
+            <Nav.Link href="#history">
+              <Link to={`${process.env.PUBLIC_URL}/user/patient/history`}>
+              history
               </Link>
             </Nav.Link>
           </Nav.Item>
@@ -38,11 +38,11 @@ export default function Appointment(props) {
       </Card.Header>
       <Switch>
         <Route path={`${process.env.PUBLIC_URL}/user/patient/book`}>
-          <AppointmentBook />
+          <PatientBook />
         </Route>
         <Route
-          path={`${process.env.PUBLIC_URL}/user/patient/approval`}
-          component={Approval}
+          path={`${process.env.PUBLIC_URL}/user/patient/history`}
+          component={PatientHistory}
         />
       </Switch>
     </Card>

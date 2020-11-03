@@ -74,17 +74,22 @@
   padding: 0 1rem;
 }
 
-.nav-link.active {
+.nav-item > a.active {
   color : #FDCB5A !important;
   background-color: unset !important;
   border: none !important;
 }
 
-.nav-tabs .nav-link{
-  border: 0;
+.nav-item > a {
+  padding: 0 1rem;
+  display: block;
 }
 
-.nav-link.active:after {
+.nav-item > a:hover {
+  text-decoration: none;
+}
+
+.nav-item > a.active:after {
   content: "";
   width: 80%;
   padding-top:10px;
@@ -92,4 +97,9 @@
   display:flex;
   margin: 0 auto;
   border-bottom : 10px solid  #FDCB5A !important;
+}
+
+
+.nav-tabs .nav-link{
+  border: 0;
 }

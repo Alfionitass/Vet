@@ -17,6 +17,24 @@ import { Container, Navbar } from "react-bootstrap";
 import Home from "./components/Home/Home";
 import Users from "./pages/Users/";
 import { useHistory, Redirect  } from "react-router-dom";
+import {VetPaw} from './assets/icons'
+
+const Success = (props) => {
+  useEffect(()=>{
+    props.SetBarState({
+      footer: false,
+      navbar: false
+    })
+  },[])
+  return(
+    <div>
+      <VetPaw/>
+      <VetPaw/>
+      <VetPaw/>
+      <VetPaw/>
+    </div>
+  )
+}
 
 function App() {
   
@@ -129,6 +147,9 @@ function App() {
             </Route>
             <Route path={`${process.env.PUBLIC_URL}/booking/:id`}>
               <BookingDetail />
+            </Route>
+            <Route path={`${process.env.PUBLIC_URL}/success`}>
+              <Success data={userDatas} SetBarState={SetBarState} />
             </Route>
             <Route path={`${process.env.PUBLIC_URL}/booking/detail/resume`}>
               <BookingResume />
