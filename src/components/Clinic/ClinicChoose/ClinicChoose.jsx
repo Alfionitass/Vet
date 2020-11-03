@@ -23,9 +23,9 @@ export default function ClinicChoose() {
         Lokasi
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Jogja</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Bandung</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Surabaya</Dropdown.Item>
+        <Dropdown.Item href="#/lokasiJogja">Jogja</Dropdown.Item>
+        <Dropdown.Item href="#/lokasiBandung">Bandung</Dropdown.Item>
+        <Dropdown.Item href="#/lokasiSurabaya">Surabaya</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>)
 
@@ -36,9 +36,9 @@ export default function ClinicChoose() {
     </Dropdown.Toggle>
 
     <Dropdown.Menu>
-      <Dropdown.Item href="#/action-1">Kucing</Dropdown.Item>
-      <Dropdown.Item href="#/action-2">Anjing</Dropdown.Item>
-      <Dropdown.Item href="#/action-3">Ular Kobra</Dropdown.Item>
+      <Dropdown.Item href="#/petKucing">Kucing</Dropdown.Item>
+      <Dropdown.Item href="#/petAnjing">Anjing</Dropdown.Item>
+      <Dropdown.Item href="#/petUlarKobra">Ular Kobra</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
   )
