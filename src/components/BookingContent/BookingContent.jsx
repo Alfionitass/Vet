@@ -20,10 +20,13 @@ export default function BookingContent() {
             method:'find',
             id: id
         }).then(res=>(
+            // console.log(res?.data?.data)
           setBookingData(res?.data?.data)
-        ))
-      },[id] );
-    console.log("data booking", bookingData);
+        //   console.log(res?.data?.data)
+            )
+        )
+      },[] );
+    console.log("data booking", bookingData?.dateBooking);
     
 
     const [show, setShow] = useState(false);
@@ -33,7 +36,10 @@ export default function BookingContent() {
 
     const bookTitle = (
         <div className="d-flex flex-row justify-content-between mb-3">
-            <h1>Kalimanjaro Ruah Tunah Hospital</h1>
+            <h1>
+                Kalimanjaro Ruah Tunah Hospital
+
+            </h1>
             <Link to="/booking/detail/resume">
                 <button className={styles.btn}>Booking Now</button>
             </Link>
@@ -48,20 +54,19 @@ export default function BookingContent() {
     // }
     
     const bookSchedule = (
-        <div className="d-flex flex-row mb-4">
-            
+        <div className="d-flex flex-row mb-4">            
+                <Image src={bookingData && bookingData.clinic.image} />
             <div className="d-flex flex-column ml-5">
                 <h3>Visit Information</h3>
-                {/* <Image src={bookingData && clinic.image} /> */}
                 <div className="mb-4">
                     <p className={styles.font}>Day Visit</p>
                     <Row>
-                    {bookingData && bookingData.map((book, i) => (
+                    {bookingData && bookingData?.dateBooking.map((book, i) => (                            
                             <Col md="4" className="mb-3">
                             <Card className={styles.cardDay}>
                                 <Card.Body className={styles.cardBody}>
                                     <Card.Text className="p-0 m-0">
-                                        {book.dateBooking[0]}
+                                        {book}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
