@@ -27,11 +27,12 @@ const Success = (props) => {
     })
   },[])
   return(
-    <div>
-      <VetPaw/>
-      <VetPaw/>
-      <VetPaw/>
-      <VetPaw/>
+    <div className="vet-paws">
+      {[0,1,2,3,4,5,6].map((item)=> 
+        item%2 === 0 
+          ? <VetPaw className="vet-paw" size={60} style={{display:"block",transform:"rotateZ(45deg)",position:"relative",left:"60px"}}/> 
+          : <VetPaw className="vet-paw" size={60} style={{display:"block",transform:"rotateZ(-45deg)"}}/>
+      )}
     </div>
   )
 }

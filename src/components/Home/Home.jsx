@@ -61,7 +61,7 @@ export default function Home(props) {
         >
           <div className="col-md-6 col-xs-12">
             <div className={classes.headerText}>
-              <h4>Welcome to VETdssss</h4>
+              <h4>Welcome to VET</h4>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam,
                 architecto voluptate veritatis nulla veniam adipisci unde
