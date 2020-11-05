@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { Link, useParams } from "react-router-dom" ;
 import { Container, Row, Col, Card, Modal, Form, Image } from "react-bootstrap";
 import rs from "../../assets/img/rs.png";
@@ -11,6 +11,8 @@ import styles from "./BookingContent.module.css";
 export default function BookingContent() {
     const [token, setToken] = useState(localStorage.getItem("VetToken"));
     const [ bookingData, setBookingData] = useState();
+    //const [dateBooking, setDateBooking] = useState([...dateBooking.map(date => {return {...date, selected: false}})])
+    const [date, setDate] = useState();
 
     const { id } = useParams();
     console.log("idnya", id);
@@ -21,15 +23,45 @@ export default function BookingContent() {
             id: id
         }).then(res=>(
           setBookingData(res?.data?.data)
+          //console.log(res?.data?.data)
         ))
       },[id] );
-    console.log("data booking", bookingData);
     
+    useEffect(()=>{
+        reservation({
+            method:'find',
+            id: id
+        }).then(res=>(
+          setDate(res?.data?.data?.dateBooking)
+         // console.log("ini tanggal",res?.data?.data?.dateBooking)
+        ))
+      },[id] );
+
+   // console.log("data booking", bookingData?.clinic?.clinic?.facilities);
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    function reducer(state, action) {
+        switch (action.type) {
+          case "select":
+    
+            const list = state.map((item, i) => {
+              item.checked = false
+              if(item[i] === action.item[i]){
+                item.checked = !item.checked 
+              }
+              return item;
+            })
+            return list;
+          default:
+            throw new Error();
+        }
+      }
+
+      const [state1, dispatch] = useReducer(reducer, date);
 
     const bookTitle = (
         <div className="d-flex flex-row justify-content-between mb-3">
@@ -49,75 +81,65 @@ export default function BookingContent() {
     
     const bookSchedule = (
         <div className="d-flex flex-row mb-4">
-            
+            <Image src={bookingData && bookingData.clinic.image} />
             <div className="d-flex flex-column ml-5">
                 <h3>Visit Information</h3>
-                {/* <Image src={bookingData && clinic.image} /> */}
                 <div className="mb-4">
                     <p className={styles.font}>Day Visit</p>
                     <Row>
-                    {bookingData && bookingData.map((book, i) => (
-                            <Col md="4" className="mb-3">
-                            <Card className={styles.cardDay}>
+                    {state1.map((day) => (
+                        <Col md="4" className="mb-3">
+                            <Card onClick={() => dispatch({ type: "select", day })}
+                            className={day.checked ? `{styles.daySelected}` : `{styles.dayUnselected}`} >
                                 <Card.Body className={styles.cardBody}>
                                     <Card.Text className="p-0 m-0">
-                                        {book.dateBooking[0]}
+                                        {day}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
                         </Col>
-                    // ))) : (
-                    //     <Col md="4" className="mb-3">
-                    //         <Card className={styles.cardDay}>
-                    //             <Card.Body className={styles.cardBody}>
-                    //                 <Card.Text className="p-0 m-0">
-                    //                     "schedule not found"
-                    //                 </Card.Text>
-                    //             </Card.Body>
-                    //         </Card>
-                    //     </Col>
-                    ))
-                    }
-                        
+                    ))}
                     </Row>
                 </div>
-                {/* // <div className="d-flex flex-column ">
-                //     <p className={styles.font}>Time Visit</p>
-                //     <Row>
-                //         <Col md="4" >
-                //             <Card className={styles.cardTime}>
-                //                 <Card.Body className={styles.cardBody}>
-                //                     <Card.Text className="p-0 m-0">
-                //                         {book.hour[0]}
-                //                     </Card.Text>
-                //                 </Card.Body>
-                //             </Card>
-                //         </Col>
-                //     </Row>
-                // </div> */}
+                <div className="d-flex flex-column ">
+                    <p className={styles.font}>Time Visit</p>
+                    <Row>
+                        {bookingData?.hour.map((time) => (
+                            <Col md="4" >
+                            <Card className={styles.cardTime}>
+                                <Card.Body className={styles.cardBody}>
+                                    <Card.Text className="p-0 m-0">
+                                        {time}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        ))}
+                    </Row>
+                </div>
             </div>
         </div>
     )
-        
-    
 
-    // const bookInfo = bookingData && bookingData.map((book, i) => (
-    //     <div className="d-flex flex-row mb-3">
-    //         <div className={styles.about}>
-    //             <h3>About</h3>
-    //             <p className={styles.p}>{book.clinic.clinic.about} </p>
-    //         </div>
-    //         <div className={styles.facility}>
-    //             <h5>Facility</h5>
-    //             <Row className="d-flex justify-content-end">
-    //                 <Col md="6">
-    //                     <input type="radio" name="" id="" />
-    //                     <label htmlFor="" className="ml-2">{book.clinic.clinic.facilities.name}</label>
-    //                 </Col>
-    //             </Row>
-    //         </div>
-    //     </div>
-    // ))
+    const bookInfo = (
+        <div className="d-flex flex-row mb-3">
+            <div className={styles.about}>
+                <h3>About</h3>
+                <p className={styles.p}>{bookingData && bookingData.clinic.clinic.about} </p>
+            </div>
+            <div className={styles.facility}>
+                <h5>Facility</h5>
+                <Row className="d-flex justify-content-end">
+                    {bookingData?.clinic?.clinic?.facilities.map((item) => (
+                        <Col md="6">
+                            <input type="radio" name="" id="" />
+                            <label htmlFor="" className="ml-2">{item.name}</label>
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+        </div>
+    )
 
     const bookDoctor = (
         <div className="mb-4">
@@ -277,9 +299,8 @@ export default function BookingContent() {
         <Container className="mt-5 mb-5">
             {bookTitle}
             <h3 className={styles.h3}>General Information</h3>
-            {/* {books} */}
             {bookSchedule}
-            {/* {bookInfo} */}
+            {bookInfo}
             {bookDoctor}
             {bookPet}
         </Container>
