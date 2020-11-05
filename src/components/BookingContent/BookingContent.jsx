@@ -12,7 +12,7 @@ export default function BookingContent() {
     const [token, setToken] = useState(localStorage.getItem("VetToken"));
     const [ bookingData, setBookingData] = useState();
     //const [dateBooking, setDateBooking] = useState([...dateBooking.map(date => {return {...date, selected: false}})])
-    const [date, setDate] = useState();
+   // const [date, setDate] = useState();
 
     const { id } = useParams();
     console.log("idnya", id);
@@ -27,15 +27,15 @@ export default function BookingContent() {
         ))
       },[id] );
     
-    useEffect(()=>{
-        reservation({
-            method:'find',
-            id: id
-        }).then(res=>(
-          setDate(res?.data?.data?.dateBooking)
-         // console.log("ini tanggal",res?.data?.data?.dateBooking)
-        ))
-      },[id] );
+    // useEffect(()=>{
+    //     reservation({
+    //         method:'find',
+    //         id: id
+    //     }).then(res=>(
+    //       setDate(res?.data?.data?.dateBooking)
+    //      // console.log("ini tanggal",res?.data?.data?.dateBooking)
+    //     ))
+    //   },[id] );
 
    // console.log("data booking", bookingData?.clinic?.clinic?.facilities);
 
@@ -44,24 +44,24 @@ export default function BookingContent() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function reducer(state, action) {
-        switch (action.type) {
-          case "select":
+    // function reducer(state, action) {
+    //     switch (action.type) {
+    //       case "select":
     
-            const list = state.map((item, i) => {
-              item.checked = false
-              if(item[i] === action.item[i]){
-                item.checked = !item.checked 
-              }
-              return item;
-            })
-            return list;
-          default:
-            throw new Error();
-        }
-      }
+    //         const list = state.map((item, i) => {
+    //           item.checked = false
+    //           if(item[i] === action.item[i]){
+    //             item.checked = !item.checked 
+    //           }
+    //           return item;
+    //         })
+    //         return list;
+    //       default:
+    //         throw new Error();
+    //     }
+    //   }
 
-      const [state1, dispatch] = useReducer(reducer, date);
+    //   const [state1, dispatch] = useReducer(reducer, date);
 
     const bookTitle = (
         <div className="d-flex flex-row justify-content-between mb-3">
@@ -87,10 +87,9 @@ export default function BookingContent() {
                 <div className="mb-4">
                     <p className={styles.font}>Day Visit</p>
                     <Row>
-                    {state1.map((day) => (
+                    {bookingData?.dateBooking.map((day) => (
                         <Col md="4" className="mb-3">
-                            <Card onClick={() => dispatch({ type: "select", day })}
-                            className={day.checked ? `{styles.daySelected}` : `{styles.dayUnselected}`} >
+                            <Card className={styles.cardDay} >
                                 <Card.Body className={styles.cardBody}>
                                     <Card.Text className="p-0 m-0">
                                         {day}

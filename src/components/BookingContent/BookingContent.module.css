@@ -76,7 +76,15 @@
     width: 50%;
 }
 
-.daySelected {
+.cardDay {
+    width: 7.4rem;
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* .daySelected {
     width: 7.4rem;
     height: 4rem;
     margin: 0;
@@ -91,7 +99,7 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
-}
+} */
 
 .cardTime {
     width: 9rem;
