@@ -25,7 +25,7 @@ export default function BookingContent() {
         //   console.log(res?.data?.data)
             )
         )
-      },[] );
+      },[id] );
     console.log("data booking", bookingData?.dateBooking);
     
 
@@ -61,7 +61,7 @@ export default function BookingContent() {
                 <div className="mb-4">
                     <p className={styles.font}>Day Visit</p>
                     <Row>
-                    {bookingData && bookingData?.dateBooking.map((book, i) => (                            
+                    {bookingData?.dateBooking.map((book, i) => (                            
                             <Col md="4" className="mb-3">
                             <Card className={styles.cardDay}>
                                 <Card.Body className={styles.cardBody}>
@@ -82,8 +82,7 @@ export default function BookingContent() {
                     //         </Card>
                     //     </Col>
                     ))
-                    }
-                        
+                    }                        
                     </Row>
                 </div>
                 {/* // <div className="d-flex flex-column ">
