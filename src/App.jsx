@@ -14,7 +14,7 @@ import { user } from "./database";
 import BookingDetail from "./pages/BookingDetail";
 import BookingResume from "./pages/BookingResume";
 import { Container, Navbar } from "react-bootstrap";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home";
 import Users from "./pages/Users/";
 import { useHistory, Redirect  } from "react-router-dom";
 import {VetPaw} from './assets/icons'
