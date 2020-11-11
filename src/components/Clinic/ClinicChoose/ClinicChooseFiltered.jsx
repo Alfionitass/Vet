@@ -53,9 +53,13 @@ export default function ClinicChooseFiltered() {
         Lokasi
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item href="/booking/Lokasi/Jogja">Jogja</Dropdown.Item>
-        <Dropdown.Item href="/booking/Lokasi/Bandung">Bandung</Dropdown.Item>
-        <Dropdown.Item href="/booking/Lokasi/Surabaya">Surabaya</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Medan">Medan</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Bandung">Bandung</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Makasar">Makasar</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>)
 
