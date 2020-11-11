@@ -10,9 +10,21 @@ import { AiOutlineSearch } from "react-icons/ai";
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
   useEffect(()=>{
-    clinic({method:'all'}).then(res=>(
-      setClinicData(res?.data?.data)
-    ))
+    var axios = require('axios');
+
+    var config = {
+      method: 'get',
+      url: 'https://vet-booking.herokuapp.com/clinic/?page=1',
+      headers: { }
+    };
+    
+    axios(config)
+    .then(function (response) {
+      setClinicData(response?.data?.data)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   },[])
 
   // useEffect(()=>{clinicData && console.log(clinicData)},[clinicData])
