@@ -84,6 +84,23 @@
     cursor: pointer;
 }
 
+/* .daySelected {
+    width: 7.4rem;
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background-color: #FDCB5A;
+}
+
+.dayUnselected {
+    width: 7.4rem;
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+} */
+
 .cardTime {
     width: 9rem;
     height: 3rem;

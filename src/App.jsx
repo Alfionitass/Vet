@@ -14,6 +14,7 @@ import ClinicChoose from './components/Clinic/ClinicChoose/ClinicChoose';
 import { user } from './database';
 import BookingDetail from './pages/BookingDetail';
 import BookingResume from './pages/BookingResume';
+import ClinicChooseFiltered from './components/Clinic/ClinicChoose/ClinicChooseFiltered'
 import { Container, Navbar } from 'react-bootstrap';
 import Home from './components/Home/Home';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -30,7 +31,8 @@ function App() {
         <Route exact path="/" component={Home} />
           <Route path="/doctor" component={Doctor} />
           <Route path="/booking/detail/resume" component={BookingResume} />
-          <Route path="/booking/:id" component={BookingDetail} />
+          <Route path="/booking/detail/:id" component={BookingDetail} />
+          <Route path="/booking/lokasi/:lokasi" component={ClinicChooseFiltered} />
           <Route path="/booking/" component={ClinicChoose} />
           <Route path="/auth" component={Auth} />
         </Switch>
