@@ -11,10 +11,22 @@ import axios from 'axios'
 import { useHistory } from "react-router-dom";
 
 export default function ClinicChooseFiltered() { 
-
   const [ clinicData, setClinicData] = useState()
-  const { lokasi } = useParams();
-  console.log("lokasi", lokasi);
+  const [ isSearch, setIsSearch ] = useState(false)
+  const [ inputSearch, setInputSearch ] = useState('')
+  let history = useHistory();
+  const {lokasi} = useParams()
+  const handleChange = (e) => {
+    setInputSearch(e.target.value);
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (e.key === "Enter") {
+      history.push(`/booking/search/${inputSearch}`);
+    }
+  };
   const [linkUrl,setLinkUrl] = useState(`https://vet-booking.herokuapp.com/clinic/filter/?city=`+lokasi)
   useEffect(()=>{
     var axios = require('axios');
@@ -62,10 +74,19 @@ export default function ClinicChooseFiltered() {
   )
 
   const buttonSearch = (    
-      <Button variant="warning" className="mr-4" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}}>        
-      <AiOutlineSearch />
-        {"  Cari Sekarang"}
-      </Button>    
+    <Button variant="warning" className="mr-4" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}} onClick={()=>setIsSearch(true)}>        
+    <AiOutlineSearch />
+      {"  Cari Sekarang"}
+    </Button>    
+)
+
+  const input = (
+    <input 
+    type="text"
+    placeholder="Search Clinic"
+    onChange={handleChange}
+    onKeyUp={handleSubmit}    
+    ></input>
   )
   
   console.log("ini clinic",clinicData)
@@ -100,7 +121,9 @@ export default function ClinicChooseFiltered() {
     <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
       {dropDownLokasi}
       {binatangPeliharaan}    
-      {buttonSearch}
+      {isSearch?
+      input:
+      buttonSearch}   
     </Row>
       <Row>
         {kartu}

@@ -11,6 +11,7 @@ import NavBar from './components/NavBar/NavBar'
 import NavBarLogin from './components/NavBar/NavBarLogin'
 import Footer from './components/Footer/Footer'
 import ClinicChoose from './components/Clinic/ClinicChoose/ClinicChoose';
+import ClinicSearch from './components/Clinic/ClinicChoose/ClinicSearch';
 import { user } from './database';
 import BookingDetail from './pages/BookingDetail';
 import BookingResume from './pages/BookingResume';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/booking/detail/resume" component={BookingResume} />
           <Route path="/booking/detail/:id" component={BookingDetail} />
           <Route path="/booking/lokasi/:lokasi" component={ClinicChooseFiltered} />
+          <Route path="/booking/search/:search" component={ClinicSearch} />
           <Route path="/booking/" component={ClinicChoose} />
           <Route path="/auth" component={Auth} />
         </Switch>
