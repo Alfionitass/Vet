@@ -6,10 +6,12 @@ import { Dropdown,Card,Badge,Button, Container,Col,Row } from "react-bootstrap";
 import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai";
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
+  const { page } = useParams()
+  // const [ page, setPage ] = useState(1)
   const [ isSearch, setIsSearch ] = useState(false)
   const [ inputSearch, setInputSearch ] = useState('')
   let history = useHistory();
@@ -24,13 +26,12 @@ export default function ClinicChoose() {
     }
   };
 
-
   useEffect(()=>{
     var axios = require('axios');
 
     var config = {
       method: 'get',
-      url: 'https://vet-booking.herokuapp.com/clinic/?page=1',
+      url: 'https://vet-booking.herokuapp.com/clinic/?page='+page,
       headers: { }
     };
     
@@ -132,7 +133,7 @@ export default function ClinicChoose() {
     <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
     <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
       {dropDownLokasi}
-      {binatangPeliharaan}    
+      {/* {binatangPeliharaan}     */}
       {isSearch?
       input:
       buttonSearch}      

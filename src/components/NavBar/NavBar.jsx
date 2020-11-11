@@ -29,7 +29,7 @@ export default function NavBar() {
           <NavLink to="/doctor" className={styles.link}>
             <span>Doctor</span>
           </NavLink>
-          <NavLink to="/booking/" className={styles.link}>
+          <NavLink to="/booking/1" className={styles.link}>
             <span>Find a Clinic</span>
           </NavLink>
           <NavLink to="/auth/" className={styles.link}>

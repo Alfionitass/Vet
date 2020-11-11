@@ -35,7 +35,7 @@ function App() {
           <Route path="/booking/detail/:id" component={BookingDetail} />
           <Route path="/booking/lokasi/:lokasi" component={ClinicChooseFiltered} />
           <Route path="/booking/search/:search" component={ClinicSearch} />
-          <Route path="/booking/" component={ClinicChoose} />
+          <Route path="/booking/:page" component={ClinicChoose} />
           <Route path="/auth" component={Auth} />
         </Switch>
         <Footer />
