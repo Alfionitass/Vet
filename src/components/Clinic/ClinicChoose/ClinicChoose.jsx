@@ -57,12 +57,14 @@ export default function ClinicChoose() {
       <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" style={{borderColor:"#9C9C9C",color:"#9C9C9C",fontWeight:"bold"}}>
         Lokasi
       </Dropdown.Toggle>
-      <Dropdown.Menu>
-        <Link to='/booking/lokasi/Jogja'>
-        <Dropdown.Item>Jogja</Dropdown.Item>
-        </Link>
-        <Dropdown.Item href="/booking/lokasi/Bandung">Bandung</Dropdown.Item>
+      <Dropdown.Menu>        
+        <Dropdown.Item href="/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Medan">Medan</Dropdown.Item>
         <Dropdown.Item href="/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Bandung">Bandung</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
+        <Dropdown.Item href="/booking/lokasi/Makasar">Makasar</Dropdown.Item>        
       </Dropdown.Menu>
     </Dropdown>)
 
