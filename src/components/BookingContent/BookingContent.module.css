@@ -60,9 +60,15 @@
     width: 50%;
 }
 
-.img {
-    width: 28rem;
-    height: auto;    
+.img1 {
+    height: 20rem;
+    width: auto;    
+}
+
+.img2 {
+    width: 5rem;
+    height: auto;
+    margin-right: 1.5rem;
 }
 
 .info {
@@ -77,7 +83,7 @@
 }
 
 .cardDay {
-    width: 7.4rem;
+    width: 10rem;
     height: 4rem;
     margin: 0;
     padding: 0;
@@ -99,10 +105,11 @@
     margin: 0;
     padding: 0;
     cursor: pointer;
+    background-color: aqua;
 } */
 
 .cardTime {
-    width: 9rem;
+    width: 11.3rem;
     height: 3rem;
     margin: 0;
     padding: 0;
@@ -113,6 +120,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding: 0;
     margin: 0;
 }
@@ -136,8 +144,8 @@
 }
 
 .cardPet {
-    width: 14rem;
-    height: 8rem;
+    width: 10rem;
+    height: auto;
     cursor: pointer;
 }
 
