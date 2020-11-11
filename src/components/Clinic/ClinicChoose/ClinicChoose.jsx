@@ -6,9 +6,25 @@ import { Dropdown,Card,Badge,Button, Container,Col,Row } from "react-bootstrap";
 import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
+  const [ isSearch, setIsSearch ] = useState(false)
+  const [ inputSearch, setInputSearch ] = useState('')
+  let history = useHistory();
+  const handleChange = (e) => {
+    setInputSearch(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (e.key === "Enter") {
+      history.push(`/booking/search/${inputSearch}`);
+    }
+  };
+
+
   useEffect(()=>{
     var axios = require('axios');
 
@@ -26,6 +42,13 @@ export default function ClinicChoose() {
       console.log(error);
     });
   },[])
+
+  useEffect(
+    () => {
+      console.log('andri')
+
+    },[isSearch]
+  )
 
   // useEffect(()=>{clinicData && console.log(clinicData)},[clinicData])
 
@@ -58,10 +81,19 @@ export default function ClinicChoose() {
   )
 
   const buttonSearch = (    
-      <Button variant="warning" className="mr-4" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}}>        
+      <Button variant="warning" className="mr-4" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}} onClick={()=>setIsSearch(true)}>        
       <AiOutlineSearch />
         {"  Cari Sekarang"}
       </Button>    
+  )
+
+  const input = (
+    <input 
+    type="text"
+    placeholder="Search Clinic"
+    onChange={handleChange}
+    onKeyUp={handleSubmit}    
+    ></input>
   )
 
   // const r=clinicData
@@ -99,7 +131,9 @@ export default function ClinicChoose() {
     <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
       {dropDownLokasi}
       {binatangPeliharaan}    
-      {buttonSearch}
+      {isSearch?
+      input:
+      buttonSearch}      
     </Row>
       <Row>
         {kartu}

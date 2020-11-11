@@ -8,6 +8,7 @@ import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai";
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 export default function ClinicChooseFiltered() { 
 
