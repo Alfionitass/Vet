@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Container, Row, Col, Card, Modal, Form, Image } from "react-bootstrap";
 import rs from "../../assets/img/rs.png";
 import dc from "../../assets/img/doctor.png";
@@ -11,6 +11,7 @@ import styles from "./BookingContent.module.css";
 export default function BookingContent() {
   const [token, setToken] = useState(localStorage.getItem("VetToken"));
   const [bookingData, setBookingData] = useState();
+  const history = useHistory();
   //const [dateBooking, setDateBooking] = useState([...dateBooking.map(date => {return {...date, selected: false}})])
   // const [date, setDate] = useState();
 
@@ -21,8 +22,8 @@ export default function BookingContent() {
     reservation({
       method: "find",
       id: id,
-    }).then((res) =>
-      setBookingData(res?.data?.data)
+    }).then(
+      (res) => setBookingData(res?.data?.data)
       //console.log(res?.data?.data)
     );
   }, [id]);
@@ -87,12 +88,14 @@ export default function BookingContent() {
   };
 
   useEffect(() => {
-      getDoctor();
-  }, [bookingDay, bookingTime])
+    getDoctor();
+  }, [bookingDay, bookingTime]);
 
   const getDoctor = () => {
-      if(bookingTime !== null && bookingDay !== null) {
-          console.log('fetch');
+    if (bookingTime)
+      if (bookingTime !== null && bookingDay !== null) {
+        // 0 -> false
+        console.log("fetch", bookingTime + 1); // backend yg minta + 1
       }
   };
 
@@ -111,6 +114,34 @@ export default function BookingContent() {
       alert("Mohon Login Dulu Yaaa");
     }
   };
+
+  const submit = () => {
+    const fetch = // ini fetching data
+    
+    history.push({
+      pathname: "/booking/detail/resume",
+      state: {
+        scheduleId: 1, // setelah pilih dokter,
+        animalId: 2,
+        dateReservation: "12-12-2020",
+      },
+    });
+  };
+
+  const linkToObject = (
+    <Link
+      to={{
+        pathname: "/booking/detail/resume",
+        state: {
+          scheduleId: 1, // setelah pilih dokter,
+          animalId: 2,
+          dateReservation: "12-12-2020",
+        },
+      }}
+    >
+      To Object
+    </Link>
+  );
 
   const bookSchedule = (
     <div className="d-flex flex-row mb-4">
@@ -144,10 +175,16 @@ export default function BookingContent() {
           <Row>
             {bookingData?.hour.map((time, index) => (
               <Col md="4">
-                <Card onClick={() => selectTime(index)} className={styles.cardTime}>
-                  <Card.Body className={styles.cardBody} style={{
+                <Card
+                  onClick={() => selectTime(index)}
+                  className={styles.cardTime}
+                >
+                  <Card.Body
+                    className={styles.cardBody}
+                    style={{
                       background: index === bookingTime ? "#FDCB5A" : "#fff",
-                    }}>
+                    }}
+                  >
                     <Card.Text className="p-0 m-0">{time}</Card.Text>
                   </Card.Body>
                 </Card>
@@ -337,6 +374,8 @@ export default function BookingContent() {
       {bookInfo}
       {bookDoctor}
       {bookPet}
+      <button onClick={submit}>test</button>
+      {linkToObject}
     </Container>
   );
 }
