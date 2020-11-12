@@ -10,11 +10,8 @@ import {} from "./assets/icons";
 import VetNavbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import ClinicChoose from "./components/Clinic/ClinicChoose/ClinicChoose";
-<<<<<<< HEAD
 import ClinicChooseFiltered from './components/Clinic/ClinicChoose/ClinicChooseFiltered'
 import ClinicSearch from './components/Clinic/ClinicChoose/ClinicSearch'
-=======
->>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
 import { user } from "./database";
 import BookingDetail from "./pages/BookingDetail";
 import BookingResume from "./pages/BookingResume";
@@ -151,11 +148,7 @@ function App() {
             <Route exact path={`${process.env.PUBLIC_URL}/booking`}>
               <ClinicChoose SetBarState={SetBarState} />
             </Route>
-<<<<<<< HEAD
             <Route path={`${process.env.PUBLIC_URL}/booking/detail/:id`}>
-=======
-            <Route path={`${process.env.PUBLIC_URL}/booking/:id`}>
->>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
               <BookingDetail />
             </Route>
             <Route path={`${process.env.PUBLIC_URL}/success`}>
@@ -167,14 +160,11 @@ function App() {
             <Route exact path={`${process.env.PUBLIC_URL}/`}>
               <Home SetBarState={SetBarState} />
             </Route>
-<<<<<<< HEAD
             {/* <Route path="/doctor" component={Doctor} />             */}
             <Route path="/booking/lokasi/:lokasi" component={ClinicChooseFiltered} />
             <Route path="/booking/search/:search" component={ClinicSearch} />
             <Route path="/booking/:page" component={ClinicChoose} />
             <Route path="/auth" component={Auth} />
-=======
->>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
           </Switch>
         </Router>
       </div>
