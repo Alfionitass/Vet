@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from "react-router-dom" ;
+import { Link, useHistory, useParams } from "react-router-dom" ;
 import { Container, Row, Col, Card, Modal, Form, Image } from "react-bootstrap";
-import qs from "qs"
+import qs from "qs";
 import rs from "../../assets/img/rs.png";
 import dc from "../../assets/img/doctor.png";
 import dog from "../../assets/img/dog.png";
@@ -15,8 +15,11 @@ export default function BookingContent() {
     const [bookingDay, setBookingDay] = useState(null);
     const [bookingTime, setBookingTime] = useState(null);
     const [doctor, setDoctor] = useState();
-    const [bookingPet, setBookingPet]= useState('');
+    const [scheduleId, setScheduleId] = useState();
+    const [bookingDate, setBookingDate] = useState();
+    const [animalId, setAnimalId]= useState('');
     const [animalData, setAnimalData]= useState();
+    const history = useHistory();
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -35,8 +38,8 @@ export default function BookingContent() {
             method:'find',
             id: id
         }).then(res=>(
-          setBookingData(res?.data?.data)
-          //console.log(res?.data?.data)
+          setBookingData(res?.data?.data),
+          console.log("isi reservation",res?.data?.data)
         ))
       },[id] );
 
@@ -52,17 +55,9 @@ export default function BookingContent() {
 
    // console.log("data booking", bookingData?.clinic?.clinic?.facilities);
 
-    const bookTitle = (
-        <div className="d-flex flex-row justify-content-between mb-3">
-            <h1>{bookingData && bookingData.clinic.name}</h1>
-            <Link to="/booking/detail/resume">
-                <button className={styles.btn}>Booking Now</button>
-            </Link>
-        </div>
-    )
-
-    let a = bookingData && bookingData;
-    console.log("ini a", a);
+    
+    let a = bookingDate && bookingDate;
+    console.log("tanggal", a);
     
     const checkUser = () => {
         const tokenn = token;
@@ -81,8 +76,9 @@ export default function BookingContent() {
                 access_token: token,
                 id: id,
             }).then(res=>(
-              setDoctor(res?.data?.data)
-              //console.log("dokter",res?.data?.data)
+              setDoctor(res?.data?.data),
+              setBookingDate(res?.data?.data.reservationDate)
+              //console.log("tanggal",res?.data?.data.reservationDate)
             ))
             console.log("fetch")
         }
@@ -114,10 +110,37 @@ export default function BookingContent() {
     //     }
     // }
 
+    // const selectRes = () {
+    //     setReservation()
+    // }
+
+    const selectDoc = (doc) => {
+        setScheduleId(doc._id)
+        console.log("fetch doc")
+    }
+
     const selectAnimal = (pet) => {
-        setBookingPet(pet._id)
+        setAnimalId(pet._id)
         console.log("fetch pet")
     }
+
+    const submit = () => {
+        history.push({
+            pathname: "/booking/detail/resume",
+            state: {
+                scheduleId: scheduleId,
+                animalId: animalId,
+                reservationDate: bookingDate
+            }
+        })
+    }
+
+    const bookTitle = (
+        <div className="d-flex flex-row justify-content-between mb-3">
+            <h1>{bookingData && bookingData.clinic.name}</h1>
+            <button onClick={submit} className={styles.btn}>Booking Now</button>
+        </div>
+    )
     
     const bookSchedule = (
         <div className="d-flex flex-row mb-4">
@@ -190,15 +213,15 @@ export default function BookingContent() {
             <Row>
                 {doctor?.schedules.map((doc) => (
                     <Col md="4" className="mb-3" >
-                        <Card className={styles.cardDoc} >
+                        <Card onClick={() => selectDoc(doc)} className={styles.cardDoc} >
                             <Card.Body className="d-flex flex-row align-items-center justify-content-center"
                                 //{doc.veterinary.name === bookingDoc ? <FaCheckCircle /> : ""}
                             >
                                 <Image src={doc.veterinary.image} className={styles.img2} />
-                                <Card.Text>
+                                <Card.Text className="mr-3">
                                     {doc.veterinary.name}
                                 </Card.Text>
-                                {/* <FaCheckCircle /> */}
+                                {doc._id === scheduleId ? <FaCheckCircle /> : ""}
                             </Card.Body>
                         </Card>
                     </Col>
@@ -215,7 +238,7 @@ export default function BookingContent() {
                     <Col md="3">
                         <Card onClick={() => selectAnimal(pet)} className={styles.cardPet}>
                             <Card.Body className="d-flex align-items-center justify-content-center"
-                                style={{background: pet._id === bookingPet ? "#FDCB5A" : "#fff"}}
+                                style={{background: pet._id === animalId ? "#FDCB5A" : "#fff"}}
                             >
                                 <Card.Title>
                                     {pet.name}/ {pet.gender === true ? "Male" : "Female"}
