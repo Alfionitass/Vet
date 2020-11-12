@@ -7,8 +7,4 @@ export default function BookingResume() {
             <DetailResume />
         </div>
     )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
