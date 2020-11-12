@@ -23,7 +23,7 @@ export default function ClinicChoose() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (e.key === "Enter") {
-      history.push(`/booking/search/${inputSearch}`);
+      history.push(`/demo-Vet/booking/search/${inputSearch}`);
     }
   };
 
@@ -61,12 +61,12 @@ export default function ClinicChoose() {
       </Dropdown.Toggle>
       <Dropdown.Menu>        
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Medan">Medan</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Bandung">Bandung</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Makasar">Makasar</Dropdown.Item>        
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Medan">Medan</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Bandung">Bandung</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Makasar">Makasar</Dropdown.Item>        
       </Dropdown.Menu>
     </Dropdown>)
 

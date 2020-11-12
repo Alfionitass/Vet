@@ -145,28 +145,23 @@ function App() {
             <Route path={`${process.env.PUBLIC_URL}/DemoIcon`}>
               <DemoIcon />
             </Route>
-            <Route path={`${process.env.PUBLIC_URL}/booking/:page`}>
-              <ClinicChoose SetBarState={SetBarState} />
+            <Route path={`${process.env.PUBLIC_URL}/booking/detail/resume`}>
+              <BookingResume />
             </Route>
             <Route path={`${process.env.PUBLIC_URL}/booking/detail/:id`}>
               <BookingDetail />
             </Route>
+            <Route path="/demo-Vet/booking/search/:search" component={ClinicSearch} />
+            <Route path="/demo-Vet/booking/lokasi/:lokasi" component={ClinicChooseFiltered} />
+            <Route path={`${process.env.PUBLIC_URL}/booking/:page`}>
+              <ClinicChoose SetBarState={SetBarState} />
+            </Route>
             <Route path={`${process.env.PUBLIC_URL}/success`}>
               <Success data={userDatas} SetBarState={SetBarState} />
             </Route>
-            <Route path={`${process.env.PUBLIC_URL}/booking/detail/resume`}>
-              <BookingResume />
-            </Route>
-            <Route path="/booking/lokasi/:lokasi" component={ClinicChooseFiltered} />
-            <Route path="/booking/search/:search" component={ClinicSearch} />
             <Route exact path={`${process.env.PUBLIC_URL}/`}>
               <Home SetBarState={SetBarState} />
             </Route>
-            {/* <Route path="/doctor" component={Doctor} /> */}
-            {/* <Route path="/booking/detail/resume" component={BookingResume} />
-            <Route path="/booking/detail/:id" component={BookingDetail} /> */}
-            {/* <Route path="/booking/:page" component={ClinicChoose} />
-            <Route path="/auth" component={Auth} /> */}
           </Switch>
         </Router>
       </div>

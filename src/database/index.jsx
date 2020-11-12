@@ -43,6 +43,7 @@ const configuration = {
       all: "/reservation", // [GET] all reservation
       find: "/reservation/form", // [GET] form reservation by id
       show: "/reservation/choose", // [POST] to get data veterinary/ doctor from reservation by id to create reservation by id
+      create: "/reservation/create", // [POST] create reservation and get data create reservation by scheduleId
       patient: "/reservation/find-patient", // [GET] all reservation by  patient
     }
   },
@@ -70,6 +71,19 @@ const reservation = ({
   if (method === "show") {
     return axios.post(
       `${configuration.url}${configuration.endpoint.reservation.show}/${id}`, 
+      data,
+      {
+        headers: {
+          access_token
+        }
+      }
+    ).then(res => res)
+      .catch(err => err.response)
+  }
+
+  if (method === "create") {
+    return axios.post(
+      `${configuration.url}${configuration.endpoint.reservation.create}/${id}`, 
       data,
       {
         headers: {
