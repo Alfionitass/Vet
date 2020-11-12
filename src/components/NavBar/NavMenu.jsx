@@ -13,7 +13,7 @@ export default function NavMenu(props) {
   }
   return (
     <div className="ml-auto d-flex flex-row align-items-center justify-content-between">
-      <NavLink to={`${process.env.PUBLIC_URL}/booking`} className={styles.link}>
+      <NavLink to={`${process.env.PUBLIC_URL}`} className={styles.link}>
         <span>Home</span>
       </NavLink>
       <NavLink to={`${process.env.PUBLIC_URL}/clinic`} className={styles.link}>
@@ -22,7 +22,7 @@ export default function NavMenu(props) {
       <NavLink to={`${process.env.PUBLIC_URL}/user/${role}`} className={styles.link}>
       <span>{role[0].toUpperCase()}{role.slice(1)}</span>
       </NavLink>
-      <NavLink to={`${process.env.PUBLIC_URL}/booking`} className={styles.link}>
+      <NavLink to={`${process.env.PUBLIC_URL}/booking/1`} className={styles.link}>
         <span>Find a Clinic</span>
       </NavLink>
       {props.data ? (

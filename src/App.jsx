@@ -145,10 +145,10 @@ function App() {
             <Route path={`${process.env.PUBLIC_URL}/DemoIcon`}>
               <DemoIcon />
             </Route>
-            <Route exact path={`${process.env.PUBLIC_URL}/booking`}>
+            <Route exact path={`${process.env.PUBLIC_URL}/booking/:page`}>
               <ClinicChoose SetBarState={SetBarState} />
             </Route>
-            <Route path={`${process.env.PUBLIC_URL}/booking/:id`}>
+            <Route path={`${process.env.PUBLIC_URL}/booking/detail/:id`}>
               <BookingDetail />
             </Route>
             <Route path={`${process.env.PUBLIC_URL}/success`}>

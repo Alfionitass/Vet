@@ -120,7 +120,7 @@ export default function ClinicChoose() {
       </Card.Text>
     </Card.Body>
     <Card.Footer style={{backgroundColor:"white"}}>
-      <Link to={`/booking/detail/${value._id}/`}>
+      <Link to={`${process.env.PUBLIC_URL}/booking/detail/${value._id}/`}>
         <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
           Book now
         </Button>
