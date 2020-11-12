@@ -7,6 +7,7 @@ import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai";
 import { useHistory,useParams } from "react-router-dom";
+import Pagination from './Pagination'
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
@@ -131,16 +132,17 @@ export default function ClinicChoose() {
   return (
     <>    
     <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
-    <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
-      {dropDownLokasi}
-      {/* {binatangPeliharaan}     */}
-      {isSearch?
-      input:
-      buttonSearch}      
-    </Row>
+      <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
+        {dropDownLokasi}
+        {/* {binatangPeliharaan}     */}
+        {isSearch?
+        input:
+        buttonSearch}      
+      </Row>
       <Row>
         {kartu}
       </Row>    
+      <Pagination />
     </div>
     </>
   );
