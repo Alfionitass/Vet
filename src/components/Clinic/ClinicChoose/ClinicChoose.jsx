@@ -60,7 +60,7 @@ export default function ClinicChoose() {
         Lokasi
       </Dropdown.Toggle>
       <Dropdown.Menu>        
-        <Dropdown.Item href="/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
         <Dropdown.Item href="/booking/lokasi/Medan">Medan</Dropdown.Item>
         <Dropdown.Item href="/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
         <Dropdown.Item href="/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
