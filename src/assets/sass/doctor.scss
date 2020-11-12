@@ -1,0 +1,93 @@
+#status,
+#gender {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-pink {
+  background: var(--pink);
+  color: var(--white);
+
+  &.active,
+  &:focus,
+  &:active {
+    color: var(--white) !important;
+  }
+}
+
+.card-header {
+  background-color: unset;
+}
+
+.card--group {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.col>.badge {
+  padding: unset;
+  font-size: unset;
+  line-height: unset;
+}
+
+
+.book {
+  &--row {
+    height: 50px;
+    font-weight: 700;
+
+    &>* {
+      padding: 0;
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  &--item {
+    height: 100%;
+    width: 50px;
+
+    &>* {
+      height: inherit;
+      width: inherit;
+    }
+  }
+}
+
+.button--action {
+  padding: 0 5px !important;
+  font-weight: 700;
+}
+
+.nav {
+  &--menu {
+    height: 56px;
+  }
+
+  &-item {
+    margin-bottom: 10px;
+  }
+
+  &-link {
+    color: #1A3150 !important;
+    font-weight: 700;
+    padding: 0 1rem;
+    &.active {
+      color: #FDCB5A !important;
+      background-color: unset !important;
+      border: none !important;
+      &:after {
+        content: "";
+        width: 80%;
+        padding-top: 10px;
+        height: 5px;
+        display: flex;
+        margin: 0 auto;
+        border-bottom: 10px solid #FDCB5A !important;
+      }
+    }
+  }
+  
+  &-link, &-tabs {
+    border: 0;
+  }
+}

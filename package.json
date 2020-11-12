@@ -1,23 +1,26 @@
 {
+  "homepage": "https://alvin-ictn.github.io/demo-Vet/",
   "name": "team-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.3.2",
-    "@testing-library/user-event": "7.1.2",
-    "axios": "0.20.0",
-    "bootstrap": "4.5.3",
-    "node-sass": "4.14.1",
-    "qs": "^6.9.4",
-    "react": "next",
-    "react-bootstrap": "1.3.0",
-    "react-dom": "next",
-    "react-icons": "3.11.0",
-    "react-router-dom": "5.2.0",
-    "react-router-transition": "2.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.3",
+    "jwt-decode": "^3.0.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.14.0",
+    "react-bootstrap": "^1.3.0",
+    "react-dom": "^16.14.0",
+    "react-icons": "^3.11.0",
+    "react-loading-skeleton": "^2.1.1",
+    "react-router-dom": "^5.2.0",
+    "react-router-transition": "^2.0.0",
     "react-scripts": "3.4.3",
-    "sweetalert2": "10.5.1"
+    "react-skeleton": "^1.0.2",
+    "sweetalert2": "^10.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,7 +44,7 @@
     ]
   },
   "devDependencies": {
-    "react-redux": "7.2.1",
-    "redux": "4.0.5"
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5"
   }
 }

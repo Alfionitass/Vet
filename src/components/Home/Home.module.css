@@ -96,6 +96,9 @@ align-items: flex-end;
 }
 .klinik{
     display: flex;
+    width: 36em;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 .pagination {
     color: #1A3150;
@@ -107,3 +110,18 @@ align-items: flex-end;
 .pagination span{
     margin: 0 auto;
 }
+.mask{
+    display: inline-block;
+  width: 11em;
+  
+  height: 8rem;
+ 
+  overflow: hidden;
+ 
+}
+.mask img{
+    width: 15em;
+    border-top-left-radius: 0.1em;
+    border-top-right-radius: 0.1em;
+}
+  
