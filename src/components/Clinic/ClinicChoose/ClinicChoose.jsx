@@ -59,7 +59,7 @@ export default function ClinicChoose() {
       <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" style={{borderColor:"#9C9C9C",color:"#9C9C9C",fontWeight:"bold"}}>
         Lokasi
       </Dropdown.Toggle>
-      <Dropdown.Menu>        
+      <Dropdown.Menu className="mt-0">        
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Medan">Medan</Dropdown.Item>
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
@@ -130,20 +130,19 @@ export default function ClinicChoose() {
   ))
 
   return (
-    <>    
+    
     <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
-      <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
+      <Row className="justify-content-end" style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
         {dropDownLokasi}
         {/* {binatangPeliharaan}     */}
         {isSearch?
         input:
         buttonSearch}      
       </Row>
-      <Row>
+      <Row >
         {kartu}
       </Row>    
       <Pagination />
-    </div>
-    </>
+    </div>    
   );
 }
