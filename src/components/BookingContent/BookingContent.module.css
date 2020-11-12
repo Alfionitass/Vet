@@ -1,29 +1,7 @@
-/* @media only screen and (max-width: 1440px) {
-    .content {
-        max-width: 90%;
-    }
-} */
-
-/* Untuk Tablet */
-/* @media all and (max-width: 1000px) {
-    .img {
-      width: 50%;
-      margin-bottom: 1.5rem;
-    }
-    
-    .h1 {
-      font-size: 2.6rem;
-    }
-    
-    .cardDay {
-        width: 5.4rem;
-        height: 3rem;
-    }
-  } */
-
 .content {
-    max-width: 1420px;
-    margin: 3rem 3rem;
+    max-width: 1440px;
+    width: 100%;
+    padding: 2rem 2.8rem;
 }
 
 .btn {
@@ -37,10 +15,6 @@
     transition: all 0.3s ease-in-out;
     outline: none;
 }
-
-/* .h1 {
-    font-size: 3.2rem;
-} */
 
 .h3 {
     color: #1A3150;
@@ -56,71 +30,30 @@
     font-weight: 500;
 }
 
-.image {
-    width: 50%;
-}
-
-.img1 {
-    height: 20rem;
-    width: auto;    
-}
-
-.img2 {
-    width: 5rem;
+.img {
+    width: 28rem;
     height: auto;
-    margin-right: 1.5rem;
-}
-
-.info {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1.5rem;
-    width: 100%;
-}
-
-.cardInfo {
-    width: 50%;
+    
 }
 
 .cardDay {
-    width: 10rem;
-    height: 4rem;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-/* .daySelected {
     width: 7.4rem;
     height: 4rem;
     margin: 0;
     padding: 0;
-    cursor: pointer;
-    background-color: #FDCB5A;
 }
-
-.dayUnselected {
-    width: 7.4rem;
-    height: 4rem;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-    background-color: aqua;
-} */
 
 .cardTime {
-    width: 11.3rem;
+    width: 9rem;
     height: 3rem;
     margin: 0;
     padding: 0;
-    cursor: pointer;
 }
 
 .cardBody {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 0;
     margin: 0;
 }
@@ -139,14 +72,12 @@
 }
 
 .cardDoc {
-    width: 18.5rem;
-    cursor: pointer;
+    width: 17rem;
 }
 
 .cardPet {
-    width: 10rem;
-    height: auto;
-    cursor: pointer;
+    width: 14rem;
+    height: 8rem;
 }
 
 .icon {

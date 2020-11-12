@@ -2,41 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import "./../register.css";
 import { VetClinic, VetUser, VetDoctor } from "../../../assets/icons";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 // import { role } from "../../../database"
 
 function simulateNetworkRequest() {
-  return new Promise((resolve) => setTimeout(resolve, 2000));
+  return new Promise((resolve) => setTimeout(resolve, 1000));
 }
 export default function Role() {
   const [isLoading, setLoading] = useState(false);
   const [option, setOption] = useState(true);
   const [highlight, setHighlight] = useState(0);
-  // const [roleData, setRole] = useState({});
-  // const [cardData, setData] = useState({});
-
-  // useEffect(() => {
-  //   role("all").then(res => setRole(res?.data?.data))
-  // },[])
-
-  // useEffect(() => {
-  //   let data = {}
-  //   roleData.length && roleData.map(item => {
-  //     data[item.name] = {"name": item.name}
-  //   })
-  //   setData(data)
-  // },[roleData])
-
-  // useEffect(() => {
-  //   console.log(cardData)
-  // },[cardData])
+  const history = useHistory();
+  
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
         setLoading(false);
+        history.push(`${process.env.PUBLIC_URL}/auth/register/${highlight}`);
       });
     }
-    if (!isLoading && highlight) console.log("gg");
   }, [highlight, isLoading]);
 
   const handleChoice = (num = 0) => {
@@ -97,15 +81,13 @@ export default function Role() {
         </Col>
       </Row>
       <Row className="p-0 m-0 d-flex justify-content-center">
-        <Link className="v-bg-mustard border-0 w-50 rounded-lg" to={`/auth/register/${highlight}`}>
-          <Button
-            className="v-text-donker font-weight-bold bg-transparent border-0 py-3"
-            disabled={isLoading || option}
-            onClick={!isLoading ? handleClick : null}
-          >
-            {isLoading ? "Loading…" : "Selanjutnya"}
-          </Button>
-        </Link>
+        <Button
+          className="v-bg-mustard border-0 w-50 rounded-lg v-text-donker font-weight-bold bg-transparent border-0 py-3"
+          disabled={isLoading || option}
+          onClick={!isLoading ? handleClick : null}
+        >
+            <span>{isLoading ? "Loading…" : "Selanjutnya"}</span>
+        </Button>
       </Row>
     </>
   );

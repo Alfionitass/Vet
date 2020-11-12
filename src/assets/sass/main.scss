@@ -40,12 +40,35 @@
   right: -22rem;
 }
 
+<<<<<<< HEAD
 .App {
   text-align: center;
 }
 
 html {
   overflow-y: scroll;
+=======
+.login {
+  top: -2.5rem;
+}
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #E5E5E5;
+}
+
+html {
+  overflow-y: auto;
+}
+
+body {
+  padding:0 !important;
+}
+
+.hidden {
+  display:none !important;
+  transition: all 1s ease;
+>>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
 }
 
 .App-logo {
@@ -53,6 +76,74 @@ html {
   pointer-events: none;
 }
 
+<<<<<<< HEAD
+=======
+.vet-paws {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height:100vh;
+}
+
+.vet-paws > * {
+  opacity: 0;
+}
+
+.vet-paws >*:nth-child(1) {
+  animation: paw1 1s infinite; 
+}
+
+.vet-paws >*:nth-child(2) {
+  animation: paw2 1s infinite; 
+}
+
+.vet-paws >*:nth-child(3) {
+  animation: paw1 1s infinite; 
+}
+
+.vet-paws >*:nth-child(4) {
+  animation: paw2 1s infinite; 
+}
+
+.vet-paws >*:nth-child(5) {
+  animation: paw1 1s infinite; 
+}
+
+.vet-paws >*:nth-child(6) {
+  animation: paw2 1s infinite; 
+}
+
+@keyframes paw1 {
+  /* You could think of as "step 1" */
+  0% {
+    opacity: 0;
+  }
+  /* You could think of as "step 2" */
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes paw2 {
+  /* You could think of as "step 1" */
+  0% {
+    opacity: 1;
+  }
+  /* You could think of as "step 2" */
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+>>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

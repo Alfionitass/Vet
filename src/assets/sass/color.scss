@@ -20,4 +20,12 @@ $colorList:(
   .v-bg-#{$name} {
     background-color: $color !important;
   }
+<<<<<<< HEAD
 }
+=======
+
+  .v-fill-#{$name} {
+    fill: $color !important;
+  }
+}
+>>>>>>> e6681a954a936274bdc8574b6b021a4747414b34

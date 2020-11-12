@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { GiFemale, GiMale } from "react-icons/gi";
 import { CgUnavailable, CgSun } from "react-icons/cg"
 import { HiPlus } from "react-icons/hi"
+=======
+>>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
 
 import {
   Container,
   Row,
+<<<<<<< HEAD
   Col,
   Card,
   Button,
@@ -18,17 +22,30 @@ import { user } from '../../database'
 import UserProfile from '../reusable/profile'
 import doctorImg from "../../assets/img/doctorProfile.png";
 import "./doctor.css";
+=======
+  Col
+} from "react-bootstrap";
+
+import UserProfile from '../reusable/profile'
+import doctorImg from "../../assets/img/doctorProfile.png";
+import ProfileForm from '../reusable/profileForm'
+// import "./doctor.css";
+// import "../../assets/sass/doctor.scss";
+>>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
 import Swal from "sweetalert2";
 
 export default function Profile() {
   const [status, setStatus] = useState("1");
   const [gender, setGender] = useState("1");
 
+<<<<<<< HEAD
   useEffect(()=>{
     user({
       value: "test"
     })
   })
+=======
+>>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
   const handleClick = () => {
     Swal.fire({
       title: "Update Sukses!",
@@ -46,6 +63,7 @@ export default function Profile() {
     <Container>
       <Row>
         <Col lg={4}>
+<<<<<<< HEAD
           <UserProfile src={doctorImg} mode="user" value={5}/>
         </Col>
         <Col lg={8} className="my-5 text-left">
@@ -171,6 +189,14 @@ export default function Profile() {
           >
             Simpan
           </Button>
+=======
+          <UserProfile src={doctorImg} mode="doctor" value={5}/>
+        </Col>
+        <Col lg={8} className="my-5 text-left">
+          <ProfileForm config={{
+            mode:"clinic"
+          }}/>
+>>>>>>> e6681a954a936274bdc8574b6b021a4747414b34
         </Col>
       </Row>
     </Container>
