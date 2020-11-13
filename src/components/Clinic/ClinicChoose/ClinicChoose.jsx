@@ -7,6 +7,8 @@ import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai";
 import { useHistory,useParams } from "react-router-dom";
+import Pagination from './Pagination'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
@@ -22,7 +24,7 @@ export default function ClinicChoose() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (e.key === "Enter") {
-      history.push(`/booking/search/${inputSearch}`);
+      history.push(`/demo-Vet/booking/search/${inputSearch}`);
     }
   };
 
@@ -44,12 +46,9 @@ export default function ClinicChoose() {
     });
   },[])
 
-  useEffect(
-    () => {
-      console.log('andri')
+  
 
-    },[isSearch]
-  )
+
 
   // useEffect(()=>{clinicData && console.log(clinicData)},[clinicData])
 
@@ -58,16 +57,24 @@ export default function ClinicChoose() {
       <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" style={{borderColor:"#9C9C9C",color:"#9C9C9C",fontWeight:"bold"}}>
         Lokasi
       </Dropdown.Toggle>
-      <Dropdown.Menu>        
-        <Dropdown.Item href="/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Medan">Medan</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Bandung">Bandung</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
-        <Dropdown.Item href="/booking/lokasi/Makasar">Makasar</Dropdown.Item>        
+      <Dropdown.Menu className="mt-0">        
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Medan">Medan</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Bandung">Bandung</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
+        <Dropdown.Item href="/demo-Vet/booking/lokasi/Makasar">Makasar</Dropdown.Item>        
       </Dropdown.Menu>
     </Dropdown>)
+
+  const anotherDrop = (
+    <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+      <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+      <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+    </DropdownButton>
+  )
 
   const binatangPeliharaan = (
     <Dropdown className="mr-4">
@@ -119,7 +126,7 @@ export default function ClinicChoose() {
       </Card.Text>
     </Card.Body>
     <Card.Footer style={{backgroundColor:"white"}}>
-      <Link to={`/booking/detail/${value._id}/`}>
+      <Link to={`${process.env.PUBLIC_URL}/booking/detail/${value._id}/`}>
         <Button style={{borderColor:"#FDCB5A",backgroundColor:"#FDCB5A", width:"14rem",borderRadius:"4px",color:"black"}}>
           Book now
         </Button>
@@ -129,19 +136,19 @@ export default function ClinicChoose() {
   ))
 
   return (
-    <>    
+    
     <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
-    <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
-      {dropDownLokasi}
-      {/* {binatangPeliharaan}     */}
-      {isSearch?
-      input:
-      buttonSearch}      
-    </Row>
-      <Row>
+      <Row className="justify-content-end" style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
+        {dropDownLokasi}
+        {/* {binatangPeliharaan}     */}
+        {isSearch?
+        input:
+        buttonSearch}              
+      </Row>
+      <Row >      
         {kartu}
       </Row>    
-    </div>
-    </>
+      <Pagination />      
+    </div>    
   );
 }
