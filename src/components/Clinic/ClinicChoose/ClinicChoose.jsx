@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 import { AiOutlineSearch } from "react-icons/ai";
 import { useHistory,useParams } from "react-router-dom";
 import Pagination from './Pagination'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
@@ -45,12 +46,9 @@ export default function ClinicChoose() {
     });
   },[])
 
-  useEffect(
-    () => {
-      console.log('andri')
+  
 
-    },[isSearch]
-  )
+
 
   // useEffect(()=>{clinicData && console.log(clinicData)},[clinicData])
 
@@ -69,6 +67,14 @@ export default function ClinicChoose() {
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Makasar">Makasar</Dropdown.Item>        
       </Dropdown.Menu>
     </Dropdown>)
+
+  const anotherDrop = (
+    <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+      <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+      <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+    </DropdownButton>
+  )
 
   const binatangPeliharaan = (
     <Dropdown className="mr-4">
@@ -137,12 +143,12 @@ export default function ClinicChoose() {
         {/* {binatangPeliharaan}     */}
         {isSearch?
         input:
-        buttonSearch}      
+        buttonSearch}              
       </Row>
-      <Row >
+      <Row >      
         {kartu}
       </Row>    
-      <Pagination />
+      <Pagination />      
     </div>    
   );
 }
