@@ -28,7 +28,7 @@ export default function NavMenu(props) {
       {props.data ? (
         <>
           <Image width={50} src={props.data.image} />
-          <NavLink to={`${process.env.PUBLIC_URL}/${props.data.role}`} className={styles.name}>
+          <NavLink to={`${process.env.PUBLIC_URL}/user/${props.data.role}`} className={styles.name}>
             <span>Hi, {props.data.name}</span>
           </NavLink>
           <NavDropdown data={props.data} logout={Logout}/>
