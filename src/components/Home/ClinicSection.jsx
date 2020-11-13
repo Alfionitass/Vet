@@ -46,7 +46,7 @@ export default function ClinicSection() {
                     <h5 class="card-title">{value.name}</h5>
                     <p class="card-text">Buka 09.00 - 12.00</p>
                 </div>
-                <Link to={`${process.env.PUBLIC_URL}/booking/${value._id}/`}>
+                <Link to={`${process.env.PUBLIC_URL}/booking/detail/${value._id}/`}>
                     <Button class="btn btn-warning" style={{ background: '#FDCB5A', color: 'black', fontWeight: 'bold', bottom: '0', width: '100%', margin: '0 auto' }}>
                         Book now
                   </Button>
