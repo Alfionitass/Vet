@@ -20,4 +20,8 @@ $colorList:(
   .v-bg-#{$name} {
     background-color: $color !important;
   }
+
+  .v-fill-#{$name} {
+    fill: $color !important;
+  }
 }

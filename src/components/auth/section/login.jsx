@@ -1,24 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Col, Nav, Row, Form } from "react-bootstrap";
 import "../register.css";
-import { VetMail, VetUser, VetLock, VetEyeShow, VetEyeHidden } from "../../../assets/icons";
-import { useParams } from "react-router-dom";
+import { VetEyeShow, VetEyeHidden } from "../../../assets/icons";
+import { user } from "../../../database";
+import { useHistory } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
-export default function Login() {
-  const [isLoading, setLoading] = useState(false);
-  const [option, setOption] = useState(true);
-  const [highlight, setHighlight] = useState(0);
 
-  const [passvisibility, setPassVisibility] = useState(0);
-
-  let { id } = useParams();
+const Login = ({
+  data: { token, isLoading, postData, passVisibility, errorMsg, userData },
+  function: { setLoading, SetVisibility, SubmitData, HandleInput, SetUserData },
+}) => {
+  const [readyState, setReady] = useState(true);
+  const history = useHistory();
   
-  useEffect(()=>{
+  useEffect(() => {
+    token.length && console.log("gg");
+    token.length && localStorage.setItem("VetToken", token);
+    token.length &&
+      user({
+        method: "self",
+        access_token: token,
+      }).then((res) =>
+        localStorage.setItem("userData", JSON.stringify({ ...res.data.data.user }))
+      );
     
-  })
+  }, [token]);
+
+  useEffect(() => {
+    postData?.email?.length && postData?.password?.length && setReady(false);
+  }, [postData]);
+  
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {
@@ -27,15 +42,6 @@ export default function Login() {
     }
   }, [isLoading]);
 
-  const setPass = (res) => {
-    setPassVisibility(res);
-  };
-  const handleChoice = (num = 0) => {
-    setHighlight(num);
-    setOption(false);
-  };
-
-  const handleClick = () => setLoading(true);
   return (
     <>
       <Row className="mx-4 justify-content-center flex-column">
@@ -47,31 +53,48 @@ export default function Login() {
       <Row className="register-section m-4 px-5 d-flex justify-content-center">
         <Form className="register-form w-100 mx-5 registerForm px-5">
           <Form.Group className="form-register">
-            <Form.Control name="email" type="email" placeholder="Alamat Email Kamu" />
+            <Form.Control
+              onChange={(e) => HandleInput(e)}
+              name="email"
+              type="email"
+              placeholder="Alamat Email Kamu"
+            />
           </Form.Group>
           <Form.Group className="form-register">
-            <Form.Control type={passvisibility ? "text" : "password" } placeholder="Password Kamu" />
-            {passvisibility ? (
-              <div onClick={() => setPass(0)}>
-                <VetEyeHidden className="register-eye"size={30} />
+            <Form.Control
+              onChange={(value) => HandleInput(value)}
+              name="password"
+              value={postData?.password}
+              type={passVisibility ? "text" : "password"}
+              placeholder="Password Kamu"
+            />
+            {passVisibility ? (
+              <div onClick={() => SetVisibility(0)}>
+                <VetEyeHidden className="register-eye login" size={30} />
               </div>
             ) : (
-              <div onClick={() => setPass(1)}>
-                <VetEyeShow className="register-eye" size={30}/>
+              <div onClick={() => SetVisibility(1)}>
+                <VetEyeShow className="register-eye login" size={30} />
               </div>
             )}
+            <Form.Text className="text-danger">
+              {errorMsg && errorMsg}
+            </Form.Text>
           </Form.Group>
+
           <Row className="p-0 m-0 d-flex justify-content-center">
             <Button
               className="v-bg-mustard v-text-donker border-0 font-weight-bold w-100 py-3"
-              disabled={isLoading || option}
-              onClick={!isLoading ? handleClick : null}
+              disabled={isLoading || readyState}
+              onClick={!isLoading ? () => SubmitData("login") : null}
             >
-              {isLoading ? "Loading…" : "Daftarkan Saya"}
+              {isLoading ? "Loading…" : "Login"}
             </Button>
           </Row>
         </Form>
       </Row>
     </>
   );
-}
+};
+
+export default Login;

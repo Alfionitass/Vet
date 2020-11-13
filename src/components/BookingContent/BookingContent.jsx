@@ -144,7 +144,7 @@ export default function BookingContent() {
 
     const submit = () => {
         history.push({
-            pathname: "/booking/detail/resume",
+            pathname: `${process.env.PUBLIC_URL}/booking/detail/resume`,
             state: {
                 scheduleId: scheduleDoc.iniId,
                 animalId: animalss.iniId,
