@@ -12,12 +12,27 @@ import styles from "./BookingContent.module.css";
 export default function BookingContent() {
     const [token, setToken] = useState(localStorage.getItem("VetToken"));
     const [ bookingData, setBookingData] = useState();
-    const [bookingDay, setBookingDay] = useState(null);
-    const [bookingTime, setBookingTime] = useState(null);
+    const [ bookImage, setBookImage] = useState();
+    const [ clinicName, setClinicName] = useState();
+    const [bookingDay, setBookingDay] = useState({
+        indeks: null,
+        hari:""
+    });
+    const [bookingTime, setBookingTime] = useState({
+        indeks: null,
+        jam:""
+    });
     const [doctor, setDoctor] = useState();
-    const [scheduleId, setScheduleId] = useState();
+    const [scheduleDoc, setScheduleDoc] = useState({
+        iniId: "",
+        name: ""
+    });
     const [bookingDate, setBookingDate] = useState();
-    const [animalId, setAnimalId]= useState('');
+    const [animalss, setAnimalss] = useState({
+        iniId: "",
+        name: ""
+    });
+    //const [animalName, setAnimalName] =  useState('');
     const [animalData, setAnimalData]= useState();
     const history = useHistory();
 
@@ -28,19 +43,16 @@ export default function BookingContent() {
     const { id } = useParams();
     console.log("idnya", id);
 
-    const data = qs.stringify({
-        hourReservation: bookingTime,
-        dateReservation: bookingDay
-    })
-
     useEffect(()=>{
         reservation({
             method:'find',
             id: id
-        }).then(res=>(
-          setBookingData(res?.data?.data),
-          console.log("isi reservation",res?.data?.data)
-        ))
+        }).then(res=>{
+            setBookingData(res?.data?.data);
+            setBookImage(res?.data?.data.clinic.image);
+            setClinicName(res?.data?.data.clinic.name);
+          //console.log("isi reservation",res?.data?.data)
+        })
       },[id] );
 
       useEffect(()=>{
@@ -54,10 +66,14 @@ export default function BookingContent() {
       },[] );
 
    // console.log("data booking", bookingData?.clinic?.clinic?.facilities);
-
     
-    let a = bookingDate && bookingDate;
-    console.log("tanggal", a);
+    let a = bookingData && bookingData;
+    console.log("isi reservation", a);
+
+    const data = qs.stringify({
+        hourReservation: bookingTime.indeks,
+        dateReservation: bookingDay.indeks
+    })
     
     const checkUser = () => {
         const tokenn = token;
@@ -69,68 +85,76 @@ export default function BookingContent() {
     }, [bookingDay, bookingTime])
 
     const getDoctor = () => {
-        if (bookingTime !== null && bookingDay !== null) {
+        if (bookingTime.indeks !== null && bookingDay.indeks !== null) {
             reservation({
                 method:'show',
                 data: data,
                 access_token: token,
                 id: id,
-            }).then(res=>(
-              setDoctor(res?.data?.data),
-              setBookingDate(res?.data?.data.reservationDate)
+            }).then(res=>{
+              setDoctor(res?.data?.data);
+              setBookingDate(res?.data?.data.reservationDate);
               //console.log("tanggal",res?.data?.data.reservationDate)
-            ))
+            })
             console.log("fetch")
         }
     }
 
-    const selectDay = (day) => {
+    const selectDay = (day, index) => {
         if (checkUser()) {
-            setBookingDay(day);
+            setBookingDay({
+                indeks: index,
+                hari: day
+            });
         } else {
             alert("Login dlu yaaa")
         }
     }
+    console.log("bookingday", bookingDay)
 
-    const selectTime = (time) => {
+    const selectTime = (time, index) => {
         if (checkUser()) {
-            setBookingTime(time);
+            setBookingTime({
+                indeks: index,
+                jam: time
+            });
         } else {
             alert("Login dlu yaaa")
         }
     }
-
-    // useEffect (() => {
-    //     getDoctorData()
-    // }, [bookingDoc])
-
-    // const getDoctorData = () => {
-    //     if (bookingDoc) {
-    //         console.log("fetch doc")
-    //     }
-    // }
-
-    // const selectRes = () {
-    //     setReservation()
-    // }
+    console.log("bookingtime", bookingTime)
 
     const selectDoc = (doc) => {
-        setScheduleId(doc._id)
+        setScheduleDoc({
+            iniId: doc._id,
+            name: doc.veterinary.name
+        })
         console.log("fetch doc")
     }
 
     const selectAnimal = (pet) => {
-        setAnimalId(pet._id)
+        setAnimalss({
+            iniId: pet._id,
+            name: pet.name
+        });
         console.log("fetch pet")
     }
+
+    console.log("isi pet", animalss && animalss)
 
     const submit = () => {
         history.push({
             pathname: `${process.env.PUBLIC_URL}/booking/detail/resume`,
             state: {
-                scheduleId: scheduleId,
-                animalId: animalId,
-                reservationDate: bookingDate
+                scheduleId: scheduleDoc.iniId,
+                animalId: animalss.iniId,
+                reservationDate: bookingDate,
+                clinicImage: bookImage,
+                bookDay: bookingDay.hari,
+                bookTime: bookingTime.jam,
+                doctorName: scheduleDoc.name,
+                animalsName: animalss.name,
+                clinicName: clinicName
             }
         })
     }
@@ -152,9 +176,9 @@ export default function BookingContent() {
                     <Row>
                     {bookingData?.dateBooking.map((day, index) => (
                         <Col md="4" className="mb-3">
-                            <Card onClick={() => selectDay(index)} className={styles.cardDay} >
+                            <Card onClick={() => selectDay(day, index)} className={styles.cardDay} >
                                 <Card.Body className={styles.cardBody} 
-                                    style={{background: index === bookingDay ? "#FDCB5A" : "#fff"}} 
+                                    style={{background: index === bookingDay.indeks ? "#FDCB5A" : "#fff"}} 
                                 >
                                     <Card.Text className="p-0 m-0">
                                         {day}
@@ -170,9 +194,9 @@ export default function BookingContent() {
                     <Row>
                         {bookingData?.hour.map((time, index) => (
                             <Col md="4" >
-                            <Card onClick={() => selectTime(index)} className={styles.cardTime}>
+                            <Card onClick={() => selectTime(time, index)} className={styles.cardTime}>
                                 <Card.Body className={styles.cardBody}
-                                    style={{background: index === bookingTime ? "#FDCB5A" : "#fff"}}
+                                    style={{background: index === bookingTime.indeks ? "#FDCB5A" : "#fff"}}
                                 >
                                     <Card.Text className="p-0 m-0">
                                         {time}
@@ -221,7 +245,7 @@ export default function BookingContent() {
                                 <Card.Text className="mr-3">
                                     {doc.veterinary.name}
                                 </Card.Text>
-                                {doc._id === scheduleId ? <FaCheckCircle /> : ""}
+                                {doc._id === scheduleDoc.iniId ? <FaCheckCircle /> : ""}
                             </Card.Body>
                         </Card>
                     </Col>
@@ -238,10 +262,11 @@ export default function BookingContent() {
                     <Col md="3">
                         <Card onClick={() => selectAnimal(pet)} className={styles.cardPet}>
                             <Card.Body className="d-flex align-items-center justify-content-center"
-                                style={{background: pet._id === animalId ? "#FDCB5A" : "#fff"}}
+                                style={{background: pet.name === animalss.name ? "#FDCB5A" : "#fff" }}
+                                // style={{background: pet._name === animalss.name ? "#FDCB5A" : "#fff"}}
                             >
                                 <Card.Title>
-                                    {pet.name}/ {pet.gender === true ? "Male" : "Female"}
+                                    {pet.name}/ {pet.type}/ {pet.gender === true ? "Male" : "Female"}
                                 </Card.Title>
                             </Card.Body>
                         </Card>

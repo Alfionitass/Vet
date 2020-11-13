@@ -4,8 +4,8 @@
 }
 
 .img {
-    width: 38rem;
-    height: auto;
+    height: 25rem;
+    width: auto;
     margin-right: 1.5rem;
 }
 
@@ -22,10 +22,15 @@
     font-size: 18px;
 }
 
-.list {
+.listt {
     font-size: 18px;
     position: relative;
     left: 1rem;
+    list-style-position: inside;
+}
+
+.item {
+    overflow: hidden;
 }
 
 .btn {
