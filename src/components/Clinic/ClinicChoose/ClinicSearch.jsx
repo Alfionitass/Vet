@@ -131,7 +131,7 @@ export default function ClinicSearch(){
           <Row >      
             {kartu}
           </Row>    
-          <Pagination />      
+          {/* <Pagination />       */}
         </div>    
       );
 }
