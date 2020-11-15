@@ -8,6 +8,7 @@ import dog from "../../assets/img/dog.png";
 import { FaCheckCircle, FaPlusCircle } from "react-icons/fa";
 import { reservation, animal } from '../../database';
 import styles from "./BookingContent.module.css";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 export default function BookingContent() {
     const [token, setToken] = useState(localStorage.getItem("VetToken"));
@@ -161,20 +162,28 @@ export default function BookingContent() {
 
     const bookTitle = (
         <div className="d-flex flex-row justify-content-between mb-3">
-            <h1>{bookingData && bookingData.clinic.name}</h1>
-            <button onClick={submit} className={styles.btn}>Booking Now</button>
+            <h1>{bookingData?.clinic.name || <Skeleton width={324.61} height={48} />}</h1>
+            <button onClick={submit} className={styles.btn} >Booking Now</button>
         </div>
     )
     
     const bookSchedule = (
         <div className="d-flex flex-row mb-4">
-            <Image src={bookingData && bookingData.clinic.image} className={styles.img1} />
+            <Row>
+                {bookingData ? (
+                    <Image src= {bookingData.clinic.image} className={styles.img1}/>
+                ) : (
+                    <Skeleton width={480} height={320} />
+                )}
+            </Row>
+            
+            {/* <Image src={bookingData? bookingData.clinic.image : <Skeleton width={480} height={320} />} className={styles.img1} /> */}
             <div className="d-flex flex-column ml-5">
                 <h3>Visit Information</h3>
                 <div className="mb-4">
                     <p className={styles.font}>Day Visit</p>
                     <Row>
-                    {bookingData?.dateBooking.map((day, index) => (
+                    {bookingData ? (bookingData.dateBooking.map((day, index) => (
                         <Col md="4" className="mb-3">
                             <Card onClick={() => selectDay(day, index)} className={styles.cardDay} >
                                 <Card.Body className={styles.cardBody} 
@@ -186,25 +195,45 @@ export default function BookingContent() {
                                 </Card.Body>
                             </Card>
                         </Col>
-                    ))}
+                    ))
+                    ) : [0,1,2,3,4,5,6].map((value) => (
+                        <Col md="4" className="mb-3">
+                            <Card className={styles.cardDay} >
+                                <Card.Body className={styles.cardBody}>
+                                    <Skeleton width={158} height={48} />
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))  
+                    }
                     </Row>
                 </div>
                 <div className="d-flex flex-column ">
                     <p className={styles.font}>Time Visit</p>
                     <Row>
-                        {bookingData?.hour.map((time, index) => (
+                        {bookingData? (bookingData.hour.map((time, index) => (
                             <Col md="4" >
-                            <Card onClick={() => selectTime(time, index)} className={styles.cardTime}>
-                                <Card.Body className={styles.cardBody}
-                                    style={{background: index === bookingTime.indeks ? "#FDCB5A" : "#fff"}}
-                                >
-                                    <Card.Text className="p-0 m-0">
-                                        {time}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        ))}
+                                <Card onClick={() => selectTime(time, index)} className={styles.cardTime}>
+                                    <Card.Body className={styles.cardBody}
+                                        style={{background: index === bookingTime.indeks ? "#FDCB5A" : "#fff"}}
+                                    >
+                                        <Card.Text className="p-0 m-0">
+                                            {time}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))
+                        ) : [0,1,2].map((value) => (
+                            <Col md="4" >
+                                <Card className={styles.cardTime}>
+                                    <Card.Body className={styles.cardBody}>
+                                        <Skeleton width={130.5} height={24} />
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))
+                    }
                     </Row>
                 </div>
             </div>
@@ -215,17 +244,27 @@ export default function BookingContent() {
         <div className="d-flex flex-row mb-3">
             <div className={styles.about}>
                 <h3>About</h3>
-                <p className={styles.p}>{bookingData && bookingData.clinic.clinic.about} </p>
+                {bookingData? 
+                    <p className={styles.p}>{bookingData.clinic.clinic.about} </p> :
+                    <Skeleton width={376.34} height={24} />
+                }
+                
             </div>
             <div className={styles.facility}>
                 <h5>Facility</h5>
                 <Row className="d-flex justify-content-end">
-                    {bookingData?.clinic?.clinic?.facilities.map((item) => (
+                    {bookingData? (bookingData.clinic?.clinic?.facilities.map((item) => (
                         <Col md="6">
                             <input type="radio" name="" id="" />
                             <label htmlFor="" className="ml-2">{item.name}</label>
                         </Col>
-                    ))}
+                    ))
+                    ) : [0,1].map((value) => (
+                        <Col md="6">
+                            <Skeleton width={147.83} height={56} />
+                        </Col>
+                    ))
+                }
                 </Row>
             </div>
         </div>
@@ -235,21 +274,32 @@ export default function BookingContent() {
         <div className="mb-4">
             <h3 className="mb-2">Choose a Doctor</h3>
             <Row>
-                {doctor?.schedules.map((doc) => (
+                {doctor? (doctor.schedules.map((doc) => (
                     <Col md="4" className="mb-3" >
                         <Card onClick={() => selectDoc(doc)} className={styles.cardDoc} >
                             <Card.Body className="d-flex flex-row align-items-center justify-content-center"
                                 //{doc.veterinary.name === bookingDoc ? <FaCheckCircle /> : ""}
                             >
-                                <Image src={doc.veterinary.image} className={styles.img2} />
+                                <Image src={doc.veterinary.image ? doc.veterinary.image : ""} className={styles.img2} />
                                 <Card.Text className="mr-3">
-                                    {doc.veterinary.name}
+                                    {doc.veterinary.name ? doc.veterinary.name : "Veterinary's Schedule Not Found"}
                                 </Card.Text>
-                                {doc._id === scheduleDoc.iniId ? <FaCheckCircle /> : ""}
+                                {doc._id === scheduleDoc.iniId ? <FaCheckCircle /> : "" }
                             </Card.Body>
                         </Card>
                     </Col>
-                ))}
+                ))
+                ) : [0].map((value) => (
+                    <Col md="4" className="mb-3" >
+                    <Card className={styles.cardDoc} >
+                        <Card.Body className="d-flex flex-row align-items-center justify-content-center">
+                            <Skeleton width={80} height={80} />
+                            <Skeleton width={108.38} height={24} />
+                        </Card.Body>
+                    </Card>
+                </Col>  
+                ))
+            }
             </Row>
         </div>
     )
@@ -258,7 +308,7 @@ export default function BookingContent() {
         <div className="pet">
             <h3>Choose Pet</h3>
             <Row>
-                {animalData?.animals.map((pet) => (
+                {animalData? (animalData.animals.map((pet) => (
                     <Col md="3">
                         <Card onClick={() => selectAnimal(pet)} className={styles.cardPet}>
                             <Card.Body className="d-flex align-items-center justify-content-center"
@@ -266,12 +316,22 @@ export default function BookingContent() {
                                 // style={{background: pet._name === animalss.name ? "#FDCB5A" : "#fff"}}
                             >
                                 <Card.Title>
-                                    {pet.name}/ {pet.type}/ {pet.gender === true ? "Male" : "Female"}
+                                    {pet.name || <Skeleton width={150} height={48} />}/ {pet.type}/ {pet.gender === true ? "Male" : "Female"}
                                 </Card.Title>
                             </Card.Body>
                         </Card>
                     </Col>
-                ))}
+                ))
+                ) : [0].map((value) => (
+                    <Col md="3">
+                        <Card className={styles.cardPet}>
+                            <Card.Body className="d-flex align-items-center justify-content-center" >
+                                <Skeleton width={150} height={48} />
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))
+            }
             </Row>
         </div>
     )
