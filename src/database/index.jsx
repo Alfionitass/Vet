@@ -149,6 +149,7 @@ const user = ({
     ).then(res => res)
       .catch(res => res.response)
   }
+  //tambah
 
   if (method === "delete") {
     return axios.post(
