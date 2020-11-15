@@ -8,6 +8,7 @@ import dog from "../../assets/img/dog.png";
 import { FaCheckCircle, FaPlusCircle } from "react-icons/fa";
 import { reservation, animal } from '../../database';
 import styles from "./BookingContent.module.css";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 export default function BookingContent() {
     const [token, setToken] = useState(localStorage.getItem("VetToken"));
@@ -235,7 +236,7 @@ export default function BookingContent() {
         <div className="mb-4">
             <h3 className="mb-2">Choose a Doctor</h3>
             <Row>
-                {doctor?.schedules.map((doc) => (
+                {doctor ? (doctor.schedules.map((doc) => (
                     <Col md="4" className="mb-3" >
                         <Card onClick={() => selectDoc(doc)} className={styles.cardDoc} >
                             <Card.Body className="d-flex flex-row align-items-center justify-content-center"
@@ -249,7 +250,21 @@ export default function BookingContent() {
                             </Card.Body>
                         </Card>
                     </Col>
-                ))}
+                ))
+                ) : (
+                    <Col md="4" className="mb-3" >
+                        <Card className={styles.cardDoc} >
+                            <Card.Body className="d-flex flex-row align-items-center justify-content-center"
+                                //{doc.veterinary.name === bookingDoc ? <FaCheckCircle /> : ""}
+                            >
+                                <Image src="" className={styles.img2} />
+                                <Card.Text className="mr-3">
+                                    Veterinary's Schedule Not Found
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                )}
             </Row>
         </div>
     )
@@ -277,13 +292,16 @@ export default function BookingContent() {
     )
 
     return (
-        <Container className="mt-5 mb-5">
-            {bookTitle}
-            <h3 className={styles.h3}>General Information</h3>
-            {bookSchedule}
-            {bookInfo}
-            {bookDoctor}
-            {bookPet}
-        </Container>
+        <SkeletonTheme color="#202020" highlightColor="#444">
+            <Container className="mt-5 mb-5">
+                <Skeleton count={9} duration={2} />
+                {bookTitle}
+                <h3 className={styles.h3}>General Information</h3>
+                {bookSchedule}
+                {bookInfo}
+                {bookDoctor}
+                {bookPet}
+            </Container>
+        </SkeletonTheme>
     )
 }
