@@ -72,9 +72,10 @@ export default function BookingResume() {
                     </div>
                     <div className="pet">
                         <h5>Pet</h5>
-                            <ol className={styles.listt}>
-                                <li className={styles.item}>{location.state.animalsName}</li>
-                            </ol>
+                        <p>{location.state.animalsName}</p>
+                            {/* <ol className={styles.listt}>
+                                <li className={styles.item}></li>
+                            </ol> */}
                     </div>
                 </div>
             </div>

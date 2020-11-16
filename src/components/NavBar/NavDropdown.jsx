@@ -3,7 +3,7 @@ import { Image, Col, Dropdown, DropdownButton} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import { VetArrowDown, VetDoor } from "../../assets/icons";
-import './custom.css'
+import './custom.scss'
 
 export default function NavDropdown(props) {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -32,7 +32,7 @@ export default function NavDropdown(props) {
 
   return (
     <>
-      <Dropdown style={{ cursor: "pointer" }}>
+      <Dropdown style={{ cursor: "pointer" }} className="drop-down">
         <Dropdown.Toggle
           drop="left"
           as={CustomToggle}

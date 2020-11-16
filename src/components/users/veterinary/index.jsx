@@ -4,11 +4,11 @@ import { Switch, Route, Link, NavLink } from "react-router-dom";
 import { VeterinaryApproval, VeterinaryBook } from './appointment'
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
-import "./doctor.css";
+import "./doctor.scss";
 
 export default function Appointment() {
   return (
-    <Card>
+    <Card id="card-veterinary">
       <Card.Header className="nav--menu">
         <Nav
           variant="tabs"

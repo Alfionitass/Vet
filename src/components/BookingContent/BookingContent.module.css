@@ -131,7 +131,7 @@
 }
 
 .about {
-    width: 42.5rem;
+    width: 28rem;
 }
 
 .p {
@@ -139,7 +139,7 @@
 }
 
 .facility {
-    width: 30rem;
+    width: 38rem;
     margin-left: 3rem;
 }
 
@@ -149,7 +149,7 @@
 }
 
 .cardPet {
-    width: 12rem;
+    width: 14rem;
     height: auto;
     cursor: pointer;
 }
