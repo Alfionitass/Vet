@@ -5,11 +5,11 @@ import UserProfile from "../../reusable/profile";
 import { PatientHistory, PatientBook } from './appointment'
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
-import "./doctor.css";
+import "./doctor.scss";
 
 export default function Appointment(props) {
   return (
-    <Card>
+    <Card id="card-patient">
       <Card.Header className="nav--menu">
         <Nav
           variant="tabs"

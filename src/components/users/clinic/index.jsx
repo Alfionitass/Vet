@@ -5,11 +5,11 @@ import { Switch, Route, Link, NavLink } from "react-router-dom";
 import { ClinicApproval, ClinicBook } from "./appointment";
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
-import "./doctor.css";
+import "./doctor.scss";
 
 export function Clinic() {
   return (
-    <Card>
+    <Card id="cardDoctor">
       <Card.Header className="nav--menu">
         <Nav
           variant="tabs"
