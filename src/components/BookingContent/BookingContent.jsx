@@ -168,7 +168,7 @@ export default function BookingContent() {
     )
     
     const bookSchedule = (
-        <div className="d-flex flex-row mb-4">
+        <div className="d-flex flex-row mb-4 mr-3">
             <Row>
                 {bookingData ? (
                     <Image src= {bookingData.clinic.image} className={styles.img1}/>
@@ -256,8 +256,7 @@ export default function BookingContent() {
                     {bookingData? (bookingData.clinic.clinic.facilities.map((item) => (
                         <Col md="6">
                             <input type="radio" name="" id="" />
-                            <label htmlFor="" className="ml-2">{item.name}</label>}
-                            
+                            <label htmlFor="" className="ml-2">{item.name}</label>
                         </Col>
                     )) 
                     ) : [0,1].map((value) => (

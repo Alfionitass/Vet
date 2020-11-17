@@ -22,10 +22,17 @@
 .dog{
 display: flex;
 align-items: flex-end;
-
-
-
 }
+
+.par {
+    text-align: justify;
+}
+
+.par2{
+    text-align: justify;
+    padding-right: 3rem;
+}
+
 .dog img{
     position: relative;
     max-width: 12em;
