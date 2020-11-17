@@ -501,3 +501,4 @@
 [1112/162430.612:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: An attempt was made to access an exiting process. (0xc000010a)
 =======
 >>>>>>> e1dc1944820f34c9a764110040a109683bb2c521
+[1116/073029.591:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

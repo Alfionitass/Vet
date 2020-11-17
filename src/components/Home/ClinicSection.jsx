@@ -42,9 +42,9 @@ export default function ClinicSection() {
             </div>
             <div class="card-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
-                    <p class="card-text">{value.clinic.city}</p>
-                    <h5 class="card-title">{value.name}</h5>
-                    <p class="card-text">Buka 09.00 - 12.00</p>
+                    <p class="card-text">{value.clinic.city ? value.clinic.city : "Surabaya"}</p>
+                    <h5 class="card-title mt-2" style={{fontSize: '14px'}} >{value.name}</h5>
+                    <p class="card-text mb-2">Buka 09.00 - 12.00</p>
                 </div>
                 <Link to={`${process.env.PUBLIC_URL}/booking/detail/${value._id}/`}>
                     <Button class="btn btn-warning" style={{ background: '#FDCB5A', color: 'black', fontWeight: 'bold', bottom: '0', width: '100%', margin: '0 auto' }}>
@@ -61,10 +61,10 @@ export default function ClinicSection() {
         <div className="container-fluid">
 
 
-            <div className="row" style={{ width: '90%', margin: '3 auto', marginLeft: '10%', textAlign:'left' }}>
+            <div className="row mt-3 pt-5" style={{ width: '80%', margin: '3rem auto', marginLeft: '10%', textAlign:'left' }}>
                 <div className="col-md-6 col-xs-12">
-                    <h4>Pilih Klinik</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis molestiae deleniti vel asperiores dolor saepe alias, eum repudiandae aspernatur tempore. Placeat commodi repellendus nesciunt explicabo ea error perspiciatis odit unde!</p>
+                    <h4>Choose a Clinic</h4>
+                    <p className={classes.par2}>Specialist website for reservations pets health, everyday in our website can communicate with dozens of patients and you can choose the nearest location of veterinary clinic to check your pets condition.</p>
 
                 </div>
                 <div className="col-md-6 col-xs-12 ">
