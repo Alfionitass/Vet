@@ -23,12 +23,12 @@ export default function NavMenu(props) {
       <span>{role[0].toUpperCase()}{role.slice(1)}</span>
       </NavLink>
       <NavLink to={`${process.env.PUBLIC_URL}/booking/1`} className={styles.link}>
-        <span>Find a Clinic</span>
+        <span>Find Clinic</span>
       </NavLink>
       {props.data ? (
         <>
-          <Image width={50} src={props.data.image} />
-          <NavLink to={`${process.env.PUBLIC_URL}/${props.data.role}`} className={styles.name}>
+          <Image width={50} src={props.data.image} className="ml-3" />
+          <NavLink to={`${process.env.PUBLIC_URL}/user/${props.data.role}`} className={styles.name}>
             <span>Hi, {props.data.name}</span>
           </NavLink>
           <NavDropdown data={props.data} logout={Logout}/>

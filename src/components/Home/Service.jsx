@@ -21,8 +21,8 @@ export default function Service() {
                         <img id="one" src={Vector2} class="img-fluid" alt="" style={{ transform: 'rotate(152.15deg)', height: '100%' }} />
                     </div>
                     <div className={classes.serviceText}>
-                        <h5>Klinik/Rumah Sakit</h5>
-                        <p>Pilih Klinik atau rumah sakit yang terdekat dengan anda</p>
+                        <h5>Clinic/ Hospital</h5>
+                        <p>Choose a clinic or hospital close to your home.</p>
                     </div>
 
                 </div>
@@ -34,8 +34,8 @@ export default function Service() {
 
 
                     <div className={classes.serviceText}>
-                        <h5>Tanggal Konsultasi</h5>
-                        <p>Tentukan tanggal beserta jam konsultasi dengan dokter hewan</p>
+                        <h5>Consultation Date</h5>
+                        <p>Determine the date and time of consultation with the veterinary!</p>
                     </div>
 
                 </div>
@@ -46,8 +46,8 @@ export default function Service() {
                         <img id="three" class="img-fluid" src={Vector2} alt='' style={{ transform: 'rotate(-54.83deg)', height: '100%', marginTop: '-1em' }} />
                     </div>
                     <div className={classes.serviceText}>
-                        <h5>Bertemu Dokter</h5>
-                        <p>Waktunya bertemu dengan dokter untuk berkonsultasi</p>
+                        <h5>Meet The Doctor</h5>
+                        <p>Time to see a doctor for a consultation!</p>
                     </div>
 
 

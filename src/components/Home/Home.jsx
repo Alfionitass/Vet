@@ -46,7 +46,7 @@ export default function Home() {
 
                         <div className={classes.headerText}>
                             <h4>Welcome to VET</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, architecto voluptate veritatis nulla veniam adipisci unde accusantium dolores modi labore exercitationem consequuntur atque, maxime saepe eos et dolor mollitia rerum.</p>
+                            <p>VET aim to provide the highest standards of veterinary care. These are the terms on which we, Independent Vetcare Limited (trading as The Veterinary Clinic), supply veterinary services and related products to you. These Terms and Conditions shall apply to all supplies of Veterinary Services and Products by us to you to the exclusion of all other terms and conditions.</p>
                             <button type="button" class="btn btn-warning" style={{ background: '#FDCB5A', color: 'black', fontWeight: 'bold' }}>Booking Now</button>
                         </div>
 
@@ -79,8 +79,8 @@ export default function Home() {
                             <img id="one" src={Vector2} class="img-fluid" alt="" style={{ transform: 'rotate(152.15deg)', height: '100%' }} />
                         </div>
                         <div className={classes.serviceText}>
-                            <h5>Klinik/Rumah Sakit</h5>
-                            <p>Pilih Klinik atau rumah sakit yang terdekat dengan anda</p>
+                            <h5>Clinic/ Hospital</h5>
+                            <p>Choose a clinic or hospital close to your home.</p>
                         </div>
 
                     </div>
@@ -92,8 +92,8 @@ export default function Home() {
 
 
                         <div className={classes.serviceText}>
-                            <h5>Tanggal Konsultasi</h5>
-                            <p>Tentukan tanggal beserta jam konsultasi dengan dokter hewan</p>
+                            <h5>Consultation Date</h5>
+                            <p>Determine the date and time of consultation with the veterinary!</p>
                         </div>
 
                     </div>
@@ -104,8 +104,8 @@ export default function Home() {
                             <img id="three" class="img-fluid" src={Vector2} style={{ transform: 'rotate(-54.83deg)', height: '100%', marginTop: '-1em' }} />
                         </div>
                         <div className={classes.serviceText}>
-                            <h5>Bertemu Dokter</h5>
-                            <p>Waktunya bertemu dengan dokter untuk berkonsultasi</p>
+                            <h5>Meet The Doctor</h5>
+                            <p>Time to see a doctor for a consultation!</p>
                         </div>
 
 
@@ -119,14 +119,14 @@ export default function Home() {
                     </div>
                     <div className="col-md-6 col-xs-12" style={{ marginTop: '5em' }}>
                         <h4>Why Choose Us?</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit qui velit, vero, ullam soluta, et obcaecati aliquam culpa necessitatibus nemo animi quis ab sapiente nesciunt ducimus? Explicabo dignissimos enim aspernatur.</p>
+                        <p>With Vet app the owner can find the nearest location of the clinic veterinary and reservation for check up your pets health and condition.</p>
 
                     </div>
                 </div>
                 <div className="row" style={{ width: '90%', margin: '3 auto', marginLeft: '10%' }}>
                     <div className="col-md-6 col-xs-12">
-                        <h4>Pilih Klinik</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis molestiae deleniti vel asperiores dolor saepe alias, eum repudiandae aspernatur tempore. Placeat commodi repellendus nesciunt explicabo ea error perspiciatis odit unde!</p>
+                        <h4>Choose a Clinic</h4>
+                        <p>You can choose the nearest location of veterinary clinic to check your pets condition.</p>
 
                     </div>
                     <div className="col-md-6 col-xs-12 ">

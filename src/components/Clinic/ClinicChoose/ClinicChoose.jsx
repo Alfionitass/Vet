@@ -53,11 +53,11 @@ export default function ClinicChoose() {
   // useEffect(()=>{clinicData && console.log(clinicData)},[clinicData])
 
   const dropDownLokasi = (
-    <Dropdown className="mr-4">
+    <Dropdown className="mr-4 " style={{marginRight:'0.5rem'}}>
       <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic" style={{borderColor:"#9C9C9C",color:"#9C9C9C",fontWeight:"bold"}}>
         Lokasi
       </Dropdown.Toggle>
-      <Dropdown.Menu className="mt-0">        
+      <Dropdown.Menu className="mt-0" style={{top:'-65px'}}>        
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Medan">Medan</Dropdown.Item>
         <Dropdown.Item href="/demo-Vet/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>

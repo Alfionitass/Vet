@@ -8,7 +8,7 @@ import classes from './Home.module.css';
 export default function Overview() {
     return (
         <div className='container-fluid'>
-             <div className="row" style={{ width: '80%', margin: '3em auto', textAlign:'left' }} >
+             <div className="row" style={{ width: '80%', marginBottom: '3rem', margin: '3em auto', textAlign:'left' }} >
                     <div className="col-md-6 col-xs-12" style={{ position: 'relative' }}>
                         <div className={classes.blue}><img class="img-fluid" src={Vector3} alt="" /></div>
                         <div className={classes.yellow}> <img class="img-fluid" src={Vector4} alt="" /></div>
@@ -16,7 +16,7 @@ export default function Overview() {
                     </div>
                     <div className="col-md-6 col-xs-12" style={{ marginTop: '5em' }}>
                         <h4>Why Choose Us?</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit qui velit, vero, ullam soluta, et obcaecati aliquam culpa necessitatibus nemo animi quis ab sapiente nesciunt ducimus? Explicabo dignissimos enim aspernatur.</p>
+                        <p className={classes.par}>With Vet app the owner can find the nearest location of the clinic veterinary and reservation for check up your pets health and condition.</p>
 
                     </div>
                 </div>

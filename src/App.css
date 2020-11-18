@@ -139,7 +139,7 @@ path.v-fill-donker {
   fill: var(--primary-color-1) !important;
 }
 
-.form-register input {
+/* .form-register input {
   background-size: 1.5rem 1.5rem;
   background-repeat: no-repeat;
   background-position: 1rem 0.75rem;
@@ -292,4 +292,4 @@ html {
     padding: .5rem .75rem !important;
     font-size: 12px !important;
   }
-}
+} */
