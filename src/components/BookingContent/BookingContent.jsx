@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useParams } from "react-router-dom" ;
+import { Link, NavLink, useHistory, Redirect, useParams } from "react-router-dom" ;
 import { Container, Row, Col, Card, Modal, Form, Image } from "react-bootstrap";
 import qs from "qs";
+import Swal from "sweetalert2";
 import rs from "../../assets/img/rs.png";
 import dc from "../../assets/img/doctor.png";
 import dog from "../../assets/img/dog.png";
@@ -81,8 +82,24 @@ export default function BookingContent() {
         return !!tokenn;
     }
 
+    const getData = () => {
+        reservation({
+            method:'find',
+            id: id
+        }).then(res=>{
+            setBookingData(res?.data?.data);
+        })
+        
+        if(checkUser()) {
+            selectDay(a, 0);
+            selectTime(a, 0)
+            //bookingTime(0);
+        }
+    }
+
     useEffect (() => {
         getDoctor()
+        getData()
     }, [bookingDay, bookingTime])
 
     const getDoctor = () => {
@@ -108,7 +125,14 @@ export default function BookingContent() {
                 hari: day
             });
         } else {
-            alert("Login dlu yaaa")
+            Swal.fire({
+                icon: 'warning',
+                title: '<span style="color:#fff">You must register/ login first!</span>',
+                iconColor: '#FDCB5A',
+                background: '#1A3150',
+                confirmButtonColor: '#FDCB5A',
+                confirmButtonText: '<span style="color:#1A3150;font-weight:bold">OK</span>'
+            })
         }
     }
     console.log("bookingday", bookingDay)
@@ -120,7 +144,14 @@ export default function BookingContent() {
                 jam: time
             });
         } else {
-            alert("Login dlu yaaa")
+            Swal.fire({
+                icon: 'warning',
+                title: '<span style="color:#fff">You must register/ login first!</span>',
+                iconColor: '#FDCB5A',
+                background: '#1A3150',
+                confirmButtonColor: '#FDCB5A',
+                confirmButtonText: '<span style="color:#1A3150;font-weight:bold">OK</span>'
+            })
         }
     }
     console.log("bookingtime", bookingTime)
@@ -144,20 +175,42 @@ export default function BookingContent() {
     console.log("isi pet", animalss && animalss)
 
     const submit = () => {
-        history.push({
-            pathname: `${process.env.PUBLIC_URL}/booking/detail/resume`,
-            state: {
-                scheduleId: scheduleDoc.iniId,
-                animalId: animalss.iniId,
-                reservationDate: bookingDate,
-                clinicImage: bookImage,
-                bookDay: bookingDay.hari,
-                bookTime: bookingTime.jam,
-                doctorName: scheduleDoc.name,
-                animalsName: animalss.name,
-                clinicName: clinicName
+        if (checkUser()) {
+            if (selectDay() && selectTime() && selectDoc() && selectAnimal()) {
+                history.push({
+                    pathname: `${process.env.PUBLIC_URL}/booking/detail/resume`,
+                    state: {
+                        scheduleId: scheduleDoc.iniId,
+                        animalId: animalss.iniId,
+                        reservationDate: bookingDate,
+                        clinicImage: bookImage,
+                        bookDay: bookingDay.hari,
+                        bookTime: bookingTime.jam,
+                        doctorName: scheduleDoc.name,
+                        animalsName: animalss.name,
+                        clinicName: clinicName
+                    }
+                })
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '<span style="color:#fff">You should choose your booking data!</span>',
+                    iconColor: '#FDCB5A',
+                    background: '#1A3150',
+                    confirmButtonColor: '#FDCB5A',
+                    confirmButtonText: '<span style="color:#1A3150;font-weight:bold">OK</span>'
+                })
             }
-        })
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: '<span style="color:#fff">You must register/ login first!</span>',
+                iconColor: '#FDCB5A',
+                background: '#1A3150',
+                confirmButtonColor: '#FDCB5A',
+                confirmButtonText: '<span style="color:#1A3150;font-weight:bold">OK</span>'
+            })
+        }
     }
 
     const bookTitle = (
@@ -170,103 +223,108 @@ export default function BookingContent() {
     const bookSchedule = (
         <div className="d-flex flex-row mb-4 mr-3">
             <Row>
-                {bookingData ? (
-                    <Image src= {bookingData.clinic.image} className={styles.img1}/>
-                ) : (
-                    <Skeleton width={480} height={320} />
-                )}
-            </Row>
-            
-            {/* <Image src={bookingData? bookingData.clinic.image : <Skeleton width={480} height={320} />} className={styles.img1} /> */}
-            <div className="d-flex flex-column ml-5">
-                <h3>Visit Information</h3>
-                <div className="mb-4">
-                    <p className={styles.font}>Day Visit</p>
-                    <Row>
-                    {bookingData ? (bookingData.dateBooking.map((day, index) => (
-                        <Col md="4" className="mb-3">
-                            <Card onClick={() => selectDay(day, index)} className={styles.cardDay} >
-                                <Card.Body className={styles.cardBody} 
-                                    style={{background: index === bookingDay.indeks ? "#FDCB5A" : "#fff"}} 
-                                >
-                                    <Card.Text className="p-0 m-0">
-                                        {day}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))
-                    ) : [0,1,2,3,4,5,6].map((value) => (
-                        <Col md="4" className="mb-3">
-                            <Card className={styles.cardDay} >
-                                <Card.Body className={styles.cardBody}>
-                                    <Skeleton width={158} height={48} />
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))  
-                    }
-                    </Row>
-                </div>
-                <div className="d-flex flex-column ">
-                    <p className={styles.font}>Time Visit</p>
-                    <Row>
-                        {bookingData? (bookingData.hour.map((time, index) => (
-                            <Col md="4" >
-                                <Card onClick={() => selectTime(time, index)} className={styles.cardTime}>
-                                    <Card.Body className={styles.cardBody}
-                                        style={{background: index === bookingTime.indeks ? "#FDCB5A" : "#fff"}}
+                <Col md="6" xs="12">
+                    {bookingData ? (
+                        <Image src= {bookingData.clinic.image} className={styles.img1} />
+                    ) : (
+                        <Skeleton width={480} height={320} />
+                    )}
+                </Col>
+                <Col md="6" xs="12">
+                    <h3>Visit Information</h3>
+                    <div className="mb-4">
+                        <p className={styles.font}>Day Visit</p>
+                        <Row>
+                        {bookingData ? (bookingData.dateBooking.map((day, index) => (
+                            <Col md="4" className="mb-3">
+                                <Card onClick={() => selectDay(day, index)} className={styles.cardDay} >
+                                    <Card.Body className={styles.cardBody} 
+                                        style={{background: index === bookingDay.indeks ? "#FDCB5A" : "#fff"}} 
                                     >
-                                        <Card.Text className="p-0 m-0">
-                                            {time}
+                                        <Card.Text className={styles.fontDay}>
+                                            {day}
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
                             </Col>
                         ))
-                        ) : [0,1,2].map((value) => (
-                            <Col md="4" >
-                                <Card className={styles.cardTime}>
+                        ) : [0,1,2,3,4,5,6].map((value) => (
+                            <Col md="4" className="mb-3">
+                                <Card className={styles.cardDay} >
                                     <Card.Body className={styles.cardBody}>
-                                        <Skeleton width={130.5} height={24} />
+                                        <Skeleton width={158} height={48} />
                                     </Card.Body>
                                 </Card>
                             </Col>
-                        ))
-                    }
-                    </Row>
-                </div>
-            </div>
+                        ))  
+                        }
+                        </Row>
+                    </div>
+                    <div className="d-flex flex-column ">
+                        <p className={styles.font}>Time Visit</p>
+                        <Row>
+                            {bookingData? (bookingData.hour.map((time, index) => (
+                                <Col md="4" >
+                                    <Card onClick={() => selectTime(time, index)} className={styles.cardTime}>
+                                        <Card.Body className={styles.cardBody}
+                                            style={{background: index === bookingTime.indeks ? "#FDCB5A" : "#fff"}}
+                                        >
+                                            <Card.Text className={styles.fontTime}>
+                                                {time}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))
+                            ) : [0,1,2].map((value) => (
+                                <Col md="4" >
+                                    <Card className={styles.cardTime}>
+                                        <Card.Body className={styles.cardBody}>
+                                            <Skeleton width={130.5} height={24} />
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))
+                        }
+                        </Row>
+                    </div>
+                </Col>
+            </Row>
         </div>
     )
 
     const bookInfo = (
         <div className="d-flex flex-row mb-3">
-            <div className={styles.about}>
-                <h3>About</h3>
-                {bookingData? 
-                    <p className={styles.p}>{bookingData.clinic.clinic.about ? bookingData.clinic.clinic.about : "No Details Clinic Yet"} </p> :
-                    <Skeleton width={376.34} height={24} />
-                }
-            </div>
-            <div className={styles.facility}>
-                <h5>Facility</h5>
-                <Row className="d-flex justify-content-end">
-                    
-                    {bookingData? (bookingData.clinic.clinic.facilities.map((item) => (
-                        <Col md="6">
-                            <input type="radio" name="" id="" />
-                            <label htmlFor="" className="ml-2">{item.name}</label>
-                        </Col>
-                    )) 
-                    ) : [0,1].map((value) => (
-                        <Col md="6">
-                            <Skeleton width={147.83} height={56} />
-                        </Col>
-                    )) 
-                }
-                </Row>
-            </div>
+            <Row>
+                <Col md="6" xs="12">
+                    <div className={styles.about}>
+                        <h3>About</h3>
+                        {bookingData? 
+                            <p className={styles.p}>{bookingData.clinic.clinic.about ? bookingData.clinic.clinic.about : "No Details Clinic Yet"} </p> :
+                            <Skeleton width={376.34} height={24} />
+                        }
+                    </div>
+                </Col>
+                <Col md="6" xs="12">
+                    <div className={styles.facility}>
+                        <h5>Facility</h5>
+                        <Row className="d-flex justify-content-end">
+                            {bookingData? (bookingData.clinic.clinic.facilities.map((item) => (
+                                <Col md="6">
+                                    <input type="radio" name="" id="" />
+                                    <label htmlFor="" className="ml-2">{item.name}</label>
+                                </Col>
+                            )) 
+                            ) : [0,1].map((value) => (
+                                <Col md="6">
+                                    <Skeleton width={147.83} height={56} />
+                                </Col>
+                            )) 
+                        }
+                        </Row>
+                    </div>
+                </Col>
+            </Row>
         </div>
     )
 
@@ -337,13 +395,16 @@ export default function BookingContent() {
     )
 
     return (
-        <Container className="mt-5 mb-5">
-            {bookTitle}
-            <h3 className={styles.h3}>General Information</h3>
-            {bookSchedule}
-            {bookInfo}
-            {bookDoctor}
-            {bookPet}
+        <Container fluid>
+            <div className={styles.bookContent}>
+                {bookTitle}
+                <h3 className={styles.h3}>General Information</h3>
+                {bookSchedule}
+                {bookInfo}
+                {bookDoctor}
+                {bookPet}
+            </div>
+            
         </Container>
     )
 }
