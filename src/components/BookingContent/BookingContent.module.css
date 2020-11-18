@@ -26,6 +26,11 @@
     margin: 3rem 3rem;
 }
 
+.bookContent {
+    width: 80%;
+    margin: 3rem auto;
+}
+
 .btn {
     font-weight: bold;
     padding: 0.5rem 3rem;
@@ -61,7 +66,7 @@
 }
 
 .img1 {
-    height: 20rem;
+    height: 21rem;
     width: auto;    
 }
 
@@ -71,8 +76,8 @@
 }
 
 .img2 {
-    width: 5rem;
-    height: auto;
+    width: auto;
+    height: 5rem;
     margin-right: 1.5rem;
 }
 
@@ -88,7 +93,7 @@
 }
 
 .cardDay {
-    width: 10rem;
+    width: 8.5rem;
     height: 4rem;
     margin: 0;
     padding: 0;
@@ -114,7 +119,7 @@
 } */
 
 .cardTime {
-    width: 11.3rem;
+    width: 9rem;
     height: 3rem;
     margin: 0;
     padding: 0;
@@ -130,8 +135,20 @@
     margin: 0;
 }
 
+.fontDay {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+.fontTime {
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+
 .about {
-    width: 29rem;
+    width: 28rem;
 }
 
 .p {
@@ -139,12 +156,13 @@
 }
 
 .facility {
-    width: 38rem;
-    margin-left: 3rem;
+    width: 29rem;
+    margin-left: 2rem;
 }
 
 .cardDoc {
     width: 18.5rem;
+    height: auto;
     cursor: pointer;
 }
 
