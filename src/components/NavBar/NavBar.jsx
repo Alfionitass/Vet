@@ -18,7 +18,7 @@ export default function NavBar(props) {
   //   console.log(userData[0])
   // })
   return (
-    <Navbar expand="lg" className={`${styles.contain} ${!props.barState.navbar && "hidden" }`}>
+    <Navbar expand="lg" className={`${styles.contain} ${!props.barState.navbar && "hidden" }`} style={{paddingLeft:'3rem'}}>
       <Navbar.Brand>
         <Link to={`${process.env.PUBLIC_URL}/`}>
           <VetLogoSymbol color="#FDCB5A" />
