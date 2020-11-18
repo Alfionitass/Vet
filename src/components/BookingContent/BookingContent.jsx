@@ -176,7 +176,6 @@ export default function BookingContent() {
 
     const submit = () => {
         if (checkUser()) {
-            if (selectDay() && selectTime() && selectDoc() && selectAnimal()) {
                 history.push({
                     pathname: `${process.env.PUBLIC_URL}/booking/detail/resume`,
                     state: {
@@ -191,16 +190,6 @@ export default function BookingContent() {
                         clinicName: clinicName
                     }
                 })
-            } else {
-                Swal.fire({
-                    icon: 'warning',
-                    title: '<span style="color:#fff">You should choose your booking data!</span>',
-                    iconColor: '#FDCB5A',
-                    background: '#1A3150',
-                    confirmButtonColor: '#FDCB5A',
-                    confirmButtonText: '<span style="color:#1A3150;font-weight:bold">OK</span>'
-                })
-            }
         } else {
             Swal.fire({
                 icon: 'warning',
