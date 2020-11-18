@@ -98,9 +98,12 @@ export default function BookingContent() {
     }
 
     useEffect (() => {
-        getDoctor()
         getData()
-    }, [bookingDay, bookingTime])
+    }, []);
+
+    useEffect (() => {
+        getDoctor()
+    }, [bookingDay, bookingTime]);
 
     const getDoctor = () => {
         if (bookingTime.indeks !== null && bookingDay.indeks !== null) {
