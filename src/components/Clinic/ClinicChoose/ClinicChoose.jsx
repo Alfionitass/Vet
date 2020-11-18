@@ -117,7 +117,7 @@ export default function ClinicChoose() {
   const r = clinicData && clinicData
   // console.log(r)
   const kartu = clinicData && clinicData.map((value)=>(            
-    <Card style={{ width: '16rem'}} className="mt-4 mb-4 mr-3 ml-2">
+    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4">
     <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
     <Card.Body>
       <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>
@@ -150,7 +150,7 @@ export default function ClinicChoose() {
         input:
         buttonSearch}              
       </Row>
-      <Row >      
+      <Row className="justify-content-center">      
         {kartu}
       </Row>    
         {clinicData ?<Pagination className='fixed-bottom' totalPages={totalPages}/> :""      }
