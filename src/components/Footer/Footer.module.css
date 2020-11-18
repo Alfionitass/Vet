@@ -4,9 +4,7 @@ li{
 .vet{    
     font-weight: bold;
     font-size: 20px;
-    line-height: 150%;
-    /* identical to box height, or 54px */
-    letter-spacing: 0.305em;
-    /* Primary Color Vet - 1 */
+    line-height: 150%;    
+    letter-spacing: 0.305em;    
     color: #FDCB5A;
 }

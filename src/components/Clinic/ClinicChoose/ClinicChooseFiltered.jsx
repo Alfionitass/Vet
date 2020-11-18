@@ -77,6 +77,20 @@ export default function ClinicChooseFiltered() {
   </Dropdown>
   )
 
+  const pageStatic =(
+    <div className="d-flex justify-content-center">
+    <ul className='pagination'>
+                <li className="page-item">                    
+                    <a className='page-link' 
+                    href={`/demo-Vet/booking/1`}>                        
+                    1
+                    </a>
+                </li>
+    
+    </ul>        
+    </div>
+  )
+
   const buttonSearch = (    
     <Button variant="warning" className="mr-4" style={{backgroundColor:"#FDCB5A",fontWeight:"bold"}} onClick={()=>setIsSearch(true)}>        
     <AiOutlineSearch />
@@ -121,7 +135,7 @@ export default function ClinicChooseFiltered() {
 
   return (
     <>    
-    <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
+    <div style={{paddingLeft:'3rem', paddingRight:'3rem',minHeight:'100vh'}}>
     <Row className="justify-content-end" style={{marginTop:"0.5rem"}}>
       {dropDownLokasi}
       {/* {binatangPeliharaan}     */}
@@ -132,6 +146,7 @@ export default function ClinicChooseFiltered() {
       <Row>
         {kartu}
       </Row>    
+      {clinicData?pageStatic:""}
     </div>
     </>
   );

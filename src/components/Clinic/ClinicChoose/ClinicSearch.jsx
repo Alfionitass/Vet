@@ -117,10 +117,24 @@ export default function ClinicSearch(){
         </Card.Footer>
       </Card>  
       ))
+
+      const pageStatic =(
+        <div className="d-flex justify-content-center">
+        <ul className='pagination'>
+                    <li className="page-item">                    
+                        <a className='page-link' 
+                        href={`/demo-Vet/booking/1`}>                        
+                        1
+                        </a>
+                    </li>
+        
+        </ul>        
+        </div>
+      )
     
       return (
         
-        <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
+        <div style={{paddingLeft:'3rem', paddingRight:'3rem',minHeight:'100vh'}}>
           <Row className="justify-content-end" style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
             {dropDownLokasi}
             {/* {binatangPeliharaan}     */}
@@ -131,7 +145,7 @@ export default function ClinicSearch(){
           <Row >      
             {kartu}
           </Row>    
-          {/* <Pagination />       */}
+          {clinicData?pageStatic:""}
         </div>    
       );
 }

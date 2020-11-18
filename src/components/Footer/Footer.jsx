@@ -6,8 +6,8 @@ import {Container} from 'react-bootstrap'
 
 const Footer = () =>{
     return(
-        <div style={{paddingLeft:'2rem', paddingRight:'2rem',backgroundColor:"#1A3150",paddingTop:'1rem',paddingBottom:'1rem'}}>
-
+        <div style={{paddingLeft:'2rem', paddingRight:'2rem',backgroundColor:"#1A3150",paddingTop:'1rem',paddingBottom:'1rem', }}                
+        >
         <div 
             className="d-flex flex-row justify-content-between align-items-center" 
             style={{backgroundColor:"#1A3150",position:'relative',bottom:'0', paddingLeft:'2rem',paddingRight:'2rem'}}
