@@ -95,11 +95,11 @@ export default function ClinicSearch(){
       const r = clinicData && clinicData
       // console.log(r)
       const kartu = clinicData && clinicData.map((value)=>(            
-        <Card style={{ width: '16rem'}} className="mt-4 mb-4 mr-3 ml-2">
+        <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4">
         <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
         <Card.Body>
           <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>
-            {value.clinic.city}
+            {value?.clinic?.city}
           </Badge></h6>
           <Card.Title>        
             {value.name}
@@ -117,10 +117,24 @@ export default function ClinicSearch(){
         </Card.Footer>
       </Card>  
       ))
+
+      const pageStatic =(
+        <div className="d-flex justify-content-center">
+        <ul className='pagination'>
+                    <li className="page-item">                    
+                        <a className='page-link' 
+                        href={`/demo-Vet/booking/1`}>                        
+                        1
+                        </a>
+                    </li>
+        
+        </ul>        
+        </div>
+      )
     
       return (
         
-        <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
+        <div style={{paddingLeft:'3rem', paddingRight:'3rem',minHeight:'100vh'}}>
           <Row className="justify-content-end" style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
             {dropDownLokasi}
             {/* {binatangPeliharaan}     */}
@@ -128,10 +142,10 @@ export default function ClinicSearch(){
             input:
             buttonSearch}              
           </Row>
-          <Row >      
+          <Row className="justify-content-center">      
             {kartu}
           </Row>    
-          {/* <Pagination />       */}
+          {clinicData && clinicData!==[]?pageStatic:""}
         </div>    
       );
 }

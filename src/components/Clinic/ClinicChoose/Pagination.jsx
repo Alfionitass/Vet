@@ -1,18 +1,24 @@
 import React from 'react'
 
-const Pagination = () =>{
+const Pagination = ({totalPages}) =>{
+    console.log('pages',totalPages)
+    var foo = Array.from(Array(totalPages).keys()) 
+    // var foo =[1,2,3,4]
+    let hal
+    const page = foo.map((value, index)=>(
+                <li className="page-item">
+                    {/* {hal =  index +1} */}
+                    <a className='page-link' 
+                    href={`/demo-Vet/booking/${index+1}`}>                        
+                    {index+1}
+                    </a>
+                </li>
+                ))
+                        
     return(        
         <div className="d-flex justify-content-center">
             <ul className='pagination'>
-                <li className="page-item">
-                    <a className='page-link' href='/demo-Vet/booking/1'>1</a>
-                </li>
-                <li className="page-item">
-                    <a className='page-link' href='/demo-Vet/booking/2'>2</a>
-                </li>
-                <li className="page-item">
-                    <a className='page-link' href='/demo-Vet/booking/3'>3</a>
-                </li>
+            {page}                
             </ul>        
         </div>
     )

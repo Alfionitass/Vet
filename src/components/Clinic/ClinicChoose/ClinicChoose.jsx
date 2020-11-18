@@ -12,6 +12,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 
 export default function ClinicChoose() { 
   const [ clinicData, setClinicData] = useState()
+  const [ totalPages, setTotalPages] = useState()
+
   const { page } = useParams()
   // const [ page, setPage ] = useState(1)
   const [ isSearch, setIsSearch ] = useState(false)
@@ -40,6 +42,8 @@ export default function ClinicChoose() {
     axios(config)
     .then(function (response) {
       setClinicData(response?.data?.data)
+      setTotalPages(response?.data?.totalPages)
+      console.log('pages',response?.data.totalPages)
     })
     .catch(function (error) {
       console.log(error);
@@ -109,10 +113,11 @@ export default function ClinicChoose() {
   // const r=clinicData
   // const r = clinicData && clinicData
   console.log("ini clinic",clinicData)
+  console.log('totalpages')
   const r = clinicData && clinicData
   // console.log(r)
   const kartu = clinicData && clinicData.map((value)=>(            
-    <Card style={{ width: '16rem'}} className="mt-4 mb-4 mr-3 ml-2">
+    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4">
     <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
     <Card.Body>
       <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>
@@ -137,7 +142,7 @@ export default function ClinicChoose() {
 
   return (
     
-    <div style={{paddingLeft:'3rem', paddingRight:'3rem'}}>
+    <div style={{paddingLeft:'3rem', paddingRight:'3rem',minHeight:'100vh'}}>
       <Row className="justify-content-end" style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
         {dropDownLokasi}
         {/* {binatangPeliharaan}     */}
@@ -145,10 +150,10 @@ export default function ClinicChoose() {
         input:
         buttonSearch}              
       </Row>
-      <Row >      
+      <Row className="justify-content-center">      
         {kartu}
       </Row>    
-      <Pagination />      
+        {clinicData ?<Pagination className='fixed-bottom' totalPages={totalPages}/> :""      }
     </div>    
   );
 }
