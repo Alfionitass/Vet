@@ -1,0 +1,81 @@
+$colorList:(
+  "donker": #1A3150,
+  "mustard": #FDCB5A,
+  "space": #4C68B3,
+  "steel": #749DD2,
+  "gray": #C2CDDB,
+  "light": #E0E9F5,
+  "white": #F5F7FA,
+  "imperial": #ED5341,
+  "salmon": #FF7E6E,
+  "caramel": #875C25,
+  "cream": #F6E8C8,
+  "grass": #22A017,
+);
+
+@each $name, $color in $colorList {
+  .v-text-#{$name} {
+    color: $color !important;
+  }
+
+  .v-bg-#{$name} {
+    background-color: $color !important;
+  }
+
+  .v-fill-#{$name} {
+    fill: $color !important;
+  }
+
+  .v-btn-outline-sp-#{$name} {
+    color: #1A3150;
+    border-color: #1A3150;
+    background-color: transparent;
+  }
+
+  .v-btn-outline-sp-#{$name}:hover {
+    box-shadow: 0 0 0 0.2rem $color;
+    color: invert($color: $color);
+    border-color: $color;
+    background-color: $color;
+  }
+
+  .v-btn-outline-#{$name} {
+    box-shadow: 0 0 0 0.2rem rgba(255,193,7,.5);
+    color: $color;
+    border-color: $color;
+    background-color: transparent;
+  }
+
+  .v-btn-outline-#{$name}:hover {
+    color: $color;
+    mix-blend-mode: darken;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  .v-btn-#{$name} {
+    color: white;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  .v-badge-#{$name}{
+    color: invert($color: $color);
+    border-color: $color;
+    background-color: $color;
+  }
+
+  .v-badge-half-#{$name}{
+    color: $color;
+    border: 1px solid $color;
+    background-color: rgba($color,0.3);
+  }
+}
+
+.v-badge-mustard {
+  color: #1A3150;
+}
+
+.v-btn-outline-sp-imperial:hover {
+  color: #E0E9F5;
+}

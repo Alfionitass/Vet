@@ -1,0 +1,33 @@
+.appointment-card {
+  background-color: transparent;
+  perspective: 1000px;
+  height:84px;
+}
+
+.appointment-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.appointment-card:hover .appointment-card-inner {
+  transform: rotateX(180deg);
+}
+
+.appointment-card-main {
+  max-width: 95%;
+}
+
+.appointment-card-main, .appointment-card-side {
+  position: absolute;
+  width: 95%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.appointment-card-side {
+  background: white;
+  transform: rotateX(180deg);
+}

@@ -1,0 +1,15 @@
+$fontstyle:
+  "heading" bold 24px,
+  "title-1" bold 20px,
+  "title-2" bold 16px,
+  "button" 500 16px,
+  "body-1" 400 14px,
+  "body-2" 400 12px,
+  "caption-1" 400 11px;
+
+@each $name, $weight, $size in $fontstyle {
+  .vet-#{$name} {
+    font-weight: $weight !important;
+    font-size: $size !important;
+  }
+}

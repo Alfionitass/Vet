@@ -1,0 +1,135 @@
+.topContainer{
+    width: 90%;
+    margin: 0 auto;
+    
+    display: flex;
+    justify-content: space-between;
+}
+.row{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+.headerText{
+    color: white;
+    margin-top: 1rem;
+    text-align: left;
+}
+.button{
+    background: #FDCB5A;
+    color: black;
+    font-weight: bold;
+}
+.dog{
+display: flex;
+align-items: flex-end;
+}
+
+.par {
+    text-align: justify;
+}
+
+.par2{
+    text-align: justify;
+    padding-right: 3rem;
+}
+
+.dog img{
+    position: relative;
+    max-width: 12em;
+    z-index: 100;
+    margin-bottom: -8em;
+}
+.serviceBox{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 3rem;
+}
+.serviceCard{
+    display: flex;
+    flex-direction: row;
+}
+.serviceCard1{
+    width: 90%;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: columns;
+    text-align: center;
+}
+.serviceIcon{
+    
+    height: 12em;
+    text-align: center;
+    margin: auto;
+}
+.serviceIcon span{
+    color:#FDCB5A ;
+    position: absolute;
+    z-index: 3;
+    
+    font-size: 5em;
+    margin-left: 0.7em;
+
+}
+
+.serviceText{
+    max-width: 15em;
+    margin: auto;
+    
+    text-align: center;
+}
+.cat {
+    max-width: 9em;
+    z-index: 3;
+    position: relative;
+    margin-top: -1em;
+    margin-left: 4em;
+   
+}
+
+.yellow {
+    max-width: 20em;
+    z-index: 1;
+    position: absolute;
+}
+
+ .blue {
+    max-width: 18em;
+    z-index: 2;
+    position: absolute;
+}
+.klinik{
+    display: flex;
+    width: 36em;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.pagination {
+    color: #1A3150;
+    font-size: 2em;
+    margin: 0 auto;
+    
+    
+}
+.pagination span{
+    margin: 0 auto;
+}
+.mask{
+    display: inline-block;
+  width: 11em;
+  
+  height: 8rem;
+ 
+  overflow: hidden;
+ 
+}
+.mask img{
+    width: 15em;
+    border-top-left-radius: 0.1em;
+    border-top-right-radius: 0.1em;
+}
+  
