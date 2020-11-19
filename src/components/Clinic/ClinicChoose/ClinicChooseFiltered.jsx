@@ -114,10 +114,10 @@ export default function ClinicChooseFiltered() {
     <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
     <Card.Body>
       <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>
-        {value.clinic.city}
+        {value?.clinic?.city}
       </Badge></h6>
       <Card.Title>        
-        {value.name}
+        {value?.name}
       </Card.Title>
       <Card.Text>
         Buka 09:00-12:00
