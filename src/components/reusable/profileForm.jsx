@@ -71,10 +71,10 @@ function ProfileForm({
         <Modal.Body className="d-flex f-col">
           <Card
             name="type"
-            onClick={(e) => {
-              setHighlight(1);
-              HandleInput(e)
-            }}
+            // onClick={(e) => {
+            //   setHighlight(1);
+            //   HandleInput(e)
+            // }}
             className={`m-3 ${highlight == 1 ? "selected-option" : ""}`}
           >
             <Card.Title className="text-center">Dog</Card.Title>

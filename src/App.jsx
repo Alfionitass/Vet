@@ -137,7 +137,7 @@ function App(props) {
             }}
           />
           <Switch>
-            <Route path={`${process.env.PUBLIC_URL}/user/:role`}>
+            <Route path={[`${process.env.PUBLIC_URL}/user/:role`,`${process.env.PUBLIC_URL}/user`]}>
               <Users function={{
                   HandleInput: HandleInput,
                   HandleInputFile: HandleInputFile,
