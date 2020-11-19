@@ -1,5 +1,6 @@
 import { auth, utility } from "./types/index";
-import { user } from "../../database/index";
+import { user, animal } from "../../database/index";
+import { useHistory } from 'react-router-dom'
 
 export const setLogin = (data) => {
   return (dispatch) => {
@@ -129,3 +130,53 @@ export const getUserData = (access_token) => {
     })
   };
 };
+
+export const deleteAnimal = (access_token,query) => {
+  console.log(access_token,query)
+  return (dispatch) => {
+    dispatch({
+      type: utility.SET_UTILITY_ACTION_LOAD,
+      isLoading:true,
+    })
+    animal({
+      method: 'delete',
+      access_token,
+      query: {id : query}
+    }).then(res => {
+      console.log(res)
+      if (res.status === 400) {
+        dispatch({
+          type: auth.SET_ERROR,
+          errorMsg: res.data.message,
+        });
+        dispatch({
+          type: utility.SET_UTILITY_PAGE_LOAD,
+          isLoading:false,
+        })
+      } else {
+        dispatch({
+          type: auth.SET_AUTH_USER_ANIMAL,
+          animals: res.data.data.animals,
+        });
+        dispatch({
+          type: utility.SET_UTILITY_PAGE_LOAD,
+          isLoading:false,
+        })
+      }
+    })
+  };
+}
+
+export const setLogout = () => {
+  return(dispatch) => {
+    dispatch({
+      type: auth.SET_LOGOUT,
+    })
+    localStorage.clear()
+    setTimeout(() => {
+      dispatch({
+        type: auth.DONE_LOGOUT,
+      })
+    },2000)
+  }
+}

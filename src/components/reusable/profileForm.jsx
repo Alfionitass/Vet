@@ -32,14 +32,15 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { editUser } from "../../redux/actions/auth";
+import { editUser, deleteAnimal } from "../../redux/actions/auth";
 
 function ProfileForm({
   config: { mode },
   data: { postData, imgPreview },
-  function: { HandleInput, HandleInputFile },
+  function: { HandleInput, HandleInputFile, setData },
   AuthPayloads,
   editUser,
+  deleteAnimal,
 }) {
   const [status, setStatus] = useState("0");
   const [gender, setGender] = useState(AuthPayloads?.user?.patient?.gender);
@@ -50,6 +51,12 @@ function ProfileForm({
   useEffect(() => {
     console.log(postData);
   }, [postData]);
+
+  const modalHandle = () => {
+    setData({});
+    setModalShow(false);
+  };
+  
   const PetModal = (props) => {
     return (
       <Modal
@@ -63,7 +70,11 @@ function ProfileForm({
         </Modal.Header>
         <Modal.Body className="d-flex f-col">
           <Card
-            onClick={() => setHighlight(1)}
+            name="type"
+            onClick={(e) => {
+              setHighlight(1);
+              HandleInput(e)
+            }}
             className={`m-3 ${highlight == 1 ? "selected-option" : ""}`}
           >
             <Card.Title className="text-center">Dog</Card.Title>
@@ -249,93 +260,97 @@ function ProfileForm({
             </Form.Group>
             <Form.Group className="mb-4" id="gender">
               <Form.Label>Gender</Form.Label>
-              {AuthPayloads?.veterinary ? <ButtonGroup toggle name="radiogroup">
-                <ToggleButton
-                  key={1}
-                  type="radio"
-                  variant={postData.genderVet == "true" ? "primary" : ""}
-                  name="genderVet"
-                  value="true"
-                  checked={postData.genderVet == "true"}
-                  onChange={(e) => HandleInput(e)}
-                >
-                  <VetMale
-                    size={22}
-                    color={postData.genderVet == "true" && "white"}
-                  />
-                  <span
-                    className={`mx-3 ${
-                      postData.genderVet == "false" ? "text-white" : ""
-                    }`}
+              {AuthPayloads?.veterinary ? (
+                <ButtonGroup toggle name="radiogroup">
+                  <ToggleButton
+                    key={1}
+                    type="radio"
+                    variant={postData.genderVet == "true" ? "primary" : ""}
+                    name="genderVet"
+                    value="true"
+                    checked={postData.genderVet == "true"}
+                    onChange={(e) => HandleInput(e)}
                   >
-                    Male
-                  </span>
-                </ToggleButton>
-                <ToggleButton
-                  key={2}
-                  type="radio"
-                  variant={postData.genderVet == "false" ? "pink" : ""}
-                  name="genderVet"
-                  value="false"
-                  checked={postData.genderVet == "false"}
-                  onChange={(e) => HandleInput(e)}
-                >
-                  <VetFemale
-                    size={34}
-                    color={postData.genderVet == "false" && "white"}
-                  />
-                  <span
-                    className={`mx-3 ${
-                      postData.genderVet == "true" ? "text-white" : ""
-                    }`}
+                    <VetMale
+                      size={22}
+                      color={postData.genderVet == "true" && "white"}
+                    />
+                    <span
+                      className={`mx-3 ${
+                        postData.genderVet == "false" ? "text-white" : ""
+                      }`}
+                    >
+                      Male
+                    </span>
+                  </ToggleButton>
+                  <ToggleButton
+                    key={2}
+                    type="radio"
+                    variant={postData.genderVet == "false" ? "pink" : ""}
+                    name="genderVet"
+                    value="false"
+                    checked={postData.genderVet == "false"}
+                    onChange={(e) => HandleInput(e)}
                   >
-                    Female
-                  </span>
-                </ToggleButton>
-              </ButtonGroup> : <ButtonGroup toggle name="radiogroup">
-                <ToggleButton
-                  key={1}
-                  type="radio"
-                  variant={postData.gender == "true" ? "primary" : ""}
-                  name="gender"
-                  value="true"
-                  checked={postData.gender == "true"}
-                  onChange={(e) => HandleInput(e)}
-                >
-                  <VetMale
-                    size={22}
-                    color={postData.gender == "true" && "white"}
-                  />
-                  <span
-                    className={`mx-3 ${
-                      postData.gender == "false" ? "text-white" : ""
-                    }`}
+                    <VetFemale
+                      size={34}
+                      color={postData.genderVet == "false" && "white"}
+                    />
+                    <span
+                      className={`mx-3 ${
+                        postData.genderVet == "true" ? "text-white" : ""
+                      }`}
+                    >
+                      Female
+                    </span>
+                  </ToggleButton>
+                </ButtonGroup>
+              ) : (
+                <ButtonGroup toggle name="radiogroup">
+                  <ToggleButton
+                    key={1}
+                    type="radio"
+                    variant={postData.gender == "true" ? "primary" : ""}
+                    name="gender"
+                    value="true"
+                    checked={postData.gender == "true"}
+                    onChange={(e) => HandleInput(e)}
                   >
-                    Male
-                  </span>
-                </ToggleButton>
-                <ToggleButton
-                  key={2}
-                  type="radio"
-                  variant={postData.gender == "false" ? "pink" : ""}
-                  name="gender"
-                  value="false"
-                  checked={postData.gender == "false"}
-                  onChange={(e) => HandleInput(e)}
-                >
-                  <VetFemale
-                    size={34}
-                    color={postData.gender == "false" && "white"}
-                  />
-                  <span
-                    className={`mx-3 ${
-                      postData.gender == "true" ? "text-white" : ""
-                    }`}
+                    <VetMale
+                      size={22}
+                      color={postData.gender == "true" && "white"}
+                    />
+                    <span
+                      className={`mx-3 ${
+                        postData.gender == "false" ? "text-white" : ""
+                      }`}
+                    >
+                      Male
+                    </span>
+                  </ToggleButton>
+                  <ToggleButton
+                    key={2}
+                    type="radio"
+                    variant={postData.gender == "false" ? "pink" : ""}
+                    name="gender"
+                    value="false"
+                    checked={postData.gender == "false"}
+                    onChange={(e) => HandleInput(e)}
                   >
-                    Female
-                  </span>
-                </ToggleButton>
-              </ButtonGroup>}
+                    <VetFemale
+                      size={34}
+                      color={postData.gender == "false" && "white"}
+                    />
+                    <span
+                      className={`mx-3 ${
+                        postData.gender == "true" ? "text-white" : ""
+                      }`}
+                    >
+                      Female
+                    </span>
+                  </ToggleButton>
+                </ButtonGroup>
+              )}
             </Form.Group>
             {mode == "veterinary" && (
               <Form.Group controlId="formBasicEmail">
@@ -375,7 +390,8 @@ function ProfileForm({
               <InputGroup>
                 <InputGroup.Prepend>
                   <InputGroup.Text id="inputGroupPrepend">
-                    <VetFlagID /> <span className="vet-title-2 v-text-donker mx-2">+62</span>
+                    <VetFlagID />{" "}
+                    <span className="vet-title-2 v-text-donker mx-2">+62</span>
                   </InputGroup.Text>
                 </InputGroup.Prepend>
                 <Form.Control
@@ -383,10 +399,12 @@ function ProfileForm({
                   name="phone"
                   placeholder="Enter Your Phone Number"
                   onChange={(e) => HandleInput(e)}
-                  value={postData?.phone ||
+                  value={
+                    postData?.phone ||
                     (AuthPayloads.user?.phone !== null
                       ? AuthPayloads.user?.phone
-                      : 0)}
+                      : 0)
+                  }
                 />
               </InputGroup>
             </Form.Group>
@@ -397,10 +415,12 @@ function ProfileForm({
                 placeholder="phone number"
                 name="email"
                 onChange={(e) => HandleInput(e)}
-                  value={postData?.email ||
-                    (AuthPayloads.user?.email !== null
-                      ? AuthPayloads.user?.email
-                      : 0)}
+                value={
+                  postData?.email ||
+                  (AuthPayloads.user?.email !== null
+                    ? AuthPayloads.user?.email
+                    : 0)
+                }
               />
             </Form.Group>
             <Button
@@ -418,27 +438,85 @@ function ProfileForm({
             <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
               Pets Details
             </Card.Header>
-            <Card.Body className="d-flex">
-              <VetAddPets className="mx-2" onClick={() => setModalShow(true)} />
-              {console.log("INSIDE FORM",AuthPayloads.user.patient.animals)}
-              {AuthPayloads.user.patient && AuthPayloads?.user?.patient?.animals.map(item => 
-                  item.type == "Dog" ? <Card
-                  style={{ width: "206px" }}
-                  className="d-flex align-items-center mx-2"
-                >
-                  <VetPDog size={80} />
-                  <Card.Text className="vet-title-1">{item.name}/{item.gender ? <><VetMale/><span className="mx-2">Male</span></> : <><VetFemale/><span className="mx-2">Female</span></>}</Card.Text>
-                </Card> : <Card
-                style={{ width: "206px" }}
-                className="d-flex align-items-center mx-2"
-              >
-                <VetPCat size={80} />
-              <Card.Text className="vet-title-1">{item.name}/{item.gender ? <><VetMale/><span className="mx-2">Male</span></> : <><VetFemale/><span className="mx-2">Female</span></>}</Card.Text>
-              </Card>
-              )}
-              
+            <Card.Body className="d-flex overflow-auto">
+              <div className="d-flex">
+                <VetAddPets
+                  className="mx-2"
+                  onClick={() => setModalShow(true)}
+                />
+                {AuthPayloads.user.patient &&
+                  AuthPayloads?.user?.patient?.animals.map((item) =>
+                    item.type == "Dog" ? (
+                      <Card
+                        style={{ width: "206px" }}
+                        className="d-flex align-items-center mx-2"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="vet-heading"
+                          style={{
+                            cursor: "pointer",
+                            position: "absolute",
+                            right: "10px",
+                          }}
+                          onClick={() =>
+                            deleteAnimal(AuthPayloads.access_token, item._id)
+                          }
+                        >
+                          ×
+                        </span>
+                        <VetPDog size={80} />
+                        <Card.Text className="vet-title-2">
+                          {item.name}/
+                          {item.gender ? (
+                            <>
+                              <span className="mx-2">Male</span>
+                            </>
+                          ) : (
+                            <>
+                              <span className="mx-2">Female</span>
+                            </>
+                          )}
+                        </Card.Text>
+                      </Card>
+                    ) : (
+                      <Card
+                        style={{ width: "206px" }}
+                        className="d-flex align-items-center mx-2"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="vet-heading"
+                          style={{
+                            cursor: "pointer",
+                            position: "absolute",
+                            right: "10px",
+                          }}
+                          onClick={() =>
+                            deleteAnimal(AuthPayloads.access_token, item._id)
+                          }
+                        >
+                          ×
+                        </span>
+                        <VetPCat size={80} />
+                        <Card.Text className="vet-title-2">
+                          {item.name}/
+                          {item.gender ? (
+                            <>
+                              <span className="mx-2">Male</span>
+                            </>
+                          ) : (
+                            <>
+                              <span className="mx-2">Female</span>
+                            </>
+                          )}
+                        </Card.Text>
+                      </Card>
+                    )
+                  )}
+              </div>
             </Card.Body>
-            <PetModal show={modalShow} onHide={() => setModalShow(false)} />
+            <PetModal show={modalShow} onHide={() => modalHandle()} />
           </>
         )}
       </Card>
@@ -454,7 +532,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ editUser }, dispatch);
+  return bindActionCreators({ editUser, deleteAnimal }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);

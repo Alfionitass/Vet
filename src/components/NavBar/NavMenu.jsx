@@ -4,8 +4,9 @@ import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import { VetArrowDown } from "../../assets/icons";
 import NavDropdown from "./NavDropdown";
-
+import {setLogout} from "../../redux/actions/auth"
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 function NavMenu(props) {
   useEffect(() => {
@@ -44,7 +45,7 @@ function NavMenu(props) {
           <NavLink to={`${process.env.PUBLIC_URL}/${props.AuthPayloads.user.role}`} className={styles.name}>
             <span>Hi, {props.AuthPayloads.user.name}</span>
           </NavLink>
-          <NavDropdown data={props.AuthPayloads.user} logout={Logout}/>
+          <NavDropdown data={props.AuthPayloads.user} logout={props.setLogout}/>
         </>
       ) : (
         <>
@@ -66,4 +67,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(NavMenu)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    { setLogout },
+    dispatch
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavMenu)

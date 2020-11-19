@@ -1,11 +1,16 @@
+.bookResume {
+    width: 80%;
+    margin: 3rem auto;
+}
+
 .title {
     padding-bottom: 1rem;
     border-bottom: 2px solid #dedede;
 }
 
 .img {
-    width: 38rem;
-    height: auto;
+    height: 25rem;
+    width: 28rem;
     margin-right: 1.5rem;
 }
 
@@ -22,10 +27,15 @@
     font-size: 18px;
 }
 
-.list {
+.listt {
     font-size: 18px;
     position: relative;
     left: 1rem;
+    list-style-position: inside;
+}
+
+.item {
+    overflow: hidden;
 }
 
 .btn {

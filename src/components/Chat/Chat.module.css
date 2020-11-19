@@ -1,0 +1,98 @@
+.Header{
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+.Header span{
+    font-size: 2em;
+    margin-top: -0.7rem;
+    margin-right: 1rem;
+    color: #FDCB5A;
+}
+.chatList{
+    list-style: none;
+    
+}
+.avatarMask{
+    display: inline-block;
+  width: 3em;
+  background: red;
+  height: 3em;
+  border-radius: 50% 50%;
+  overflow: hidden;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}
+.avatarMask img{
+    width: 5em;
+}
+.chatToText {
+
+    background-color: #FDCB5A;
+    position: relative;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+
+}
+
+.chatToText:after {
+    content: "";
+    position: absolute;
+    bottom: -0.3em;
+    right: 0;
+    
+    border-left: 0.5em solid transparent;
+    border-right: 1em solid #FDCB5A;
+    border-bottom: 0.5em solid transparent;
+}
+.chatFromText {
+
+    background-color: #F6F7FB;
+    position: relative;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.chatFromText:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -0.5em;
+    border-right: 0.5em solid transparent;
+    border-left: 0.5em solid transparent;
+    border-top: 0.5em solid #F6F7FB;
+}
+.inputChat {
+    width: 100%;
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+.inputChat input {
+    flex-grow: 2;
+    border: none;
+}
+
+.inputChat input:focus {
+
+    outline: none;
+}
+.chatFrom {
+    margin-left: 0;
+    margin-right: auto;
+    width: max-content;
+}
+.chatTo {
+    margin-left: auto;
+    margin-right: 0;
+    width: max-content;
+
+
+}

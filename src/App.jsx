@@ -14,7 +14,7 @@ import { user } from "./database";
 import BookingDetail from "./pages/BookingDetail";
 import BookingResume from "./pages/BookingResume";
 import { Container, Navbar } from "react-bootstrap";
-import Home from "./components/Home/Home";
+import Home from "./pages/Home";
 import Users from "./pages/Users/";
 import { useHistory, Redirect } from "react-router-dom";
 import { VetPaw } from "./assets/icons";
@@ -22,6 +22,7 @@ import ClinicChooseFiltered from "./components/Clinic/ClinicChoose/ClinicChooseF
 import ClinicSearch from "./components/Clinic/ClinicChoose/ClinicSearch";
 
 import PageLoad from './components/reusable/utilities/pageLoad'
+import Logout from './components/reusable/utilities/logout'
 import { getUserData } from "./redux/actions/auth";
 import { getAppointment, getHistory } from "./redux/actions/appointment";
 import { connect } from "react-redux";
@@ -48,9 +49,7 @@ function App(props) {
     footer: true,
   });
   useEffect(() => {
-    console.log(token)
     token.length && props.getUserData(token)
-
   }, [token]);
 
   useEffect(() => {
@@ -61,13 +60,14 @@ function App(props) {
   },[props.AuthPayloads.access_token])
 
 
-  const history = useHistory();
+  let history = useHistory();
   useEffect(() => {
     userDatas && setLogin(true);
   }, [userDatas]);
   // function declaration
   const HandleInput = (input) => {
     input.preventDefault();
+    console.log(input)
     let data = { ...postData, [input.target.name]: input.target.value };
     setData(data);
   };
@@ -119,13 +119,16 @@ function App(props) {
   const handleFooter = (option) => {
     //console.log(option);
   };
+
+ 
   return (
      <>
       <div className="App">
-        
         <Router>
           {/* {isLogin && <Redirect to={`${process.env.PUBLIC_URL}/`} />} */}
          {props.AuthPayloads.isLoading && <PageLoad data="CONNECTING"/>}
+         {props.AuthPayloads.isLogout && <Logout data="LOGOUT"/>}
+
           <VetNavbar
             barState={barState}
             data={{
@@ -140,6 +143,7 @@ function App(props) {
                   HandleInputFile: HandleInputFile,
                   SetVisibility: SetVisibility,
                   SubmitData: SubmitData,
+                  setData : setData,
                 }}
                 data={{
                   postData: postData,

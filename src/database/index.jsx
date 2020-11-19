@@ -63,6 +63,7 @@ const reservation = ({
   }
 
   if (method === "find") {
+    console.log(id)
     return axios
       .get(
         `${configuration.url}${configuration.endpoint.reservation.find}/${id}`

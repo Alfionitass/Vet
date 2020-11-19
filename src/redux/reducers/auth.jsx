@@ -8,6 +8,7 @@ const initialState = {
   successMsg: [],
   isError: false,
   isLoading: false,
+  isLogout : false,
 };
 
 const authReducers = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const authReducers = (state = initialState, action) => {
 
     case auth.SET_AUTH_USER_DATA:
       return { ...state, user: action.user,successMsg:[], isLogin: true };
+    
+    case auth.SET_AUTH_USER_ANIMAL:
+      let animal = {...state.user.patient, animals:action.animals}
+      let patient = {...state.user, patient:animal}
+      return { ...state, user: patient,successMsg:[], isLogin: true };
 
     case auth.SET_ERROR:
       return { ...state, isError: true, errorMsg: action.errorMsg };
@@ -27,6 +33,12 @@ const authReducers = (state = initialState, action) => {
     case auth.CLEAR_ERROR:
       return { ...state, isError: false, errorMsg: "" };
 
+    case auth.SET_LOGOUT:
+      return {...state, access_token : "", user: {}, isLogout : true}
+
+    case auth.DONE_LOGOUT:
+      return {...state, isLogout: false}
+      
     case utility.SET_UTILITY_PAGE_LOAD:
     case utility.SET_UTILITY_ACTION_LOAD:
       return { ...state, isLoading: action.isLoading };
