@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
@@ -19,7 +20,6 @@ function PatientAppointment(props) {
   useEffect(() => {
     console.log(paginationConfig)
   },[paginationConfig])
-  const [renderPostData, setPost] = useState();
 
   const renderData = () => {
     const data = props.AppointmentPayloads.dataAppointment;
@@ -56,7 +56,7 @@ function PatientAppointment(props) {
   return (
     <Card.Body className="appointment-fix-height">
       {props.AppointmentPayloads.dataAppointment && paginationConfig.postData}
-      {!paginationConfig.postData && <CatLoader text="Appointment" opacity={0.3} opacity={0.3} weight={500}/>}
+      {!paginationConfig.postData && <CatLoader text="Appointment" opacity={0.3} weight={500}/>}
       <div className="d-flex justify-content-center my-2 pagination-absolute">
       {paginationConfig.pageCount !== 0 && <ReactPaginate
         previousLabel={"prev"}

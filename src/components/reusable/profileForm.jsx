@@ -52,6 +52,21 @@ function ProfileForm({
     console.log(postData);
   }, [postData]);
 
+  const editUserData = () => {
+    editUser(postData, AuthPayloads.access_token)
+    // Swal.fire({
+    //   title: "Update Sukses!",
+    //   icon: "success",
+    //   background: "#1A3150",
+    //   iconColor: "yellow",
+    //   showConfirmButton: false,
+      
+    //   customClass: {
+    //     title: "text-light",
+    //   },
+    // });
+
+  }
   const modalHandle = () => {
     setData({});
     setModalShow(false);
@@ -425,7 +440,7 @@ function ProfileForm({
             </Form.Group>
             <Button
               className="font-weight-bold px-5 float-right my-3"
-              onClick={() => editUser(postData, AuthPayloads.access_token)}
+              onClick={() => editUserData()}
               variant="warning"
             >
               Simpan

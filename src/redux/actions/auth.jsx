@@ -77,6 +77,7 @@ export const editUser = (data, access_token) => {
       access_token
     }).then(res => {
       if (!res.data.success) {
+        console.log(res)
         dispatch({
           type: utility.SET_UTILITY_ACTION_LOAD,
           isLoading:false,
@@ -87,6 +88,11 @@ export const editUser = (data, access_token) => {
         });
       } else if(res.data.success) {
         console.log(res)
+        dispatch({
+          type: auth.EDIT_AUTH_USER_DATA,
+          errorMsg: res.data.data,
+        });
+        
       }
     })
   };

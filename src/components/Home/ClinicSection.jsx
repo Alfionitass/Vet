@@ -42,7 +42,7 @@ export default function ClinicSection() {
             </div>
             <div class="card-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
-                    <p class="card-text">{value.clinic.city ? value.clinic.city : "Surabaya"}</p>
+                <p class="card-text">{value?.clinic?.city ? value?.clinic?.city : "Surabaya"}</p>
                     <h5 class="card-title mt-2" style={{fontSize: '14px'}} >{value.name}</h5>
                     <p class="card-text mb-2">Buka 09.00 - 12.00</p>
                 </div>

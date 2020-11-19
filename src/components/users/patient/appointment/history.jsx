@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
@@ -13,8 +14,6 @@ function PatientHistory(props) {
     currentPage: 0,
     pageCount: 0
   });
-
-  const [renderPostData, setPost] = useState();
 
   const renderData = () => {
     const data = props.AppointmentPayloads.dataHistory;

@@ -4,7 +4,7 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import { PatientHistory, PatientAppointment } from './appointment'
 
 import { Card, Nav } from "react-bootstrap";
-import "./doctor.css";
+// import "./doctor.css";
 
 export default function Appointment(props) {
   return (
