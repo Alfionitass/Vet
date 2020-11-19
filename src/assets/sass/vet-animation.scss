@@ -1,7 +1,8 @@
+@import './catLoader.scss';
 .appointment-card {
   background-color: transparent;
   perspective: 1000px;
-  height:84px;
+  height: 84px;
 }
 
 .appointment-card-inner {
@@ -20,7 +21,8 @@
   max-width: 95%;
 }
 
-.appointment-card-main, .appointment-card-side {
+.appointment-card-main,
+.appointment-card-side {
   position: absolute;
   width: 95%;
   height: 100%;
@@ -31,3 +33,4 @@
   background: white;
   transform: rotateX(180deg);
 }
+

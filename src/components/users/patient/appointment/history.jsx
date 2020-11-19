@@ -4,13 +4,14 @@ import { Card } from "react-bootstrap";
 import CardItem from "../../../reusable/cardItem";
 import {connect} from 'react-redux'
 import ReactPaginate from "react-paginate";
-
+import CatLoader from '../../../reusable/utilities/catLoader'
 function PatientHistory(props) {
   const [paginationConfig, SetConfig] = useState({
     offset: 0,
     data: [],
     perPage: 4,
     currentPage: 0,
+    pageCount: 0
   });
 
   const [renderPostData, setPost] = useState();
@@ -49,29 +50,30 @@ function PatientHistory(props) {
 
   return (
     <Card.Body className="appointment-fix-height">
-      {props.AppointmentPayloads.dataHistory && paginationConfig.postData}
-      <div className="d-flex justify-content-center my-2 pagination-absolute">
-      <ReactPaginate
-        previousLabel={"prev"}
-        nextLabel={"next"}
-        breakLabel={"..."}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
-        pageCount={paginationConfig.pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={(e) => handlePageClick(e)}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        containerClassName={"pagination"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        activeClassName={"active"}
-      />
-      </div>
-    </Card.Body>
+    {props.AppointmentPayloads.dataAppointment && paginationConfig.postData}
+    {!paginationConfig.postData && <CatLoader text="History" opacity={0.3} weight={500}/>}
+    <div className="d-flex justify-content-center my-2 pagination-absolute">
+    {paginationConfig.pageCount !== 0 && <ReactPaginate
+      previousLabel={"prev"}
+      nextLabel={"next"}
+      breakLabel={"..."}
+      breakClassName={"page-item"}
+      breakLinkClassName={"page-link"}
+      pageCount={paginationConfig.pageCount}
+      marginPagesDisplayed={2}
+      pageRangeDisplayed={5}
+      onPageChange={(e) => handlePageClick(e)}
+      previousClassName={"page-item"}
+      previousLinkClassName={"page-link"}
+      nextClassName={"page-item"}
+      nextLinkClassName={"page-link"}
+      containerClassName={"pagination"}
+      pageClassName={"page-item"}
+      pageLinkClassName={"page-link"}
+      activeClassName={"active"}
+    />}
+    </div>
+  </Card.Body>
   );
 }
 
