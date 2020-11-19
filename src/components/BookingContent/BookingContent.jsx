@@ -292,7 +292,7 @@ export default function BookingContent() {
                     <div className={styles.about}>
                         <h3>About</h3>
                         {bookingData? 
-                            <p className={styles.p}>{bookingData.clinic.clinic.about ? bookingData.clinic.clinic.about : "No Details Clinic Yet"} </p> :
+                            <p className={styles.p}>{bookingData?.clinic?.clinic?.about ? bookingData?.clinic?.clinic?.about : "No Details Clinic Yet"} </p> :
                             <Skeleton width={376.34} height={24} />
                         }
                     </div>
@@ -301,7 +301,7 @@ export default function BookingContent() {
                     <div className={styles.facility}>
                         <h5>Facility</h5>
                         <Row className="d-flex justify-content-end">
-                            {bookingData? (bookingData.clinic.clinic.facilities.map((item) => (
+                            {bookingData? (bookingData?.clinic?.clinic?.facilities.map((item) => (
                                 <Col md="6">
                                     <input type="radio" name="" id="" />
                                     <label htmlFor="" className="ml-2">{item.name}</label>
