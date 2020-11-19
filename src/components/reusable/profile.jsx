@@ -72,14 +72,17 @@ function Profile(props) {
           <Row className="pt-4 vet-button">
             <Col
               md={4}
-              className="d-flex align-items-center m-0 p-0"
-              style={{ color: "green", fill: "green" }}
+              className={`d-flex align-items-center m-0 p-0 ${props.AuthPayloads.user.role == "patient" ? "v-fill-donker" : "v-fill-grass"}`}
             >
               {Object.keys(props.AuthPayloads.user).length ? (
-                props.AuthPayloads.user.role === "user" ? (
+                props.AuthPayloads.user.role === "patient" ? (
+                  props.AuthPayloads.user.patient.animals.length > 1 ?
                   <>
-                    <VetPaw /> 3 Pets
+                    <span className="mx-2"><VetPaw/> {props.AuthPayloads.user.patient.animals.length} Pets</span>
                   </>
+                  : <>
+                  <span className="mx-2"><VetPaw/> {props.AuthPayloads.user.patient.animals.length || 0} Pet</span>
+                </>
                 ) : (
                   <>
                     <VetStatusOnline />
@@ -98,12 +101,12 @@ function Profile(props) {
                 (props.AuthPayloads.user.role === "patient" && props.value) >
                 1 ? (
                   <>
-                    <VetSchedule /> {props.value} times
+                    <VetSchedule /> <span className="mx-2">{props.AppointmentPayloads.dataAppointment.length + props.AppointmentPayloads.dataHistory.length} times</span>
                   </>
                 ) : props.AuthPayloads.user.role === "patient" &&
                   props.value <= 1 ? (
                   <>
-                    <VetSchedule /> {props.value || 0} time
+                    <VetSchedule /> <span className="mx-2">{props.value || 0} time </span>
                   </>
                 ) : props.AuthPayloads.user.role === "veterinary" &&
                   props.AuthPayloads.user.veterinary.experience > 1 ? (
@@ -181,6 +184,7 @@ function Profile(props) {
 const mapStateToProps = (state) => {
   return {
     AuthPayloads: state.Auth,
+    AppointmentPayloads: state.Appointment
   };
 };
 
