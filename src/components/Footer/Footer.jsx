@@ -60,13 +60,13 @@ const Footer = (props) => {
           </div>
           <div style={{ color: "white" }} className="d-flex flex-column">
             <a href="#" style={{ textDecoration: "none", color: "white" }}>
-              About Us
+              Email
             </a>
             <a href="#" style={{ textDecoration: "none", color: "white" }}>
-              Career
+              Job
             </a>
             <a href="#" style={{ textDecoration: "none", color: "white" }}>
-              Contact Us
+              Ads
             </a>
           </div>
         </div>
