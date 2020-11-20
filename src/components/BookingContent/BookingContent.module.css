@@ -60,6 +60,12 @@
     margin-right: 1.5rem;
 }
 
+.img3 {
+    width: auto;
+    height: 5.2rem;
+    margin-bottom: 1.5rem;
+}
+
 .info {
     display: flex;
     flex-direction: row;
@@ -136,7 +142,7 @@
 
 .facility {
     width: 29rem;
-    margin-left: 2rem;
+    padding-left: 3rem;
 }
 
 .cardDoc {

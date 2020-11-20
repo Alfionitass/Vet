@@ -123,7 +123,7 @@ function App(props) {
  
   return (
      <>
-      <div className="App">
+      <div className="App" id="apps">
         <Router>
           {/* {isLogin && <Redirect to={`${process.env.PUBLIC_URL}/`} />} */}
          {props.AuthPayloads.isLoading && <PageLoad data="CONNECTING"/>}

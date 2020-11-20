@@ -43,7 +43,7 @@ function NavMenu(props) {
       </NavLink>
       {Object.keys(props.AuthPayloads.user).length ? (
         <>
-          <Image height={50} width={50} src={props.AuthPayloads.user.image} roundedCircle />
+          <Image height={50} width={50} src={props.AuthPayloads.user.image} roundedCircle className="ml-3" />
           <NavLink to={`${process.env.PUBLIC_URL}/${props.AuthPayloads.user.role}`} className={styles.name}>
             <span>Hi, {props.AuthPayloads.user.name}</span>
           </NavLink>

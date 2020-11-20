@@ -5,11 +5,11 @@ import { Switch, Route, Link, NavLink } from "react-router-dom";
 import { ClinicAppointment, ClinicHistory } from "./appointment";
 
 import { Container, Row, Col, Card, Nav } from "react-bootstrap";
-import "./doctor.css";
+import "./doctor.scss";
 
 export function Clinic() {
   return (
-    <Card>
+    <Card id="cardClinic">
       <Card.Header className="nav--menu">
         <Nav
           variant="tabs"
@@ -21,7 +21,7 @@ export function Clinic() {
         >
           <Nav.Item>
             <NavLink
-              className="vet-title-2 v-text-donker"
+              className="vet-title-2 v-text-donker mr-3"
               to={`${process.env.PUBLIC_URL}/user/clinic/appointment`}
               onClick={(e) => console.log(e)}
             >

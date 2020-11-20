@@ -219,7 +219,7 @@ export default function BookingContent() {
             <p className={styles.font}>Day Visit</p>
             <Row>
               {bookingData
-                ? bookingData.dateBooking.map((day, index) => (
+                ?.dateBooking.map((day, index) => (
                     <Col md="4" className="mb-3" key={index}>
                       <Card
                         onClick={() => selectDay(day, index)}
@@ -239,22 +239,14 @@ export default function BookingContent() {
                       </Card>
                     </Col>
                   ))
-                : [0, 1, 2, 3, 4, 5, 6].map((value,index) => (
-                    <Col md="4" className="mb-3" key={index}>
-                      <Card className={styles.cardDay}>
-                        <Card.Body className={styles.cardBody}>
-                          <Skeleton width={158} height={48} />
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  ))}
+                }
             </Row>
           </div>
           <div className="d-flex flex-column ">
             <p className={styles.font}>Time Visit</p>
             <Row>
               {bookingData
-                ? bookingData.hour.map((time, index) => (
+                ?.hour.map((time, index) => (
                     <Col md="4" key={index}>
                       <Card
                         onClick={() => selectTime(time, index)}
@@ -273,15 +265,6 @@ export default function BookingContent() {
                         </Card.Body>
                       </Card>
                     </Col>
-                  ))
-                : [0, 1, 2].map((value,index) => (
-                    <Col md="4" key={index}>
-                      <Card className={styles.cardTime}>
-                        <Card.Body className={styles.cardBody}>
-                          <Skeleton width={130.5} height={24} />
-                        </Card.Body>
-                      </Card>
-                    </Col>
                   ))}
             </Row>
           </div>
@@ -291,26 +274,24 @@ export default function BookingContent() {
   );
 
   const bookInfo = (
-    <div className="d-flex flex-row mb-3">
+    <div className="d-flex flex-row mb-3 mr-3">
       <Row>
         <Col md="6" xs="12">
           <div className={styles.about}>
             <h3>About</h3>
             {bookingData ? (
               <p className={styles.p}>
-                {bookingData?.clinic?.clinic?.about
-                  ? bookingData?.clinic?.clinic?.about
-                  : "No Details Clinic Yet"}{" "}
+                {bookingData?.clinic?.clinic?.about}
               </p>
             ) : (
-              <Skeleton width={376.34} height={24} />
+                "No Details Clinic Yet"
             )}
           </div>
         </Col>
         <Col md="6" xs="12">
           <div className={styles.facility}>
             <h5>Facility</h5>
-            <Row className="d-flex justify-content-end">
+            <Row className="d-flex justify-content-end pt-2">
               {bookingData
                 ? bookingData?.clinic?.clinic?.facilities.map((item,index) => (
                     <Col md="6" key={index}>
@@ -320,11 +301,7 @@ export default function BookingContent() {
                       </label>
                     </Col>
                   ))
-                : [0, 1].map((value,index) => (
-                    <Col md="6" key={index}>
-                      <Skeleton width={147.83} height={56} />
-                    </Col>
-                  ))}
+                : "Clinic dosn't has a facility"}
             </Row>
           </div>
         </Col>
@@ -348,26 +325,17 @@ export default function BookingContent() {
                       src={doc?.veterinary?.image ? doc?.veterinary?.image : ""}
                       className={styles.img2}
                     />
-                    <Card.Text className="mr-3">
+                    <Card.Text >
                       {doc?.veterinary?.name
                         ? doc?.veterinary?.name
                         : "Veterinary's Schedule Not Found"}
                     </Card.Text>
-                    {doc?._id === scheduleDoc.iniId ? <FaCheckCircle /> : ""}
+                    {doc?._id === scheduleDoc.iniId ? <FaCheckCircle className="ml-3" /> : ""}
                   </Card.Body>
                 </Card>
               </Col>
             ))
-          : [0].map((value,index) => (
-              <Col md="4" className="mb-3" key={index}>
-                <Card className={styles.cardDoc}>
-                  <Card.Body className="d-flex flex-row align-items-center justify-content-center">
-                    <Skeleton width={80} height={80} />
-                    <Skeleton width={108.38} height={24} />
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+          : "Veterinary's Schedule Not Found" }
       </Row>
     </div>
   );
@@ -377,34 +345,22 @@ export default function BookingContent() {
       <h3>Choose Pet</h3>
       <Row>
         {animalData
-          ? animalData.animals.map((pet,index) => (
+          ?.animals.map((pet,index) => (
               <Col md="3" key={index}>
                 <Card
                   onClick={() => selectAnimal(pet)}
                   className={styles.cardPet}
                 >
                   <Card.Body
-                    className="d-flex align-items-center justify-content-center"
-                    style={{
-                      background:
-                        pet.name === animalss.name ? "#FDCB5A" : "#fff",
-                    }}
-                    // style={{background: pet._name === animalss.name ? "#FDCB5A" : "#fff"}}
+                    className="d-flex flex-column align-items-center justify-content-center "
+                    style={{ background: pet.name === animalss.name ? "#FDCB5A" : "#fff" }}
                   >
+                    <Image src={animalData?.images} className={styles.img3} />
                     <Card.Title>
-                      {pet.name || <Skeleton width={150} height={48} />}/{" "}
-                      {pet.type}/ {pet.gender === true ? "Male" : "Female"}
+                      {pet.name}/ {pet.gender === true ? "Male" : "Female"}
                     </Card.Title>
                   </Card.Body>
-                </Card>
-              </Col>
-            ))
-          : [0].map((value,index) => (
-              <Col md="3" key={index}>
-                <Card className={styles.cardPet}>
-                  <Card.Body className="d-flex align-items-center justify-content-center">
-                    <Skeleton width={150} height={48} />
-                  </Card.Body>
+                  {/* {pet.name === animalss.name ? <FaCheckCircle className="mr-4" /> : ""} */}
                 </Card>
               </Col>
             ))}

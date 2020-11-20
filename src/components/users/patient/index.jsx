@@ -4,11 +4,11 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import { PatientHistory, PatientAppointment } from './appointment'
 
 import { Card, Nav } from "react-bootstrap";
-// import "./doctor.css";
+import "./doctor.scss";
 
 export default function Appointment(props) {
   return (
-    <Card>
+    <Card id="cardPatient">
       <Card.Header className="nav--menu">
         <Nav
           variant="tabs"
@@ -19,7 +19,7 @@ export default function Appointment(props) {
           }`}
         >
           <Nav.Item>
-            <NavLink className="vet-title-2 v-text-donker" to={`${process.env.PUBLIC_URL}/user/patient/appointment`} onClick={(e) => console.log(e)}>
+            <NavLink className="vet-title-2 v-text-donker mr-3" to={`${process.env.PUBLIC_URL}/user/patient/appointment`} onClick={(e) => console.log(e)}>
                 Appointment
             </NavLink>
           </Nav.Item>

@@ -24,7 +24,7 @@ import {
 } from "../../assets/icons";
 
 import styles from "../../assets/sass/reusable/profileForm.module.scss";
-import "./profileForm.css";
+import "./profileForm.scss";
 import Swal from "sweetalert2";
 import { Typeahead } from "react-bootstrap-typeahead";
 
@@ -106,6 +106,7 @@ function ProfileForm({
     return (
       <Modal
         {...props}
+        id="profile-form"
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -204,7 +205,7 @@ function ProfileForm({
 
   return (
     <>
-      <Card>
+      <Card >
         <Form>
           <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
             Upload Photo
