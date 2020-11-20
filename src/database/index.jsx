@@ -46,6 +46,10 @@ const configuration = {
       create: "/reservation/create", // [POST] create reservation and get data create reservation by scheduleId
       patient: "/reservation/find-patient", // [GET] all reservation by  patient
     },
+
+    facility: {
+      all :"/facility"
+    }
   },
 };
 //version 1.0.1
@@ -401,4 +405,35 @@ const schedule = ({
   }
 };
 
-export { user, role, clinic, animaltype, animal, schedule, reservation };
+
+const facility = ({
+  method = null,
+  data = null,
+  access_token = null,
+  query = null,
+}) => {
+  if (method === "all") {
+    return axios
+      .get(`${configuration.url}${configuration.endpoint.facility.all}`)
+      .then((res) => res)
+      .catch((err) => err.response);
+  }
+
+  if (method === "post") {
+    return axios
+      .post(`${configuration.url}${configuration.endpoint.facility.all}`,data)
+      .then((res) => res)
+      .catch((err) => err.response);
+  }
+
+  if (method === "delete") {
+    return axios
+      .delete(
+        `${configuration.url}${configuration.endpoint.facility.all}/${query.id}`,
+        data
+      )
+      .then((res) => res)
+      .catch((err) => err.response);
+  }
+};
+export { user, role, clinic, animaltype, animal, schedule, reservation, facility };

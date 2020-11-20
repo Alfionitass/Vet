@@ -40,10 +40,10 @@ export default function NavDropdown(props) {
         >
           <VetArrowDown style={{ cursor: "pointer" }} />
         </Dropdown.Toggle>
-        <Dropdown.Menu className="dropdown-menu-right">
+        <Dropdown.Menu className="dropdown-menu-right custom-dropdown-menu">
             <div className="dropdown-item d-flex f-col align-items-center">
               <Col>
-                <Image src={props.data.image} width={50}/>
+                <Image src={props.data.image}  height={50} width={50} roundedCircle/>
               </Col>
               <Col>
                 <h5 className="m-0 v-text-donker">{props.data.name}</h5>

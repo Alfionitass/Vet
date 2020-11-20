@@ -26,6 +26,7 @@ import {
 import styles from "../../assets/sass/reusable/profileForm.module.scss";
 import "./profileForm.css";
 import Swal from "sweetalert2";
+import { Typeahead } from "react-bootstrap-typeahead";
 
 import { useHistory } from "react-router-dom";
 
@@ -33,6 +34,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { editUser, deleteAnimal, addAnimal } from "../../redux/actions/auth";
+
+import { facility } from "../../database";
 
 function ProfileForm({
   config: { mode },
@@ -46,13 +49,21 @@ function ProfileForm({
   const [status, setStatus] = useState("0");
   const [gender, setGender] = useState(AuthPayloads?.user?.patient?.gender);
   const [modalShow, setModalShow] = useState(false);
+  const [options, setFacilities] = useState();
   const history = useHistory();
+  const [singleSelections, setSingleSelections] = useState([]);
+  const currentFacilities = AuthPayloads?.Auth?.user?.clinic?.facilities;
 
-
+  useEffect(() => {
+    facility({
+      method: "all",
+    }).then((res) => setFacilities(res.data.data));
+  }, []);
+  console.log(options);
   const editUserData = () => {
     editUser(postData, AuthPayloads.access_token);
     Swal.fire({
-      title: "Update Sukses!",
+      title: "Success!",
       icon: "success",
       background: "#1A3150",
       iconColor: "yellow",
@@ -64,29 +75,25 @@ function ProfileForm({
     });
   };
 
-  
-
   const modalHandle = () => {
     setData({});
     setModalShow(false);
   };
-  
-
 
   const PetModal = (props) => {
     const [highlight, setHighlight] = useState(0);
-    const [petData,setPetData] = useState({})
+    const [petData, setPetData] = useState({});
 
     const addAnimalFire = () => {
       setModalShow(false);
       addAnimal(AuthPayloads.access_token, petData);
       Swal.fire({
-        title: `Add New ${petData.type} Success !`,
+        title: `Pet successfully added!`,
         icon: "success",
         background: "#1A3150",
         iconColor: "yellow",
         showConfirmButton: false,
-  
+
         customClass: {
           title: "text-light",
         },
@@ -94,8 +101,8 @@ function ProfileForm({
     };
 
     useEffect(() => {
-      console.log(petData)
-    },[petData])
+      console.log(petData);
+    }, [petData]);
     return (
       <Modal
         {...props}
@@ -132,7 +139,15 @@ function ProfileForm({
           <Form>
             <Form.Group>
               <Form.Label>Nama</Form.Label>
-              <Form.Control type="text" placeholder="Enter Pet Name" name="name" value={petData.name} onChange={(e) => setPetData({...petData, name:e.target.value})}/>
+              <Form.Control
+                type="text"
+                placeholder="Enter Pet Name"
+                name="name"
+                value={petData.name}
+                onChange={(e) =>
+                  setPetData({ ...petData, name: e.target.value })
+                }
+              />
             </Form.Group>
             <Form.Group className="mb-4" id="gender">
               <Form.Label>Gender</Form.Label>
@@ -144,10 +159,14 @@ function ProfileForm({
                   name="gender"
                   value={true}
                   checked={petData.gender == true}
-                  onChange={(e) => setPetData({...petData, gender:e.currentTarget.value})}
+                  onChange={(e) =>
+                    setPetData({ ...petData, gender: e.currentTarget.value })
+                  }
                 >
                   <VetMale />{" "}
-                  <span className={petData.gender == "false" ? "text-white" : ""}>
+                  <span
+                    className={petData.gender == "false" ? "text-white" : ""}
+                  >
                     Male
                   </span>
                 </ToggleButton>
@@ -158,10 +177,14 @@ function ProfileForm({
                   name="gender"
                   value={false}
                   checked={petData.gender == "false"}
-                  onChange={(e) => setPetData({...petData, gender:e.currentTarget.value})}
+                  onChange={(e) =>
+                    setPetData({ ...petData, gender: e.currentTarget.value })
+                  }
                 >
                   <VetFemale />
-                  <span className={petData.gender == "true" ? "text-white" : ""}>
+                  <span
+                    className={petData.gender == "true" ? "text-white" : ""}
+                  >
                     Female
                   </span>
                 </ToggleButton>
@@ -289,7 +312,7 @@ function ProfileForm({
           </Card.Header>
           <Card.Body>
             <Form.Group className="mb-4" id="status">
-              <Form.Label>Username</Form.Label>
+              <Form.Label>Name</Form.Label>
               <Form.Control
                 onChange={(e) => HandleInput(e)}
                 name="name"
@@ -298,100 +321,102 @@ function ProfileForm({
                 value={postData.name || AuthPayloads.user.name}
               />
             </Form.Group>
-            <Form.Group className="mb-4" id="gender">
-              <Form.Label>Gender</Form.Label>
-              {AuthPayloads?.veterinary ? (
-                <ButtonGroup toggle name="radiogroup">
-                  <ToggleButton
-                    key={1}
-                    type="radio"
-                    variant={postData.genderVet == "true" ? "primary" : ""}
-                    name="genderVet"
-                    value="true"
-                    checked={postData.genderVet == "true"}
-                    onChange={(e) => HandleInput(e)}
-                  >
-                    <VetMale
-                      size={22}
-                      color={postData.genderVet == "true" && "white"}
-                    />
-                    <span
-                      className={`mx-3 ${
-                        postData.genderVet == "false" ? "text-white" : ""
-                      }`}
+            {AuthPayloads.user.role != "clinic" && (
+              <Form.Group className="mb-4" id="gender">
+                <Form.Label>Gender</Form.Label>
+                {AuthPayloads?.veterinary ? (
+                  <ButtonGroup toggle name="radiogroup">
+                    <ToggleButton
+                      key={1}
+                      type="radio"
+                      variant={postData.genderVet == "true" ? "primary" : ""}
+                      name="genderVet"
+                      value="true"
+                      checked={postData.genderVet == "true"}
+                      onChange={(e) => HandleInput(e)}
                     >
-                      Male
-                    </span>
-                  </ToggleButton>
-                  <ToggleButton
-                    key={2}
-                    type="radio"
-                    variant={postData.genderVet == "false" ? "pink" : ""}
-                    name="genderVet"
-                    value="false"
-                    checked={postData.genderVet == "false"}
-                    onChange={(e) => HandleInput(e)}
-                  >
-                    <VetFemale
-                      size={34}
-                      color={postData.genderVet == "false" && "white"}
-                    />
-                    <span
-                      className={`mx-3 ${
-                        postData.genderVet == "true" ? "text-white" : ""
-                      }`}
+                      <VetMale
+                        size={22}
+                        color={postData.genderVet == "true" && "white"}
+                      />
+                      <span
+                        className={`mx-3 ${
+                          postData.genderVet == "false" ? "text-white" : ""
+                        }`}
+                      >
+                        Male
+                      </span>
+                    </ToggleButton>
+                    <ToggleButton
+                      key={2}
+                      type="radio"
+                      variant={postData.genderVet == "false" ? "pink" : ""}
+                      name="genderVet"
+                      value="false"
+                      checked={postData.genderVet == "false"}
+                      onChange={(e) => HandleInput(e)}
                     >
-                      Female
-                    </span>
-                  </ToggleButton>
-                </ButtonGroup>
-              ) : (
-                <ButtonGroup toggle name="radiogroup">
-                  <ToggleButton
-                    key={1}
-                    type="radio"
-                    variant={postData.gender == "true" ? "primary" : ""}
-                    name="gender"
-                    value="true"
-                    checked={postData.gender == "true"}
-                    onChange={(e) => HandleInput(e)}
-                  >
-                    <VetMale
-                      size={22}
-                      color={postData.gender == "true" && "white"}
-                    />
-                    <span
-                      className={`mx-3 ${
-                        postData.gender == "false" ? "text-white" : ""
-                      }`}
+                      <VetFemale
+                        size={34}
+                        color={postData.genderVet == "false" && "white"}
+                      />
+                      <span
+                        className={`mx-3 ${
+                          postData.genderVet == "true" ? "text-white" : ""
+                        }`}
+                      >
+                        Female
+                      </span>
+                    </ToggleButton>
+                  </ButtonGroup>
+                ) : (
+                  <ButtonGroup toggle name="radiogroup">
+                    <ToggleButton
+                      key={1}
+                      type="radio"
+                      variant={postData.gender == "true" ? "primary" : ""}
+                      name="gender"
+                      value="true"
+                      checked={postData.gender == "true"}
+                      onChange={(e) => HandleInput(e)}
                     >
-                      Male
-                    </span>
-                  </ToggleButton>
-                  <ToggleButton
-                    key={2}
-                    type="radio"
-                    variant={postData.gender == "false" ? "pink" : ""}
-                    name="gender"
-                    value="false"
-                    checked={postData.gender == "false"}
-                    onChange={(e) => HandleInput(e)}
-                  >
-                    <VetFemale
-                      size={34}
-                      color={postData.gender == "false" && "white"}
-                    />
-                    <span
-                      className={`mx-3 ${
-                        postData.gender == "true" ? "text-white" : ""
-                      }`}
+                      <VetMale
+                        size={22}
+                        color={postData.gender == "true" && "white"}
+                      />
+                      <span
+                        className={`mx-3 ${
+                          postData.gender == "false" ? "text-white" : ""
+                        }`}
+                      >
+                        Male
+                      </span>
+                    </ToggleButton>
+                    <ToggleButton
+                      key={2}
+                      type="radio"
+                      variant={postData.gender == "false" ? "pink" : ""}
+                      name="gender"
+                      value="false"
+                      checked={postData.gender == "false"}
+                      onChange={(e) => HandleInput(e)}
                     >
-                      Female
-                    </span>
-                  </ToggleButton>
-                </ButtonGroup>
-              )}
-            </Form.Group>
+                      <VetFemale
+                        size={34}
+                        color={postData.gender == "false" && "white"}
+                      />
+                      <span
+                        className={`mx-3 ${
+                          postData.gender == "true" ? "text-white" : ""
+                        }`}
+                      >
+                        Female
+                      </span>
+                    </ToggleButton>
+                  </ButtonGroup>
+                )}
+              </Form.Group>
+            )}
             {mode == "veterinary" && (
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Experience</Form.Label>
@@ -468,11 +493,70 @@ function ProfileForm({
               onClick={() => editUserData()}
               variant="warning"
             >
-              Simpan
+              Save
             </Button>
           </Card.Body>
+          {AuthPayloads.user.role == "clinic" && (
+            <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
+              Detail Clinic
+            </Card.Header>
+          )}
+          {AuthPayloads.user.role == "clinic" && (
+            <Card.Body>
+              <Form.Group className="mb-4" id="status">
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  onChange={(e) => HandleInput(e)}
+                  name="city"
+                  type="text"
+                  placeholder="It's my name"
+                  value={postData.name || AuthPayloads.user.name}
+                />
+              </Form.Group>
+              <Form.Group className="mb-4" id="status">
+                <Form.Label>Clinic Address</Form.Label>
+                <Form.Control
+                  onChange={(e) => HandleInput(e)}
+                  name="address"
+                  type="text"
+                  placeholder="It's my name"
+                  value={postData.name || AuthPayloads.user.name}
+                />
+              </Form.Group>
+            </Card.Body>
+          )}
         </Form>
-
+        <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
+          Clinic Facility
+        </Card.Header>
+        <Card.Body>
+          <Form.Group className="mb-4" id="status">
+            <Form.Label>Search Facility</Form.Label>
+            <Typeahead
+              id="basic-typeahead-single"
+              labelKey="name"
+              onChange={setSingleSelections}
+              options={options}
+              placeholder="Choose a state..."
+              selected={singleSelections}
+            />
+          </Form.Group>
+        </Card.Body>
+        <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
+          Clinic Veterinary
+        </Card.Header>
+        <Card.Body>
+          <Form.Group className="mb-4" id="status">
+            <Form.Label>Veterinary</Form.Label>
+            <Form.Control
+              onChange={(e) => HandleInput(e)}
+              name="address"
+              type="text"
+              placeholder="It's my name"
+              value={postData.name || AuthPayloads.user.name}
+            />
+          </Form.Group>
+        </Card.Body>
         {mode == "patient" && (
           <>
             <Card.Header className={`font-weight-bold ${styles["bg-unset"]}`}>
