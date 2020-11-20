@@ -174,11 +174,9 @@ export const deleteAnimal = (access_token,query) => {
 }
 
 export const addAnimal = (access_token,data) => {
+  console.log(access_token,data)
   return (dispatch) => {
-    dispatch({
-      type: utility.SET_UTILITY_ACTION_LOAD,
-      isLoading:true,
-    })
+    console.log(dispatch,"HERE")
     animal({
       method: 'add',
       access_token,

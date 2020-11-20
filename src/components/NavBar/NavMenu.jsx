@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Image } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import { VetArrowDown } from "../../assets/icons";
 import NavDropdown from "./NavDropdown";
@@ -20,9 +20,11 @@ function NavMenu(props) {
     props.AuthPayloads.user.role && setRole(props.AuthPayloads.user.role)
   },[props])
 
-  const Logout = () => {
-    localStorage.clear();
-    setLoginState(false);
+  const history = useHistory();
+  const LogoutAction = () => {
+    localStorage.clear()
+    props.setLogout()
+    history.replace('/')
   }
 
   return (
@@ -45,7 +47,7 @@ function NavMenu(props) {
           <NavLink to={`${process.env.PUBLIC_URL}/${props.AuthPayloads.user.role}`} className={styles.name}>
             <span>Hi, {props.AuthPayloads.user.name}</span>
           </NavLink>
-          <NavDropdown data={props.AuthPayloads.user} logout={props.setLogout}/>
+          <NavDropdown data={props.AuthPayloads.user} logout={LogoutAction}/>
         </>
       ) : (
         <>

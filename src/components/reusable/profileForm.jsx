@@ -32,7 +32,7 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { editUser, deleteAnimal } from "../../redux/actions/auth";
+import { editUser, deleteAnimal, addAnimal } from "../../redux/actions/auth";
 
 function ProfileForm({
   config: { mode },
@@ -40,6 +40,7 @@ function ProfileForm({
   function: { HandleInput, HandleInputFile, setData },
   AuthPayloads,
   editUser,
+  addAnimal,
   deleteAnimal,
 }) {
   const [status, setStatus] = useState("0");
@@ -63,6 +64,8 @@ function ProfileForm({
     });
   };
 
+  
+
   const modalHandle = () => {
     setData({});
     setModalShow(false);
@@ -73,6 +76,23 @@ function ProfileForm({
   const PetModal = (props) => {
     const [highlight, setHighlight] = useState(0);
     const [petData,setPetData] = useState({})
+
+    const addAnimalFire = () => {
+      setModalShow(false);
+      addAnimal(AuthPayloads.access_token, petData);
+      Swal.fire({
+        title: `Add New ${petData.type} Success !`,
+        icon: "success",
+        background: "#1A3150",
+        iconColor: "yellow",
+        showConfirmButton: false,
+  
+        customClass: {
+          title: "text-light",
+        },
+      });
+    };
+
     useEffect(() => {
       console.log(petData)
     },[petData])
@@ -150,7 +170,7 @@ function ProfileForm({
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Add Pet</Button>
+          <Button onClick={addAnimalFire}>Add Pet</Button>
           <Button variant="danger" onClick={props.onHide}>
             Close
           </Button>
@@ -552,7 +572,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ editUser, deleteAnimal }, dispatch);
+  return bindActionCreators({ editUser, deleteAnimal, addAnimal }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);

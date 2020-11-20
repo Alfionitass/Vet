@@ -256,6 +256,7 @@ const animal = ({
   }
 
   if (method === "add") {
+    console.log(data)
     return axios
       .post(`${configuration.url}${configuration.endpoint.animal.add}`, data, {
         headers: {
