@@ -286,7 +286,7 @@ export default function BookingContent() {
     )
 
     const bookInfo = (
-        <div className="d-flex flex-row mb-3">
+        <div className="d-flex flex-row mb-3 mr-3">
             <Row>
                 <Col md="6" xs="12">
                     <div className={styles.about}>
@@ -300,7 +300,7 @@ export default function BookingContent() {
                 <Col md="6" xs="12">
                     <div className={styles.facility}>
                         <h5>Facility</h5>
-                        <Row className="d-flex justify-content-end">
+                        <Row className="d-flex justify-content-end pt-2">
                             {bookingData? (bookingData?.clinic?.clinic?.facilities.map((item) => (
                                 <Col md="6">
                                     <input type="radio" name="" id="" />
@@ -361,12 +361,13 @@ export default function BookingContent() {
                 {animalData? (animalData.animals.map((pet) => (
                     <Col md="3">
                         <Card onClick={() => selectAnimal(pet)} className={styles.cardPet}>
-                            <Card.Body className="d-flex align-items-center justify-content-center"
+                            <Card.Body className="d-flex flex-column align-items-center justify-content-center"
                                 style={{background: pet.name === animalss.name ? "#FDCB5A" : "#fff" }}
                                 // style={{background: pet._name === animalss.name ? "#FDCB5A" : "#fff"}}
                             >
+                                <Image src={animalData?.images} className={styles.img3} />
                                 <Card.Title>
-                                    {pet.name || <Skeleton width={150} height={48} />}/ {pet.type}/ {pet.gender === true ? "Male" : "Female"}
+                                    {pet.name || <Skeleton width={150} height={48} />}/ {pet.gender === true ? "Male" : "Female"}
                                 </Card.Title>
                             </Card.Body>
                         </Card>
@@ -375,7 +376,7 @@ export default function BookingContent() {
                 ) : [0].map((value) => (
                     <Col md="3">
                         <Card className={styles.cardPet}>
-                            <Card.Body className="d-flex align-items-center justify-content-center" >
+                            <Card.Body className="d-flex flex-column align-items-center justify-content-center" >
                                 <Skeleton width={150} height={48} />
                             </Card.Body>
                         </Card>
