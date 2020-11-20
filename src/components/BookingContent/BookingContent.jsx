@@ -312,7 +312,7 @@ export default function BookingContent() {
             <h5>Facility</h5>
             <Row className="d-flex justify-content-end">
               {bookingData
-                ? bookingData.clinic.clinic.facilities.map((item) => (
+                ? bookingData?.clinic?.clinic?.facilities.map((item) => (
                     <Col md="6">
                       <input type="radio" name="" id="" />
                       <label htmlFor="" className="ml-2">
