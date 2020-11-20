@@ -45,34 +45,37 @@ function ProfileForm({
   const [status, setStatus] = useState("0");
   const [gender, setGender] = useState(AuthPayloads?.user?.patient?.gender);
   const [modalShow, setModalShow] = useState(false);
-  const [highlight, setHighlight] = useState(0);
   const history = useHistory();
 
-  useEffect(() => {
-    console.log(postData);
-  }, [postData]);
 
   const editUserData = () => {
-    editUser(postData, AuthPayloads.access_token)
-    // Swal.fire({
-    //   title: "Update Sukses!",
-    //   icon: "success",
-    //   background: "#1A3150",
-    //   iconColor: "yellow",
-    //   showConfirmButton: false,
-      
-    //   customClass: {
-    //     title: "text-light",
-    //   },
-    // });
+    editUser(postData, AuthPayloads.access_token);
+    Swal.fire({
+      title: "Update Sukses!",
+      icon: "success",
+      background: "#1A3150",
+      iconColor: "yellow",
+      showConfirmButton: false,
 
-  }
+      customClass: {
+        title: "text-light",
+      },
+    });
+  };
+
   const modalHandle = () => {
     setData({});
     setModalShow(false);
   };
   
+
+
   const PetModal = (props) => {
+    const [highlight, setHighlight] = useState(0);
+    const [petData,setPetData] = useState({})
+    useEffect(() => {
+      console.log(petData)
+    },[petData])
     return (
       <Modal
         {...props}
@@ -85,18 +88,20 @@ function ProfileForm({
         </Modal.Header>
         <Modal.Body className="d-flex f-col">
           <Card
-            name="type"
-            // onClick={(e) => {
-            //   setHighlight(1);
-            //   HandleInput(e)
-            // }}
             className={`m-3 ${highlight == 1 ? "selected-option" : ""}`}
+            onClick={() => {
+              setHighlight(1);
+              setPetData({ ...petData, type: "Dog" });
+            }}
           >
             <Card.Title className="text-center">Dog</Card.Title>
             <VetPDog className="m-3" size={"80"} />
           </Card>
           <Card
-            onClick={() => setHighlight(2)}
+            onClick={() => {
+              setHighlight(2);
+              setPetData({ ...petData, type: "Cat" });
+            }}
             className={`m-3 ${highlight == 2 ? "selected-option" : ""}`}
           >
             <Card.Title className="text-center">Cat</Card.Title>
@@ -107,7 +112,7 @@ function ProfileForm({
           <Form>
             <Form.Group>
               <Form.Label>Nama</Form.Label>
-              <Form.Control type="text" placeholder="Enter Pet Name" />
+              <Form.Control type="text" placeholder="Enter Pet Name" name="name" value={petData.name} onChange={(e) => setPetData({...petData, name:e.target.value})}/>
             </Form.Group>
             <Form.Group className="mb-4" id="gender">
               <Form.Label>Gender</Form.Label>
@@ -115,28 +120,28 @@ function ProfileForm({
                 <ToggleButton
                   key={1}
                   type="radio"
-                  variant={gender == true ? "primary" : ""}
+                  variant={petData.gender == "true" ? "primary" : ""}
                   name="gender"
                   value={true}
-                  checked={gender == true}
-                  onChange={(e) => setGender(e.currentTarget.value)}
+                  checked={petData.gender == true}
+                  onChange={(e) => setPetData({...petData, gender:e.currentTarget.value})}
                 >
                   <VetMale />{" "}
-                  <span className={gender == false ? "text-white" : ""}>
+                  <span className={petData.gender == "false" ? "text-white" : ""}>
                     Male
                   </span>
                 </ToggleButton>
                 <ToggleButton
                   key={2}
                   type="radio"
-                  variant={gender == false ? "pink" : ""}
+                  variant={petData.gender == "false" ? "pink" : ""}
                   name="gender"
                   value={false}
-                  checked={gender == false}
-                  onChange={(e) => setGender(e.currentTarget.value)}
+                  checked={petData.gender == "false"}
+                  onChange={(e) => setPetData({...petData, gender:e.currentTarget.value})}
                 >
                   <VetFemale />
-                  <span className={gender == true ? "text-white" : ""}>
+                  <span className={petData.gender == "true" ? "text-white" : ""}>
                     Female
                   </span>
                 </ToggleButton>

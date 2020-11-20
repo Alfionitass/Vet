@@ -23,6 +23,7 @@ const authReducers = (state = initialState, action) => {
       return { ...state, user: action.user,successMsg:[], isLogin: true };
     
     case auth.EDIT_AUTH_USER_DATA:
+      let data = {...state}
       return  { ...state, user: action.user };
       
     case auth.SET_AUTH_USER_ANIMAL:

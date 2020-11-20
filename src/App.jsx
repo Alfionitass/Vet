@@ -21,13 +21,12 @@ import { VetPaw } from "./assets/icons";
 import ClinicChooseFiltered from "./components/Clinic/ClinicChoose/ClinicChooseFiltered";
 import ClinicSearch from "./components/Clinic/ClinicChoose/ClinicSearch";
 
-import PageLoad from './components/reusable/utilities/pageLoad'
-import Logout from './components/reusable/utilities/logout'
+import PageLoad from "./components/reusable/utilities/pageLoad";
+import Logout from "./components/reusable/utilities/logout";
 import { getUserData } from "./redux/actions/auth";
 import { getAppointment, getHistory } from "./redux/actions/appointment";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
 
 function App(props) {
   // state declaration
@@ -49,16 +48,21 @@ function App(props) {
     footer: true,
   });
   useEffect(() => {
-    token.length && props.getUserData(token)
+    token.length && props.getUserData(token);
   }, [token]);
 
   useEffect(() => {
-    if(Object.keys(props.AuthPayloads.user).length){
-      props.getAppointment(props.AuthPayloads.access_token,props.AuthPayloads.user.role);
-      props.getHistory(props.AuthPayloads.access_token,props.AuthPayloads.user.role);
-    } 
-  },[props.AuthPayloads.access_token])
-
+    if (Object.keys(props.AuthPayloads.user).length) {
+      props.getAppointment(
+        props.AuthPayloads.access_token,
+        props.AuthPayloads.user.role
+      );
+      props.getHistory(
+        props.AuthPayloads.access_token,
+        props.AuthPayloads.user.role
+      );
+    }
+  }, [props.AuthPayloads.access_token]);
 
   let history = useHistory();
   useEffect(() => {
@@ -66,8 +70,8 @@ function App(props) {
   }, [userDatas]);
   // function declaration
   const HandleInput = (input) => {
-    input.preventDefault();
-    console.log(input)
+    // input.preventDefault();
+    console.log(input);
     let data = { ...postData, [input.target.name]: input.target.value };
     setData(data);
   };
@@ -115,19 +119,18 @@ function App(props) {
 
   useEffect(() => {
     //console.log("CHEKC ISLOAD HOEME",props.AuthPayloads.isLoading)
-  },[props])
+  }, [props]);
   const handleFooter = (option) => {
     //console.log(option);
   };
 
- 
   return (
-     <>
+    <>
       <div className="App">
         <Router>
           {/* {isLogin && <Redirect to={`${process.env.PUBLIC_URL}/`} />} */}
-         {props.AuthPayloads.isLoading && <PageLoad data="CONNECTING"/>}
-         {props.AuthPayloads.isLogout && <Logout data="LOGOUT"/>}
+          {props.AuthPayloads.isLoading && <PageLoad data="CONNECTING" />}
+          {props.AuthPayloads.isLogout && <Logout data="LOGOUT" />}
 
           <VetNavbar
             barState={barState}
@@ -137,40 +140,48 @@ function App(props) {
             }}
           />
           <Switch>
-            <Route path={[`${process.env.PUBLIC_URL}/user/:role`,`${process.env.PUBLIC_URL}/user`]}>
-              <Users function={{
-                  HandleInput: HandleInput,
-                  HandleInputFile: HandleInputFile,
-                  SetVisibility: SetVisibility,
-                  SubmitData: SubmitData,
-                  setData : setData,
-                }}
-                data={{
-                  postData: postData,
-                  imgPreview: imgPreview,
-                }}/>
-            </Route>
-            <Route path={`${process.env.PUBLIC_URL}/auth`}>
-              <Auth
-                SetBarState={SetBarState}
-                function={{
-                  HandleInput: HandleInput,
-                  SetVisibility: SetVisibility,
-                  SubmitData: SubmitData,
-                  setLoading: setLoading,
-                  SetUserData: SetUserData,
-                }}
-                data={{
-                  token: token,
-                  isLoading: isLoading,
-                  postData: postData,
-                  errorMsg: errorMsg,
-                  passVisibility: passVisibility,
-                  userData: userData,
-                  isLogin: isLogin,
-                }}
-              />
-            </Route>
+            <Route
+              path={[
+                `${process.env.PUBLIC_URL}/user/:role`,
+                `${process.env.PUBLIC_URL}/user`,
+              ]}
+             render={() => <Users
+              function={{
+                HandleInput: HandleInput,
+                HandleInputFile: HandleInputFile,
+                SetVisibility: SetVisibility,
+                SubmitData: SubmitData,
+                setData: setData,
+              }}
+              data={{
+                postData: postData,
+                imgPreview: imgPreview,
+              }}
+            />}/>
+            <Route
+              path={`${process.env.PUBLIC_URL}/auth`}
+              render={() => {
+                <Auth
+                  SetBarState={SetBarState}
+                  function={{
+                    HandleInput: HandleInput,
+                    SetVisibility: SetVisibility,
+                    SubmitData: SubmitData,
+                    setLoading: setLoading,
+                    SetUserData: SetUserData,
+                  }}
+                  data={{
+                    token: token,
+                    isLoading: isLoading,
+                    postData: postData,
+                    errorMsg: errorMsg,
+                    passVisibility: passVisibility,
+                    userData: userData,
+                    isLogin: isLogin,
+                  }}
+                />;
+              }}
+            />
             <Route path={`${process.env.PUBLIC_URL}/DemoIcon`}>
               <DemoIcon />
             </Route>
@@ -210,7 +221,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getUserData, getAppointment, getHistory }, dispatch);
+  return bindActionCreators(
+    { getUserData, getAppointment, getHistory },
+    dispatch
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
