@@ -77,6 +77,7 @@ export const editUser = (data, access_token) => {
       access_token
     }).then(res => {
       if (!res.data.success) {
+        console.log(res)
         dispatch({
           type: utility.SET_UTILITY_ACTION_LOAD,
           isLoading:false,
@@ -87,6 +88,11 @@ export const editUser = (data, access_token) => {
         });
       } else if(res.data.success) {
         console.log(res)
+        dispatch({
+          type: auth.EDIT_AUTH_USER_DATA,
+          user: res.data.data,
+        });
+        
       }
     })
   };
@@ -142,6 +148,39 @@ export const deleteAnimal = (access_token,query) => {
       method: 'delete',
       access_token,
       query: {id : query}
+    }).then(res => {
+      console.log(res)
+      if (res.status === 400) {
+        dispatch({
+          type: auth.SET_ERROR,
+          errorMsg: res.data.message,
+        });
+        dispatch({
+          type: utility.SET_UTILITY_PAGE_LOAD,
+          isLoading:false,
+        })
+      } else {
+        dispatch({
+          type: auth.SET_AUTH_USER_ANIMAL,
+          animals: res.data.data.animals,
+        });
+        dispatch({
+          type: utility.SET_UTILITY_PAGE_LOAD,
+          isLoading:false,
+        })
+      }
+    })
+  };
+}
+
+export const addAnimal = (access_token,data) => {
+  console.log(access_token,data)
+  return (dispatch) => {
+    console.log(dispatch,"HERE")
+    animal({
+      method: 'add',
+      access_token,
+      data
     }).then(res => {
       console.log(res)
       if (res.status === 400) {

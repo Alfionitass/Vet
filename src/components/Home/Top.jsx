@@ -17,15 +17,15 @@ export default function Top() {
                             <h4>Welcome to VET</h4>
                             <p className={classes.par} >VET aim to provide the highest standards of veterinary care. These are the terms on which we, Independent Vetcare Limited (trading as The Veterinary Clinic), supply veterinary services and related products to you. These Terms and Conditions shall apply to all supplies of Veterinary Services and Products by us to you to the exclusion of all other terms and conditions.</p>
                             <Link to={`${process.env.PUBLIC_URL}/booking/`}>
-                    <Button class="btn btn-warning" style={{ background: '#FDCB5A', color: 'black', fontWeight: 'bold', bottom: '0', margin: '0 auto' }}>
+                    <Button className="btn btn-warning" style={{ background: '#FDCB5A', color: 'black', fontWeight: 'bold', bottom: '0', margin: '0 auto' }}>
                         Book now
                   </Button>
                 </Link>
                         </div>
 
                     </div>
-                    <div class="col-md-6 col-xs-12" className={classes.dog}>
-                        <img src={Dog} class="img-fluid " alt='dog' />
+                    <div className="col-md-6 col-xs-12" className={classes.dog}>
+                        <img src={Dog} className="img-fluid " alt='dog' />
                     </div>
                 </div>
             </div>

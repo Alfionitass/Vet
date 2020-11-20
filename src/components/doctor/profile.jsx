@@ -14,8 +14,7 @@ import ProfileForm from '../reusable/profileForm'
 import Swal from "sweetalert2";
 
 export default function Profile() {
-  const [status, setStatus] = useState("1");
-  const [gender, setGender] = useState("1");
+
 
   const handleClick = () => {
     Swal.fire({

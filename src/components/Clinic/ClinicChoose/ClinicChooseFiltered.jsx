@@ -1,8 +1,5 @@
 import React, {useState,useEffect} from "react";
-// import "./styles.css";
 import { Dropdown,Card,Badge,Button, Container,Col,Row } from "react-bootstrap";
-//import SearchIcon from '@material-ui/icons/Search';
-// import styles from './App.module.css'
 import { useParams } from 'react-router-dom'
 import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
@@ -40,10 +37,10 @@ export default function ClinicChooseFiltered() {
     axios(config)
     .then(function (response) {
       setClinicData(response?.data?.data)
-      console.log(response?.data?.data);
+     
     })
     .catch(function (error) {
-      console.log(error);
+
     });
   },[])
   
@@ -53,13 +50,13 @@ export default function ClinicChooseFiltered() {
         Lokasi
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Medan">Medan</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Bandung">Bandung</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Makasar">Makasar</Dropdown.Item>
+      <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Jakarta`}>Jakarta</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Medan`}>Medan</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Surabaya`}>Surabaya</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Pekanbaru`}>Pekanbaru</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Bandung`}>Bandung</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Denpasar`}>Denpasar</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Makasar`}>Makasar</Dropdown.Item>  
       </Dropdown.Menu>
     </Dropdown>)
 
@@ -82,11 +79,10 @@ export default function ClinicChooseFiltered() {
     <ul className='pagination'>
                 <li className="page-item">                    
                     <a className='page-link' 
-                    href={`${process.env.PUBLIC_URL}/booking/1`}>                        
+                    href={`${process.env.PUBLIC_URL}/booking/lokasi/${lokasi}`}>                        
                     1
                     </a>
-                </li>
-    
+                </li>    
     </ul>        
     </div>
   )
@@ -106,18 +102,17 @@ export default function ClinicChooseFiltered() {
     onKeyUp={handleSubmit}    
     ></input>
   )
-  
-  console.log("ini clinic",clinicData)
+
   const r = clinicData && clinicData  
-  const kartu = clinicData && clinicData.map((value)=>(            
-    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4">
+  const kartu = clinicData && clinicData.map((value,index)=>(            
+    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4" key={index}>
     <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
     <Card.Body>
       <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>
-        {value.clinic.city}
+        {value?.clinic?.city}
       </Badge></h6>
       <Card.Title>        
-        {value.name}
+        {value?.name}
       </Card.Title>
       <Card.Text>
         Buka 09:00-12:00

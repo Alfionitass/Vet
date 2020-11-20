@@ -9,8 +9,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 export default function ClinicSearch(){
   const [ clinicData, setClinicData] = useState()  
-  const { page } = useParams()
-  // const [ page, setPage ] = useState(1)
+  const { page } = useParams()  
   const [ isSearch, setIsSearch ] = useState(false)
   const [ inputSearch, setInputSearch ] = useState('')
   let history = useHistory();
@@ -52,13 +51,13 @@ export default function ClinicSearch(){
             Lokasi
           </Dropdown.Toggle>
           <Dropdown.Menu className="mt-0">        
-            <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
-            <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Medan">Medan</Dropdown.Item>
-            <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
-            <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
-            <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Bandung">Bandung</Dropdown.Item>
-            <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
-            <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Makasar">Makasar</Dropdown.Item>        
+            <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Jakarta`}>Jakarta</Dropdown.Item>
+            <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Medan`}>Medan</Dropdown.Item>
+            <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Surabaya`}>Surabaya</Dropdown.Item>
+            <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Pekanbaru`}>Pekanbaru</Dropdown.Item>
+            <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Bandung`}>Bandung</Dropdown.Item>
+            <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Denpasar`}>Denpasar</Dropdown.Item>
+            <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Makasar`}>Makasar</Dropdown.Item>  
           </Dropdown.Menu>
         </Dropdown>)
 
@@ -94,8 +93,8 @@ export default function ClinicSearch(){
     
       const r = clinicData && clinicData
       // console.log(r)
-      const kartu = clinicData && clinicData.map((value)=>(            
-        <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4">
+      const kartu = clinicData && clinicData.map((value,index)=>(            
+        <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4" key={index}>
         <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
         <Card.Body>
           <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>
@@ -123,7 +122,7 @@ export default function ClinicSearch(){
         <ul className='pagination'>
                     <li className="page-item">                    
                         <a className='page-link' 
-                        href={`${process.env.PUBLIC_URL}/booking/1`}>                        
+                        href={`${process.env.PUBLIC_URL}/booking/${search}`}>                        
                         1
                         </a>
                     </li>
@@ -136,8 +135,7 @@ export default function ClinicSearch(){
         
         <div style={{paddingLeft:'3rem', paddingRight:'3rem',minHeight:'100vh'}}>
           <Row className="justify-content-end" style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
-            {dropDownLokasi}
-            {/* {binatangPeliharaan}     */}
+            {dropDownLokasi}            
             {isSearch?
             input:
             buttonSearch}              

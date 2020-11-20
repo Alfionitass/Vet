@@ -10,9 +10,9 @@ export default function Overview() {
         <div className='container-fluid'>
              <div className="row" style={{ width: '80%', marginBottom: '3rem', margin: '3em auto', textAlign:'left' }} >
                     <div className="col-md-6 col-xs-12" style={{ position: 'relative' }}>
-                        <div className={classes.blue}><img class="img-fluid" src={Vector3} alt="" /></div>
-                        <div className={classes.yellow}> <img class="img-fluid" src={Vector4} alt="" /></div>
-                        <div className={classes.cat}> <img class="img-fluid" src={Cat} alt="" /></div>
+                        <div className={classes.blue}><img className="img-fluid" src={Vector3} alt="" /></div>
+                        <div className={classes.yellow}> <img className="img-fluid" src={Vector4} alt="" /></div>
+                        <div className={classes.cat}> <img className="img-fluid" src={Cat} alt="" /></div>
                     </div>
                     <div className="col-md-6 col-xs-12" style={{ marginTop: '5em' }}>
                         <h4>Why Choose Us?</h4>

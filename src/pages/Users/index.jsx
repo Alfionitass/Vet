@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useParams } from "react-router-dom";
+import { Switch, Route, useParams, useHistory } from "react-router-dom";
 import UserProfile from "../../components/reusable/profile";
 import UserPage from "../../components/reusable/profilePage";
 import doctorImg from "../../assets/img/doctorProfile.png";
@@ -13,7 +13,15 @@ import { bindActionCreators } from "redux";
 import { getAppointment, getHistory } from "../../redux/actions/appointment";
 
 function Users(props) {
-  const { role } = useParams();
+  let { role } = useParams();
+  const history = useHistory()
+  if (!role) {
+    role = props.AuthPayloads.user.role;
+
+    role && history.replace(`/user/${role}`)
+    console.log(props)
+  }
+
   const [passData, SetPassData] = useState(null);
 
   useEffect(() => {

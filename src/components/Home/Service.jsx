@@ -18,7 +18,7 @@ export default function Service() {
                 <div className="col-md-4 col-xs-12">
                     <div className={classes.serviceIcon}>
                         <span ><RiHospitalFill /></span>
-                        <img id="one" src={Vector2} class="img-fluid" alt="" style={{ transform: 'rotate(152.15deg)', height: '100%' }} />
+                        <img id="one" src={Vector2} className="img-fluid" alt="" style={{ transform: 'rotate(152.15deg)', height: '100%' }} />
                     </div>
                     <div className={classes.serviceText}>
                         <h5>Clinic/ Hospital</h5>
@@ -29,7 +29,7 @@ export default function Service() {
                 <div className="col-md-4 col-xs-12">
                     <div className={classes.serviceIcon}>
                         <span><BiCalendar /></span>
-                        <img id="two" src={Vector2} class="img-fluid" alt="" />
+                        <img id="two" src={Vector2} className="img-fluid" alt="" />
                     </div>
 
 
@@ -42,8 +42,8 @@ export default function Service() {
                 <div className="col-md-4 col-xs-12" >
 
                     <div className={classes.serviceIcon}>
-                        <img class="img-fluid doctor" src={Doctor} alt='doctor' style={{ position: 'absolute', zIndex: '3', marginTop: '2em', marginLeft: '4em' }} />
-                        <img id="three" class="img-fluid" src={Vector2} alt='' style={{ transform: 'rotate(-54.83deg)', height: '100%', marginTop: '-1em' }} />
+                        <img className="img-fluid doctor" src={Doctor} alt='doctor' style={{ position: 'absolute', zIndex: '3', marginTop: '2em', marginLeft: '4em' }} />
+                        <img id="three" className="img-fluid" src={Vector2} alt='' style={{ transform: 'rotate(-54.83deg)', height: '100%', marginTop: '-1em' }} />
                     </div>
                     <div className={classes.serviceText}>
                         <h5>Meet The Doctor</h5>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 
@@ -5,15 +6,20 @@ import CardItem from "../../../reusable/cardItem";
 import ReactPaginate from "react-paginate";
 import { connect } from "react-redux";
 
+import CatLoader from '../../../reusable/utilities/catLoader'
 function PatientAppointment(props) {
   const [paginationConfig, SetConfig] = useState({
     offset: 0,
     data: [],
     perPage: 4,
     currentPage: 0,
+    pageCount: 0
   });
 
-  const [renderPostData, setPost] = useState();
+
+  useEffect(() => {
+    console.log(paginationConfig)
+  },[paginationConfig])
 
   const renderData = () => {
     const data = props.AppointmentPayloads.dataAppointment;
@@ -50,12 +56,14 @@ function PatientAppointment(props) {
   return (
     <Card.Body className="appointment-fix-height">
       {props.AppointmentPayloads.dataAppointment && paginationConfig.postData}
+      {!paginationConfig.postData && <CatLoader text="Appointment" opacity={0.3} weight={500}/>}
       <div className="d-flex justify-content-center my-2 pagination-absolute">
-      <ReactPaginate
+      {paginationConfig.pageCount !== 0 && <ReactPaginate
         previousLabel={"prev"}
         nextLabel={"next"}
         breakLabel={"..."}
-        breakClassName={"break-me"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
         pageCount={paginationConfig.pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
@@ -68,7 +76,7 @@ function PatientAppointment(props) {
         pageClassName={"page-item"}
         pageLinkClassName={"page-link"}
         activeClassName={"active"}
-      />
+      />}
       </div>
     </Card.Body>
   );

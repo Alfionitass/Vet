@@ -66,7 +66,7 @@ function App(props) {
   }, [userDatas]);
   // function declaration
   const HandleInput = (input) => {
-    input.preventDefault();
+    // input.preventDefault();
     console.log(input)
     let data = { ...postData, [input.target.name]: input.target.value };
     setData(data);
@@ -128,7 +128,7 @@ function App(props) {
           {/* {isLogin && <Redirect to={`${process.env.PUBLIC_URL}/`} />} */}
          {props.AuthPayloads.isLoading && <PageLoad data="CONNECTING"/>}
          {props.AuthPayloads.isLogout && <Logout data="LOGOUT"/>}
-
+          
           <VetNavbar
             barState={barState}
             data={{
@@ -137,7 +137,7 @@ function App(props) {
             }}
           />
           <Switch>
-            <Route path={`${process.env.PUBLIC_URL}/user/:role`}>
+            <Route path={[`${process.env.PUBLIC_URL}/user/:role`,`${process.env.PUBLIC_URL}/user`]}>
               <Users function={{
                   HandleInput: HandleInput,
                   HandleInputFile: HandleInputFile,
@@ -150,7 +150,7 @@ function App(props) {
                   imgPreview: imgPreview,
                 }}/>
             </Route>
-            <Route path={`${process.env.PUBLIC_URL}/auth`}>
+            <Route path={`${process.env.PUBLIC_URL}/auth`}> 
               <Auth
                 SetBarState={SetBarState}
                 function={{
@@ -181,11 +181,11 @@ function App(props) {
               <BookingDetail />
             </Route>
             <Route
-              path="/demo-Vet/booking/search/:search"
+              path={`${process.env.PUBLIC_URL}/booking/search/:search`}
               component={ClinicSearch}
             />
             <Route
-              path="/demo-Vet/booking/lokasi/:lokasi"
+              path={`${process.env.PUBLIC_URL}/booking/lokasi/:lokasi`}
               component={ClinicChooseFiltered}
             />
             <Route path={`${process.env.PUBLIC_URL}/booking/:page`}>

@@ -1,27 +1,4 @@
-/* @media only screen and (max-width: 1440px) {
-    .content {
-        max-width: 90%;
-    }
-} */
-
-/* Untuk Tablet */
-/* @media all and (max-width: 1000px) {
-    .img {
-      width: 50%;
-      margin-bottom: 1.5rem;
-    }
-    
-    .h1 {
-      font-size: 2.6rem;
-    }
-    
-    .cardDay {
-        width: 5.4rem;
-        height: 3rem;
-    }
-  } */
-
-  .content {
+.content {
     max-width: 1420px;
     margin: 3rem 3rem;
 }
@@ -29,6 +6,8 @@
 .bookContent {
     width: 80%;
     margin: 3rem auto;
+    margin-bottom: 0;
+    padding-bottom: 3rem;
 }
 
 .btn {
@@ -67,7 +46,7 @@
 
 .img1 {
     height: 21rem;
-    width: 28rem;    
+    width: 28rem;
 }
 
 .cardImg1 {
