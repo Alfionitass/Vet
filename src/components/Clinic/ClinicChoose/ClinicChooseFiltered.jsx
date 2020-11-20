@@ -53,13 +53,13 @@ export default function ClinicChooseFiltered() {
         Lokasi
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Jakarta">Jakarta</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Medan">Medan</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Surabaya">Surabaya</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Pekanbaru">Pekanbaru</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Bandung">Bandung</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Denpasar">Denpasar</Dropdown.Item>
-        <Dropdown.Item href="${process.env.PUBLIC_URL}/booking/lokasi/Makasar">Makasar</Dropdown.Item>
+      <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Jakarta`}>Jakarta</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Medan`}>Medan</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Surabaya`}>Surabaya</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Pekanbaru`}>Pekanbaru</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Bandung`}>Bandung</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Denpasar`}>Denpasar</Dropdown.Item>
+        <Dropdown.Item href={`${process.env.PUBLIC_URL}/booking/lokasi/Makasar`}>Makasar</Dropdown.Item>  
       </Dropdown.Menu>
     </Dropdown>)
 
@@ -82,7 +82,7 @@ export default function ClinicChooseFiltered() {
     <ul className='pagination'>
                 <li className="page-item">                    
                     <a className='page-link' 
-                    href={`${process.env.PUBLIC_URL}/booking/1`}>                        
+                    href={`${process.env.PUBLIC_URL}/booking/lokasi/${lokasi}`}>                        
                     1
                     </a>
                 </li>
@@ -108,8 +108,8 @@ export default function ClinicChooseFiltered() {
   )
 
   const r = clinicData && clinicData  
-  const kartu = clinicData && clinicData.map((value)=>(            
-    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4">
+  const kartu = clinicData && clinicData.map((value,index)=>(            
+    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4" key={index}>
     <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
     <Card.Body>
       <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>

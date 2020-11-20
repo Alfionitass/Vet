@@ -12,7 +12,8 @@ export default function ClinicSection() {
 
     const [clinicData, setClinicData] = useState()
     const [currentClinic, setCurrentClinic] = useState(1)
-    const maxItem = 3
+    const [maxItem, setMaxItem]=useState(3)
+    // const maxItem = 3
     
     var first = (currentClinic * maxItem) - maxItem
     var last = currentClinic * maxItem
@@ -38,16 +39,16 @@ export default function ClinicSection() {
     const clinicList = clinicData && clinicData.slice(first, last).map((value, index) => (
         <Card style={{ width: '11em', height:'18rem', margin:'0 auto', overflowX:'hidden' }} key={index}>
             <div className={classes.mask}>
-            <img src={value.image} class="card-img-top" alt="..." />
+            <img src={value.image} className="card-img-top" alt="..." />
             </div>
-            <div class="card-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div className="card-body" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
-                <p class="card-text">{value?.clinic?.city ? value?.clinic?.city : "Surabaya"}</p>
-                    <h5 class="card-title mt-2" style={{fontSize: '14px'}} >{value.name}</h5>
-                    <p class="card-text mb-2">Buka 09.00 - 12.00</p>
+                <p className="card-text">{value?.clinic?.city ? value?.clinic?.city : "Surabaya"}</p>
+                    <h5 className="card-title mt-2" style={{fontSize: '14px'}} >{value.name}</h5>
+                    <p className="card-text mb-2">Buka 09.00 - 12.00</p>
                 </div>
                 <Link to={`${process.env.PUBLIC_URL}/booking/detail/${value._id}/`}>
-                    <Button class="btn btn-warning" style={{ background: '#FDCB5A', color: 'black', fontWeight: 'bold', bottom: '0', width: '100%', margin: '0 auto' }}>
+                    <Button className="btn btn-warning" style={{ background: '#FDCB5A', color: 'black', fontWeight: 'bold', bottom: '0', width: '100%', margin: '0 auto' }}>
                         Book now
                   </Button>
                 </Link>

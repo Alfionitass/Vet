@@ -181,11 +181,11 @@ function App(props) {
               <BookingDetail />
             </Route>
             <Route
-              path="/demo-Vet/booking/search/:search"
+              path={`${process.env.PUBLIC_URL}/booking/search/:search`}
               component={ClinicSearch}
             />
             <Route
-              path="/demo-Vet/booking/lokasi/:lokasi"
+              path={`${process.env.PUBLIC_URL}/booking/lokasi/:lokasi`}
               component={ClinicChooseFiltered}
             />
             <Route path={`${process.env.PUBLIC_URL}/booking/:page`}>

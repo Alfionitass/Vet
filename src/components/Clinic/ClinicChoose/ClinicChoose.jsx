@@ -83,8 +83,8 @@ export default function ClinicChoose() {
     ></input>
   )
 
-  const kartu = clinicData && clinicData.map((value)=>(            
-    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4">
+  const kartu = clinicData && clinicData.map((value,index)=>(            
+    <Card style={{ width: '16rem',marginRight:'2rem'}} className="mt-4 mb-4" key={index}>
     <Card.Img variant="top" src={value.image} style={{objectFit:"cover", width:"16rem", height:"13rem"}}/>
     <Card.Body>
       <h6><Badge variant="secondary" style={{backgroundColor:"#E0E9F5", color:'black', width:"4rem", height:"1.2rem"}}>

@@ -220,7 +220,7 @@ export default function BookingContent() {
             <Row>
               {bookingData
                 ? bookingData.dateBooking.map((day, index) => (
-                    <Col md="4" className="mb-3">
+                    <Col md="4" className="mb-3" key={index}>
                       <Card
                         onClick={() => selectDay(day, index)}
                         className={styles.cardDay}
@@ -239,8 +239,8 @@ export default function BookingContent() {
                       </Card>
                     </Col>
                   ))
-                : [0, 1, 2, 3, 4, 5, 6].map((value) => (
-                    <Col md="4" className="mb-3">
+                : [0, 1, 2, 3, 4, 5, 6].map((value,index) => (
+                    <Col md="4" className="mb-3" key={index}>
                       <Card className={styles.cardDay}>
                         <Card.Body className={styles.cardBody}>
                           <Skeleton width={158} height={48} />
@@ -255,7 +255,7 @@ export default function BookingContent() {
             <Row>
               {bookingData
                 ? bookingData.hour.map((time, index) => (
-                    <Col md="4">
+                    <Col md="4" key={index}>
                       <Card
                         onClick={() => selectTime(time, index)}
                         className={styles.cardTime}
@@ -274,8 +274,8 @@ export default function BookingContent() {
                       </Card>
                     </Col>
                   ))
-                : [0, 1, 2].map((value) => (
-                    <Col md="4">
+                : [0, 1, 2].map((value,index) => (
+                    <Col md="4" key={index}>
                       <Card className={styles.cardTime}>
                         <Card.Body className={styles.cardBody}>
                           <Skeleton width={130.5} height={24} />
@@ -312,16 +312,16 @@ export default function BookingContent() {
             <h5>Facility</h5>
             <Row className="d-flex justify-content-end">
               {bookingData
-                ? bookingData?.clinic?.clinic?.facilities.map((item) => (
-                    <Col md="6">
+                ? bookingData?.clinic?.clinic?.facilities.map((item,index) => (
+                    <Col md="6" key={index}>
                       <input type="radio" name="" id="" />
                       <label htmlFor="" className="ml-2">
                         {item.name}
                       </label>
                     </Col>
                   ))
-                : [0, 1].map((value) => (
-                    <Col md="6">
+                : [0, 1].map((value,index) => (
+                    <Col md="6" key={index}>
                       <Skeleton width={147.83} height={56} />
                     </Col>
                   ))}
@@ -337,8 +337,8 @@ export default function BookingContent() {
       <h3 className="mb-2">Choose a Doctor</h3>
       <Row>
         {doctor
-          ? doctor.schedules.map((doc) => (
-              <Col md="4" className="mb-3">
+          ? doctor.schedules.map((doc,index) => (
+              <Col md="4" className="mb-3" key={index}>
                 <Card onClick={() => selectDoc(doc)} className={styles.cardDoc}>
                   <Card.Body
                     className="d-flex flex-row align-items-center justify-content-center"
@@ -358,8 +358,8 @@ export default function BookingContent() {
                 </Card>
               </Col>
             ))
-          : [0].map((value) => (
-              <Col md="4" className="mb-3">
+          : [0].map((value,index) => (
+              <Col md="4" className="mb-3" key={index}>
                 <Card className={styles.cardDoc}>
                   <Card.Body className="d-flex flex-row align-items-center justify-content-center">
                     <Skeleton width={80} height={80} />
@@ -377,8 +377,8 @@ export default function BookingContent() {
       <h3>Choose Pet</h3>
       <Row>
         {animalData
-          ? animalData.animals.map((pet) => (
-              <Col md="3">
+          ? animalData.animals.map((pet,index) => (
+              <Col md="3" key={index}>
                 <Card
                   onClick={() => selectAnimal(pet)}
                   className={styles.cardPet}
@@ -399,8 +399,8 @@ export default function BookingContent() {
                 </Card>
               </Col>
             ))
-          : [0].map((value) => (
-              <Col md="3">
+          : [0].map((value,index) => (
+              <Col md="3" key={index}>
                 <Card className={styles.cardPet}>
                   <Card.Body className="d-flex align-items-center justify-content-center">
                     <Skeleton width={150} height={48} />
