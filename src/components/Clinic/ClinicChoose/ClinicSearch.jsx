@@ -9,8 +9,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 export default function ClinicSearch(){
   const [ clinicData, setClinicData] = useState()  
-  const { page } = useParams()
-  // const [ page, setPage ] = useState(1)
+  const { page } = useParams()  
   const [ isSearch, setIsSearch ] = useState(false)
   const [ inputSearch, setInputSearch ] = useState('')
   let history = useHistory();
@@ -136,8 +135,7 @@ export default function ClinicSearch(){
         
         <div style={{paddingLeft:'3rem', paddingRight:'3rem',minHeight:'100vh'}}>
           <Row className="justify-content-end" style={{marginTop:"0.5rem", marginBottom:"0.5rem"}}>
-            {dropDownLokasi}
-            {/* {binatangPeliharaan}     */}
+            {dropDownLokasi}            
             {isSearch?
             input:
             buttonSearch}              

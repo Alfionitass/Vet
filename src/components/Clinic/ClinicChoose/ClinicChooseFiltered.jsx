@@ -1,8 +1,5 @@
 import React, {useState,useEffect} from "react";
-// import "./styles.css";
 import { Dropdown,Card,Badge,Button, Container,Col,Row } from "react-bootstrap";
-//import SearchIcon from '@material-ui/icons/Search';
-// import styles from './App.module.css'
 import { useParams } from 'react-router-dom'
 import { clinic } from '../../../database'
 import {Link} from 'react-router-dom'
@@ -85,8 +82,7 @@ export default function ClinicChooseFiltered() {
                     href={`${process.env.PUBLIC_URL}/booking/lokasi/${lokasi}`}>                        
                     1
                     </a>
-                </li>
-    
+                </li>    
     </ul>        
     </div>
   )

@@ -13,10 +13,11 @@ export default function ClinicSection() {
     const [clinicData, setClinicData] = useState()
     const [currentClinic, setCurrentClinic] = useState(1)
     const [maxItem, setMaxItem]=useState(3)
-    // const maxItem = 3
-    
-    var first = (currentClinic * maxItem) - maxItem
-    var last = currentClinic * maxItem
+    const [first, setFirst]=useState()
+    const [last, setLast]=useState()
+        
+    // var first = (currentClinic * maxItem) - maxItem
+    // var last = currentClinic * maxItem
     
     
 
@@ -27,8 +28,13 @@ export default function ClinicSection() {
             setCurrentClinic(currentClinic - 1)
         }
     }
-    useEffect(() => {
 
+    useEffect(() =>{
+        setFirst((currentClinic * maxItem)-maxItem)
+        setLast(currentClinic * maxItem)        
+    },[currentClinic])
+
+    useEffect(() => {
         clinic({ method: 'all' }).then(res => (
             setClinicData(res?.data?.data)
         ))
